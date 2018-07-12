@@ -3,7 +3,10 @@ use winapi::ctypes::{c_char, c_double, c_float, c_long, c_int, c_short, c_void};
 
 use winapi::shared::minwindef::{UCHAR, UINT, ULONG, USHORT, };
 
+use winapi::um::oaidl::{SAFEARRAY};
 use winapi::um::unknwnbase::{IUnknown};
+
+use enums::*;
 
 //struct __declspec(uuid("c3008e12-9b16-36ec-b731-73257f25be7a"))
 STRUCT!{struct Boolean {
@@ -136,3 +139,196 @@ STRUCT!{struct NativeOverlapped {
     OffsetHigh: c_int,
     EventHandle: c_int,
 }}
+
+//struct __declspec(uuid("a6cceb32-ec73-3e9b-8852-02783c97d3fa"))
+STRUCT!{struct DictionaryEntry {
+    _key: *mut IUnknown,
+    _value: *mut IUnknown,
+}}
+
+//struct __declspec(uuid("709164df-d0e2-3813-a07d-f9f1e99f9a4b"))
+STRUCT!{struct SymbolToken {
+    m_token: c_long,
+}}
+
+//struct __declspec(uuid("11d31042-14c0-3b5c-87d0-a2cd40803cb5"))
+STRUCT!{struct ParameterModifier {
+    _byRef: *mut SAFEARRAY,
+}}
+
+//struct __declspec(uuid("79179aa0-e14c-35ea-a666-66be968af69f"))
+STRUCT!{struct StreamingContext {
+    m_additionalContext: *mut IUnknown,
+    m_state: StreamingContextStates,
+}}
+
+//struct __declspec(uuid("8351108f-34e3-3cc9-bf5a-c76c48060835"))
+STRUCT!{struct ArrayWithOffset {
+    m_array: *mut IUnknown,
+    m_offset: c_long, 
+    m_count: c_long,
+}}
+
+//struct __declspec(uuid("66e1f723-e57f-35ce-8306-3c09fb68a322"))
+STRUCT!{struct GCHandle
+{
+    m_handle: IntPtr,
+}}
+
+
+//struct __declspec(uuid("c71dce2b-b87f-37a9-89ed-f1145955bcd6"))
+STRUCT!{struct HandleRef
+{
+    m_wrapper: *mut IUnknown,
+    m_handle: IntPtr,
+}}
+
+
+struct __declspec(uuid("4e8b1bb8-6a6f-3b57-8afa-0129550b07be"))
+EventToken
+{
+    long m_event;
+};
+
+struct __declspec(uuid("24246833-61eb-329d-bddf-0daf3874062b"))
+FieldToken
+{
+    long m_fieldTok;
+    IUnknown * m_class;
+};
+
+struct __declspec(uuid("a419b664-dabd-383d-a0db-991487d41e14"))
+Label
+{
+    long m_label;
+};
+
+struct __declspec(uuid("0efe423a-a87e-33d9-8bf4-2d212620ee5f"))
+MethodToken
+{
+    long m_method;
+};
+
+
+struct __declspec(uuid("a7ed05c6-fecf-3c35-ba3b-84163ac1d5e5"))
+OpCode
+{
+    LPSTR m_stringname;
+    enum StackBehaviour m_pop;
+    enum StackBehaviour m_push;
+    enum OperandType m_operand;
+    enum OpCodeType m_type;
+    long m_size;
+    unsigned char m_s1;
+    unsigned char m_s2;
+    enum FlowControl m_ctrl;
+    long m_endsUncondJmpBlk;
+    long m_stackChange;
+};
+
+
+struct __declspec(uuid("cfb98ca9-8121-35be-af40-c176c616a16b"))
+ParameterToken
+{
+    long m_tkParameter;
+};
+
+struct __declspec(uuid("566833c7-f4a0-30ee-bd7e-44752ad570e6"))
+PropertyToken
+{
+    long m_property;
+};
+
+struct __declspec(uuid("155e1466-0e84-3f2b-b825-f6525523407c"))
+SignatureToken
+{
+    long m_signature;
+    struct _ModuleBuilder * m_moduleBuilder;
+};
+
+
+struct __declspec(uuid("8cf0278d-d0ad-307d-be63-a785432e3fdf"))
+StringToken
+{
+    long m_string;
+};
+
+struct __declspec(uuid("048fa0c2-8ebb-3bc2-a47f-01f12a32008e"))
+TypeToken
+{
+    long m_class;
+};
+
+struct __declspec(uuid("42a66664-072f-3a67-a189-7d440709a77e"))
+AssemblyHash
+{
+    enum AssemblyHashAlgorithm _Algorithm;
+    SAFEARRAY * _value;
+};
+
+struct __declspec(uuid("0c646f46-aa27-350d-88dd-d8c920ce6c2d"))
+DSAParameters
+{
+    SAFEARRAY * P;
+    SAFEARRAY * Q;
+    SAFEARRAY * G;
+    SAFEARRAY * y;
+    SAFEARRAY * J;
+    SAFEARRAY * x;
+    SAFEARRAY * Seed;
+    long Counter;
+};
+
+struct __declspec(uuid("094e9135-483d-334a-aae7-8690895ab70a"))
+RSAParameters
+{
+    SAFEARRAY * Exponent;
+    SAFEARRAY * Modulus;
+    SAFEARRAY * P;
+    SAFEARRAY * Q;
+    SAFEARRAY * DP;
+    SAFEARRAY * DQ;
+    SAFEARRAY * InverseQ;
+    SAFEARRAY * D;
+};
+
+
+struct __declspec(uuid("9dc6ac40-edfa-3e34-9ad1-b7a0a9e3a40a"))
+CustomAttributeTypedArgument
+{
+    IUnknown * m_value;
+    struct _Type * m_argumentType;
+};
+
+#pragma pack(pop)
+
+#pragma pack(push, 4)
+
+struct __declspec(uuid("7fc47a26-aa2e-32ea-bde4-01a490842d87"))
+CustomAttributeNamedArgument
+{
+    struct _MemberInfo * m_memberInfo;
+    struct CustomAttributeTypedArgument m_value;
+};
+
+#pragma pack(pop)
+
+#pragma pack(push, 4)
+
+struct __declspec(uuid("5f7a2664-4778-3d72-a78f-d38b6b00180d"))
+InterfaceMapping
+{
+    struct _Type * TargetType;
+    struct _Type * interfaceType;
+    SAFEARRAY * TargetMethods;
+    SAFEARRAY * InterfaceMethods;
+};
+
+
+struct __declspec(uuid("3642e7ed-5a69-3a94-98d3-a08877a0d046"))
+SerializationEntry
+{
+    struct _Type * m_type;
+    IUnknown * m_value;
+    LPSTR m_name;
+};
