@@ -11,7 +11,8 @@ use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::um::oaidl::{VARIANT};
 
 //self
-use unknown::IEnumVARIANT;
+use enums::*;
+use unknown::*;
 
 RIDL!{#[uuid(0xdeb0e770, 0x91fd, 0x3cf6, 0x9a, 0x6c, 0xe6, 0xa3, 0x65, 0x6f, 0x39, 0x65)]
 interface IComparable(IComparableVtbl): IDispatch(IDispatchVtbl){
@@ -116,7 +117,7 @@ interface IDisposable(IDisposableVtbl) : IDispatch(IDispatchVtbl){
 
 }}
 
-RIDL!{#[uuid(0xc20fd3eb, 0x7022, 0x3d14, 0x84, 0x77, 0x76, 0x0f, 0xab, 0x54, 0xe5, 0x0d]
+RIDL!{#[uuid(0xc20fd3eb, 0x7022, 0x3d14, 0x84, 0x77, 0x76, 0x0f, 0xab, 0x54, 0xe5, 0x0d)]
 interface IComparer(IComparerVtbl) : IDispatch(IDispatchVtbl)
 {
     fn Compare(
@@ -126,4 +127,26 @@ interface IComparer(IComparerVtbl) : IDispatch(IDispatchVtbl)
     ) -> HRESULT,
 }}
 
-//2514
+RIDL!{#[uuid(0xaab7c6ea, 0xcab0, 0x3adb, 0x82, 0xaa, 0xcf, 0x32, 0xe2, 0x9a, 0xf2, 0x3)]
+interface IEqualityComparer(IEqualityComparerVtbl) : IDispatch(IDispatchVtbl){
+    fn Equals(
+        x: VARIANT, 
+        y: VARIANT, 
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+
+    fn GetHashCode(
+        obj: VARIANT, 
+        pRetVal: *mut c_long,
+    ) -> HRESULT,
+}}
+
+RIDL!{#[uuid(0xab3f47e4, 0xc227, 0x3b05, 0xbf, 0x9f, 0x94, 0x64, 0x9b, 0xef, 0x98, 0x88)]
+interface IDeserializationCallback(IDeserializationCallbackVtbl) : IDispatch(IDispatchVtbl)
+{
+    fn OnDeserialization(
+        sender: VARIANT, 
+    ) -> HRESULT,
+}}
+
+//line 3846 - ThreadState enum
