@@ -1023,28 +1023,28 @@ ENUM!{enum EnvironmentPermissionAccess
     EnvironmentPermissionAccess_AllAccess = 3,
 }}
 
-enum __declspec(uuid("0df04a9b-dddc-3777-a6b1-9604b5ced191"))
-FileDialogPermissionAccess
+//enum __declspec(uuid("0df04a9b-dddc-3777-a6b1-9604b5ced191"))
+ENUM!{enum FileDialogPermissionAccess
 {
     FileDialogPermissionAccess_None = 0,
     FileDialogPermissionAccess_Open = 1,
     FileDialogPermissionAccess_Save = 2,
-    FileDialogPermissionAccess_OpenSave = 3
-};
+    FileDialogPermissionAccess_OpenSave = 3,
+}}
 
-enum __declspec(uuid("ca10c1a1-9fdc-36a3-ad74-8fac60e6541c"))
-FileIOPermissionAccess
+//enum __declspec(uuid("ca10c1a1-9fdc-36a3-ad74-8fac60e6541c"))
+ENUM!{enum FileIOPermissionAccess
 {
     FileIOPermissionAccess_NoAccess = 0,
     FileIOPermissionAccess_Read = 1,
     FileIOPermissionAccess_Write = 2,
     FileIOPermissionAccess_Append = 4,
     FileIOPermissionAccess_PathDiscovery = 8,
-    FileIOPermissionAccess_AllAccess = 15
-};
+    FileIOPermissionAccess_AllAccess = 15,
+}}
 
-enum __declspec(uuid("4548a129-2855-35e8-a892-ff506c877aa8"))
-HostProtectionResource
+//enum __declspec(uuid("4548a129-2855-35e8-a892-ff506c877aa8"))
+ENUM!{enum HostProtectionResource
 {
     HostProtectionResource_None = 0,
     HostProtectionResource_Synchronization = 1,
@@ -1056,11 +1056,11 @@ HostProtectionResource
     HostProtectionResource_SecurityInfrastructure = 64,
     HostProtectionResource_UI = 128,
     HostProtectionResource_MayLeakOnAbort = 256,
-    HostProtectionResource_All = 511
-};
+    HostProtectionResource_All = 511,
+}}
 
-enum __declspec(uuid("0d6e31df-3a76-3054-a8eb-150e92300f89"))
-IsolatedStorageContainment
+//enum __declspec(uuid("0d6e31df-3a76-3054-a8eb-150e92300f89"))
+ENUM!{enum IsolatedStorageContainment
 {
     IsolatedStorageContainment_None = 0,
     IsolatedStorageContainment_DomainIsolationByUser = 16,
@@ -1073,18 +1073,18 @@ IsolatedStorageContainment
     IsolatedStorageContainment_AssemblyIsolationByRoamingUser = 96,
     IsolatedStorageContainment_ApplicationIsolationByRoamingUser = 101,
     IsolatedStorageContainment_AdministerIsolatedStorageByUser = 112,
-    IsolatedStorageContainment_UnrestrictedIsolatedStorage = 240
-};
+    IsolatedStorageContainment_UnrestrictedIsolatedStorage = 240,
+}}
 
-enum __declspec(uuid("dfaecf33-4728-382d-a34d-c1b0392f8b73"))
-PermissionState
+//enum __declspec(uuid("dfaecf33-4728-382d-a34d-c1b0392f8b73"))
+ENUM!{enum PermissionState
 {
     PermissionState_Unrestricted = 1,
-    PermissionState_None = 0
-};
+    PermissionState_None = 0,
+}}
 
-enum __declspec(uuid("ba99ae52-d539-362f-b78c-4e84c14158bf"))
-SecurityAction
+//enum __declspec(uuid("ba99ae52-d539-362f-b78c-4e84c14158bf"))
+ENUM!{enum SecurityAction
 {
     SecurityAction_Demand = 2,
     SecurityAction_Assert = 3,
@@ -1094,21 +1094,21 @@ SecurityAction
     SecurityAction_InheritanceDemand = 7,
     SecurityAction_RequestMinimum = 8,
     SecurityAction_RequestOptional = 9,
-    SecurityAction_RequestRefuse = 10
-};
+    SecurityAction_RequestRefuse = 10,
+}}
 
-enum __declspec(uuid("44c2f476-9e95-3d5a-b666-fdbef071494e"))
-ReflectionPermissionFlag
+//enum __declspec(uuid("44c2f476-9e95-3d5a-b666-fdbef071494e"))
+ENUM!{enum ReflectionPermissionFlag
 {
     ReflectionPermissionFlag_NoFlags = 0,
     ReflectionPermissionFlag_TypeInformation = 1,
     ReflectionPermissionFlag_MemberAccess = 2,
     ReflectionPermissionFlag_ReflectionEmit = 4,
-    ReflectionPermissionFlag_AllFlags = 7
-};
+    ReflectionPermissionFlag_AllFlags = 7,
+}}
 
-enum __declspec(uuid("b718f0f8-e5e7-3651-a2be-97009b568250"))
-SecurityPermissionFlag
+//enum __declspec(uuid("b718f0f8-e5e7-3651-a2be-97009b568250"))
+ENUM!{enum SecurityPermissionFlag
 {
     SecurityPermissionFlag_NoFlags = 0,
     SecurityPermissionFlag_Assertion = 1,
@@ -1125,28 +1125,28 @@ SecurityPermissionFlag
     SecurityPermissionFlag_RemotingConfiguration = 2048,
     SecurityPermissionFlag_Infrastructure = 4096,
     SecurityPermissionFlag_BindingRedirects = 8192,
-    SecurityPermissionFlag_AllFlags = 16383
-};
+    SecurityPermissionFlag_AllFlags = 16383,
+}}
 
-enum __declspec(uuid("b30fd15e-ced6-3977-8151-0d50e79cd703"))
-UIPermissionWindow
+//enum __declspec(uuid("b30fd15e-ced6-3977-8151-0d50e79cd703"))
+ENUM!{enum UIPermissionWindow
 {
     UIPermissionWindow_NoWindows = 0,
     UIPermissionWindow_SafeSubWindows = 1,
     UIPermissionWindow_SafeTopLevelWindows = 2,
-    UIPermissionWindow_AllWindows = 3
-};
+    UIPermissionWindow_AllWindows = 3,
+}}
 
-enum __declspec(uuid("9e5c3c99-d046-3fe5-9921-21cf0f0a08ff"))
-UIPermissionClipboard
+//enum __declspec(uuid("9e5c3c99-d046-3fe5-9921-21cf0f0a08ff"))
+ENUM!{enum UIPermissionClipboard
 {
     UIPermissionClipboard_NoClipboard = 0,
     UIPermissionClipboard_OwnClipboard = 1,
-    UIPermissionClipboard_AllClipboard = 2
-};
+    UIPermissionClipboard_AllClipboard = 2,
+}}
 
-enum __declspec(uuid("742bdc16-f04e-3e0e-8ff1-e3250940b5bf"))
-KeyContainerPermissionFlags
+//enum __declspec(uuid("742bdc16-f04e-3e0e-8ff1-e3250940b5bf"))
+ENUM!{enum KeyContainerPermissionFlags
 {
     KeyContainerPermissionFlags_NoFlags = 0,
     KeyContainerPermissionFlags_Create = 1,
@@ -1158,21 +1158,21 @@ KeyContainerPermissionFlags
     KeyContainerPermissionFlags_Decrypt = 512,
     KeyContainerPermissionFlags_ViewAcl = 4096,
     KeyContainerPermissionFlags_ChangeAcl = 8192,
-    KeyContainerPermissionFlags_AllFlags = 13111
-};
+    KeyContainerPermissionFlags_AllFlags = 13111,
+}}
 
-enum __declspec(uuid("3eb29914-f9a9-3c15-a03f-560885cfcb61"))
-RegistryPermissionAccess
+//enum __declspec(uuid("3eb29914-f9a9-3c15-a03f-560885cfcb61"))
+ENUM!{enum RegistryPermissionAccess
 {
     RegistryPermissionAccess_NoAccess = 0,
     RegistryPermissionAccess_Read = 1,
     RegistryPermissionAccess_Write = 2,
     RegistryPermissionAccess_Create = 4,
-    RegistryPermissionAccess_AllAccess = 7
-};
+    RegistryPermissionAccess_AllAccess = 7,
+}}
 
-enum __declspec(uuid("51e1b3ca-d3cb-39bf-a016-6199569e74b2"))
-HostSecurityManagerOptions
+//enum __declspec(uuid("51e1b3ca-d3cb-39bf-a016-6199569e74b2"))
+ENUM!{enum HostSecurityManagerOptions
 {
     HostSecurityManagerOptions_None = 0,
     HostSecurityManagerOptions_HostAppDomainEvidence = 1,
@@ -1180,93 +1180,93 @@ HostSecurityManagerOptions
     HostSecurityManagerOptions_HostAssemblyEvidence = 4,
     HostSecurityManagerOptions_HostDetermineApplicationTrust = 8,
     HostSecurityManagerOptions_HostResolvePolicy = 16,
-    HostSecurityManagerOptions_AllFlags = 31
-};
+    HostSecurityManagerOptions_AllFlags = 31,
+}}
 
-enum __declspec(uuid("ee965595-853a-331b-9cd0-d53dcce3b6f8"))
-PolicyLevelType
+//enum __declspec(uuid("ee965595-853a-331b-9cd0-d53dcce3b6f8"))
+ENUM!{enum PolicyLevelType
 {
     PolicyLevelType_User = 0,
     PolicyLevelType_Machine = 1,
     PolicyLevelType_Enterprise = 2,
-    PolicyLevelType_AppDomain = 3
-};
+    PolicyLevelType_AppDomain = 3,
+}}
 
-enum __declspec(uuid("902a6b65-41bd-32f1-a233-075f009d459c"))
-SecurityZone
+//enum __declspec(uuid("902a6b65-41bd-32f1-a233-075f009d459c"))
+ENUM!{enum SecurityZone
 {
     SecurityZone_MyComputer = 0,
     SecurityZone_Intranet = 1,
     SecurityZone_Trusted = 2,
     SecurityZone_Internet = 3,
     SecurityZone_Untrusted = 4,
-    SecurityZone_NoZone = -1
-};
+    SecurityZone_NoZone = -1,
+}}
 
-enum __declspec(uuid("669212cb-7972-3073-bdb0-6782534b6590"))
-WellKnownObjectMode
+//enum __declspec(uuid("669212cb-7972-3073-bdb0-6782534b6590"))
+ENUM!{enum WellKnownObjectMode
 {
     WellKnownObjectMode_Singleton = 1,
-    WellKnownObjectMode_SingleCall = 2
-};
+    WellKnownObjectMode_SingleCall = 2,
+}}
 
-enum __declspec(uuid("b946ac61-dd6b-39f3-bbe1-e4c1540f16ea"))
-ActivatorLevel
+//enum __declspec(uuid("b946ac61-dd6b-39f3-bbe1-e4c1540f16ea"))
+ENUM!{enum ActivatorLevel
 {
     ActivatorLevel_Construction = 4,
     ActivatorLevel_Context = 8,
     ActivatorLevel_AppDomain = 12,
     ActivatorLevel_Process = 16,
-    ActivatorLevel_Machine = 20
-};
+    ActivatorLevel_Machine = 20,
+}}
 
-enum __declspec(uuid("a026e65f-9720-3f82-8de1-a18e51180a34"))
-ServerProcessing
+//enum __declspec(uuid("a026e65f-9720-3f82-8de1-a18e51180a34"))
+ENUM!{enum ServerProcessing
 {
     ServerProcessing_Complete = 0,
     ServerProcessing_OneWay = 1,
-    ServerProcessing_Async = 2
-};
+    ServerProcessing_Async = 2,
+}}
 
-enum __declspec(uuid("a2c06560-e728-39d5-8230-7eb08001c79e"))
-LeaseState
+//enum __declspec(uuid("a2c06560-e728-39d5-8230-7eb08001c79e"))
+ENUM!{enum LeaseState
 {
     LeaseState_Null = 0,
     LeaseState_Initial = 1,
     LeaseState_Active = 2,
     LeaseState_Renewing = 3,
-    LeaseState_Expired = 4
-};
+    LeaseState_Expired = 4,
+}}
 
-enum __declspec(uuid("c888351b-5dfd-3a9f-8d36-96e7770d0ebf"))
-SoapOption
+//enum __declspec(uuid("c888351b-5dfd-3a9f-8d36-96e7770d0ebf"))
+ENUM!{enum SoapOption
 {
     SoapOption_None = 0,
     SoapOption_AlwaysIncludeTypes = 1,
     SoapOption_XsdString = 2,
     SoapOption_EmbedAll = 4,
     SoapOption_Option1 = 8,
-    SoapOption_Option2 = 16
-};
+    SoapOption_Option2 = 16,
+}}
 
-enum __declspec(uuid("0ad279c7-05fb-3a46-9031-92e00c9f7c29"))
-XmlFieldOrderOption
+//enum __declspec(uuid("0ad279c7-05fb-3a46-9031-92e00c9f7c29"))
+ENUM!{enum XmlFieldOrderOption
 {
     XmlFieldOrderOption_All = 0,
     XmlFieldOrderOption_Sequence = 1,
-    XmlFieldOrderOption_Choice = 2
-};
+    XmlFieldOrderOption_Choice = 2,
+}}
 
-enum __declspec(uuid("82febf4c-9fc8-3285-8d5a-f00dd1e1ba40"))
-CustomErrorsModes
+//enum __declspec(uuid("82febf4c-9fc8-3285-8d5a-f00dd1e1ba40"))
+ENUM!{enum CustomErrorsModes
 {
     CustomErrorsModes_On = 0,
     CustomErrorsModes_Off = 1,
-    CustomErrorsModes_RemoteOnly = 2
-};
+    CustomErrorsModes_RemoteOnly = 2,
+}}
 
-enum __declspec(uuid("b3e5a7ff-afc6-3f2b-8fff-300c7c567693"))
-IsolatedStorageScope
+//enum __declspec(uuid("b3e5a7ff-afc6-3f2b-8fff-300c7c567693"))
+ENUM!{enum IsolatedStorageScope
 {
     IsolatedStorageScope_None = 0,
     IsolatedStorageScope_User = 1,
@@ -1274,63 +1274,63 @@ IsolatedStorageScope
     IsolatedStorageScope_Assembly = 4,
     IsolatedStorageScope_Roaming = 8,
     IsolatedStorageScope_Machine = 16,
-    IsolatedStorageScope_Application = 32
-};
+    IsolatedStorageScope_Application = 32,
+}}
 
-enum __declspec(uuid("72b06367-de53-3111-9c49-b816efee3148"))
-FormatterTypeStyle
+//enum __declspec(uuid("72b06367-de53-3111-9c49-b816efee3148"))
+ENUM!{enum FormatterTypeStyle
 {
     FormatterTypeStyle_TypesWhenNeeded = 0,
     FormatterTypeStyle_TypesAlways = 1,
-    FormatterTypeStyle_XsdString = 2
-};
+    FormatterTypeStyle_XsdString = 2,
+}}
 
-enum __declspec(uuid("f18130e7-bd6c-37f4-9488-35f9fb832ac7"))
-FormatterAssemblyStyle
+//enum __declspec(uuid("f18130e7-bd6c-37f4-9488-35f9fb832ac7"))
+ENUM!{enum FormatterAssemblyStyle
 {
     FormatterAssemblyStyle_Simple = 0,
-    FormatterAssemblyStyle_Full = 1
-};
+    FormatterAssemblyStyle_Full = 1,
+}}
 
-enum __declspec(uuid("c5d299ac-63b0-3448-bcb7-6aa9b5eb598e"))
-TypeFilterLevel
+//enum __declspec(uuid("c5d299ac-63b0-3448-bcb7-6aa9b5eb598e"))
+ENUM!{enum TypeFilterLevel
 {
     TypeFilterLevel_Low = 2,
-    TypeFilterLevel_Full = 3
-};
+    TypeFilterLevel_Full = 3,
+}}
 
-enum __declspec(uuid("f0778630-ac34-3d71-9fab-617f61243065"))
-AssemblyBuilderAccess
+//enum __declspec(uuid("f0778630-ac34-3d71-9fab-617f61243065"))
+ENUM!{enum AssemblyBuilderAccess
 {
     AssemblyBuilderAccess_Run = 1,
     AssemblyBuilderAccess_Save = 2,
     AssemblyBuilderAccess_RunAndSave = 3,
     AssemblyBuilderAccess_ReflectionOnly = 6,
-    AssemblyBuilderAccess_RunAndCollect = 9
-};
+    AssemblyBuilderAccess_RunAndCollect = 9,
+}}
 
-enum __declspec(uuid("e87fa4d7-0caa-3c24-be83-cf98b50186e2"))
-PEFileKinds
+//enum __declspec(uuid("e87fa4d7-0caa-3c24-be83-cf98b50186e2"))
+ENUM!{enum PEFileKinds
 {
     PEFileKinds_Dll = 1,
     PEFileKinds_ConsoleApplication = 2,
-    PEFileKinds_WindowApplication = 3
-};
+    PEFileKinds_WindowApplication = 3,
+}}
 
 
-enum __declspec(uuid("8abd8cb3-a365-32f9-9914-f08ec1fec4ca"))
-OpCodeType
+//enum __declspec(uuid("8abd8cb3-a365-32f9-9914-f08ec1fec4ca"))
+ENUM!{enum OpCodeType
 {
     OpCodeType_Annotation = 0,
     OpCodeType_Macro = 1,
     OpCodeType_Nternal = 2,
     OpCodeType_Objmodel = 3,
     OpCodeType_Prefix = 4,
-    OpCodeType_Primitive = 5
-};
+    OpCodeType_Primitive = 5,
+}}
 
-enum __declspec(uuid("d25ed092-a7a8-3bbe-820c-42f5a4604768"))
-StackBehaviour
+//enum __declspec(uuid("d25ed092-a7a8-3bbe-820c-42f5a4604768"))
+ENUM!{enum StackBehaviour
 {
     StackBehaviour_Pop0 = 0,
     StackBehaviour_Pop1 = 1,
@@ -1360,11 +1360,11 @@ StackBehaviour
     StackBehaviour_Pushref = 25,
     StackBehaviour_Varpop = 26,
     StackBehaviour_Varpush = 27,
-    StackBehaviour_Popref_popi_pop1 = 28
-};
+    StackBehaviour_Popref_popi_pop1 = 28,
+}}
 
-enum __declspec(uuid("b125618b-1b4e-37c3-b31a-331d6021b52d"))
-OperandType
+//enum __declspec(uuid("b125618b-1b4e-37c3-b31a-331d6021b52d"))
+ENUM!{enum OperandType
 {
     OperandType_InlineBrTarget = 0,
     OperandType_InlineField = 1,
@@ -1383,11 +1383,11 @@ OperandType
     OperandType_ShortInlineBrTarget = 15,
     OperandType_ShortInlineI = 16,
     OperandType_ShortInlineR = 17,
-    OperandType_ShortInlineVar = 18
-};
+    OperandType_ShortInlineVar = 18,
+}}
 
-enum __declspec(uuid("75a7861c-767e-3a5e-a57b-6ec136009654"))
-FlowControl
+//enum __declspec(uuid("75a7861c-767e-3a5e-a57b-6ec136009654"))
+ENUM!{enum FlowControl
 {
     FlowControl_Branch = 0,
     FlowControl_Break = 1,
@@ -1397,11 +1397,11 @@ FlowControl
     FlowControl_Next = 5,
     FlowControl_Phi = 6,
     FlowControl_Return = 7,
-    FlowControl_Throw = 8
-};
+    FlowControl_Throw = 8,
+}}
 
-enum __declspec(uuid("3e0af669-1cd8-3afc-9f2c-e81c2b810135"))
-PackingSize
+//enum __declspec(uuid("3e0af669-1cd8-3afc-9f2c-e81c2b810135"))
+ENUM!{enum PackingSize
 {
     PackingSize_Unspecified = 0,
     PackingSize_Size1 = 1,
@@ -1411,55 +1411,55 @@ PackingSize
     PackingSize_Size16 = 16,
     PackingSize_Size32 = 32,
     PackingSize_Size64 = 64,
-    PackingSize_Size128 = 128
-};
+    PackingSize_Size128 = 128,
+}}
 
-enum __declspec(uuid("ddd019bf-d182-34de-9192-95575f7b2a31"))
-AssemblyHashAlgorithm
+//enum __declspec(uuid("ddd019bf-d182-34de-9192-95575f7b2a31"))
+ENUM!{enum AssemblyHashAlgorithm
 {
     AssemblyHashAlgorithm_None = 0,
     AssemblyHashAlgorithm_MD5 = 32771,
-    AssemblyHashAlgorithm_SHA1 = 32772
-};
+    AssemblyHashAlgorithm_SHA1 = 32772,
+}}
 
 
-enum __declspec(uuid("e3dc8079-43bc-3e70-b291-1591cc9e451d"))
-AssemblyVersionCompatibility
+//enum __declspec(uuid("e3dc8079-43bc-3e70-b291-1591cc9e451d"))
+ENUM!{enum AssemblyVersionCompatibility
 {
     AssemblyVersionCompatibility_SameMachine = 1,
     AssemblyVersionCompatibility_SameProcess = 2,
-    AssemblyVersionCompatibility_SameDomain = 3
-};
+    AssemblyVersionCompatibility_SameDomain = 3,
+}}
 
-enum __declspec(uuid("75c9e85e-d2d1-32db-bf9c-0636f94fb0c2"))
-CipherMode
+//enum __declspec(uuid("75c9e85e-d2d1-32db-bf9c-0636f94fb0c2"))
+ENUM!{enum CipherMode
 {
     CipherMode_CBC = 1,
     CipherMode_ECB = 2,
     CipherMode_OFB = 3,
     CipherMode_CFB = 4,
-    CipherMode_CTS = 5
-};
+    CipherMode_CTS = 5,
+}}
 
-enum __declspec(uuid("1254089d-0104-3bfb-b6ba-9168f994dca6"))
-PaddingMode
+//enum __declspec(uuid("1254089d-0104-3bfb-b6ba-9168f994dca6"))
+ENUM!{enum PaddingMode
 {
     PaddingMode_None = 1,
     PaddingMode_PKCS7 = 2,
     PaddingMode_Zeros = 3,
     PaddingMode_ANSIX923 = 4,
-    PaddingMode_ISO10126 = 5
-};
+    PaddingMode_ISO10126 = 5,
+}}
 
-enum __declspec(uuid("11472518-c3b8-3bf4-9705-2135e1709883"))
-FromBase64TransformMode
+//enum __declspec(uuid("11472518-c3b8-3bf4-9705-2135e1709883"))
+ENUM!{enum FromBase64TransformMode
 {
     FromBase64TransformMode_IgnoreWhiteSpaces = 0,
-    FromBase64TransformMode_DoNotIgnoreWhiteSpaces = 1
-};
+    FromBase64TransformMode_DoNotIgnoreWhiteSpaces = 1,
+}}
 
-enum __declspec(uuid("6be41cdf-29d7-32db-8181-5117f580ba68"))
-CspProviderFlags
+//enum __declspec(uuid("6be41cdf-29d7-32db-8181-5117f580ba68"))
+ENUM!{enum CspProviderFlags
 {
     CspProviderFlags_NoFlags = 0,
     CspProviderFlags_UseMachineKeyStore = 1,
@@ -1469,25 +1469,25 @@ CspProviderFlags
     CspProviderFlags_UseArchivableKey = 16,
     CspProviderFlags_UseUserProtectedKey = 32,
     CspProviderFlags_NoPrompt = 64,
-    CspProviderFlags_CreateEphemeralKey = 128
-};
+    CspProviderFlags_CreateEphemeralKey = 128,
+}}
 
-enum __declspec(uuid("8990cb3b-227e-3a43-8264-0057ec763fa0"))
-CryptoStreamMode
+//enum __declspec(uuid("8990cb3b-227e-3a43-8264-0057ec763fa0"))
+ENUM!{enum CryptoStreamMode
 {
     CryptoStreamMode_Read = 0,
-    CryptoStreamMode_Write = 1
-};
+    CryptoStreamMode_Write = 1,
+}}
 
-enum __declspec(uuid("d7dd91c9-91e4-38e9-8ec6-37836572a66a"))
-KeyNumber
+//enum __declspec(uuid("d7dd91c9-91e4-38e9-8ec6-37836572a66a"))
+ENUM!{enum KeyNumber
 {
     KeyNumber_Exchange = 1,
-    KeyNumber_Signature = 2
-};
+    KeyNumber_Signature = 2,
+}}
 
-enum __declspec(uuid("70446b90-f93b-3578-9b7b-95d05a12da60"))
-X509ContentType
+//enum __declspec(uuid("70446b90-f93b-3578-9b7b-95d05a12da60"))
+ENUM!{enum X509ContentType
 {
     X509ContentType_Unknown = 0,
     X509ContentType_Cert = 1,
@@ -1496,24 +1496,24 @@ X509ContentType
     X509ContentType_Pkcs12 = 3,
     X509ContentType_SerializedStore = 4,
     X509ContentType_Pkcs7 = 5,
-    X509ContentType_Authenticode = 6
-};
+    X509ContentType_Authenticode = 6,
+}}
 
 
-enum __declspec(uuid("2530ee1e-6d70-3a79-a864-7cc0e2120da1"))
-X509KeyStorageFlags
+//enum __declspec(uuid("2530ee1e-6d70-3a79-a864-7cc0e2120da1"))
+ENUM!{enum X509KeyStorageFlags
 {
     X509KeyStorageFlags_DefaultKeySet = 0,
     X509KeyStorageFlags_UserKeySet = 1,
     X509KeyStorageFlags_MachineKeySet = 2,
     X509KeyStorageFlags_Exportable = 4,
     X509KeyStorageFlags_UserProtected = 8,
-    X509KeyStorageFlags_PersistKeySet = 16
-};
+    X509KeyStorageFlags_PersistKeySet = 16,
+}}
 
 
-enum __declspec(uuid("2e05a70a-1bbe-31df-b2a8-b8fa0f130915"))
-SpecialFolder
+//enum __declspec(uuid("2e05a70a-1bbe-31df-b2a8-b8fa0f130915"))
+ENUM!{enum SpecialFolder
 {
     SpecialFolder_ApplicationData = 26,
     SpecialFolder_CommonApplicationData = 35,
@@ -1561,15 +1561,15 @@ SpecialFolder
     SpecialFolder_Resources = 56,
     SpecialFolder_LocalizedResources = 57,
     SpecialFolder_SystemX86 = 41,
-    SpecialFolder_Windows = 36
-};
+    SpecialFolder_Windows = 36,
+}}
 
-enum __declspec(uuid("86343361-ce50-35ee-8bea-6f39ec8c8159"))
-DebuggingModes
+//enum __declspec(uuid("86343361-ce50-35ee-8bea-6f39ec8c8159"))
+ENUM!{enum DebuggingModes
 {
     DebuggingModes_None = 0,
     DebuggingModes_Default = 1,
     DebuggingModes_DisableOptimizations = 256,
     DebuggingModes_IgnoreSymbolStoreSequencePoints = 2,
-    DebuggingModes_EnableEditAndContinue = 4
-};
+    DebuggingModes_EnableEditAndContinue = 4,
+}}

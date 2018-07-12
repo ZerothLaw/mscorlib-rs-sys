@@ -184,151 +184,142 @@ STRUCT!{struct HandleRef
 }}
 
 
-struct __declspec(uuid("4e8b1bb8-6a6f-3b57-8afa-0129550b07be"))
-EventToken
+//struct __declspec(uuid("4e8b1bb8-6a6f-3b57-8afa-0129550b07be"))
+STRUCT!{struct EventToken
 {
-    long m_event;
-};
+    m_event: c_long,
+}}
 
-struct __declspec(uuid("24246833-61eb-329d-bddf-0daf3874062b"))
-FieldToken
+//struct __declspec(uuid("24246833-61eb-329d-bddf-0daf3874062b"))
+STRUCT!{struct FieldToken
 {
-    long m_fieldTok;
-    IUnknown * m_class;
-};
+    m_fieldTok: c_long,
+    m_class: *mut IUnknown,
+}}
 
-struct __declspec(uuid("a419b664-dabd-383d-a0db-991487d41e14"))
-Label
+//struct __declspec(uuid("a419b664-dabd-383d-a0db-991487d41e14"))
+STRUCT!{struct Label
 {
-    long m_label;
-};
+    m_label: c_long,
+}}
 
-struct __declspec(uuid("0efe423a-a87e-33d9-8bf4-2d212620ee5f"))
-MethodToken
+//struct __declspec(uuid("0efe423a-a87e-33d9-8bf4-2d212620ee5f"))
+STRUCT!{struct MethodToken
 {
-    long m_method;
-};
+    m_method: c_long,
+}}
 
 
-struct __declspec(uuid("a7ed05c6-fecf-3c35-ba3b-84163ac1d5e5"))
-OpCode
+//struct __declspec(uuid("a7ed05c6-fecf-3c35-ba3b-84163ac1d5e5"))
+STRUCT!{struct OpCode
 {
-    LPSTR m_stringname;
-    enum StackBehaviour m_pop;
-    enum StackBehaviour m_push;
-    enum OperandType m_operand;
-    enum OpCodeType m_type;
-    long m_size;
-    unsigned char m_s1;
-    unsigned char m_s2;
-    enum FlowControl m_ctrl;
-    long m_endsUncondJmpBlk;
-    long m_stackChange;
-};
+    m_stringname: LPSTR,
+    m_pop: StackBehaviour,
+    m_push: StackBehaviour,
+    m_operand: OperandType,
+    m_type: OpCodeType,
+    m_size: c_long,
+    m_s1: UCHAR,
+    m_s2: UCHAR,
+    m_ctrl: FlowControl,
+    m_endsUncondJmpBlk: c_long,
+    m_stackChange: c_long,
+}}
 
 
-struct __declspec(uuid("cfb98ca9-8121-35be-af40-c176c616a16b"))
-ParameterToken
+//struct __declspec(uuid("cfb98ca9-8121-35be-af40-c176c616a16b"))
+STRUCT!{struct ParameterToken
 {
-    long m_tkParameter;
-};
+    m_tkParameter: c_long,
+}}
 
-struct __declspec(uuid("566833c7-f4a0-30ee-bd7e-44752ad570e6"))
-PropertyToken
+//struct __declspec(uuid("566833c7-f4a0-30ee-bd7e-44752ad570e6"))
+STRUCT!{struct PropertyToken
 {
-    long m_property;
-};
+    m_property: c_long,
+}}
 
-struct __declspec(uuid("155e1466-0e84-3f2b-b825-f6525523407c"))
-SignatureToken
+//struct __declspec(uuid("155e1466-0e84-3f2b-b825-f6525523407c"))
+STRUCT!{struct SignatureToken
 {
-    long m_signature;
-    struct _ModuleBuilder * m_moduleBuilder;
-};
+    m_signature: c_long, 
+    m_moduleBuilder: *mut _ModuleBuilder,
+}}
 
 
-struct __declspec(uuid("8cf0278d-d0ad-307d-be63-a785432e3fdf"))
-StringToken
+//struct __declspec(uuid("8cf0278d-d0ad-307d-be63-a785432e3fdf"))
+STRUCT!{struct StringToken
 {
-    long m_string;
-};
+    m_string: c_long,
+}}
 
-struct __declspec(uuid("048fa0c2-8ebb-3bc2-a47f-01f12a32008e"))
-TypeToken
+//struct __declspec(uuid("048fa0c2-8ebb-3bc2-a47f-01f12a32008e"))
+STRUCT!{struct TypeToken
 {
-    long m_class;
-};
+    m_class: c_long,
+}}
 
-struct __declspec(uuid("42a66664-072f-3a67-a189-7d440709a77e"))
-AssemblyHash
+//struct __declspec(uuid("42a66664-072f-3a67-a189-7d440709a77e"))
+STRUCT!{struct AssemblyHash
 {
-    enum AssemblyHashAlgorithm _Algorithm;
-    SAFEARRAY * _value;
-};
+    _Algorithm: AssemblyHashAlgorithm,
+    _value: *mut SAFEARRAY,
+}}
 
-struct __declspec(uuid("0c646f46-aa27-350d-88dd-d8c920ce6c2d"))
-DSAParameters
+//struct __declspec(uuid("0c646f46-aa27-350d-88dd-d8c920ce6c2d"))
+STRUCT!{struct DSAParameters
 {
-    SAFEARRAY * P;
-    SAFEARRAY * Q;
-    SAFEARRAY * G;
-    SAFEARRAY * y;
-    SAFEARRAY * J;
-    SAFEARRAY * x;
-    SAFEARRAY * Seed;
-    long Counter;
-};
+    P: *mut SAFEARRAY,
+    Q: *mut SAFEARRAY,
+    G: *mut SAFEARRAY,
+    y: *mut SAFEARRAY,
+    J: *mut SAFEARRAY,
+    x: *mut SAFEARRAY,
+    Seed: *mut SAFEARRAY,
+    Counter: c_long,
+}}
 
-struct __declspec(uuid("094e9135-483d-334a-aae7-8690895ab70a"))
-RSAParameters
+//struct __declspec(uuid("094e9135-483d-334a-aae7-8690895ab70a"))
+STRUCT!{struct RSAParameters
 {
-    SAFEARRAY * Exponent;
-    SAFEARRAY * Modulus;
-    SAFEARRAY * P;
-    SAFEARRAY * Q;
-    SAFEARRAY * DP;
-    SAFEARRAY * DQ;
-    SAFEARRAY * InverseQ;
-    SAFEARRAY * D;
-};
+    Exponent: *mut SAFEARRAY,
+    Modulus: *mut SAFEARRAY,
+    P: *mut SAFEARRAY,
+    Q: *mut SAFEARRAY,
+    DP: *mut SAFEARRAY,
+    DQ: *mut SAFEARRAY,
+    InverseQ: *mut SAFEARRAY,
+    D: *mut SAFEARRAY,
+}}
 
 
-struct __declspec(uuid("9dc6ac40-edfa-3e34-9ad1-b7a0a9e3a40a"))
-CustomAttributeTypedArgument
+//struct __declspec(uuid("9dc6ac40-edfa-3e34-9ad1-b7a0a9e3a40a"))
+STRUCT!{struct CustomAttributeTypedArgument
 {
-    IUnknown * m_value;
-    struct _Type * m_argumentType;
-};
+    m_value: *mut IUnknown,
+    m_argumentType: *mut _Type,
+}}
 
-#pragma pack(pop)
-
-#pragma pack(push, 4)
-
-struct __declspec(uuid("7fc47a26-aa2e-32ea-bde4-01a490842d87"))
-CustomAttributeNamedArgument
+//struct __declspec(uuid("7fc47a26-aa2e-32ea-bde4-01a490842d87"))
+STRUCT!{struct CustomAttributeNamedArgument
 {
-    struct _MemberInfo * m_memberInfo;
-    struct CustomAttributeTypedArgument m_value;
-};
+    m_memberInfo: *mut _MemberInfo,
+    m_value: CustomAttributeTypedArgument,
+}}
 
-#pragma pack(pop)
-
-#pragma pack(push, 4)
-
-struct __declspec(uuid("5f7a2664-4778-3d72-a78f-d38b6b00180d"))
-InterfaceMapping
+//struct __declspec(uuid("5f7a2664-4778-3d72-a78f-d38b6b00180d"))
+STRUCT!{struct InterfaceMapping
 {
-    struct _Type * TargetType;
-    struct _Type * interfaceType;
-    SAFEARRAY * TargetMethods;
-    SAFEARRAY * InterfaceMethods;
-};
+    TargetType: *mut _Type,
+    interfaceType: *mut _Type,
+    TargetMethods: *mut SAFEARRAY, 
+    InterfaceMethods: *mut SAFEARRAY,
+}}
 
-
-struct __declspec(uuid("3642e7ed-5a69-3a94-98d3-a08877a0d046"))
-SerializationEntry
+//struct __declspec(uuid("3642e7ed-5a69-3a94-98d3-a08877a0d046"))
+STRUCT!{struct SerializationEntry
 {
-    struct _Type * m_type;
-    IUnknown * m_value;
-    LPSTR m_name;
-};
+    m_type: *mut _Type,
+    m_value: *mut IUnknown,
+    m_name: LPSTR,
+}}

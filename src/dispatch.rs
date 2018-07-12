@@ -523,8 +523,8 @@ interface ICustomAdapter(ICustomAdapterVtbl) : IDispatch(IDispatchVtbl)
     ) -> HRESULT,
 }}
 
-struct __declspec(uuid("a19b3fc6-d680-3dd4-a17a-f58a7d481494"))
-IPermission : IDispatch
+RIDL!{#[uuid(0xa19b3fc6, 0xd680, 0x3dd4, 0xa1, 0x7a, 0xf5, 0x8a, 0x7d, 0x48, 0x14, 0x94)]
+interface IPermission(IPermissionVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -542,10 +542,10 @@ IPermission : IDispatch
         /*[in]*/ struct IPermission * Target,
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
       virtual HRESULT __stdcall Demand ( ) = 0;
-};
+}}
 
-struct __declspec(uuid("60fc57b0-4a46-32a0-a5b4-b05b0de8e781"))
-IStackWalk : IDispatch
+RIDL!{#[uuid(0x60fc57b0, 0x4a46, 0x32a0, 0xa5, 0xb4, 0xb0, 0x5b, 0x0d, 0xe8, 0xe7, 0x81)]
+interface IStackWalk(IStackWalkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -555,10 +555,10 @@ IStackWalk : IDispatch
       virtual HRESULT __stdcall Demand ( ) = 0;
       virtual HRESULT __stdcall Deny ( ) = 0;
       virtual HRESULT __stdcall PermitOnly ( ) = 0;
-};
+}}
 
-struct __declspec(uuid("0f1284e6-4399-3963-8ddd-a6a4904f66c8"))
-IUnrestrictedPermission : IDispatch
+RIDL!{#[uuid(0x0f1284e6, 0x4399, 0x3963, 0x8d, 0xdd, 0xa6, 0xa4, 0x90, 0x4f, 0x66, 0xc8)]
+interface IUnrestrictedPermission(IUnrestrictedPermissionVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -566,10 +566,10 @@ IUnrestrictedPermission : IDispatch
 
       virtual HRESULT __stdcall IsUnrestricted (
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("563581e8-c86d-39e2-b2e8-6c23f7987a4b"))
-IChannel : IDispatch
+RIDL!{#[uuid(0x563581e8, 0xc86d, 0x39e2, 0xb2, 0xe8, 0x6c, 0x23, 0xf7, 0x98, 0x7a, 0x4b)]
+interface IChannel(IChannelVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -583,10 +583,10 @@ IChannel : IDispatch
         /*[in]*/ BSTR Url,
         /*[out]*/ BSTR * objectURI,
         /*[out,retval]*/ BSTR * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("48ad41da-0872-31da-9887-f81f213527e6"))
-IChannelReceiver : IDispatch
+RIDL!{#[uuid(0x48ad41da, 0x0872, 0x31da, 0x98, 0x87, 0xf8, 0x1f, 0x21, 0x35, 0x27, 0xe6)]
+interface IChannelReceiver(IChannelReceiverVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -601,10 +601,10 @@ IChannelReceiver : IDispatch
         /*[in]*/ VARIANT data ) = 0;
       virtual HRESULT __stdcall StopListening (
         /*[in]*/ VARIANT data ) = 0;
-};
+}}
 
-struct __declspec(uuid("b90efaa6-25e4-33d2-aca3-94bf74dc4ab9"))
-IMethodCallMessage : IDispatch
+RIDL!{#[uuid(0xb90efaa6, 0x25e4, 0x33d2, 0xac, 0xa3, 0x94, 0xbf, 0x74, 0xdc, 0x4a, 0xb9)]
+interface IMethodCallMessage(IMethodCallMessageVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -620,27 +620,27 @@ IMethodCallMessage : IDispatch
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
       virtual HRESULT __stdcall get_InArgs (
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("ca0ab564-f5e9-3a7f-a80b-eb0aeefa44e9"))
-IConstructionReturnMessage : IDispatch
-{};
+RIDL!{#[uuid(0xca0ab564, 0xf5e9, 0x3a7f, 0xa8, 0x0b, 0xeb, 0x0a, 0xee, 0xfa, 0x44, 0xe9)]
+interface IConstructionReturnMessage(IConstructionReturnMessageVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6d94b6f3-da91-3c2f-b876-083769667468"))
-IClientFormatterSinkProvider : IDispatch
-{};
+RIDL!{#[uuid(0x6d94b6f3, 0xda91, 0x3c2f, 0xb8, 0x76, 0x08, 0x37, 0x69, 0x66, 0x74, 0x68)]
+interface IClientFormatterSinkProvider(IClientFormatterSinkProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("042b5200-4317-3e4d-b653-7e9a08f1a5f2"))
-IServerFormatterSinkProvider : IDispatch
-{};
+RIDL!{#[uuid(0x042b5200, 0x4317, 0x3e4d, 0xb6, 0x53, 0x7e, 0x9a, 0x08, 0xf1, 0xa5, 0xf2)]
+interface IServerFormatterSinkProvider(IServerFormatterSinkProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
 
-struct __declspec(uuid("46527c03-b144-3cf0-86b3-b8776148a6e9"))
-IClientFormatterSink : IDispatch
-{};
+RIDL!{#[uuid(0x46527c03, 0xb144, 0x3cf0, 0x86, 0xb3, 0xb8, 0x77, 0x61, 0x48, 0xa6, 0xe9)]
+interface IClientFormatterSink(IClientFormatterSinkVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1e250ccd-dc30-3217-a7e4-148f375a0088"))
-IChannelDataStore : IDispatch
+RIDL!{#[uuid(0x1e250ccd, 0xdc30, 0x3217, 0xa7, 0xe4, 0x14, 0x8f, 0x37, 0x5a, 0x00, 0x88)]
+interface IChannelDataStore(IChannelDataStoreVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -654,11 +654,11 @@ IChannelDataStore : IDispatch
       virtual HRESULT __stdcall putref_Item (
         /*[in]*/ VARIANT key,
         /*[in]*/ VARIANT pRetVal ) = 0;
-};
+}}
 
 
-struct __declspec(uuid("1ac82fbe-4ff0-383c-bbfd-fe40ecb3628d"))
-ITransportHeaders : IDispatch
+RIDL!{#[uuid(0x1ac82fbe, 0x4ff0, 0x383c, 0xbb, 0xfd, 0xfe, 0x40, 0xec, 0xb3, 0x62, 0x8d)]
+interface ITransportHeaders(ITransportHeadersVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -672,10 +672,10 @@ ITransportHeaders : IDispatch
         /*[in]*/ VARIANT pRetVal ) = 0;
       virtual HRESULT __stdcall GetEnumerator (
         /*[out,retval]*/ struct IEnumVARIANT * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("00a358d4-4d58-3b9d-8fb6-fb7f6bc1713b"))
-IDynamicProperty : IDispatch
+RIDL!{#[uuid(0x00a358d4, 0x4d58, 0x3b9d, 0x8f, 0xb6, 0xfb, 0x7f, 0x6b, 0xc1, 0x71, 0x3b)]
+interface IDynamicProperty(IDynamicPropertyVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -683,10 +683,10 @@ IDynamicProperty : IDispatch
 
       virtual HRESULT __stdcall get_name (
         /*[out,retval]*/ BSTR * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("3677cbb0-784d-3c15-bbc8-75cd7dc3901e"))
-IMessageCtrl : IDispatch
+RIDL!{#[uuid(0x3677cbb0, 0x784d, 0x3c15, 0xbb, 0xc8, 0x75, 0xcd, 0x7d, 0xc3, 0x90, 0x1e)]
+interface IMessageCtrl(IMessageCtrlVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -694,10 +694,10 @@ IMessageCtrl : IDispatch
 
       virtual HRESULT __stdcall Cancel (
         /*[in]*/ long msToCancel ) = 0;
-};
+}}
 
-struct __declspec(uuid("cc18fd4d-aa2d-3ab4-9848-584bbae4ab44"))
-IFieldInfo : IDispatch
+RIDL!{#[uuid(0xcc18fd4d, 0xaa2d, 0x3ab4, 0x98, 0x48, 0x58, 0x4b, 0xba, 0xe4, 0xab, 0x44)]
+interface IFieldInfo(IFieldInfoVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -711,10 +711,10 @@ IFieldInfo : IDispatch
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
       virtual HRESULT __stdcall put_FieldTypes (
         /*[in]*/ SAFEARRAY * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("855e6566-014a-3fe8-aa70-1eac771e3a88"))
-IChannelInfo : IDispatch
+RIDL!{#[uuid(0x855e6566, 0x014a, 0x3fe8, 0xaa, 0x70, 0x1e, 0xac, 0x77, 0x1e, 0x3a, 0x88)]
+interface IChannelInfo(IChannelInfoVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -724,10 +724,10 @@ IChannelInfo : IDispatch
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
       virtual HRESULT __stdcall put_ChannelData (
         /*[in]*/ SAFEARRAY * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("80031d2a-ad59-3fb4-97f3-b864d71da86b"))
-ISoapXsd : IDispatch
+RIDL!{#[uuid(0x80031d2a, 0xad59, 0x3fb4, 0x97, 0xf3, 0xb8, 0x64, 0xd7, 0x1d, 0xa8, 0x6b)]
+interface ISoapXsd(ISoapXsdVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -735,14 +735,14 @@ ISoapXsd : IDispatch
 
       virtual HRESULT __stdcall GetXsdType (
         /*[out,retval]*/ BSTR * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("4d125449-ba27-3927-8589-3e1b34b622e5"))
-ILogicalThreadAffinative : IDispatch
-{};
+RIDL!{#[uuid(0x4d125449, 0xba27, 0x3927, 0x85, 0x89, 0x3e, 0x1b, 0x34, 0xb6, 0x22, 0xe5)]
+interface ILogicalThreadAffinative(ILogicalThreadAffinativeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f5006531-d4d7-319e-9eda-9b4b65ad8d4f"))
-INormalizeForIsolatedStorage : IDispatch
+RIDL!{#[uuid(0xf5006531, 0xd4d7, 0x319e, 0x9e, 0xda, 0x9b, 0x4b, 0x65, 0xad, 0x8d, 0x4f)]
+interface INormalizeForIsolatedStorage(INormalizeForIsolatedStorageVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -750,10 +750,10 @@ INormalizeForIsolatedStorage : IDispatch
 
       virtual HRESULT __stdcall Normalize (
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("e699146c-7793-3455-9bef-964c90d8f995"))
-ISoapMessage : IDispatch
+RIDL!{#[uuid(0xe699146c, 0x7793, 0x3455, 0x9b, 0xef, 0x96, 0x4c, 0x90, 0xd8, 0xf9, 0x95)]
+interface ISoapMessage(ISoapMessageVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -783,11 +783,11 @@ ISoapMessage : IDispatch
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
       virtual HRESULT __stdcall put_headers (
         /*[in]*/ SAFEARRAY * pRetVal ) = 0;
-};
+}}
 
 
-struct __declspec(uuid("8abad867-f515-3cf6-bb62-5f0c88b3bb11"))
-ICryptoTransform : IDispatch
+RIDL!{#[uuid(0x8abad867, 0xf515, 0x3cf6, 0xbb, 0x62, 0x5f, 0x0c, 0x88, 0xb3, 0xbb, 0x11)]
+interface ICryptoTransform(ICryptoTransformVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -813,27 +813,27 @@ ICryptoTransform : IDispatch
         /*[in]*/ long inputOffset,
         /*[in]*/ long inputCount,
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-};
+}}
 
 
-struct __declspec(uuid("139e041d-0e41-39f5-a302-c4387e9d0a6c"))
-_ValueType : IDispatch
-{};
+RIDL!{#[uuid(0x139e041d, 0x0e41, 0x39f5, 0xa3, 0x02, 0xc4, 0x38, 0x7e, 0x9d, 0x0a, 0x6c)]
+interface _ValueType(_ValueTypeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d09d1e04-d590-39a3-b517-b734a49a9277"))
-_Enum : IDispatch
-{};
+RIDL!{#[uuid(0xd09d1e04, 0xd590, 0x39a3, 0xb5, 0x17, 0xb7, 0x34, 0xa4, 0x9a, 0x92, 0x77)]
+interface _Enum(_EnumVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("16fe0885-9129-3884-a232-90b58c5b2aa9"))
-_MulticastDelegate : IDispatch
-{};
+RIDL!{#[uuid(0x16fe0885, 0x9129, 0x3884, 0xa2, 0x32, 0x90, 0xb5, 0x8c, 0x5b, 0x2a, 0xa9)]
+interface _MulticastDelegate(_MulticastDelegateVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2b67cece-71c3-36a9-a136-925ccc1935a8"))
-_Array : IDispatch
-{};
+RIDL!{#[uuid(0x2b67cece, 0x71c3, 0x36a9, 0xa1, 0x36, 0x92, 0x5c, 0xcc, 0x19, 0x35, 0xa8)]
+interface _Array(_ArrayVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("de8db6f8-d101-3a92-8d1c-e72e5f10e992"))
-ICollection : IDispatch
+RIDL!{#[uuid(0xde8db6f8, 0xd101, 0x3a92, 0x8d, 0x1c, 0xe7, 0x2e, 0x5f, 0x10, 0xe9, 0x92)]
+interface ICollection(ICollectionVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -848,10 +848,10 @@ ICollection : IDispatch
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
       virtual HRESULT __stdcall get_IsSynchronized (
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("6a6841df-3287-3d87-8060-ce0b4c77d2a1"))
-IDictionary : IDispatch
+RIDL!{#[uuid(0x6a6841df, 0x3287, 0x3d87, 0x80, 0x60, 0xce, 0x0b, 0x4c, 0x77, 0xd2, 0xa1)]
+interface IDictionary(IDictionaryVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -882,10 +882,10 @@ IDictionary : IDispatch
         /*[out,retval]*/ struct IDictionaryEnumerator * * pRetVal ) = 0;
       virtual HRESULT __stdcall Remove (
         /*[in]*/ VARIANT key ) = 0;
-};
+}}
 
-struct __declspec(uuid("308de042-acc8-32f8-b632-7cb9799d9aa6"))
-IChannelSinkBase : IDispatch
+RIDL!{#[uuid(0x308de042, 0xacc8, 0x32f8, 0xb6, 0x32, 0x7c, 0xb9, 0x79, 0x9d, 0x9a, 0xa6)]
+interface IChannelSinkBase(IChannelSinkBaseVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -893,10 +893,10 @@ IChannelSinkBase : IDispatch
 
       virtual HRESULT __stdcall get_Properties (
         /*[out,retval]*/ struct IDictionary * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("1a8b0de6-b825-38c5-b744-8f93075fd6fa"))
-IMessage : IDispatch
+RIDL!{#[uuid(0x1a8b0de6, 0xb825, 0x38c5, 0xb7, 0x44, 0x8f, 0x93, 0x07, 0x5f, 0xd6, 0xfa)]
+interface IMessage(IMessageVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -904,10 +904,10 @@ IMessage : IDispatch
 
       virtual HRESULT __stdcall get_Properties (
         /*[out,retval]*/ struct IDictionary * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("941f8aaa-a353-3b1d-a019-12e44377f1cd"))
-IMessageSink : IDispatch
+RIDL!{#[uuid(0x941f8aaa, 0xa353, 0x3b1d, 0xa0, 0x19, 0x12, 0xe4, 0x43, 0x77, 0xf1, 0xcd)]
+interface IMessageSink(IMessageSinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -922,10 +922,10 @@ IMessageSink : IDispatch
         /*[out,retval]*/ struct IMessageCtrl * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_NextSink (
         /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("10f1d605-e201-3145-b7ae-3ad746701986"))
-IChannelSender : IDispatch
+RIDL!{#[uuid(0x10f1d605, 0xe201, 0x3145, 0xb7, 0xae, 0x3a, 0xd7, 0x46, 0x70, 0x19, 0x86)]
+interface IChannelSender(IChannelSenderVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -936,10 +936,10 @@ IChannelSender : IDispatch
         /*[in]*/ VARIANT remoteChannelData,
         /*[out]*/ BSTR * objectURI,
         /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("4db956b7-69d0-312a-aa75-44fb55fd5d4b"))
-IContributeClientContextSink : IDispatch
+RIDL!{#[uuid(0x4db956b7, 0x69d0, 0x312a, 0xaa, 0x75, 0x44, 0xfb, 0x55, 0xfd, 0x5d, 0x4b)]
+interface IContributeClientContextSink(IContributeClientContextSinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -948,10 +948,10 @@ IContributeClientContextSink : IDispatch
       virtual HRESULT __stdcall GetClientContextSink (
         /*[in]*/ struct IMessageSink * NextSink,
         /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("0caa23ec-f78c-39c9-8d25-b7a9ce4097a7"))
-IContributeServerContextSink : IDispatch
+RIDL!{#[uuid(0x0caa23ec, 0xf78c, 0x39c9, 0x8d, 0x25, 0xb7, 0xa9, 0xce, 0x40, 0x97, 0xa7)]
+interface IContributeServerContextSink(IContributeServerContextSinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -960,10 +960,10 @@ IContributeServerContextSink : IDispatch
       virtual HRESULT __stdcall GetServerContextSink (
         /*[in]*/ struct IMessageSink * NextSink,
         /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("c74076bb-8a2d-3c20-a542-625329e9af04"))
-IDynamicMessageSink : IDispatch
+RIDL!{#[uuid(0xc74076bb, 0x8a2d, 0x3c20, 0xa5, 0x42, 0x62, 0x53, 0x29, 0xe9, 0xaf, 0x04)]
+interface IDynamicMessageSink(IDynamicMessageSinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -977,10 +977,10 @@ IDynamicMessageSink : IDispatch
         /*[in]*/ struct IMessage * replyMsg,
         /*[in]*/ VARIANT_BOOL bCliSide,
         /*[in]*/ VARIANT_BOOL bAsync ) = 0;
-};
+}}
 
-struct __declspec(uuid("a0fe9b86-0c06-32ce-85fa-2ff1b58697fb"))
-IContributeDynamicSink : IDispatch
+RIDL!{#[uuid(0xa0fe9b86, 0x0c06, 0x32ce, 0x85, 0xfa, 0x2f, 0xf1, 0xb5, 0x86, 0x97, 0xfb)]
+interface IContributeDynamicSink(IContributeDynamicSinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -988,10 +988,10 @@ IContributeDynamicSink : IDispatch
 
       virtual HRESULT __stdcall GetDynamicSink (
         /*[out,retval]*/ struct IDynamicMessageSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("2a6e91b9-a874-38e4-99c2-c5d83d78140d"))
-IEnvoyInfo : IDispatch
+RIDL!{#[uuid(0x2a6e91b9, 0xa874, 0x38e4, 0x99, 0xc2, 0xc5, 0xd8, 0x3d, 0x78, 0x14, 0x0d)]
+interface IEnvoyInfo(IEnvoyInfoVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -1001,86 +1001,86 @@ IEnvoyInfo : IDispatch
         /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
       virtual HRESULT __stdcall putref_EnvoySinks (
         /*[in]*/ struct IMessageSink * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("36936699-fc79-324d-ab43-e33c1f94e263"))
-_String : IDispatch
-{};
+RIDL!{#[uuid(0x36936699, 0xfc79, 0x324d, 0xab, 0x43, 0xe3, 0x3c, 0x1f, 0x94, 0xe2, 0x63)]
+interface _String(_StringVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7499e7e8-df01-3948-b8d4-fa4b9661d36b"))
-_StringComparer : IDispatch
-{};
+RIDL!{#[uuid(0x7499e7e8, 0xdf01, 0x3948, 0xb8, 0xd4, 0xfa, 0x4b, 0x96, 0x61, 0xd3, 0x6b)]
+interface _StringComparer(_StringComparerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9fb09782-8d39-3b0c-b79e-f7a37a65b3da"))
-_StringBuilder : IDispatch
-{};
+RIDL!{#[uuid(0x9fb09782, 0x8d39, 0x3b0c, 0xb7, 0x9e, 0xf7, 0xa3, 0x7a, 0x65, 0xb3, 0xda)]
+interface _StringBuilder(_StringBuilderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4c482cc2-68e9-37c6-8353-9a94bd2d7f0b"))
-_SystemException : IDispatch
-{};
+RIDL!{#[uuid(0x4c482cc2, 0x68e9, 0x37c6, 0x83, 0x53, 0x9a, 0x94, 0xbd, 0x2d, 0x7f, 0x0b)]
+interface _SystemException(_SystemExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("cf3edb7e-0574-3383-a44f-292f7c145db4"))
-_OutOfMemoryException : IDispatch
-{};
+RIDL!{#[uuid(0xcf3edb7e, 0x0574, 0x3383, 0xa4, 0x4f, 0x29, 0x2f, 0x7c, 0x14, 0x5d, 0xb4)]
+interface _OutOfMemoryException(_OutOfMemoryExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9cf4339a-2911-3b8a-8f30-e5c6b5be9a29"))
-_StackOverflowException : IDispatch
-{};
+RIDL!{#[uuid(0x9cf4339a, 0x2911, 0x3b8a, 0x8f, 0x30, 0xe5, 0xc6, 0xb5, 0xbe, 0x9a, 0x29)]
+interface _StackOverflowException(_StackOverflowExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("152a6b4d-09af-3edf-8cba-11797eeeea4e"))
-_DataMisalignedException : IDispatch
-{};
+RIDL!{#[uuid(0x152a6b4d, 0x09af, 0x3edf, 0x8c, 0xba, 0x11, 0x79, 0x7e, 0xee, 0xea, 0x4e)]
+interface _DataMisalignedException(_DataMisalignedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ccf0139c-79f7-3d0a-affe-2b0762c65b07"))
-_ExecutionEngineException : IDispatch
-{};
+RIDL!{#[uuid(0xccf0139c, 0x79f7, 0x3d0a, 0xaf, 0xfe, 0x2b, 0x07, 0x62, 0xc6, 0x5b, 0x07)]
+interface _ExecutionEngineException(_ExecutionEngineExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7eaba4e2-1259-3cf2-b084-9854278e5897"))
-_MemberAccessException : IDispatch
-{};
+RIDL!{#[uuid(0x7eaba4e2, 0x1259, 0x3cf2, 0xb0, 0x84, 0x98, 0x54, 0x27, 0x8e, 0x58, 0x97)]
+interface _MemberAccessException(_MemberAccessExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("13ef674a-6327-3caf-8772-fa0395612669"))
-_AccessViolationException : IDispatch
-{};
+RIDL!{#[uuid(0x13ef674a, 0x6327, 0x3caf, 0x87, 0x72, 0xfa, 0x03, 0x95, 0x61, 0x26, 0x69)]
+interface _AccessViolationException(_AccessViolationExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d1204423-01f0-336a-8911-a7e8fbe185a3"))
-_ApplicationActivator : IDispatch
-{};
+RIDL!{#[uuid(0xd1204423, 0x01f0, 0x336a, 0x89, 0x11, 0xa7, 0xe8, 0xfb, 0xe1, 0x85, 0xa3)]
+interface _ApplicationActivator(_ApplicationActivatorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d81130bf-d627-3b91-a7c7-cea597093464"))
-_ApplicationException : IDispatch
-{};
+RIDL!{#[uuid(0xd81130bf, 0xd627, 0x3b91, 0xa7, 0xc7, 0xce, 0xa5, 0x97, 0x09, 0x34, 0x64)]
+interface _ApplicationException(_ApplicationExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1f9ec719-343a-3cb3-8040-3927626777c1"))
-_EventArgs : IDispatch
-{};
+RIDL!{#[uuid(0x1f9ec719, 0x343a, 0x3cb3, 0x80, 0x40, 0x39, 0x27, 0x62, 0x67, 0x77, 0xc1)]
+interface _EventArgs(_EventArgsVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("98947cf0-77e7-328e-b709-5dd1aa1c9c96"))
-_ResolveEventArgs : IDispatch
-{};
+RIDL!{#[uuid(0x98947cf0, 0x77e7, 0x328e, 0xb7, 0x09, 0x5d, 0xd1, 0xaa, 0x1c, 0x9c, 0x96)]
+interface _ResolveEventArgs(_ResolveEventArgsVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7a0325f0-22c2-31f9-8823-9b8aee9456b1"))
-_AssemblyLoadEventArgs : IDispatch
-{};
+RIDL!{#[uuid(0x7a0325f0, 0x22c2, 0x31f9, 0x88, 0x23, 0x9b, 0x8a, 0xee, 0x94, 0x56, 0xb1)]
+interface _AssemblyLoadEventArgs(_AssemblyLoadEventArgsVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8e54a9cc-7aa4-34ca-985b-bd7d7527b110"))
-_ResolveEventHandler : IDispatch
-{};
+RIDL!{#[uuid(0x8e54a9cc, 0x7aa4, 0x34ca, 0x98, 0x5b, 0xbd, 0x7d, 0x75, 0x27, 0xb1, 0x10)]
+interface _ResolveEventHandler(_ResolveEventHandlerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("deece11f-a893-3e35-a4c3-dab7fa0911eb"))
-_AssemblyLoadEventHandler : IDispatch
-{};
+RIDL!{#[uuid(0xdeece11f, 0xa893, 0x3e35, 0xa4, 0xc3, 0xda, 0xb7, 0xfa, 0x09, 0x11, 0xeb)]
+interface _AssemblyLoadEventHandler(_AssemblyLoadEventHandlerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5e6f9edb-3ce1-3a56-86d9-cd2ddf7a6fff"))
-_AppDomainInitializer : IDispatch
-{};
+RIDL!{#[uuid(0x5e6f9edb, 0x3ce1, 0x3a56, 0x86, 0xd9, 0xcd, 0x2d, 0xdf, 0x7a, 0x6f, 0xff)]
+interface _AppDomainInitializer(_AppDomainInitializerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2c358e27-8c1a-3c03-b086-a40465625557"))
-_MarshalByRefObject : IDispatch
-{};
+RIDL!{#[uuid(0x2c358e27, 0x8c1a, 0x3c03, 0xb0, 0x86, 0xa4, 0x04, 0x65, 0x62, 0x55, 0x57)]
+interface _MarshalByRefObject(_MarshalByRefObjectVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("124777b6-0308-3569-97e5-e6fe88eae4eb"))
-IContributeEnvoySink : IDispatch
+RIDL!{#[uuid(0x124777b6, 0x0308, 0x3569, 0x97, 0xe5, 0xe6, 0xfe, 0x88, 0xea, 0xe4, 0xeb)]
+interface IContributeEnvoySink(IContributeEnvoySinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -1090,10 +1090,10 @@ IContributeEnvoySink : IDispatch
         /*[in]*/ struct _MarshalByRefObject * obj,
         /*[in]*/ struct IMessageSink * NextSink,
         /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("6a5d38bc-2789-3546-81a1-f10c0fb59366"))
-IContributeObjectSink : IDispatch
+RIDL!{#[uuid(0x6a5d38bc, 0x2789, 0x3546, 0x81, 0xa1, 0xf1, 0x0c, 0x0f, 0xb5, 0x93, 0x66)]
+interface IContributeObjectSink(IContributeObjectSinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -1103,299 +1103,299 @@ IContributeObjectSink : IDispatch
         /*[in]*/ struct _MarshalByRefObject * obj,
         /*[in]*/ struct IMessageSink * NextSink,
         /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("af93163f-c2f4-3fab-9ff1-728a7aaad1cb"))
-_CrossAppDomainDelegate : IDispatch
-{};
+RIDL!{#[uuid(0xaf93163f, 0xc2f4, 0x3fab, 0x9f, 0xf1, 0x72, 0x8a, 0x7a, 0xaa, 0xd1, 0xcb)]
+interface _CrossAppDomainDelegate(_CrossAppDomainDelegateVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("63e53e04-d31b-3099-9f0c-c7a1c883c1d9"))
-_AppDomainManager : IDispatch
-{};
+RIDL!{#[uuid(0x63e53e04, 0xd31b, 0x3099, 0x9f, 0x0c, 0xc7, 0xa1, 0xc8, 0x83, 0xc1, 0xd9)]
+interface _AppDomainManager(_AppDomainManagerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ce59d7ad-05ca-33b4-a1dd-06028d46e9d2"))
-_LoaderOptimizationAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xce59d7ad, 0x05ca, 0x33b4, 0xa1, 0xdd, 0x06, 0x02, 0x8d, 0x46, 0xe9, 0xd2)]
+interface _LoaderOptimizationAttribute(_LoaderOptimizationAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6e96aa70-9ffb-399d-96bf-a68436095c54"))
-_AppDomainUnloadedException : IDispatch
-{};
+RIDL!{#[uuid(0x6e96aa70, 0x9ffb, 0x399d, 0x96, 0xbf, 0xa6, 0x84, 0x36, 0x09, 0x5c, 0x54)]
+interface _AppDomainUnloadedException(_AppDomainUnloadedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
 
-struct __declspec(uuid("f4b8d231-6028-39ef-b017-72988a3f6766"))
-_EvidenceBase : IDispatch
-{};
+RIDL!{#[uuid(0xf4b8d231, 0x6028, 0x39ef, 0xb0, 0x17, 0x72, 0x98, 0x8a, 0x3f, 0x67, 0x66)]
+interface _EvidenceBase(_EvidenceBaseVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("cfd9ca27-f0ba-388a-acde-b7e20fcad79c"))
-_ActivationArguments : IDispatch
-{};
+RIDL!{#[uuid(0xcfd9ca27, 0xf0ba, 0x388a, 0xac, 0xde, 0xb7, 0xe2, 0x0f, 0xca, 0xd7, 0x9c)]
+interface _ActivationArguments(_ActivationArgumentsVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2f218f95-4215-3cc6-8a51-bd2770c090e4"))
-_ApplicationId : IDispatch
-{};
+RIDL!{#[uuid(0x2f218f95, 0x4215, 0x3cc6, 0x8a, 0x51, 0xbd, 0x27, 0x70, 0xc0, 0x90, 0xe4)]
+interface _ApplicationId(_ApplicationIdVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4db2c2b7-cbc2-3185-b966-875d4625b1a8"))
-_ArgumentException : IDispatch
-{};
+RIDL!{#[uuid(0x4db2c2b7, 0xcbc2, 0x3185, 0xb9, 0x66, 0x87, 0x5d, 0x46, 0x25, 0xb1, 0xa8)]
+interface _ArgumentException(_ArgumentExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c991949b-e623-3f24-885c-bbb01ff43564"))
-_ArgumentNullException : IDispatch
-{};
+RIDL!{#[uuid(0xc991949b, 0xe623, 0x3f24, 0x88, 0x5c, 0xbb, 0xb0, 0x1f, 0xf4, 0x35, 0x64)]
+interface _ArgumentNullException(_ArgumentNullExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("77da3028-bc45-3e82-bf76-2c123ee2c021"))
-_ArgumentOutOfRangeException : IDispatch
-{};
+RIDL!{#[uuid(0x77da3028, 0xbc45, 0x3e82, 0xbf, 0x76, 0x2c, 0x12, 0x3e, 0xe2, 0xc0, 0x21)]
+interface _ArgumentOutOfRangeException(_ArgumentOutOfRangeExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9b012cf1-acf6-3389-a336-c023040c62a2"))
-_ArithmeticException : IDispatch
-{};
+RIDL!{#[uuid(0x9b012cf1, 0xacf6, 0x3389, 0xa3, 0x36, 0xc0, 0x23, 0x04, 0x0c, 0x62, 0xa2)]
+interface _ArithmeticException(_ArithmeticExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("dd7488a6-1b3f-3823-9556-c2772b15150f"))
-_ArrayTypeMismatchException : IDispatch
-{};
+RIDL!{#[uuid(0xdd7488a6, 0x1b3f, 0x3823, 0x95, 0x56, 0xc2, 0x77, 0x2b, 0x15, 0x15, 0x0f)]
+interface _ArrayTypeMismatchException(_ArrayTypeMismatchExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3612706e-0239-35fd-b900-0819d16d442d"))
-_AsyncCallback : IDispatch
-{};
+RIDL!{#[uuid(0x3612706e, 0x0239, 0x35fd, 0xb9, 0x00, 0x08, 0x19, 0xd1, 0x6d, 0x44, 0x2d)]
+interface _AsyncCallback(_AsyncCallbackVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a902a192-49ba-3ec8-b444-af5f7743f61a"))
-_AttributeUsageAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xa902a192, 0x49ba, 0x3ec8, 0xb4, 0x44, 0xaf, 0x5f, 0x77, 0x43, 0xf6, 0x1a)]
+interface _AttributeUsageAttribute(_AttributeUsageAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f98bce04-4a4b-398c-a512-fd8348d51e3b"))
-_BadImageFormatException : IDispatch
-{};
+RIDL!{#[uuid(0xf98bce04, 0x4a4b, 0x398c, 0xa5, 0x12, 0xfd, 0x83, 0x48, 0xd5, 0x1e, 0x3b)]
+interface _BadImageFormatException(_BadImageFormatExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f036bca4-f8df-3682-8290-75285ce7456c"))
-_Buffer : IDispatch
-{};
+RIDL!{#[uuid(0xf036bca4, 0xf8df, 0x3682, 0x82, 0x90, 0x75, 0x28, 0x5c, 0xe7, 0x45, 0x6c)]
+interface _Buffer(_BufferVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6d4b6adb-b9fa-3809-b5ea-fa57b56c546f"))
-_CannotUnloadAppDomainException : IDispatch
-{};
+RIDL!{#[uuid(0x6d4b6adb, 0xb9fa, 0x3809, 0xb5, 0xea, 0xfa, 0x57, 0xb5, 0x6c, 0x54, 0x6f)]
+interface _CannotUnloadAppDomainException(_CannotUnloadAppDomainExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1dd627fc-89e3-384f-bb9d-58cb4efb9456"))
-_CharEnumerator : IDispatch
-{};
+RIDL!{#[uuid(0x1dd627fc, 0x89e3, 0x384f, 0xbb, 0x9d, 0x58, 0xcb, 0x4e, 0xfb, 0x94, 0x56)]
+interface _CharEnumerator(_CharEnumeratorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("bf1af177-94ca-3e6d-9d91-55cf9e859d22"))
-_CLSCompliantAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xbf1af177, 0x94ca, 0x3e6d, 0x9d, 0x91, 0x55, 0xcf, 0x9e, 0x85, 0x9d, 0x22)]
+interface _CLSCompliantAttribute(_CLSCompliantAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c2a10f3a-356a-3c77-aab9-8991d73a2561"))
-_TypeUnloadedException : IDispatch
-{};
+RIDL!{#[uuid(0xc2a10f3a, 0x356a, 0x3c77, 0xaa, 0xb9, 0x89, 0x91, 0xd7, 0x3a, 0x25, 0x61)]
+interface _TypeUnloadedException(_TypeUnloadedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6b3f9834-1725-38c5-955e-20f051d067bd"))
-_CriticalFinalizerObject : IDispatch
-{};
+RIDL!{#[uuid(0x6b3f9834, 0x1725, 0x38c5, 0x95, 0x5e, 0x20, 0xf0, 0x51, 0xd0, 0x67, 0xbd)]
+interface _CriticalFinalizerObject(_CriticalFinalizerObjectVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7386f4d7-7c11-389f-bb75-895714b12bb5"))
-_ContextMarshalException : IDispatch
-{};
+RIDL!{#[uuid(0x7386f4d7, 0x7c11, 0x389f, 0xbb, 0x75, 0x89, 0x57, 0x14, 0xb1, 0x2b, 0xb5)]
+interface _ContextMarshalException(_ContextMarshalExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3eb1d909-e8bf-3c6b-ada5-0e86e31e186e"))
-_ContextBoundObject : IDispatch
-{};
+RIDL!{#[uuid(0x3eb1d909, 0xe8bf, 0x3c6b, 0xad, 0xa5, 0x0e, 0x86, 0xe3, 0x1e, 0x18, 0x6e)]
+interface _ContextBoundObject(_ContextBoundObjectVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("160d517f-f175-3b61-8264-6d2305b8246c"))
-_ContextStaticAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x160d517f, 0xf175, 0x3b61, 0x82, 0x64, 0x6d, 0x23, 0x05, 0xb8, 0x24, 0x6c)]
+interface _ContextStaticAttribute(_ContextStaticAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3025f666-7891-33d7-aacd-23d169ef354e"))
-_TimeZone : IDispatch
-{};
-
-struct __declspec(uuid("0d9f1b65-6d27-3e9f-baf3-0597837e0f33"))
-_DBNull : IDispatch
-{};
-
-struct __declspec(uuid("bdeea460-8241-3b41-9ed3-6e3e9977ac7f"))
-_DivideByZeroException : IDispatch
-{};
-
-struct __declspec(uuid("d345a42b-cfe0-3eee-861c-f3322812b388"))
-_DuplicateWaitObjectException : IDispatch
-{};
-
-struct __declspec(uuid("82d6b3bf-a633-3b3b-a09e-2363e4b24a41"))
-_TypeLoadException : IDispatch
-{};
-
-struct __declspec(uuid("67388f3f-b600-3bcf-84aa-bb2b88dd9ee2"))
-_EntryPointNotFoundException : IDispatch
-{};
-
-struct __declspec(uuid("24ae6464-2834-32cd-83d6-fa06953de62a"))
-_DllNotFoundException : IDispatch
-{};
-
-struct __declspec(uuid("29dc56cf-b981-3432-97c8-3680ab6d862d"))
-_Environment : IDispatch
-{};
-
-struct __declspec(uuid("7cefc46e-16e0-3e65-9c38-55b4342ba7f0"))
-_EventHandler : IDispatch
-{};
-
-struct __declspec(uuid("8d5f5811-ffa1-3306-93e3-8afc572b9b82"))
-_FieldAccessException : IDispatch
-{};
-
-struct __declspec(uuid("ebe3746d-ddec-3d23-8e8d-9361ba87bac6"))
-_FlagsAttribute : IDispatch
-{};
-
-struct __declspec(uuid("07f92156-398a-3548-90b7-2e58026353d0"))
-_FormatException : IDispatch
-{};
-
-struct __declspec(uuid("e5a5f1e4-82c1-391f-a1c6-f39eae9dc72f"))
-_IndexOutOfRangeException : IDispatch
-{};
-
-struct __declspec(uuid("fa047cbd-9ba5-3a13-9b1f-6694d622cd76"))
-_InvalidCastException : IDispatch
-{};
-
-struct __declspec(uuid("8d520d10-0b8a-3553-8874-d30a4ad2ff4c"))
-_InvalidOperationException : IDispatch
-{};
-
-struct __declspec(uuid("3410e0fb-636f-3cd1-8045-3993ca113f25"))
-_InvalidProgramException : IDispatch
-{};
-
-struct __declspec(uuid("dc77f976-318d-3a1a-9b60-abb9dd9406d6"))
-_LocalDataStoreSlot : IDispatch
-{};
-
-struct __declspec(uuid("ff0bf77d-8f81-3d31-a3bb-6f54440fa7e5"))
-_MethodAccessException : IDispatch
-{};
-
-struct __declspec(uuid("8897d14b-7fb3-3d8b-9ee4-221c3dbad6fe"))
-_MissingMemberException : IDispatch
-{};
-
-struct __declspec(uuid("9717176d-1179-3487-8849-cf5f63de356e"))
-_MissingFieldException : IDispatch
-{};
-
-struct __declspec(uuid("e5c659f6-92c8-3887-a07e-74d0d9c6267a"))
-_MissingMethodException : IDispatch
-{};
-
-struct __declspec(uuid("d2ba71cc-1b3d-3966-a0d7-c61e957ad325"))
-_MulticastNotSupportedException : IDispatch
-{};
-
-struct __declspec(uuid("665c9669-b9c6-3add-9213-099f0127c893"))
-_NonSerializedAttribute : IDispatch
-{};
-
-struct __declspec(uuid("8e21ce22-4f17-347b-b3b5-6a6df3e0e58a"))
-_NotFiniteNumberException : IDispatch
-{};
-
-struct __declspec(uuid("1e4d31a2-63ea-397a-a77e-b20ad87a9614"))
-_NotImplementedException : IDispatch
-{};
-
-struct __declspec(uuid("40e5451f-b237-33f8-945b-0230db700bbb"))
-_NotSupportedException : IDispatch
-{};
-
-struct __declspec(uuid("ecbe2313-cf41-34b4-9fd0-b6cd602b023f"))
-_NullReferenceException : IDispatch
-{};
-
-struct __declspec(uuid("17b730ba-45ef-3ddf-9f8d-a490bac731f4"))
-_ObjectDisposedException : IDispatch
-{};
-
-struct __declspec(uuid("e84307be-3036-307a-acc2-5d5de8a006a8"))
-_ObsoleteAttribute : IDispatch
-{};
-
-struct __declspec(uuid("9e230640-a5d0-30e1-b217-9d2b6cc0fc40"))
-_OperatingSystem : IDispatch
-{};
-
-struct __declspec(uuid("9df9af5a-7853-3d55-9b48-bd1f5d8367ab"))
-_OperationCanceledException : IDispatch
-{};
-
-struct __declspec(uuid("37c69a5d-7619-3a0f-a96b-9c9578ae00ef"))
-_OverflowException : IDispatch
-{};
-
-struct __declspec(uuid("d54500ae-8cf4-3092-9054-90dc91ac65c9"))
-_ParamArrayAttribute : IDispatch
-{};
-
-struct __declspec(uuid("1eb8340b-8190-3d9d-92f8-51244b9804c5"))
-_PlatformNotSupportedException : IDispatch
-{};
-
-struct __declspec(uuid("0f240708-629a-31ab-94a5-2bb476fe1783"))
-_Random : IDispatch
-{};
-
-struct __declspec(uuid("871ddc46-b68e-3fee-a09a-c808b0f827e6"))
-_RankException : IDispatch
-{};
-
-struct __declspec(uuid("0c4e9393-dab1-3f92-b36b-d9b958acaaf9"))
-_TypeInfo : IDispatch
-{};
-
-struct __declspec(uuid("1b96e53c-4028-38bc-9dc3-8d7a9555c311"))
-_SerializableAttribute : IDispatch
-{};
-
-struct __declspec(uuid("85d72f83-be91-3cb1-b4f0-76b56ff04033"))
-_STAThreadAttribute : IDispatch
-{};
-
-struct __declspec(uuid("c02468d1-8713-3225-bda3-49b2fe37ddbb"))
-_MTAThreadAttribute : IDispatch
-{};
-
-struct __declspec(uuid("7ab88ca9-17f4-385e-ad41-4ee0aa316fa1"))
-_TimeoutException : IDispatch
-{};
-
-struct __declspec(uuid("feb0323d-8ce4-36a4-a41e-0ba0c32e1a6a"))
-_TypeInitializationException : IDispatch
-{};
-
-struct __declspec(uuid("6193c5f6-6807-3561-a7f3-b64c80b5f00f"))
-_UnauthorizedAccessException : IDispatch
-{};
-
-struct __declspec(uuid("a218e20a-0905-3741-b0b3-9e3193162e50"))
-_UnhandledExceptionEventArgs : IDispatch
-{};
-
-struct __declspec(uuid("84199e64-439c-3011-b249-3c9065735adb"))
-_UnhandledExceptionEventHandler : IDispatch
-{};
-
-struct __declspec(uuid("011a90c5-4910-3c29-bbb7-50d05ccbaa4a"))
-_Version : IDispatch
-{};
-
-struct __declspec(uuid("c5df3568-c251-3c58-afb4-32e79e8261f0"))
-_WeakReference : IDispatch
-{};
-
-struct __declspec(uuid("40dfc50a-e93a-3c08-b9ef-e2b4f28b5676"))
-_WaitHandle : IDispatch
-{};
-
-struct __declspec(uuid("11ab34e7-0176-3c9e-9efe-197858400a3d"))
-IAsyncResult : IDispatch
+RIDL!{#[uuid(0x3025f666, 0x7891, 0x33d7, 0xaa, 0xcd, 0x23, 0xd1, 0x69, 0xef, 0x35, 0x4e)]
+interface _TimeZone(_TimeZoneVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0d9f1b65, 0x6d27, 0x3e9f, 0xba, 0xf3, 0x05, 0x97, 0x83, 0x7e, 0x0f, 0x33)]
+interface _DBNull(_DBNullVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xbdeea460, 0x8241, 0x3b41, 0x9e, 0xd3, 0x6e, 0x3e, 0x99, 0x77, 0xac, 0x7f)]
+interface _DivideByZeroException(_DivideByZeroExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd345a42b, 0xcfe0, 0x3eee, 0x86, 0x1c, 0xf3, 0x32, 0x28, 0x12, 0xb3, 0x88)]
+interface _DuplicateWaitObjectException(_DuplicateWaitObjectExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x82d6b3bf, 0xa633, 0x3b3b, 0xa0, 0x9e, 0x23, 0x63, 0xe4, 0xb2, 0x4a, 0x41)]
+interface _TypeLoadException(_TypeLoadExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x67388f3f, 0xb600, 0x3bcf, 0x84, 0xaa, 0xbb, 0x2b, 0x88, 0xdd, 0x9e, 0xe2)]
+interface _EntryPointNotFoundException(_EntryPointNotFoundExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x24ae6464, 0x2834, 0x32cd, 0x83, 0xd6, 0xfa, 0x06, 0x95, 0x3d, 0xe6, 0x2a)]
+interface _DllNotFoundException(_DllNotFoundExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x29dc56cf, 0xb981, 0x3432, 0x97, 0xc8, 0x36, 0x80, 0xab, 0x6d, 0x86, 0x2d)]
+interface _Environment(_EnvironmentVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x7cefc46e, 0x16e0, 0x3e65, 0x9c, 0x38, 0x55, 0xb4, 0x34, 0x2b, 0xa7, 0xf0)]
+interface _EventHandler(_EventHandlerVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x8d5f5811, 0xffa1, 0x3306, 0x93, 0xe3, 0x8a, 0xfc, 0x57, 0x2b, 0x9b, 0x82)]
+interface _FieldAccessException(_FieldAccessExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xebe3746d, 0xddec, 0x3d23, 0x8e, 0x8d, 0x93, 0x61, 0xba, 0x87, 0xba, 0xc6)]
+interface _FlagsAttribute(_FlagsAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x07f92156, 0x398a, 0x3548, 0x90, 0xb7, 0x2e, 0x58, 0x02, 0x63, 0x53, 0xd0)]
+interface _FormatException(_FormatExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xe5a5f1e4, 0x82c1, 0x391f, 0xa1, 0xc6, 0xf3, 0x9e, 0xae, 0x9d, 0xc7, 0x2f)]
+interface _IndexOutOfRangeException(_IndexOutOfRangeExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xfa047cbd, 0x9ba5, 0x3a13, 0x9b, 0x1f, 0x66, 0x94, 0xd6, 0x22, 0xcd, 0x76)]
+interface _InvalidCastException(_InvalidCastExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x8d520d10, 0x0b8a, 0x3553, 0x88, 0x74, 0xd3, 0x0a, 0x4a, 0xd2, 0xff, 0x4c)]
+interface _InvalidOperationException(_InvalidOperationExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3410e0fb, 0x636f, 0x3cd1, 0x80, 0x45, 0x39, 0x93, 0xca, 0x11, 0x3f, 0x25)]
+interface _InvalidProgramException(_InvalidProgramExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xdc77f976, 0x318d, 0x3a1a, 0x9b, 0x60, 0xab, 0xb9, 0xdd, 0x94, 0x06, 0xd6)]
+interface _LocalDataStoreSlot(_LocalDataStoreSlotVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xff0bf77d, 0x8f81, 0x3d31, 0xa3, 0xbb, 0x6f, 0x54, 0x44, 0x0f, 0xa7, 0xe5)]
+interface _MethodAccessException(_MethodAccessExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x8897d14b, 0x7fb3, 0x3d8b, 0x9e, 0xe4, 0x22, 0x1c, 0x3d, 0xba, 0xd6, 0xfe)]
+interface _MissingMemberException(_MissingMemberExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x9717176d, 0x1179, 0x3487, 0x88, 0x49, 0xcf, 0x5f, 0x63, 0xde, 0x35, 0x6e)]
+interface _MissingFieldException(_MissingFieldExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xe5c659f6, 0x92c8, 0x3887, 0xa0, 0x7e, 0x74, 0xd0, 0xd9, 0xc6, 0x26, 0x7a)]
+interface _MissingMethodException(_MissingMethodExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd2ba71cc, 0x1b3d, 0x3966, 0xa0, 0xd7, 0xc6, 0x1e, 0x95, 0x7a, 0xd3, 0x25)]
+interface _MulticastNotSupportedException(_MulticastNotSupportedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x665c9669, 0xb9c6, 0x3add, 0x92, 0x13, 0x09, 0x9f, 0x01, 0x27, 0xc8, 0x93)]
+interface _NonSerializedAttribute(_NonSerializedAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x8e21ce22, 0x4f17, 0x347b, 0xb3, 0xb5, 0x6a, 0x6d, 0xf3, 0xe0, 0xe5, 0x8a)]
+interface _NotFiniteNumberException(_NotFiniteNumberExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x1e4d31a2, 0x63ea, 0x397a, 0xa7, 0x7e, 0xb2, 0x0a, 0xd8, 0x7a, 0x96, 0x14)]
+interface _NotImplementedException(_NotImplementedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x40e5451f, 0xb237, 0x33f8, 0x94, 0x5b, 0x02, 0x30, 0xdb, 0x70, 0x0b, 0xbb)]
+interface _NotSupportedException(_NotSupportedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xecbe2313, 0xcf41, 0x34b4, 0x9f, 0xd0, 0xb6, 0xcd, 0x60, 0x2b, 0x02, 0x3f)]
+interface _NullReferenceException(_NullReferenceExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x17b730ba, 0x45ef, 0x3ddf, 0x9f, 0x8d, 0xa4, 0x90, 0xba, 0xc7, 0x31, 0xf4)]
+interface _ObjectDisposedException(_ObjectDisposedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xe84307be, 0x3036, 0x307a, 0xac, 0xc2, 0x5d, 0x5d, 0xe8, 0xa0, 0x06, 0xa8)]
+interface _ObsoleteAttribute(_ObsoleteAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x9e230640, 0xa5d0, 0x30e1, 0xb2, 0x17, 0x9d, 0x2b, 0x6c, 0xc0, 0xfc, 0x40)]
+interface _OperatingSystem(_OperatingSystemVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x9df9af5a, 0x7853, 0x3d55, 0x9b, 0x48, 0xbd, 0x1f, 0x5d, 0x83, 0x67, 0xab)]
+interface _OperationCanceledException(_OperationCanceledExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x37c69a5d, 0x7619, 0x3a0f, 0xa9, 0x6b, 0x9c, 0x95, 0x78, 0xae, 0x00, 0xef)]
+interface _OverflowException(_OverflowExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd54500ae, 0x8cf4, 0x3092, 0x90, 0x54, 0x90, 0xdc, 0x91, 0xac, 0x65, 0xc9)]
+interface _ParamArrayAttribute(_ParamArrayAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x1eb8340b, 0x8190, 0x3d9d, 0x92, 0xf8, 0x51, 0x24, 0x4b, 0x98, 0x04, 0xc5)]
+interface _PlatformNotSupportedException(_PlatformNotSupportedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0f240708, 0x629a, 0x31ab, 0x94, 0xa5, 0x2b, 0xb4, 0x76, 0xfe, 0x17, 0x83)]
+interface _Random(_RandomVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x871ddc46, 0xb68e, 0x3fee, 0xa0, 0x9a, 0xc8, 0x08, 0xb0, 0xf8, 0x27, 0xe6)]
+interface _RankException(_RankExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0c4e9393, 0xdab1, 0x3f92, 0xb3, 0x6b, 0xd9, 0xb9, 0x58, 0xac, 0xaa, 0xf9)]
+interface _TypeInfo(_TypeInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x1b96e53c, 0x4028, 0x38bc, 0x9d, 0xc3, 0x8d, 0x7a, 0x95, 0x55, 0xc3, 0x11)]
+interface _SerializableAttribute(_SerializableAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x85d72f83, 0xbe91, 0x3cb1, 0xb4, 0xf0, 0x76, 0xb5, 0x6f, 0xf0, 0x40, 0x33)]
+interface _STAThreadAttribute(_STAThreadAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xc02468d1, 0x8713, 0x3225, 0xbd, 0xa3, 0x49, 0xb2, 0xfe, 0x37, 0xdd, 0xbb)]
+interface _MTAThreadAttribute(_MTAThreadAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x7ab88ca9, 0x17f4, 0x385e, 0xad, 0x41, 0x4e, 0xe0, 0xaa, 0x31, 0x6f, 0xa1)]
+interface _TimeoutException(_TimeoutExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xfeb0323d, 0x8ce4, 0x36a4, 0xa4, 0x1e, 0x0b, 0xa0, 0xc3, 0x2e, 0x1a, 0x6a)]
+interface _TypeInitializationException(_TypeInitializationExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x6193c5f6, 0x6807, 0x3561, 0xa7, 0xf3, 0xb6, 0x4c, 0x80, 0xb5, 0xf0, 0x0f)]
+interface _UnauthorizedAccessException(_UnauthorizedAccessExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa218e20a, 0x0905, 0x3741, 0xb0, 0xb3, 0x9e, 0x31, 0x93, 0x16, 0x2e, 0x50)]
+interface _UnhandledExceptionEventArgs(_UnhandledExceptionEventArgsVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x84199e64, 0x439c, 0x3011, 0xb2, 0x49, 0x3c, 0x90, 0x65, 0x73, 0x5a, 0xdb)]
+interface _UnhandledExceptionEventHandler(_UnhandledExceptionEventHandlerVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x011a90c5, 0x4910, 0x3c29, 0xbb, 0xb7, 0x50, 0xd0, 0x5c, 0xcb, 0xaa, 0x4a)]
+interface _Version(_VersionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xc5df3568, 0xc251, 0x3c58, 0xaf, 0xb4, 0x32, 0xe7, 0x9e, 0x82, 0x61, 0xf0)]
+interface _WeakReference(_WeakReferenceVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x40dfc50a, 0xe93a, 0x3c08, 0xb9, 0xef, 0xe2, 0xb4, 0xf2, 0x8b, 0x56, 0x76)]
+interface _WaitHandle(_WaitHandleVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x11ab34e7, 0x0176, 0x3c9e, 0x9e, 0xfe, 0x19, 0x78, 0x58, 0x40, 0x0a, 0x3d)]
+interface IAsyncResult(IAsyncResultVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -1409,414 +1409,414 @@ IAsyncResult : IDispatch
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
       virtual HRESULT __stdcall get_CompletedSynchronously (
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
-
-struct __declspec(uuid("e142db4a-1a52-34ce-965e-13affd5447d0"))
-_EventWaitHandle : IDispatch
-{};
-
-struct __declspec(uuid("3f243ebd-612f-3db8-9e03-bd92343a8371"))
-_AutoResetEvent : IDispatch
-{};
-
-struct __declspec(uuid("56d201f1-3e5d-39d9-b5de-064710818905"))
-_ContextCallback : IDispatch
-{};
-
-struct __declspec(uuid("c0bb9361-268f-3e72-bf6f-4120175a1500"))
-_ManualResetEvent : IDispatch
-{};
-
-struct __declspec(uuid("ee22485e-4c45-3c9d-9027-a8d61c5f53f2"))
-_Monitor : IDispatch
-{};
-
-struct __declspec(uuid("36cb559b-87c6-3ad2-9225-62a7ed499b37"))
-_Mutex : IDispatch
-{};
-
-struct __declspec(uuid("dd846fcc-8d04-3665-81b6-aacbe99c19c3"))
-_Overlapped : IDispatch
-{};
-
-struct __declspec(uuid("ad89b568-4fd4-3f8d-8327-b396b20a460e"))
-_ReaderWriterLock : IDispatch
-{};
-
-struct __declspec(uuid("87f55344-17e0-30fd-8eb9-38eaf6a19b3f"))
-_SynchronizationLockException : IDispatch
-{};
-
-struct __declspec(uuid("95b525db-6b81-3cdc-8fe7-713f7fc793c0"))
-_ThreadAbortException : IDispatch
-{};
-
-struct __declspec(uuid("b9e07599-7c44-33be-a70e-efa16f51f54a"))
-_ThreadInterruptedException : IDispatch
-{};
-
-struct __declspec(uuid("64409425-f8c9-370e-809e-3241ce804541"))
-_RegisteredWaitHandle : IDispatch
-{};
-
-struct __declspec(uuid("ce949142-4d4c-358d-89a9-e69a531aa363"))
-_WaitCallback : IDispatch
-{};
-
-struct __declspec(uuid("f078f795-f452-3d2d-8cc8-16d66ae46c67"))
-_WaitOrTimerCallback : IDispatch
-{};
-
-struct __declspec(uuid("bbae942d-bff4-36e2-a3bc-508bb3801f4f"))
-_IOCompletionCallback : IDispatch
-{};
-
-struct __declspec(uuid("b45bbd7e-a977-3f56-a626-7a693e5dbbc5"))
-_ThreadStart : IDispatch
-{};
-
-struct __declspec(uuid("a13a41cf-e066-3b90-82f4-73109104e348"))
-_ThreadStateException : IDispatch
-{};
-
-struct __declspec(uuid("a6b94b6d-854e-3172-a4ec-a17edd16f85e"))
-_ThreadStaticAttribute : IDispatch
-{};
-
-struct __declspec(uuid("81456e86-22af-31d1-a91a-9c370c0e2530"))
-_Timeout : IDispatch
-{};
-
-struct __declspec(uuid("3741bc6f-101b-36d7-a9d5-03fcc0ecda35"))
-_TimerCallback : IDispatch
-{};
-
-struct __declspec(uuid("b49a029b-406b-3b1e-88e4-f86690d20364"))
-_Timer : IDispatch
-{};
-
-struct __declspec(uuid("ea6795ac-97d6-3377-be64-829abd67607b"))
-_CaseInsensitiveComparer : IDispatch
-{};
-
-struct __declspec(uuid("0422b845-b636-3688-8f61-9b6d93096336"))
-_CaseInsensitiveHashCodeProvider : IDispatch
-{};
-
-struct __declspec(uuid("b7d29e26-7798-3fa4-90f4-e6a22d2099f9"))
-_CollectionBase : IDispatch
-{};
-
-struct __declspec(uuid("ddd44da2-bc6b-3620-9317-c0372968c741"))
-_DictionaryBase : IDispatch
-{};
-
-struct __declspec(uuid("bd32d878-a59b-3e5c-bfe0-a96b1a1e9d6f"))
-_ReadOnlyCollectionBase : IDispatch
-{};
-
-struct __declspec(uuid("3a7d3ca4-b7d1-3a2a-800c-8fc2acfcbda4"))
-_Queue : IDispatch
-{};
-
-struct __declspec(uuid("401f89cb-c127-3041-82fd-b67035395c56"))
-_ArrayList : IDispatch
-{};
-
-struct __declspec(uuid("f145c46a-d170-3170-b52f-4678dfca0300"))
-_BitArray : IDispatch
-{};
-
-struct __declspec(uuid("ab538809-3c2f-35d9-80e6-7bad540484a1"))
-_Stack : IDispatch
-{};
-
-struct __declspec(uuid("8064a157-b5c8-3a4a-ad3d-02dc1a39c417"))
-_Comparer : IDispatch
-{};
-
-struct __declspec(uuid("d25a197e-3e69-3271-a989-23d85e97f920"))
-_Hashtable : IDispatch
-{};
-
-struct __declspec(uuid("56421139-a143-3ae9-9852-1dbdfe3d6bfa"))
-_SortedList : IDispatch
-{};
-
-struct __declspec(uuid("84e7ac09-795a-3ea9-a36a-5b81ebab0558"))
-_Nullable : IDispatch
-{};
-
-struct __declspec(uuid("8039c41f-4399-38a2-99b7-d234b5cf7a7b"))
-_KeyNotFoundException : IDispatch
-{};
-
-struct __declspec(uuid("e40a025c-645b-3c8e-a1ac-9c5cca279625"))
-_ConditionalAttribute : IDispatch
-{};
-
-struct __declspec(uuid("a9b4786c-08e3-344f-a651-2f9926deac5e"))
-_Debugger : IDispatch
-{};
-
-struct __declspec(uuid("3344e8b4-a5c3-3882-8d30-63792485eccf"))
-_DebuggerStepThroughAttribute : IDispatch
-{};
-
-struct __declspec(uuid("b3276180-b23e-3034-b18f-e0122ba4e4cf"))
-_DebuggerStepperBoundaryAttribute : IDispatch
-{};
-
-struct __declspec(uuid("55b6903b-55fe-35e0-804f-e42a096d2eb0"))
-_DebuggerHiddenAttribute : IDispatch
-{};
-
-struct __declspec(uuid("cc6dcafd-0185-308a-891c-83812fe574e7"))
-_DebuggerNonUserCodeAttribute : IDispatch
-{};
-
-struct __declspec(uuid("428e3627-2b1f-302c-a7e6-6388cd535e75"))
-_DebuggableAttribute : IDispatch
-{};
-
-struct __declspec(uuid("a3fc6319-7355-3d7d-8621-b598561152fc"))
-_DebuggerBrowsableAttribute : IDispatch
-{};
-
-struct __declspec(uuid("404fafdd-1e3f-3602-bff6-755c00613ed8"))
-_DebuggerTypeProxyAttribute : IDispatch
-{};
-
-struct __declspec(uuid("22fdabc0-eec7-33e0-b4f2-f3b739e19a5e"))
-_DebuggerDisplayAttribute : IDispatch
-{};
-
-struct __declspec(uuid("e19ea1a2-67ff-31a5-b95c-e0b753403f6b"))
-_DebuggerVisualizerAttribute : IDispatch
-{};
-
-struct __declspec(uuid("9a2669ec-ff84-3726-89a0-663a3ef3b5cd"))
-_StackTrace : IDispatch
-{};
-
-struct __declspec(uuid("0e9b8e47-ca67-38b6-b9db-2c42ee757b08"))
-_StackFrame : IDispatch
-{};
-
-struct __declspec(uuid("5141d79c-7b01-37da-b7e9-53e5a271baf8"))
-_SymDocumentType : IDispatch
-{};
-
-struct __declspec(uuid("22bb8891-fd21-313d-92e4-8a892dc0b39c"))
-_SymLanguageType : IDispatch
-{};
-
-struct __declspec(uuid("01364e7b-c983-3651-b7d8-fd1b64fc0e00"))
-_SymLanguageVendor : IDispatch
-{};
-
-struct __declspec(uuid("81aa0d59-c3b1-36a3-b2e7-054928fbfc1a"))
-_AmbiguousMatchException : IDispatch
-{};
-
-struct __declspec(uuid("05532e88-e0f2-3263-9b57-805ac6b6bb72"))
-_ModuleResolveEventHandler : IDispatch
-{};
-
-struct __declspec(uuid("6163f792-3cd6-38f1-b5f7-000b96a5082b"))
-_AssemblyCopyrightAttribute : IDispatch
-{};
-
-struct __declspec(uuid("64c26bf9-c9e5-3f66-ad74-bebaade36214"))
-_AssemblyTrademarkAttribute : IDispatch
-{};
-
-struct __declspec(uuid("de10d587-a188-3dcb-8000-92dfdb9b8021"))
-_AssemblyProductAttribute : IDispatch
-{};
-
-struct __declspec(uuid("c6802233-ef82-3c91-ad72-b3a5d7230ed5"))
-_AssemblyCompanyAttribute : IDispatch
-{};
-
-struct __declspec(uuid("6b2c0bc4-ddb7-38ea-8a86-f0b59e192816"))
-_AssemblyDescriptionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("df44cad3-cef2-36a9-b013-383cc03177d7"))
-_AssemblyTitleAttribute : IDispatch
-{};
-
-struct __declspec(uuid("746d1d1e-ee37-393b-b6fa-e387d37553aa"))
-_AssemblyConfigurationAttribute : IDispatch
-{};
-
-struct __declspec(uuid("04311d35-75ec-347b-bedf-969487ce4014"))
-_AssemblyDefaultAliasAttribute : IDispatch
-{};
-
-struct __declspec(uuid("c6f5946c-143a-3747-a7c0-abfada6bdeb7"))
-_AssemblyInformationalVersionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("b101fe3c-4479-311a-a945-1225ee1731e8"))
-_AssemblyFileVersionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("177c4e63-9e0b-354d-838b-b52aa8683ef6"))
-_AssemblyCultureAttribute : IDispatch
-{};
-
-struct __declspec(uuid("a1693c5c-101f-3557-94db-c480ceb4c16b"))
-_AssemblyVersionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("a9fcda18-c237-3c6f-a6ef-749be22ba2bf"))
-_AssemblyKeyFileAttribute : IDispatch
-{};
-
-struct __declspec(uuid("6cf1c077-c974-38e1-90a4-976e4835e165"))
-_AssemblyDelaySignAttribute : IDispatch
-{};
-
-struct __declspec(uuid("57b849aa-d8ef-3ea6-9538-c5b4d498c2f7"))
-_AssemblyAlgorithmIdAttribute : IDispatch
-{};
-
-struct __declspec(uuid("0ecd8635-f5eb-3e4a-8989-4d684d67c48a"))
-_AssemblyFlagsAttribute : IDispatch
-{};
-
-struct __declspec(uuid("322a304d-11ac-3814-a905-a019f6e3dae9"))
-_AssemblyKeyNameAttribute : IDispatch
-{};
-
-struct __declspec(uuid("fe52f19a-8aa8-309c-bf99-9d0a566fb76a"))
-_AssemblyNameProxy : IDispatch
-{};
-
-struct __declspec(uuid("1660eb67-ee41-363e-beb0-c2de09214abf"))
-_CustomAttributeFormatException : IDispatch
-{};
-
-struct __declspec(uuid("f4e5539d-0a65-3073-bf27-8dce8ef1def1"))
-_CustomAttributeData : IDispatch
-{};
-
-struct __declspec(uuid("c462b072-fe6e-3bdc-9fab-4cdbfcbcd124"))
-_DefaultMemberAttribute : IDispatch
-{};
-
-struct __declspec(uuid("e6df0ae7-ba15-3f80-8afa-27773ae414fc"))
-_InvalidFilterCriteriaException : IDispatch
-{};
-
-struct __declspec(uuid("3188878c-deb3-3558-80e8-84e9ed95f92c"))
-_ManifestResourceInfo : IDispatch
-{};
-
-struct __declspec(uuid("fae5d9b7-40c1-3de1-be06-a91c9da1ba9f"))
-_MemberFilter : IDispatch
-{};
+}}
+
+RIDL!{#[uuid(0xe142db4a, 0x1a52, 0x34ce, 0x96, 0x5e, 0x13, 0xaf, 0xfd, 0x54, 0x47, 0xd0)]
+interface _EventWaitHandle(_EventWaitHandleVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3f243ebd, 0x612f, 0x3db8, 0x9e, 0x03, 0xbd, 0x92, 0x34, 0x3a, 0x83, 0x71)]
+interface _AutoResetEvent(_AutoResetEventVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x56d201f1, 0x3e5d, 0x39d9, 0xb5, 0xde, 0x06, 0x47, 0x10, 0x81, 0x89, 0x05)]
+interface _ContextCallback(_ContextCallbackVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xc0bb9361, 0x268f, 0x3e72, 0xbf, 0x6f, 0x41, 0x20, 0x17, 0x5a, 0x15, 0x00)]
+interface _ManualResetEvent(_ManualResetEventVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xee22485e, 0x4c45, 0x3c9d, 0x90, 0x27, 0xa8, 0xd6, 0x1c, 0x5f, 0x53, 0xf2)]
+interface _Monitor(_MonitorVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x36cb559b, 0x87c6, 0x3ad2, 0x92, 0x25, 0x62, 0xa7, 0xed, 0x49, 0x9b, 0x37)]
+interface _Mutex(_MutexVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xdd846fcc, 0x8d04, 0x3665, 0x81, 0xb6, 0xaa, 0xcb, 0xe9, 0x9c, 0x19, 0xc3)]
+interface _Overlapped(_OverlappedVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xad89b568, 0x4fd4, 0x3f8d, 0x83, 0x27, 0xb3, 0x96, 0xb2, 0x0a, 0x46, 0x0e)]
+interface _ReaderWriterLock(_ReaderWriterLockVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x87f55344, 0x17e0, 0x30fd, 0x8e, 0xb9, 0x38, 0xea, 0xf6, 0xa1, 0x9b, 0x3f)]
+interface _SynchronizationLockException(_SynchronizationLockExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x95b525db, 0x6b81, 0x3cdc, 0x8f, 0xe7, 0x71, 0x3f, 0x7f, 0xc7, 0x93, 0xc0)]
+interface _ThreadAbortException(_ThreadAbortExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb9e07599, 0x7c44, 0x33be, 0xa7, 0x0e, 0xef, 0xa1, 0x6f, 0x51, 0xf5, 0x4a)]
+interface _ThreadInterruptedException(_ThreadInterruptedExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x64409425, 0xf8c9, 0x370e, 0x80, 0x9e, 0x32, 0x41, 0xce, 0x80, 0x45, 0x41)]
+interface _RegisteredWaitHandle(_RegisteredWaitHandleVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xce949142, 0x4d4c, 0x358d, 0x89, 0xa9, 0xe6, 0x9a, 0x53, 0x1a, 0xa3, 0x63)]
+interface _WaitCallback(_WaitCallbackVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xf078f795, 0xf452, 0x3d2d, 0x8c, 0xc8, 0x16, 0xd6, 0x6a, 0xe4, 0x6c, 0x67)]
+interface _WaitOrTimerCallback(_WaitOrTimerCallbackVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xbbae942d, 0xbff4, 0x36e2, 0xa3, 0xbc, 0x50, 0x8b, 0xb3, 0x80, 0x1f, 0x4f)]
+interface _IOCompletionCallback(_IOCompletionCallbackVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb45bbd7e, 0xa977, 0x3f56, 0xa6, 0x26, 0x7a, 0x69, 0x3e, 0x5d, 0xbb, 0xc5)]
+interface _ThreadStart(_ThreadStartVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa13a41cf, 0xe066, 0x3b90, 0x82, 0xf4, 0x73, 0x10, 0x91, 0x04, 0xe3, 0x48)]
+interface _ThreadStateException(_ThreadStateExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa6b94b6d, 0x854e, 0x3172, 0xa4, 0xec, 0xa1, 0x7e, 0xdd, 0x16, 0xf8, 0x5e)]
+interface _ThreadStaticAttribute(_ThreadStaticAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x81456e86, 0x22af, 0x31d1, 0xa9, 0x1a, 0x9c, 0x37, 0x0c, 0x0e, 0x25, 0x30)]
+interface _Timeout(_TimeoutVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3741bc6f, 0x101b, 0x36d7, 0xa9, 0xd5, 0x03, 0xfc, 0xc0, 0xec, 0xda, 0x35)]
+interface _TimerCallback(_TimerCallbackVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb49a029b, 0x406b, 0x3b1e, 0x88, 0xe4, 0xf8, 0x66, 0x90, 0xd2, 0x03, 0x64)]
+interface _Timer(_TimerVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xea6795ac, 0x97d6, 0x3377, 0xbe, 0x64, 0x82, 0x9a, 0xbd, 0x67, 0x60, 0x7b)]
+interface _CaseInsensitiveComparer(_CaseInsensitiveComparerVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0422b845, 0xb636, 0x3688, 0x8f, 0x61, 0x9b, 0x6d, 0x93, 0x09, 0x63, 0x36)]
+interface _CaseInsensitiveHashCodeProvider(_CaseInsensitiveHashCodeProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb7d29e26, 0x7798, 0x3fa4, 0x90, 0xf4, 0xe6, 0xa2, 0x2d, 0x20, 0x99, 0xf9)]
+interface _CollectionBase(_CollectionBaseVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xddd44da2, 0xbc6b, 0x3620, 0x93, 0x17, 0xc0, 0x37, 0x29, 0x68, 0xc7, 0x41)]
+interface _DictionaryBase(_DictionaryBaseVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xbd32d878, 0xa59b, 0x3e5c, 0xbf, 0xe0, 0xa9, 0x6b, 0x1a, 0x1e, 0x9d, 0x6f)]
+interface _ReadOnlyCollectionBase(_ReadOnlyCollectionBaseVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3a7d3ca4, 0xb7d1, 0x3a2a, 0x80, 0x0c, 0x8f, 0xc2, 0xac, 0xfc, 0xbd, 0xa4)]
+interface _Queue(_QueueVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x401f89cb, 0xc127, 0x3041, 0x82, 0xfd, 0xb6, 0x70, 0x35, 0x39, 0x5c, 0x56)]
+interface _ArrayList(_ArrayListVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xf145c46a, 0xd170, 0x3170, 0xb5, 0x2f, 0x46, 0x78, 0xdf, 0xca, 0x03, 0x00)]
+interface _BitArray(_BitArrayVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xab538809, 0x3c2f, 0x35d9, 0x80, 0xe6, 0x7b, 0xad, 0x54, 0x04, 0x84, 0xa1)]
+interface _Stack(_StackVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x8064a157, 0xb5c8, 0x3a4a, 0xad, 0x3d, 0x02, 0xdc, 0x1a, 0x39, 0xc4, 0x17)]
+interface _Comparer(_ComparerVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd25a197e, 0x3e69, 0x3271, 0xa9, 0x89, 0x23, 0xd8, 0x5e, 0x97, 0xf9, 0x20)]
+interface _Hashtable(_HashtableVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x56421139, 0xa143, 0x3ae9, 0x98, 0x52, 0x1d, 0xbd, 0xfe, 0x3d, 0x6b, 0xfa)]
+interface _SortedList(_SortedListVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x84e7ac09, 0x795a, 0x3ea9, 0xa3, 0x6a, 0x5b, 0x81, 0xeb, 0xab, 0x05, 0x58)]
+interface _Nullable(_NullableVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x8039c41f, 0x4399, 0x38a2, 0x99, 0xb7, 0xd2, 0x34, 0xb5, 0xcf, 0x7a, 0x7b)]
+interface _KeyNotFoundException(_KeyNotFoundExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xe40a025c, 0x645b, 0x3c8e, 0xa1, 0xac, 0x9c, 0x5c, 0xca, 0x27, 0x96, 0x25)]
+interface _ConditionalAttribute(_ConditionalAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa9b4786c, 0x08e3, 0x344f, 0xa6, 0x51, 0x2f, 0x99, 0x26, 0xde, 0xac, 0x5e)]
+interface _Debugger(_DebuggerVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3344e8b4, 0xa5c3, 0x3882, 0x8d, 0x30, 0x63, 0x79, 0x24, 0x85, 0xec, 0xcf)]
+interface _DebuggerStepThroughAttribute(_DebuggerStepThroughAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb3276180, 0xb23e, 0x3034, 0xb1, 0x8f, 0xe0, 0x12, 0x2b, 0xa4, 0xe4, 0xcf)]
+interface _DebuggerStepperBoundaryAttribute(_DebuggerStepperBoundaryAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x55b6903b, 0x55fe, 0x35e0, 0x80, 0x4f, 0xe4, 0x2a, 0x09, 0x6d, 0x2e, 0xb0)]
+interface _DebuggerHiddenAttribute(_DebuggerHiddenAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xcc6dcafd, 0x0185, 0x308a, 0x89, 0x1c, 0x83, 0x81, 0x2f, 0xe5, 0x74, 0xe7)]
+interface _DebuggerNonUserCodeAttribute(_DebuggerNonUserCodeAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x428e3627, 0x2b1f, 0x302c, 0xa7, 0xe6, 0x63, 0x88, 0xcd, 0x53, 0x5e, 0x75)]
+interface _DebuggableAttribute(_DebuggableAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa3fc6319, 0x7355, 0x3d7d, 0x86, 0x21, 0xb5, 0x98, 0x56, 0x11, 0x52, 0xfc)]
+interface _DebuggerBrowsableAttribute(_DebuggerBrowsableAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x404fafdd, 0x1e3f, 0x3602, 0xbf, 0xf6, 0x75, 0x5c, 0x00, 0x61, 0x3e, 0xd8)]
+interface _DebuggerTypeProxyAttribute(_DebuggerTypeProxyAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x22fdabc0, 0xeec7, 0x33e0, 0xb4, 0xf2, 0xf3, 0xb7, 0x39, 0xe1, 0x9a, 0x5e)]
+interface _DebuggerDisplayAttribute(_DebuggerDisplayAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xe19ea1a2, 0x67ff, 0x31a5, 0xb9, 0x5c, 0xe0, 0xb7, 0x53, 0x40, 0x3f, 0x6b)]
+interface _DebuggerVisualizerAttribute(_DebuggerVisualizerAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x9a2669ec, 0xff84, 0x3726, 0x89, 0xa0, 0x66, 0x3a, 0x3e, 0xf3, 0xb5, 0xcd)]
+interface _StackTrace(_StackTraceVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0e9b8e47, 0xca67, 0x38b6, 0xb9, 0xdb, 0x2c, 0x42, 0xee, 0x75, 0x7b, 0x08)]
+interface _StackFrame(_StackFrameVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x5141d79c, 0x7b01, 0x37da, 0xb7, 0xe9, 0x53, 0xe5, 0xa2, 0x71, 0xba, 0xf8)]
+interface _SymDocumentType(_SymDocumentTypeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x22bb8891, 0xfd21, 0x313d, 0x92, 0xe4, 0x8a, 0x89, 0x2d, 0xc0, 0xb3, 0x9c)]
+interface _SymLanguageType(_SymLanguageTypeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x01364e7b, 0xc983, 0x3651, 0xb7, 0xd8, 0xfd, 0x1b, 0x64, 0xfc, 0x0e, 0x00)]
+interface _SymLanguageVendor(_SymLanguageVendorVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x81aa0d59, 0xc3b1, 0x36a3, 0xb2, 0xe7, 0x05, 0x49, 0x28, 0xfb, 0xfc, 0x1a)]
+interface _AmbiguousMatchException(_AmbiguousMatchExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x05532e88, 0xe0f2, 0x3263, 0x9b, 0x57, 0x80, 0x5a, 0xc6, 0xb6, 0xbb, 0x72)]
+interface _ModuleResolveEventHandler(_ModuleResolveEventHandlerVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x6163f792, 0x3cd6, 0x38f1, 0xb5, 0xf7, 0x00, 0x0b, 0x96, 0xa5, 0x08, 0x2b)]
+interface _AssemblyCopyrightAttribute(_AssemblyCopyrightAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x64c26bf9, 0xc9e5, 0x3f66, 0xad, 0x74, 0xbe, 0xba, 0xad, 0xe3, 0x62, 0x14)]
+interface _AssemblyTrademarkAttribute(_AssemblyTrademarkAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xde10d587, 0xa188, 0x3dcb, 0x80, 0x00, 0x92, 0xdf, 0xdb, 0x9b, 0x80, 0x21)]
+interface _AssemblyProductAttribute(_AssemblyProductAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xc6802233, 0xef82, 0x3c91, 0xad, 0x72, 0xb3, 0xa5, 0xd7, 0x23, 0x0e, 0xd5)]
+interface _AssemblyCompanyAttribute(_AssemblyCompanyAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x6b2c0bc4, 0xddb7, 0x38ea, 0x8a, 0x86, 0xf0, 0xb5, 0x9e, 0x19, 0x28, 0x16)]
+interface _AssemblyDescriptionAttribute(_AssemblyDescriptionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xdf44cad3, 0xcef2, 0x36a9, 0xb0, 0x13, 0x38, 0x3c, 0xc0, 0x31, 0x77, 0xd7)]
+interface _AssemblyTitleAttribute(_AssemblyTitleAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x746d1d1e, 0xee37, 0x393b, 0xb6, 0xfa, 0xe3, 0x87, 0xd3, 0x75, 0x53, 0xaa)]
+interface _AssemblyConfigurationAttribute(_AssemblyConfigurationAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x04311d35, 0x75ec, 0x347b, 0xbe, 0xdf, 0x96, 0x94, 0x87, 0xce, 0x40, 0x14)]
+interface _AssemblyDefaultAliasAttribute(_AssemblyDefaultAliasAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xc6f5946c, 0x143a, 0x3747, 0xa7, 0xc0, 0xab, 0xfa, 0xda, 0x6b, 0xde, 0xb7)]
+interface _AssemblyInformationalVersionAttribute(_AssemblyInformationalVersionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb101fe3c, 0x4479, 0x311a, 0xa9, 0x45, 0x12, 0x25, 0xee, 0x17, 0x31, 0xe8)]
+interface _AssemblyFileVersionAttribute(_AssemblyFileVersionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x177c4e63, 0x9e0b, 0x354d, 0x83, 0x8b, 0xb5, 0x2a, 0xa8, 0x68, 0x3e, 0xf6)]
+interface _AssemblyCultureAttribute(_AssemblyCultureAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa1693c5c, 0x101f, 0x3557, 0x94, 0xdb, 0xc4, 0x80, 0xce, 0xb4, 0xc1, 0x6b)]
+interface _AssemblyVersionAttribute(_AssemblyVersionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa9fcda18, 0xc237, 0x3c6f, 0xa6, 0xef, 0x74, 0x9b, 0xe2, 0x2b, 0xa2, 0xbf)]
+interface _AssemblyKeyFileAttribute(_AssemblyKeyFileAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x6cf1c077, 0xc974, 0x38e1, 0x90, 0xa4, 0x97, 0x6e, 0x48, 0x35, 0xe1, 0x65)]
+interface _AssemblyDelaySignAttribute(_AssemblyDelaySignAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x57b849aa, 0xd8ef, 0x3ea6, 0x95, 0x38, 0xc5, 0xb4, 0xd4, 0x98, 0xc2, 0xf7)]
+interface _AssemblyAlgorithmIdAttribute(_AssemblyAlgorithmIdAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0ecd8635, 0xf5eb, 0x3e4a, 0x89, 0x89, 0x4d, 0x68, 0x4d, 0x67, 0xc4, 0x8a)]
+interface _AssemblyFlagsAttribute(_AssemblyFlagsAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x322a304d, 0x11ac, 0x3814, 0xa9, 0x05, 0xa0, 0x19, 0xf6, 0xe3, 0xda, 0xe9)]
+interface _AssemblyKeyNameAttribute(_AssemblyKeyNameAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xfe52f19a, 0x8aa8, 0x309c, 0xbf, 0x99, 0x9d, 0x0a, 0x56, 0x6f, 0xb7, 0x6a)]
+interface _AssemblyNameProxy(_AssemblyNameProxyVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x1660eb67, 0xee41, 0x363e, 0xbe, 0xb0, 0xc2, 0xde, 0x09, 0x21, 0x4a, 0xbf)]
+interface _CustomAttributeFormatException(_CustomAttributeFormatExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xf4e5539d, 0x0a65, 0x3073, 0xbf, 0x27, 0x8d, 0xce, 0x8e, 0xf1, 0xde, 0xf1)]
+interface _CustomAttributeData(_CustomAttributeDataVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xc462b072, 0xfe6e, 0x3bdc, 0x9f, 0xab, 0x4c, 0xdb, 0xfc, 0xbc, 0xd1, 0x24)]
+interface _DefaultMemberAttribute(_DefaultMemberAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xe6df0ae7, 0xba15, 0x3f80, 0x8a, 0xfa, 0x27, 0x77, 0x3a, 0xe4, 0x14, 0xfc)]
+interface _InvalidFilterCriteriaException(_InvalidFilterCriteriaExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3188878c, 0xdeb3, 0x3558, 0x80, 0xe8, 0x84, 0xe9, 0xed, 0x95, 0xf9, 0x2c)]
+interface _ManifestResourceInfo(_ManifestResourceInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xfae5d9b7, 0x40c1, 0x3de1, 0xbe, 0x06, 0xa9, 0x1c, 0x9d, 0xa1, 0xba, 0x9f)]
+interface _MemberFilter(_MemberFilterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0c48f55d-5240-30c7-a8f1-af87a640cefe"))
-_Missing : IDispatch
-{};
+RIDL!{#[uuid(0x0c48f55d, 0x5240, 0x30c7, 0xa8, 0xf1, 0xaf, 0x87, 0xa6, 0x40, 0xce, 0xfe)]
+interface _Missing(_MissingVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8a5f0da2-7b43-3767-b623-2424cf7cd268"))
-_ObfuscateAssemblyAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x8a5f0da2, 0x7b43, 0x3767, 0xb6, 0x23, 0x24, 0x24, 0xcf, 0x7c, 0xd2, 0x68)]
+interface _ObfuscateAssemblyAttribute(_ObfuscateAssemblyAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("71fb8dcf-3fa7-3483-8464-9d8200e57c43"))
-_ObfuscationAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x71fb8dcf, 0x3fa7, 0x3483, 0x84, 0x64, 0x9d, 0x82, 0x00, 0xe5, 0x7c, 0x43)]
+interface _ObfuscationAttribute(_ObfuscationAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("643a4016-1b16-3ccf-ae86-9c2d9135ecb0"))
-_ExceptionHandlingClause : IDispatch
-{};
+RIDL!{#[uuid(0x643a4016, 0x1b16, 0x3ccf, 0xae, 0x86, 0x9c, 0x2d, 0x91, 0x35, 0xec, 0xb0)]
+interface _ExceptionHandlingClause(_ExceptionHandlingClauseVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b072efe2-c943-3977-bfd9-91d5232b0d53"))
-_MethodBody : IDispatch
-{};
+RIDL!{#[uuid(0xb072efe2, 0xc943, 0x3977, 0xbf, 0xd9, 0x91, 0xd5, 0x23, 0x2b, 0x0d, 0x53)]
+interface _MethodBody(_MethodBodyVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f2ecd8ca-91a2-31e8-b808-e028b4f5ca67"))
-_LocalVariableInfo : IDispatch
-{};
+RIDL!{#[uuid(0xf2ecd8ca, 0x91a2, 0x31e8, 0xb8, 0x08, 0xe0, 0x28, 0xb4, 0xf5, 0xca, 0x67)]
+interface _LocalVariableInfo(_LocalVariableInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f0deafe9-5eba-3737-9950-c1795739cdcd"))
-_Pointer : IDispatch
-{};
+RIDL!{#[uuid(0xf0deafe9, 0x5eba, 0x3737, 0x99, 0x50, 0xc1, 0x79, 0x57, 0x39, 0xcd, 0xcd)]
+interface _Pointer(_PointerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("22c26a41-5fa3-34e3-a76f-ba480252d8ec"))
-_ReflectionTypeLoadException : IDispatch
-{};
+RIDL!{#[uuid(0x22c26a41, 0x5fa3, 0x34e3, 0xa7, 0x6f, 0xba, 0x48, 0x02, 0x52, 0xd8, 0xec)]
+interface _ReflectionTypeLoadException(_ReflectionTypeLoadExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("fc4963cb-e52b-32d8-a418-d058fa51a1fa"))
-_StrongNameKeyPair : IDispatch
-{};
+RIDL!{#[uuid(0xfc4963cb, 0xe52b, 0x32d8, 0xa4, 0x18, 0xd0, 0x58, 0xfa, 0x51, 0xa1, 0xfa)]
+interface _StrongNameKeyPair(_StrongNameKeyPairVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("98b1524d-da12-3c4b-8a69-7539a6dec4fa"))
-_TargetException : IDispatch
-{};
+RIDL!{#[uuid(0x98b1524d, 0xda12, 0x3c4b, 0x8a, 0x69, 0x75, 0x39, 0xa6, 0xde, 0xc4, 0xfa)]
+interface _TargetException(_TargetExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a90106ed-9099-3329-8a5a-2044b3d8552b"))
-_TargetInvocationException : IDispatch
-{};
+RIDL!{#[uuid(0xa90106ed, 0x9099, 0x3329, 0x8a, 0x5a, 0x20, 0x44, 0xb3, 0xd8, 0x55, 0x2b)]
+interface _TargetInvocationException(_TargetInvocationExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6032b3cd-9bed-351c-a145-9d500b0f636f"))
-_TargetParameterCountException : IDispatch
-{};
+RIDL!{#[uuid(0x6032b3cd, 0x9bed, 0x351c, 0xa1, 0x45, 0x9d, 0x50, 0x0b, 0x0f, 0x63, 0x6f)]
+interface _TargetParameterCountException(_TargetParameterCountExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("34e00ef9-83e2-3bbc-b6af-4cae703838bd"))
-_TypeDelegator : IDispatch
-{};
+RIDL!{#[uuid(0x34e00ef9, 0x83e2, 0x3bbc, 0xb6, 0xaf, 0x4c, 0xae, 0x70, 0x38, 0x38, 0xbd)]
+interface _TypeDelegator(_TypeDelegatorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e1817846-3745-3c97-b4a6-ee20a1641b29"))
-_TypeFilter : IDispatch
-{};
+RIDL!{#[uuid(0xe1817846, 0x3745, 0x3c97, 0xb4, 0xa6, 0xee, 0x20, 0xa1, 0x64, 0x1b, 0x29)]
+interface _TypeFilter(_TypeFilterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3faa35ee-c867-3e2e-bf48-2da271f88303"))
-_FormatterConverter : IDispatch
-{};
+RIDL!{#[uuid(0x3faa35ee, 0xc867, 0x3e2e, 0xbf, 0x48, 0x2d, 0xa2, 0x71, 0xf8, 0x83, 0x03)]
+interface _FormatterConverter(_FormatterConverterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f859954a-78cf-3d00-86ab-ef661e6a4b8d"))
-_FormatterServices : IDispatch
-{};
+RIDL!{#[uuid(0xf859954a, 0x78cf, 0x3d00, 0x86, 0xab, 0xef, 0x66, 0x1e, 0x6a, 0x4b, 0x8d)]
+interface _FormatterServices(_FormatterServicesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("feca70d4-ae27-3d94-93dd-a90f02e299d5"))
-_OptionalFieldAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xfeca70d4, 0xae27, 0x3d94, 0x93, 0xdd, 0xa9, 0x0f, 0x02, 0xe2, 0x99, 0xd5)]
+interface _OptionalFieldAttribute(_OptionalFieldAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9ec28d2c-04c0-35f3-a7ee-0013271ff65e"))
-_OnSerializingAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x9ec28d2c, 0x04c0, 0x35f3, 0xa7, 0xee, 0x00, 0x13, 0x27, 0x1f, 0xf6, 0x5e)]
+interface _OnSerializingAttribute(_OnSerializingAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("547bf8cd-f2a8-3b41-966d-98db33ded06d"))
-_OnSerializedAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x547bf8cd, 0xf2a8, 0x3b41, 0x96, 0x6d, 0x98, 0xdb, 0x33, 0xde, 0xd0, 0x6d)]
+interface _OnSerializedAttribute(_OnSerializedAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f5aef88f-9ac4-320c-95d2-88e863a35762"))
-_OnDeserializingAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xf5aef88f, 0x9ac4, 0x320c, 0x95, 0xd2, 0x88, 0xe8, 0x63, 0xa3, 0x57, 0x62)]
+interface _OnDeserializingAttribute(_OnDeserializingAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("dd36c803-73d1-338d-88ba-dc9eb7620ef7"))
-_OnDeserializedAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xdd36c803, 0x73d1, 0x338d, 0x88, 0xba, 0xdc, 0x9e, 0xb7, 0x62, 0x0e, 0xf7)]
+interface _OnDeserializedAttribute(_OnDeserializedAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("450222d0-87ca-3699-a7b4-d8a0fdb72357"))
-_SerializationBinder : IDispatch
-{};
+RIDL!{#[uuid(0x450222d0, 0x87ca, 0x3699, 0xa7, 0xb4, 0xd8, 0xa0, 0xfd, 0xb7, 0x23, 0x57)]
+interface _SerializationBinder(_SerializationBinderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("245fe7fd-e020-3053-b5f6-7467fd2c6883"))
-_SerializationException : IDispatch
-{};
+RIDL!{#[uuid(0x245fe7fd, 0xe020, 0x3053, 0xb5, 0xf6, 0x74, 0x67, 0xfd, 0x2c, 0x68, 0x83)]
+interface _SerializationException(_SerializationExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b58d62cf-b03a-3a14-b0b6-b1e5ad4e4ad5"))
-_SerializationInfo : IDispatch
-{};
+RIDL!{#[uuid(0xb58d62cf, 0xb03a, 0x3a14, 0xb0, 0xb6, 0xb1, 0xe5, 0xad, 0x4e, 0x4a, 0xd5)]
+interface _SerializationInfo(_SerializationInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d0eeaa62-3d30-3ee2-b896-a2f34dda47d8"))
-ISerializable : IDispatch
+RIDL!{#[uuid(0xd0eeaa62, 0x3d30, 0x3ee2, 0xb8, 0x96, 0xa2, 0xf3, 0x4d, 0xda, 0x47, 0xd8)]
+interface ISerializable(ISerializableVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -1825,223 +1825,223 @@ ISerializable : IDispatch
       virtual HRESULT __stdcall GetObjectData (
         /*[in]*/ struct _SerializationInfo * info,
         /*[in]*/ struct StreamingContext Context ) = 0;
-};
+}}
 
-struct __declspec(uuid("607056c6-1bca-36c8-ab87-33b202ebf0d8"))
-_SerializationInfoEnumerator : IDispatch
-{};
+RIDL!{#[uuid(0x607056c6, 0x1bca, 0x36c8, 0xab, 0x87, 0x33, 0xb2, 0x02, 0xeb, 0xf0, 0xd8)]
+interface _SerializationInfoEnumerator(_SerializationInfoEnumeratorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d9bd3c8d-9395-3657-b6ee-d1b509c38b70"))
-_Formatter : IDispatch
-{};
+RIDL!{#[uuid(0xd9bd3c8d, 0x9395, 0x3657, 0xb6, 0xee, 0xd1, 0xb5, 0x09, 0xc3, 0x8b, 0x70)]
+interface _Formatter(_FormatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a30646cc-f710-3bfa-a356-b4c858d4ed8e"))
-_ObjectIDGenerator : IDispatch
-{};
+RIDL!{#[uuid(0xa30646cc, 0xf710, 0x3bfa, 0xa3, 0x56, 0xb4, 0xc8, 0x58, 0xd4, 0xed, 0x8e)]
+interface _ObjectIDGenerator(_ObjectIDGeneratorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f28e7d04-3319-3968-8201-c6e55becd3d4"))
-_ObjectManager : IDispatch
-{};
+RIDL!{#[uuid(0xf28e7d04, 0x3319, 0x3968, 0x82, 0x01, 0xc6, 0xe5, 0x5b, 0xec, 0xd3, 0xd4)]
+interface _ObjectManager(_ObjectManagerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6de1230e-1f52-3779-9619-f5184103466c"))
-_SurrogateSelector : IDispatch
-{};
+RIDL!{#[uuid(0x6de1230e, 0x1f52, 0x3779, 0x96, 0x19, 0xf5, 0x18, 0x41, 0x03, 0x46, 0x6c)]
+interface _SurrogateSelector(_SurrogateSelectorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4cca29e4-584b-3cd0-ad25-855dc5799c16"))
-_Calendar : IDispatch
-{};
+RIDL!{#[uuid(0x4cca29e4, 0x584b, 0x3cd0, 0xad, 0x25, 0x85, 0x5d, 0xc5, 0x79, 0x9c, 0x16)]
+interface _Calendar(_CalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("505defe5-aefa-3e23-82b0-d5eb085bb840"))
-_CompareInfo : IDispatch
-{};
+RIDL!{#[uuid(0x505defe5, 0xaefa, 0x3e23, 0x82, 0xb0, 0xd5, 0xeb, 0x08, 0x5b, 0xb8, 0x40)]
+interface _CompareInfo(_CompareInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("152722c2-f0b1-3d19-ada8-f40ca5caecb8"))
-_CultureInfo : IDispatch
-{};
+RIDL!{#[uuid(0x152722c2, 0xf0b1, 0x3d19, 0xad, 0xa8, 0xf4, 0x0c, 0xa5, 0xca, 0xec, 0xb8)]
+interface _CultureInfo(_CultureInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ab20bf9e-7549-3226-ba87-c1edfb6cda6c"))
-_CultureNotFoundException : IDispatch
-{};
+RIDL!{#[uuid(0xab20bf9e, 0x7549, 0x3226, 0xba, 0x87, 0xc1, 0xed, 0xfb, 0x6c, 0xda, 0x6c)]
+interface _CultureNotFoundException(_CultureNotFoundExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("015e9f67-337c-398a-a0c1-da4af1905571"))
-_DateTimeFormatInfo : IDispatch
-{};
+RIDL!{#[uuid(0x015e9f67, 0x337c, 0x398a, 0xa0, 0xc1, 0xda, 0x4a, 0xf1, 0x90, 0x55, 0x71)]
+interface _DateTimeFormatInfo(_DateTimeFormatInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("efea8feb-ee7f-3e48-8a36-6206a6acbf73"))
-_DaylightTime : IDispatch
-{};
+RIDL!{#[uuid(0xefea8feb, 0xee7f, 0x3e48, 0x8a, 0x36, 0x62, 0x06, 0xa6, 0xac, 0xbf, 0x73)]
+interface _DaylightTime(_DaylightTimeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("677ad8b5-8a0e-3c39-92fb-72fb817cf694"))
-_GregorianCalendar : IDispatch
-{};
+RIDL!{#[uuid(0x677ad8b5, 0x8a0e, 0x3c39, 0x92, 0xfb, 0x72, 0xfb, 0x81, 0x7c, 0xf6, 0x94)]
+interface _GregorianCalendar(_GregorianCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("96a62d6c-72a9-387a-81fa-e6dd5998caee"))
-_HebrewCalendar : IDispatch
-{};
+RIDL!{#[uuid(0x96a62d6c, 0x72a9, 0x387a, 0x81, 0xfa, 0xe6, 0xdd, 0x59, 0x98, 0xca, 0xee)]
+interface _HebrewCalendar(_HebrewCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("28ddc187-56b2-34cf-a078-48bd1e113d1e"))
-_HijriCalendar : IDispatch
-{};
+RIDL!{#[uuid(0x28ddc187, 0x56b2, 0x34cf, 0xa0, 0x78, 0x48, 0xbd, 0x1e, 0x11, 0x3d, 0x1e)]
+interface _HijriCalendar(_HijriCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("89e148c4-2424-30ae-80f5-c5d21ea3366c"))
-_EastAsianLunisolarCalendar : IDispatch
-{};
+RIDL!{#[uuid(0x89e148c4, 0x2424, 0x30ae, 0x80, 0xf5, 0xc5, 0xd2, 0x1e, 0xa3, 0x36, 0x6c)]
+interface _EastAsianLunisolarCalendar(_EastAsianLunisolarCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("36e2de92-1fb3-3d7d-ba26-9cad5b98dd52"))
-_JulianCalendar : IDispatch
-{};
+RIDL!{#[uuid(0x36e2de92, 0x1fb3, 0x3d7d, 0xba, 0x26, 0x9c, 0xad, 0x5b, 0x98, 0xdd, 0x52)]
+interface _JulianCalendar(_JulianCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d662ae3f-cef9-38b4-bb8e-5d8dd1dbf806"))
-_JapaneseCalendar : IDispatch
-{};
+RIDL!{#[uuid(0xd662ae3f, 0xcef9, 0x38b4, 0xbb, 0x8e, 0x5d, 0x8d, 0xd1, 0xdb, 0xf8, 0x06)]
+interface _JapaneseCalendar(_JapaneseCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("48bea6c4-752e-3974-8ca8-cfb6274e2379"))
-_KoreanCalendar : IDispatch
-{};
+RIDL!{#[uuid(0x48bea6c4, 0x752e, 0x3974, 0x8c, 0xa8, 0xcf, 0xb6, 0x27, 0x4e, 0x23, 0x79)]
+interface _KoreanCalendar(_KoreanCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f9e97e04-4e1e-368f-b6c6-5e96ce4362d6"))
-_RegionInfo : IDispatch
-{};
+RIDL!{#[uuid(0xf9e97e04, 0x4e1e, 0x368f, 0xb6, 0xc6, 0x5e, 0x96, 0xce, 0x43, 0x62, 0xd6)]
+interface _RegionInfo(_RegionInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
 
-struct __declspec(uuid("f4c70e15-2ca6-3e90-96ed-92e28491f538"))
-_SortKey : IDispatch
-{};
+RIDL!{#[uuid(0xf4c70e15, 0x2ca6, 0x3e90, 0x96, 0xed, 0x92, 0xe2, 0x84, 0x91, 0xf5, 0x38)]
+interface _SortKey(_SortKeyVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0a25141f-51b3-3121-aa30-0af4556a52d9"))
-_StringInfo : IDispatch
-{};
+RIDL!{#[uuid(0x0a25141f, 0x51b3, 0x3121, 0xaa, 0x30, 0x0a, 0xf4, 0x55, 0x6a, 0x52, 0xd9)]
+interface _StringInfo(_StringInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0c08ed74-0acf-32a9-99df-09a9dc4786dd"))
-_TaiwanCalendar : IDispatch
-{};
+RIDL!{#[uuid(0x0c08ed74, 0x0acf, 0x32a9, 0x99, 0xdf, 0x09, 0xa9, 0xdc, 0x47, 0x86, 0xdd)]
+interface _TaiwanCalendar(_TaiwanCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8c248251-3e6c-3151-9f8e-a255fb8d2b12"))
-_TextElementEnumerator : IDispatch
-{};
+RIDL!{#[uuid(0x8c248251, 0x3e6c, 0x3151, 0x9f, 0x8e, 0xa2, 0x55, 0xfb, 0x8d, 0x2b, 0x12)]
+interface _TextElementEnumerator(_TextElementEnumeratorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("db8de23f-f264-39ac-b61c-cc1e7eb4a5e6"))
-_TextInfo : IDispatch
-{};
+RIDL!{#[uuid(0xdb8de23f, 0xf264, 0x39ac, 0xb6, 0x1c, 0xcc, 0x1e, 0x7e, 0xb4, 0xa5, 0xe6)]
+interface _TextInfo(_TextInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c70c8ae8-925b-37ce-8944-34f15ff94307"))
-_ThaiBuddhistCalendar : IDispatch
-{};
+RIDL!{#[uuid(0xc70c8ae8, 0x925b, 0x37ce, 0x89, 0x44, 0x34, 0xf1, 0x5f, 0xf9, 0x43, 0x07)]
+interface _ThaiBuddhistCalendar(_ThaiBuddhistCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("25e47d71-20dd-31be-b261-7ae76497d6b9"))
-_NumberFormatInfo : IDispatch
-{};
+RIDL!{#[uuid(0x25e47d71, 0x20dd, 0x31be, 0xb2, 0x61, 0x7a, 0xe7, 0x64, 0x97, 0xd6, 0xb9)]
+interface _NumberFormatInfo(_NumberFormatInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ddedb94d-4f3f-35c1-97c9-3f1d87628d9e"))
-_Encoding : IDispatch
-{};
+RIDL!{#[uuid(0xddedb94d, 0x4f3f, 0x35c1, 0x97, 0xc9, 0x3f, 0x1d, 0x87, 0x62, 0x8d, 0x9e)]
+interface _Encoding(_EncodingVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8fd56502-8724-3df0-a1b5-9d0e8d4e4f78"))
-_Encoder : IDispatch
-{};
+RIDL!{#[uuid(0x8fd56502, 0x8724, 0x3df0, 0xa1, 0xb5, 0x9d, 0x0e, 0x8d, 0x4e, 0x4f, 0x78)]
+interface _Encoder(_EncoderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2adb0d4a-5976-38e4-852b-c131797430f5"))
-_Decoder : IDispatch
-{};
+RIDL!{#[uuid(0x2adb0d4a, 0x5976, 0x38e4, 0x85, 0x2b, 0xc1, 0x31, 0x79, 0x74, 0x30, 0xf5)]
+interface _Decoder(_DecoderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0cbe0204-12a1-3d40-9d9e-195de6aaa534"))
-_ASCIIEncoding : IDispatch
-{};
+RIDL!{#[uuid(0x0cbe0204, 0x12a1, 0x3d40, 0x9d, 0x9e, 0x19, 0x5d, 0xe6, 0xaa, 0xa5, 0x34)]
+interface _ASCIIEncoding(_ASCIIEncodingVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f7dd3b7f-2b05-3894-8eda-59cdf9395b6a"))
-_UnicodeEncoding : IDispatch
-{};
+RIDL!{#[uuid(0xf7dd3b7f, 0x2b05, 0x3894, 0x8e, 0xda, 0x59, 0xcd, 0xf9, 0x39, 0x5b, 0x6a)]
+interface _UnicodeEncoding(_UnicodeEncodingVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("89b9f00b-aa2a-3a49-91b4-e8d1f1c00e58"))
-_UTF7Encoding : IDispatch
-{};
+RIDL!{#[uuid(0x89b9f00b, 0xaa2a, 0x3a49, 0x91, 0xb4, 0xe8, 0xd1, 0xf1, 0xc0, 0x0e, 0x58)]
+interface _UTF7Encoding(_UTF7EncodingVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("010fc1d0-3ef9-3f3b-aa0a-b78a1ff83a37"))
-_UTF8Encoding : IDispatch
-{};
+RIDL!{#[uuid(0x010fc1d0, 0x3ef9, 0x3f3b, 0xaa, 0x0a, 0xb7, 0x8a, 0x1f, 0xf8, 0x3a, 0x37)]
+interface _UTF8Encoding(_UTF8EncodingVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1a4e1878-fe8c-3f59-b6a9-21ab82be57e9"))
-_MissingManifestResourceException : IDispatch
-{};
+RIDL!{#[uuid(0x1a4e1878, 0xfe8c, 0x3f59, 0xb6, 0xa9, 0x21, 0xab, 0x82, 0xbe, 0x57, 0xe9)]
+interface _MissingManifestResourceException(_MissingManifestResourceExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5a8de087-d9d7-3bba-92b4-fe1034a1242f"))
-_MissingSatelliteAssemblyException : IDispatch
-{};
+RIDL!{#[uuid(0x5a8de087, 0xd9d7, 0x3bba, 0x92, 0xb4, 0xfe, 0x10, 0x34, 0xa1, 0x24, 0x2f)]
+interface _MissingSatelliteAssemblyException(_MissingSatelliteAssemblyExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f48df808-8b7d-3f4e-9159-1dfd60f298d6"))
-_NeutralResourcesLanguageAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xf48df808, 0x8b7d, 0x3f4e, 0x91, 0x59, 0x1d, 0xfd, 0x60, 0xf2, 0x98, 0xd6)]
+interface _NeutralResourcesLanguageAttribute(_NeutralResourcesLanguageAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4de671b7-7c85-37e9-aff8-1222abe4883e"))
-_ResourceManager : IDispatch
-{};
+RIDL!{#[uuid(0x4de671b7, 0x7c85, 0x37e9, 0xaf, 0xf8, 0x12, 0x22, 0xab, 0xe4, 0x88, 0x3e)]
+interface _ResourceManager(_ResourceManagerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7fbcfdc7-5cec-3945-8095-daed61be5fb1"))
-_ResourceReader : IDispatch
-{};
+RIDL!{#[uuid(0x7fbcfdc7, 0x5cec, 0x3945, 0x80, 0x95, 0xda, 0xed, 0x61, 0xbe, 0x5f, 0xb1)]
+interface _ResourceReader(_ResourceReaderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("44d5f81a-727c-35ae-8df8-9ff6722f1c6c"))
-_ResourceSet : IDispatch
-{};
+RIDL!{#[uuid(0x44d5f81a, 0x727c, 0x35ae, 0x8d, 0xf8, 0x9f, 0xf6, 0x72, 0x2f, 0x1c, 0x6c)]
+interface _ResourceSet(_ResourceSetVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("af170258-aac6-3a86-bd34-303e62ced10e"))
-_ResourceWriter : IDispatch
-{};
+RIDL!{#[uuid(0xaf170258, 0xaac6, 0x3a86, 0xbd, 0x34, 0x30, 0x3e, 0x62, 0xce, 0xd1, 0x0e)]
+interface _ResourceWriter(_ResourceWriterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5cbb1f47-fba5-33b9-9d4a-57d6e3d133d2"))
-_SatelliteContractVersionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x5cbb1f47, 0xfba5, 0x33b9, 0x9d, 0x4a, 0x57, 0xd6, 0xe3, 0xd1, 0x33, 0xd2)]
+interface _SatelliteContractVersionAttribute(_SatelliteContractVersionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("23bae0c0-3a36-32f0-9dad-0e95add67d23"))
-_Registry : IDispatch
-{};
+RIDL!{#[uuid(0x23bae0c0, 0x3a36, 0x32f0, 0x9d, 0xad, 0x0e, 0x95, 0xad, 0xd6, 0x7d, 0x23)]
+interface _Registry(_RegistryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2eac6733-8d92-31d9-be04-dc467efc3eb1"))
-_RegistryKey : IDispatch
-{};
+RIDL!{#[uuid(0x2eac6733, 0x8d92, 0x31d9, 0xbe, 0x04, 0xdc, 0x46, 0x7e, 0xfc, 0x3e, 0xb1)]
+interface _RegistryKey(_RegistryKeyVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("99f01720-3cc2-366d-9ab9-50e36647617f"))
-_AllMembershipCondition : IDispatch
-{};
+RIDL!{#[uuid(0x99f01720, 0x3cc2, 0x366d, 0x9a, 0xb9, 0x50, 0xe3, 0x66, 0x47, 0x61, 0x7f)]
+interface _AllMembershipCondition(_AllMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9ccc831b-1ba7-34be-a966-56d5a6db5aad"))
-_ApplicationDirectory : IDispatch
-{};
+RIDL!{#[uuid(0x9ccc831b, 0x1ba7, 0x34be, 0xa9, 0x66, 0x56, 0xd5, 0xa6, 0xdb, 0x5a, 0xad)]
+interface _ApplicationDirectory(_ApplicationDirectoryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a02a2b22-1dba-3f92-9f84-5563182851bb"))
-_ApplicationDirectoryMembershipCondition : IDispatch
-{};
+RIDL!{#[uuid(0xa02a2b22, 0x1dba, 0x3f92, 0x9f, 0x84, 0x55, 0x63, 0x18, 0x28, 0x51, 0xbb)]
+interface _ApplicationDirectoryMembershipCondition(_ApplicationDirectoryMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("18e473f6-637b-3c01-8d46-d011aad26c95"))
-_ApplicationSecurityInfo : IDispatch
-{};
+RIDL!{#[uuid(0x18e473f6, 0x637b, 0x3c01, 0x8d, 0x46, 0xd0, 0x11, 0xaa, 0xd2, 0x6c, 0x95)]
+interface _ApplicationSecurityInfo(_ApplicationSecurityInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c664fe09-0a55-316d-b25b-6b3200ecaf70"))
-_ApplicationSecurityManager : IDispatch
-{};
+RIDL!{#[uuid(0xc664fe09, 0x0a55, 0x316d, 0xb2, 0x5b, 0x6b, 0x32, 0x00, 0xec, 0xaf, 0x70)]
+interface _ApplicationSecurityManager(_ApplicationSecurityManagerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e66a9755-58e2-3fcb-a265-835851cbf063"))
-_ApplicationTrust : IDispatch
-{};
+RIDL!{#[uuid(0xe66a9755, 0x58e2, 0x3fcb, 0xa2, 0x65, 0x83, 0x58, 0x51, 0xcb, 0xf0, 0x63)]
+interface _ApplicationTrust(_ApplicationTrustVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("bb03c920-1c05-3ecb-982d-53324d5ac9ff"))
-_ApplicationTrustCollection : IDispatch
-{};
+RIDL!{#[uuid(0xbb03c920, 0x1c05, 0x3ecb, 0x98, 0x2d, 0x53, 0x32, 0x4d, 0x5a, 0xc9, 0xff)]
+interface _ApplicationTrustCollection(_ApplicationTrustCollectionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("01afd447-60ca-3b67-803a-e57b727f3a5b"))
-_ApplicationTrustEnumerator : IDispatch
-{};
+RIDL!{#[uuid(0x01afd447, 0x60ca, 0x3b67, 0x80, 0x3a, 0xe5, 0x7b, 0x72, 0x7f, 0x3a, 0x5b)]
+interface _ApplicationTrustEnumerator(_ApplicationTrustEnumeratorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d7093f61-ed6b-343f-b1e9-02472fcc710e"))
-_CodeGroup : IDispatch
-{};
+RIDL!{#[uuid(0xd7093f61, 0xed6b, 0x343f, 0xb1, 0xe9, 0x02, 0x47, 0x2f, 0xcc, 0x71, 0x0e)]
+interface _CodeGroup(_CodeGroupVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a505edbc-380e-3b23-9e1a-0974d4ef02ef"))
-_Evidence : IDispatch
-{};
+RIDL!{#[uuid(0xa505edbc, 0x380e, 0x3b23, 0x9e, 0x1a, 0x09, 0x74, 0xd4, 0xef, 0x02, 0xef)]
+interface _Evidence(_EvidenceVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("35a8f3ac-fe28-360f-a0c0-9a4d50c4682a"))
-IEvidenceFactory : IDispatch
+RIDL!{#[uuid(0x35a8f3ac, 0xfe28, 0x360f, 0xa0, 0xc0, 0x9a, 0x4d, 0x50, 0xc4, 0x68, 0x2a)]
+interface IEvidenceFactory(IEvidenceFactoryVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -2049,10 +2049,10 @@ IEvidenceFactory : IDispatch
 
       virtual HRESULT __stdcall get_Evidence (
         /*[out,retval]*/ struct _Evidence * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("6844eff4-4f86-3ca1-a1ea-aaf583a6395e"))
-IMembershipCondition : IDispatch
+RIDL!{#[uuid(0x6844eff4, 0x4f86, 0x3ca1, 0xa1, 0xea, 0xaa, 0xf5, 0x83, 0xa6, 0x39, 0x5e)]
+interface IMembershipCondition(IMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -2068,10 +2068,10 @@ IMembershipCondition : IDispatch
       virtual HRESULT __stdcall Equals (
         /*[in]*/ VARIANT obj,
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("4e95244e-c6fc-3a86-8db7-1712454de3b6"))
-IIdentityPermissionFactory : IDispatch
+RIDL!{#[uuid(0x4e95244e, 0xc6fc, 0x3a86, 0x8d, 0xb7, 0x17, 0x12, 0x45, 0x4d, 0xe3, 0xb6)]
+interface IIdentityPermissionFactory(IIdentityPermissionFactoryVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -2080,22 +2080,22 @@ IIdentityPermissionFactory : IDispatch
       virtual HRESULT __stdcall CreateIdentityPermission (
         /*[in]*/ struct _Evidence * Evidence,
         /*[out,retval]*/ struct IPermission * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("dfad74dc-8390-32f6-9612-1bd293b233f4"))
-_FileCodeGroup : IDispatch
-{};
+RIDL!{#[uuid(0xdfad74dc, 0x8390, 0x32f6, 0x96, 0x12, 0x1b, 0xd2, 0x93, 0xb2, 0x33, 0xf4)]
+interface _FileCodeGroup(_FileCodeGroupVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("54b0afb1-e7d3-3770-bb0e-75a95e8d2656"))
-_FirstMatchCodeGroup : IDispatch
-{};
+RIDL!{#[uuid(0x54b0afb1, 0xe7d3, 0x3770, 0xbb, 0x0e, 0x75, 0xa9, 0x5e, 0x8d, 0x26, 0x56)]
+interface _FirstMatchCodeGroup(_FirstMatchCodeGroupVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d89eac5e-0331-3fcd-9c16-4f1ed3fe1be2"))
-_TrustManagerContext : IDispatch
-{};
+RIDL!{#[uuid(0xd89eac5e, 0x0331, 0x3fcd, 0x9c, 0x16, 0x4f, 0x1e, 0xd3, 0xfe, 0x1b, 0xe2)]
+interface _TrustManagerContext(_TrustManagerContextVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("427e255d-af02-3b0d-8ce3-a2bb94ba300f"))
-IApplicationTrustManager : IDispatch
+RIDL!{#[uuid(0x427e255d, 0xaf02, 0x3b0d, 0x8c, 0xe3, 0xa2, 0xbb, 0x94, 0xba, 0x30, 0x0f)]
+interface IApplicationTrustManager(IApplicationTrustManagerVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -2105,346 +2105,346 @@ IApplicationTrustManager : IDispatch
         /*[in]*/ IUnknown * activationContext,
         /*[in]*/ struct _TrustManagerContext * Context,
         /*[out,retval]*/ struct _ApplicationTrust * * pRetVal ) = 0;
-};
-
-struct __declspec(uuid("fe8a2546-3478-3fad-be1d-da7bc25c4e4e"))
-_CodeConnectAccess : IDispatch
-{};
-
-struct __declspec(uuid("a8f69eca-8c48-3b5e-92a1-654925058059"))
-_NetCodeGroup : IDispatch
-{};
-
-struct __declspec(uuid("34b0417e-e71d-304c-9fac-689350a1b41c"))
-_PermissionRequestEvidence : IDispatch
-{};
-
-struct __declspec(uuid("a9c9f3d9-e153-39b8-a533-b8df4664407b"))
-_PolicyException : IDispatch
-{};
-
-struct __declspec(uuid("44494e35-c370-3014-bc78-0f2ecbf83f53"))
-_PolicyLevel : IDispatch
-{};
-
-struct __declspec(uuid("3eefd1fc-4d8d-3177-99f6-6c19d9e088d3"))
-_PolicyStatement : IDispatch
-{};
-
-struct __declspec(uuid("90c40b4c-b0d0-30f5-b520-fdba97bc31a0"))
-_Site : IDispatch
-{};
-
-struct __declspec(uuid("0a7c3542-8031-3593-872c-78d85d7cc273"))
-_SiteMembershipCondition : IDispatch
-{};
-
-struct __declspec(uuid("2a75c1fd-06b0-3cbb-b467-2545d4d6c865"))
-_StrongName : IDispatch
-{};
-
-struct __declspec(uuid("579e93bc-ffab-3b8d-9181-ce9c22b51915"))
-_StrongNameMembershipCondition : IDispatch
-{};
-
-struct __declspec(uuid("d9d822de-44e5-33ce-a43f-173e475cecb1"))
-_UnionCodeGroup : IDispatch
-{};
-
-struct __declspec(uuid("d94ed9bf-c065-3703-81a2-2f76ea8e312f"))
-_Url : IDispatch
-{};
-
-struct __declspec(uuid("bb7a158d-dbd9-3e13-b137-8e61e87e1128"))
-_UrlMembershipCondition : IDispatch
-{};
-
-struct __declspec(uuid("742e0c26-0e23-3d20-968c-d221094909aa"))
-_Zone : IDispatch
-{};
-
-struct __declspec(uuid("adbc3463-0101-3429-a06c-db2f1dd6b724"))
-_ZoneMembershipCondition : IDispatch
-{};
-
-struct __declspec(uuid("a7aef52c-b47b-3660-bb3e-34347d56db46"))
-_GacInstalled : IDispatch
-{};
-
-struct __declspec(uuid("b2217ab5-6e55-3ff6-a1a9-1b0dc0585040"))
-_GacMembershipCondition : IDispatch
-{};
-
-struct __declspec(uuid("7574e121-74a6-3626-b578-0783badb19d2"))
-_Hash : IDispatch
-{};
-
-struct __declspec(uuid("6ba6ea7a-c9fc-3e73-82ec-18f29d83eefd"))
-_HashMembershipCondition : IDispatch
-{};
-
-struct __declspec(uuid("77cca693-abf6-3773-bf58-c0b02701a744"))
-_Publisher : IDispatch
-{};
-
-struct __declspec(uuid("3515cf63-9863-3044-b3e1-210e98efc702"))
-_PublisherMembershipCondition : IDispatch
-{};
-
-struct __declspec(uuid("42ca6b3f-8cb9-3005-a7c1-ee9021db369b"))
-_ClaimsIdentity : IDispatch
-{};
-
-struct __declspec(uuid("9a37d8b2-2256-3fe3-8bf0-4fc421a1244f"))
-_GenericIdentity : IDispatch
-{};
-
-struct __declspec(uuid("d26a9704-bf99-3a3f-ac55-96af1a314c7f"))
-_ClaimsPrincipal : IDispatch
-{};
-
-struct __declspec(uuid("b4701c26-1509-3726-b2e1-409a636c9b4f"))
-_GenericPrincipal : IDispatch
-{};
-
-struct __declspec(uuid("d8cf3f23-1a66-3344-8230-07eb53970b85"))
-_WindowsIdentity : IDispatch
-{};
-
-struct __declspec(uuid("60ecfdda-650a-324c-b4b3-f4d75b563bb1"))
-_WindowsImpersonationContext : IDispatch
-{};
-
-struct __declspec(uuid("6c42baf9-1893-34fc-b3af-06931e9b34a3"))
-_WindowsPrincipal : IDispatch
-{};
-
-struct __declspec(uuid("1b6ed26a-4b7f-34fc-b2c8-8109d684b3df"))
-_UnmanagedFunctionPointerAttribute : IDispatch
-{};
-
-struct __declspec(uuid("bbe41ac5-8692-3427-9ae1-c1058a38d492"))
-_DispIdAttribute : IDispatch
-{};
-
-struct __declspec(uuid("a2145f38-cac1-33dd-a318-21948af6825d"))
-_InterfaceTypeAttribute : IDispatch
-{};
-
-struct __declspec(uuid("0c1e7b57-b9b1-36e4-8396-549c29062a81"))
-_ComDefaultInterfaceAttribute : IDispatch
-{};
-
-struct __declspec(uuid("6b6391ee-842f-3e9a-8eee-f13325e10996"))
-_ClassInterfaceAttribute : IDispatch
-{};
-
-struct __declspec(uuid("1e7fffe2-aad9-34ee-8a9f-3c016b880ff0"))
-_ComVisibleAttribute : IDispatch
-{};
-
-struct __declspec(uuid("288a86d1-6f4f-39c9-9e42-162cf1c37226"))
-_TypeLibImportClassAttribute : IDispatch
-{};
-
-struct __declspec(uuid("4ab67927-3c86-328a-8186-f85357dd5527"))
-_LCIDConversionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("51ba926f-aab5-3945-b8a6-c8f0f4a7d12b"))
-_ComRegisterFunctionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("9f164188-34eb-3f86-9f74-0bbe4155e65e"))
-_ComUnregisterFunctionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("2b9f01df-5a12-3688-98d6-c34bf5ed1865"))
-_ProgIdAttribute : IDispatch
-{};
-
-struct __declspec(uuid("3f3311ce-6baf-3fb0-b855-489aff740b6e"))
-_ImportedFromTypeLibAttribute : IDispatch
-{};
-
-struct __declspec(uuid("5778e7c7-2040-330e-b47a-92974dffcfd4"))
-_IDispatchImplAttribute : IDispatch
-{};
-
-struct __declspec(uuid("e1984175-55f5-3065-82d8-a683fdfcf0ac"))
-_ComSourceInterfacesAttribute : IDispatch
-{};
-
-struct __declspec(uuid("fd5b6aac-ff8c-3472-b894-cd6dfadb6939"))
-_ComConversionLossAttribute : IDispatch
-{};
-
-struct __declspec(uuid("b5a1729e-b721-3121-a838-fde43af13468"))
-_TypeLibTypeAttribute : IDispatch
-{};
-
-struct __declspec(uuid("3d18a8e2-eede-3139-b29d-8cac057955df"))
-_TypeLibFuncAttribute : IDispatch
-{};
-
-struct __declspec(uuid("7b89862a-02a4-3279-8b42-4095fa3a778e"))
-_TypeLibVarAttribute : IDispatch
-{};
-
-struct __declspec(uuid("d858399f-e19e-3423-a720-ac12abe2e5e8"))
-_MarshalAsAttribute : IDispatch
-{};
-
-struct __declspec(uuid("1b093056-5454-386f-8971-bbcbc4e9a8f3"))
-_ComImportAttribute : IDispatch
-{};
-
-struct __declspec(uuid("74435dad-ec55-354b-8f5b-fa70d13b6293"))
-_GuidAttribute : IDispatch
-{};
-
-struct __declspec(uuid("fdf2a2ee-c882-3198-a48b-e37f0e574dfa"))
-_PreserveSigAttribute : IDispatch
-{};
-
-struct __declspec(uuid("8474b65c-c39a-3d05-893d-577b9a314615"))
-_InAttribute : IDispatch
-{};
-
-struct __declspec(uuid("0697fc8c-9b04-3783-95c7-45eccac1ca27"))
-_OutAttribute : IDispatch
-{};
-
-struct __declspec(uuid("0d6bd9ad-198e-3904-ad99-f6f82a2787c4"))
-_OptionalAttribute : IDispatch
-{};
-
-struct __declspec(uuid("a1a26181-d55e-3ee2-96e6-70b354ef9371"))
-_DllImportAttribute : IDispatch
-{};
-
-struct __declspec(uuid("23753322-c7b3-3f9a-ac96-52672c1b1ca9"))
-_StructLayoutAttribute : IDispatch
-{};
-
-struct __declspec(uuid("c14342b8-bafd-322a-bb71-62c672da284e"))
-_FieldOffsetAttribute : IDispatch
-{};
-
-struct __declspec(uuid("e78785c4-3a73-3c15-9390-618bf3a14719"))
-_ComAliasNameAttribute : IDispatch
-{};
-
-struct __declspec(uuid("57b908a8-c082-3581-8a47-6b41b86e8fdc"))
-_AutomationProxyAttribute : IDispatch
-{};
-
-struct __declspec(uuid("c69e96b2-6161-3621-b165-5805198c6b8d"))
-_PrimaryInteropAssemblyAttribute : IDispatch
-{};
-
-struct __declspec(uuid("15d54c00-7c95-38d7-b859-e19346677dcd"))
-_CoClassAttribute : IDispatch
-{};
+}}
+
+RIDL!{#[uuid(0xfe8a2546, 0x3478, 0x3fad, 0xbe, 0x1d, 0xda, 0x7b, 0xc2, 0x5c, 0x4e, 0x4e)]
+interface _CodeConnectAccess(_CodeConnectAccessVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa8f69eca, 0x8c48, 0x3b5e, 0x92, 0xa1, 0x65, 0x49, 0x25, 0x05, 0x80, 0x59)]
+interface _NetCodeGroup(_NetCodeGroupVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x34b0417e, 0xe71d, 0x304c, 0x9f, 0xac, 0x68, 0x93, 0x50, 0xa1, 0xb4, 0x1c)]
+interface _PermissionRequestEvidence(_PermissionRequestEvidenceVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa9c9f3d9, 0xe153, 0x39b8, 0xa5, 0x33, 0xb8, 0xdf, 0x46, 0x64, 0x40, 0x7b)]
+interface _PolicyException(_PolicyExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x44494e35, 0xc370, 0x3014, 0xbc, 0x78, 0x0f, 0x2e, 0xcb, 0xf8, 0x3f, 0x53)]
+interface _PolicyLevel(_PolicyLevelVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3eefd1fc, 0x4d8d, 0x3177, 0x99, 0xf6, 0x6c, 0x19, 0xd9, 0xe0, 0x88, 0xd3)]
+interface _PolicyStatement(_PolicyStatementVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x90c40b4c, 0xb0d0, 0x30f5, 0xb5, 0x20, 0xfd, 0xba, 0x97, 0xbc, 0x31, 0xa0)]
+interface _Site(_SiteVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0a7c3542, 0x8031, 0x3593, 0x87, 0x2c, 0x78, 0xd8, 0x5d, 0x7c, 0xc2, 0x73)]
+interface _SiteMembershipCondition(_SiteMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x2a75c1fd, 0x06b0, 0x3cbb, 0xb4, 0x67, 0x25, 0x45, 0xd4, 0xd6, 0xc8, 0x65)]
+interface _StrongName(_StrongNameVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x579e93bc, 0xffab, 0x3b8d, 0x91, 0x81, 0xce, 0x9c, 0x22, 0xb5, 0x19, 0x15)]
+interface _StrongNameMembershipCondition(_StrongNameMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd9d822de, 0x44e5, 0x33ce, 0xa4, 0x3f, 0x17, 0x3e, 0x47, 0x5c, 0xec, 0xb1)]
+interface _UnionCodeGroup(_UnionCodeGroupVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd94ed9bf, 0xc065, 0x3703, 0x81, 0xa2, 0x2f, 0x76, 0xea, 0x8e, 0x31, 0x2f)]
+interface _Url(_UrlVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xbb7a158d, 0xdbd9, 0x3e13, 0xb1, 0x37, 0x8e, 0x61, 0xe8, 0x7e, 0x11, 0x28)]
+interface _UrlMembershipCondition(_UrlMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x742e0c26, 0x0e23, 0x3d20, 0x96, 0x8c, 0xd2, 0x21, 0x09, 0x49, 0x09, 0xaa)]
+interface _Zone(_ZoneVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xadbc3463, 0x0101, 0x3429, 0xa0, 0x6c, 0xdb, 0x2f, 0x1d, 0xd6, 0xb7, 0x24)]
+interface _ZoneMembershipCondition(_ZoneMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa7aef52c, 0xb47b, 0x3660, 0xbb, 0x3e, 0x34, 0x34, 0x7d, 0x56, 0xdb, 0x46)]
+interface _GacInstalled(_GacInstalledVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb2217ab5, 0x6e55, 0x3ff6, 0xa1, 0xa9, 0x1b, 0x0d, 0xc0, 0x58, 0x50, 0x40)]
+interface _GacMembershipCondition(_GacMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x7574e121, 0x74a6, 0x3626, 0xb5, 0x78, 0x07, 0x83, 0xba, 0xdb, 0x19, 0xd2)]
+interface _Hash(_HashVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x6ba6ea7a, 0xc9fc, 0x3e73, 0x82, 0xec, 0x18, 0xf2, 0x9d, 0x83, 0xee, 0xfd)]
+interface _HashMembershipCondition(_HashMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x77cca693, 0xabf6, 0x3773, 0xbf, 0x58, 0xc0, 0xb0, 0x27, 0x01, 0xa7, 0x44)]
+interface _Publisher(_PublisherVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3515cf63, 0x9863, 0x3044, 0xb3, 0xe1, 0x21, 0x0e, 0x98, 0xef, 0xc7, 0x02)]
+interface _PublisherMembershipCondition(_PublisherMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x42ca6b3f, 0x8cb9, 0x3005, 0xa7, 0xc1, 0xee, 0x90, 0x21, 0xdb, 0x36, 0x9b)]
+interface _ClaimsIdentity(_ClaimsIdentityVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x9a37d8b2, 0x2256, 0x3fe3, 0x8b, 0xf0, 0x4f, 0xc4, 0x21, 0xa1, 0x24, 0x4f)]
+interface _GenericIdentity(_GenericIdentityVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd26a9704, 0xbf99, 0x3a3f, 0xac, 0x55, 0x96, 0xaf, 0x1a, 0x31, 0x4c, 0x7f)]
+interface _ClaimsPrincipal(_ClaimsPrincipalVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb4701c26, 0x1509, 0x3726, 0xb2, 0xe1, 0x40, 0x9a, 0x63, 0x6c, 0x9b, 0x4f)]
+interface _GenericPrincipal(_GenericPrincipalVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd8cf3f23, 0x1a66, 0x3344, 0x82, 0x30, 0x07, 0xeb, 0x53, 0x97, 0x0b, 0x85)]
+interface _WindowsIdentity(_WindowsIdentityVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x60ecfdda, 0x650a, 0x324c, 0xb4, 0xb3, 0xf4, 0xd7, 0x5b, 0x56, 0x3b, 0xb1)]
+interface _WindowsImpersonationContext(_WindowsImpersonationContextVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x6c42baf9, 0x1893, 0x34fc, 0xb3, 0xaf, 0x06, 0x93, 0x1e, 0x9b, 0x34, 0xa3)]
+interface _WindowsPrincipal(_WindowsPrincipalVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x1b6ed26a, 0x4b7f, 0x34fc, 0xb2, 0xc8, 0x81, 0x09, 0xd6, 0x84, 0xb3, 0xdf)]
+interface _UnmanagedFunctionPointerAttribute(_UnmanagedFunctionPointerAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xbbe41ac5, 0x8692, 0x3427, 0x9a, 0xe1, 0xc1, 0x05, 0x8a, 0x38, 0xd4, 0x92)]
+interface _DispIdAttribute(_DispIdAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa2145f38, 0xcac1, 0x33dd, 0xa3, 0x18, 0x21, 0x94, 0x8a, 0xf6, 0x82, 0x5d)]
+interface _InterfaceTypeAttribute(_InterfaceTypeAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0c1e7b57, 0xb9b1, 0x36e4, 0x83, 0x96, 0x54, 0x9c, 0x29, 0x06, 0x2a, 0x81)]
+interface _ComDefaultInterfaceAttribute(_ComDefaultInterfaceAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x6b6391ee, 0x842f, 0x3e9a, 0x8e, 0xee, 0xf1, 0x33, 0x25, 0xe1, 0x09, 0x96)]
+interface _ClassInterfaceAttribute(_ClassInterfaceAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x1e7fffe2, 0xaad9, 0x34ee, 0x8a, 0x9f, 0x3c, 0x01, 0x6b, 0x88, 0x0f, 0xf0)]
+interface _ComVisibleAttribute(_ComVisibleAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x288a86d1, 0x6f4f, 0x39c9, 0x9e, 0x42, 0x16, 0x2c, 0xf1, 0xc3, 0x72, 0x26)]
+interface _TypeLibImportClassAttribute(_TypeLibImportClassAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x4ab67927, 0x3c86, 0x328a, 0x81, 0x86, 0xf8, 0x53, 0x57, 0xdd, 0x55, 0x27)]
+interface _LCIDConversionAttribute(_LCIDConversionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x51ba926f, 0xaab5, 0x3945, 0xb8, 0xa6, 0xc8, 0xf0, 0xf4, 0xa7, 0xd1, 0x2b)]
+interface _ComRegisterFunctionAttribute(_ComRegisterFunctionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x9f164188, 0x34eb, 0x3f86, 0x9f, 0x74, 0x0b, 0xbe, 0x41, 0x55, 0xe6, 0x5e)]
+interface _ComUnregisterFunctionAttribute(_ComUnregisterFunctionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x2b9f01df, 0x5a12, 0x3688, 0x98, 0xd6, 0xc3, 0x4b, 0xf5, 0xed, 0x18, 0x65)]
+interface _ProgIdAttribute(_ProgIdAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3f3311ce, 0x6baf, 0x3fb0, 0xb8, 0x55, 0x48, 0x9a, 0xff, 0x74, 0x0b, 0x6e)]
+interface _ImportedFromTypeLibAttribute(_ImportedFromTypeLibAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x5778e7c7, 0x2040, 0x330e, 0xb4, 0x7a, 0x92, 0x97, 0x4d, 0xff, 0xcf, 0xd4)]
+interface _IDispatchImplAttribute(_IDispatchImplAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xe1984175, 0x55f5, 0x3065, 0x82, 0xd8, 0xa6, 0x83, 0xfd, 0xfc, 0xf0, 0xac)]
+interface _ComSourceInterfacesAttribute(_ComSourceInterfacesAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xfd5b6aac, 0xff8c, 0x3472, 0xb8, 0x94, 0xcd, 0x6d, 0xfa, 0xdb, 0x69, 0x39)]
+interface _ComConversionLossAttribute(_ComConversionLossAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xb5a1729e, 0xb721, 0x3121, 0xa8, 0x38, 0xfd, 0xe4, 0x3a, 0xf1, 0x34, 0x68)]
+interface _TypeLibTypeAttribute(_TypeLibTypeAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3d18a8e2, 0xeede, 0x3139, 0xb2, 0x9d, 0x8c, 0xac, 0x05, 0x79, 0x55, 0xdf)]
+interface _TypeLibFuncAttribute(_TypeLibFuncAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x7b89862a, 0x02a4, 0x3279, 0x8b, 0x42, 0x40, 0x95, 0xfa, 0x3a, 0x77, 0x8e)]
+interface _TypeLibVarAttribute(_TypeLibVarAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd858399f, 0xe19e, 0x3423, 0xa7, 0x20, 0xac, 0x12, 0xab, 0xe2, 0xe5, 0xe8)]
+interface _MarshalAsAttribute(_MarshalAsAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x1b093056, 0x5454, 0x386f, 0x89, 0x71, 0xbb, 0xcb, 0xc4, 0xe9, 0xa8, 0xf3)]
+interface _ComImportAttribute(_ComImportAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x74435dad, 0xec55, 0x354b, 0x8f, 0x5b, 0xfa, 0x70, 0xd1, 0x3b, 0x62, 0x93)]
+interface _GuidAttribute(_GuidAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xfdf2a2ee, 0xc882, 0x3198, 0xa4, 0x8b, 0xe3, 0x7f, 0x0e, 0x57, 0x4d, 0xfa)]
+interface _PreserveSigAttribute(_PreserveSigAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x8474b65c, 0xc39a, 0x3d05, 0x89, 0x3d, 0x57, 0x7b, 0x9a, 0x31, 0x46, 0x15)]
+interface _InAttribute(_InAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0697fc8c, 0x9b04, 0x3783, 0x95, 0xc7, 0x45, 0xec, 0xca, 0xc1, 0xca, 0x27)]
+interface _OutAttribute(_OutAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0d6bd9ad, 0x198e, 0x3904, 0xad, 0x99, 0xf6, 0xf8, 0x2a, 0x27, 0x87, 0xc4)]
+interface _OptionalAttribute(_OptionalAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa1a26181, 0xd55e, 0x3ee2, 0x96, 0xe6, 0x70, 0xb3, 0x54, 0xef, 0x93, 0x71)]
+interface _DllImportAttribute(_DllImportAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x23753322, 0xc7b3, 0x3f9a, 0xac, 0x96, 0x52, 0x67, 0x2c, 0x1b, 0x1c, 0xa9)]
+interface _StructLayoutAttribute(_StructLayoutAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xc14342b8, 0xbafd, 0x322a, 0xbb, 0x71, 0x62, 0xc6, 0x72, 0xda, 0x28, 0x4e)]
+interface _FieldOffsetAttribute(_FieldOffsetAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xe78785c4, 0x3a73, 0x3c15, 0x93, 0x90, 0x61, 0x8b, 0xf3, 0xa1, 0x47, 0x19)]
+interface _ComAliasNameAttribute(_ComAliasNameAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x57b908a8, 0xc082, 0x3581, 0x8a, 0x47, 0x6b, 0x41, 0xb8, 0x6e, 0x8f, 0xdc)]
+interface _AutomationProxyAttribute(_AutomationProxyAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xc69e96b2, 0x6161, 0x3621, 0xb1, 0x65, 0x58, 0x05, 0x19, 0x8c, 0x6b, 0x8d)]
+interface _PrimaryInteropAssemblyAttribute(_PrimaryInteropAssemblyAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x15d54c00, 0x7c95, 0x38d7, 0xb8, 0x59, 0xe1, 0x93, 0x46, 0x67, 0x7d, 0xcd)]
+interface _CoClassAttribute(_CoClassAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("76cc0491-9a10-35c0-8a66-7931ec345b7f"))
-_ComEventInterfaceAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x76cc0491, 0x9a10, 0x35c0, 0x8a, 0x66, 0x79, 0x31, 0xec, 0x34, 0x5b, 0x7f)]
+interface _ComEventInterfaceAttribute(_ComEventInterfaceAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a03b61a4-ca61-3460-8232-2f4ec96aa88f"))
-_TypeLibVersionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xa03b61a4, 0xca61, 0x3460, 0x82, 0x32, 0x2f, 0x4e, 0xc9, 0x6a, 0xa8, 0x8f)]
+interface _TypeLibVersionAttribute(_TypeLibVersionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ad419379-2ac8-3588-ab1e-0115413277c4"))
-_ComCompatibleVersionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xad419379, 0x2ac8, 0x3588, 0xab, 0x1e, 0x01, 0x15, 0x41, 0x32, 0x77, 0xc4)]
+interface _ComCompatibleVersionAttribute(_ComCompatibleVersionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ed47abe7-c84b-39f9-be1b-828cfb925afe"))
-_BestFitMappingAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xed47abe7, 0xc84b, 0x39f9, 0xbe, 0x1b, 0x82, 0x8c, 0xfb, 0x92, 0x5a, 0xfe)]
+interface _BestFitMappingAttribute(_BestFitMappingAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b26b3465-28e4-33b5-b9bf-dd7c4f6461f5"))
-_DefaultCharSetAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xb26b3465, 0x28e4, 0x33b5, 0xb9, 0xbf, 0xdd, 0x7c, 0x4f, 0x64, 0x61, 0xf5)]
+interface _DefaultCharSetAttribute(_DefaultCharSetAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a54ac093-bfce-37b0-a81f-148dfed0971f"))
-_SetWin32ContextInIDispatchAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xa54ac093, 0xbfce, 0x37b0, 0xa8, 0x1f, 0x14, 0x8d, 0xfe, 0xd0, 0x97, 0x1f)]
+interface _SetWin32ContextInIDispatchAttribute(_SetWin32ContextInIDispatchAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a83f04e9-fd28-384a-9dff-410688ac23ab"))
-_ExternalException : IDispatch
-{};
+RIDL!{#[uuid(0xa83f04e9, 0xfd28, 0x384a, 0x9d, 0xff, 0x41, 0x06, 0x88, 0xac, 0x23, 0xab)]
+interface _ExternalException(_ExternalExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a28c19df-b488-34ae-becc-7de744d17f7b"))
-_COMException : IDispatch
-{};
+RIDL!{#[uuid(0xa28c19df, 0xb488, 0x34ae, 0xbe, 0xcc, 0x7d, 0xe7, 0x44, 0xd1, 0x7f, 0x7b)]
+interface _COMException(_COMExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("76e5dbd6-f960-3c65-8ea6-fc8ad6a67022"))
-_InvalidOleVariantTypeException : IDispatch
-{};
+RIDL!{#[uuid(0x76e5dbd6, 0xf960, 0x3c65, 0x8e, 0xa6, 0xfc, 0x8a, 0xd6, 0xa6, 0x70, 0x22)]
+interface _InvalidOleVariantTypeException(_InvalidOleVariantTypeExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("523f42a5-1fd2-355d-82bf-0d67c4a0a0e7"))
-_MarshalDirectiveException : IDispatch
-{};
+RIDL!{#[uuid(0x523f42a5, 0x1fd2, 0x355d, 0x82, 0xbf, 0x0d, 0x67, 0xc4, 0xa0, 0xa0, 0xe7)]
+interface _MarshalDirectiveException(_MarshalDirectiveExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("edcee21a-3e3a-331e-a86d-274028be6716"))
-_RuntimeEnvironment : IDispatch
-{};
+RIDL!{#[uuid(0xedcee21a, 0x3e3a, 0x331e, 0xa8, 0x6d, 0x27, 0x40, 0x28, 0xbe, 0x67, 0x16)]
+interface _RuntimeEnvironment(_RuntimeEnvironmentVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3e72e067-4c5e-36c8-bbef-1e2978c7780d"))
-_SEHException : IDispatch
-{};
+RIDL!{#[uuid(0x3e72e067, 0x4c5e, 0x36c8, 0xbb, 0xef, 0x1e, 0x29, 0x78, 0xc7, 0x78, 0x0d)]
+interface _SEHException(_SEHExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("80da5818-609f-32b8-a9f8-95fcfbdb9c8e"))
-_BStrWrapper : IDispatch
-{};
+RIDL!{#[uuid(0x80da5818, 0x609f, 0x32b8, 0xa9, 0xf8, 0x95, 0xfc, 0xfb, 0xdb, 0x9c, 0x8e)]
+interface _BStrWrapper(_BStrWrapperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7df6f279-da62-3c9f-8944-4dd3c0f08170"))
-_CurrencyWrapper : IDispatch
-{};
+RIDL!{#[uuid(0x7df6f279, 0xda62, 0x3c9f, 0x89, 0x44, 0x4d, 0xd3, 0xc0, 0xf0, 0x81, 0x70)]
+interface _CurrencyWrapper(_CurrencyWrapperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("72103c67-d511-329c-b19a-dd5ec3f1206c"))
-_DispatchWrapper : IDispatch
-{};
+RIDL!{#[uuid(0x72103c67, 0xd511, 0x329c, 0xb1, 0x9a, 0xdd, 0x5e, 0xc3, 0xf1, 0x20, 0x6c)]
+interface _DispatchWrapper(_DispatchWrapperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f79db336-06be-3959-a5ab-58b2ab6c5fd1"))
-_ErrorWrapper : IDispatch
-{};
+RIDL!{#[uuid(0xf79db336, 0x06be, 0x3959, 0xa5, 0xab, 0x58, 0xb2, 0xab, 0x6c, 0x5f, 0xd1)]
+interface _ErrorWrapper(_ErrorWrapperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("519eb857-7a2d-3a95-a2a3-8bb8ed63d41b"))
-_ExtensibleClassFactory : IDispatch
-{};
+RIDL!{#[uuid(0x519eb857, 0x7a2d, 0x3a95, 0xa2, 0xa3, 0x8b, 0xb8, 0xed, 0x63, 0xd4, 0x1b)]
+interface _ExtensibleClassFactory(_ExtensibleClassFactoryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("de9156b5-5e7a-3041-bf45-a29a6c2cf48a"))
-_InvalidComObjectException : IDispatch
-{};
+RIDL!{#[uuid(0xde9156b5, 0x5e7a, 0x3041, 0xbf, 0x45, 0xa2, 0x9a, 0x6c, 0x2c, 0xf4, 0x8a)]
+interface _InvalidComObjectException(_InvalidComObjectExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e4a369d3-6cf0-3b05-9c0c-1a91e331641a"))
-_ObjectCreationDelegate : IDispatch
-{};
+RIDL!{#[uuid(0xe4a369d3, 0x6cf0, 0x3b05, 0x9c, 0x0c, 0x1a, 0x91, 0xe3, 0x31, 0x64, 0x1a)]
+interface _ObjectCreationDelegate(_ObjectCreationDelegateVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8608fe7b-2fdc-318a-b711-6f7b2feded06"))
-_SafeArrayRankMismatchException : IDispatch
-{};
+RIDL!{#[uuid(0x8608fe7b, 0x2fdc, 0x318a, 0xb7, 0x11, 0x6f, 0x7b, 0x2f, 0xed, 0xed, 0x06)]
+interface _SafeArrayRankMismatchException(_SafeArrayRankMismatchExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e093fb32-e43b-3b3f-a163-742c920c2af3"))
-_SafeArrayTypeMismatchException : IDispatch
-{};
+RIDL!{#[uuid(0xe093fb32, 0xe43b, 0x3b3f, 0xa1, 0x63, 0x74, 0x2c, 0x92, 0x0c, 0x2a, 0xf3)]
+interface _SafeArrayTypeMismatchException(_SafeArrayTypeMismatchExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1c8d8b14-4589-3dca-8e0f-a30e80fbd1a8"))
-_UnknownWrapper : IDispatch
-{};
+RIDL!{#[uuid(0x1c8d8b14, 0x4589, 0x3dca, 0x8e, 0x0f, 0xa3, 0x0e, 0x80, 0xfb, 0xd1, 0xa8)]
+interface _UnknownWrapper(_UnknownWrapperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("556137ea-8825-30bc-9d49-e47a9db034ee"))
-_TextWriter : IDispatch
-{};
+RIDL!{#[uuid(0x556137ea, 0x8825, 0x30bc, 0x9d, 0x49, 0xe4, 0x7a, 0x9d, 0xb0, 0x34, 0xee)]
+interface _TextWriter(_TextWriterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2752364a-924f-3603-8f6f-6586df98b292"))
-_Stream : IDispatch
-{};
+RIDL!{#[uuid(0x2752364a, 0x924f, 0x3603, 0x8f, 0x6f, 0x65, 0x86, 0xdf, 0x98, 0xb2, 0x92)]
+interface _Stream(_StreamVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9be679a6-61fd-38fc-a7b2-89982d33338b"))
-IServerResponseChannelSinkStack : IDispatch
+RIDL!{#[uuid(0x9be679a6, 0x61fd, 0x38fc, 0xa7, 0xb2, 0x89, 0x98, 0x2d, 0x33, 0x33, 0x8b)]
+interface IServerResponseChannelSinkStack(IServerResponseChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -2458,186 +2458,186 @@ IServerResponseChannelSinkStack : IDispatch
         /*[in]*/ struct IMessage * msg,
         /*[in]*/ struct ITransportHeaders * headers,
         /*[out,retval]*/ struct _Stream * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("442e3c03-a205-3f21-aa4d-31768bb8ea28"))
-_BinaryReader : IDispatch
-{};
+RIDL!{#[uuid(0x442e3c03, 0xa205, 0x3f21, 0xaa, 0x4d, 0x31, 0x76, 0x8b, 0xb8, 0xea, 0x28)]
+interface _BinaryReader(_BinaryReaderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4ca8147e-baa3-3a7f-92ce-a4fd7f17d8da"))
-_BinaryWriter : IDispatch
-{};
+RIDL!{#[uuid(0x4ca8147e, 0xbaa3, 0x3a7f, 0x92, 0xce, 0xa4, 0xfd, 0x7f, 0x17, 0xd8, 0xda)]
+interface _BinaryWriter(_BinaryWriterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4b7571c3-1275-3457-8fee-9976fd3937e3"))
-_BufferedStream : IDispatch
-{};
+RIDL!{#[uuid(0x4b7571c3, 0x1275, 0x3457, 0x8f, 0xee, 0x99, 0x76, 0xfd, 0x39, 0x37, 0xe3)]
+interface _BufferedStream(_BufferedStreamVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8ce58ff5-f26d-38a4-9195-0e2ecb3b56b9"))
-_Directory : IDispatch
-{};
+RIDL!{#[uuid(0x8ce58ff5, 0xf26d, 0x38a4, 0x91, 0x95, 0x0e, 0x2e, 0xcb, 0x3b, 0x56, 0xb9)]
+interface _Directory(_DirectoryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a5d29a57-36a8-3e36-a099-7458b1fabaa2"))
-_FileSystemInfo : IDispatch
-{};
+RIDL!{#[uuid(0xa5d29a57, 0x36a8, 0x3e36, 0xa0, 0x99, 0x74, 0x58, 0xb1, 0xfa, 0xba, 0xa2)]
+interface _FileSystemInfo(_FileSystemInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("487e52f1-2bb9-3bd0-a0ca-6728b3a1d051"))
-_DirectoryInfo : IDispatch
-{};
+RIDL!{#[uuid(0x487e52f1, 0x2bb9, 0x3bd0, 0xa0, 0xca, 0x67, 0x28, 0xb3, 0xa1, 0xd0, 0x51)]
+interface _DirectoryInfo(_DirectoryInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c5bfc9bf-27a7-3a59-a986-44c85f3521bf"))
-_IOException : IDispatch
-{};
+RIDL!{#[uuid(0xc5bfc9bf, 0x27a7, 0x3a59, 0xa9, 0x86, 0x44, 0xc8, 0x5f, 0x35, 0x21, 0xbf)]
+interface _IOException(_IOExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c8a200e4-9735-30e4-b168-ed861a3020f2"))
-_DirectoryNotFoundException : IDispatch
-{};
+RIDL!{#[uuid(0xc8a200e4, 0x9735, 0x30e4, 0xb1, 0x68, 0xed, 0x86, 0x1a, 0x30, 0x20, 0xf2)]
+interface _DirectoryNotFoundException(_DirectoryNotFoundExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ce83a763-940f-341f-b880-332325eb6f4b"))
-_DriveInfo : IDispatch
-{};
+RIDL!{#[uuid(0xce83a763, 0x940f, 0x341f, 0xb8, 0x80, 0x33, 0x23, 0x25, 0xeb, 0x6f, 0x4b)]
+interface _DriveInfo(_DriveInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b24e9559-a662-3762-ae33-bc7dfdd538f4"))
-_DriveNotFoundException : IDispatch
-{};
+RIDL!{#[uuid(0xb24e9559, 0xa662, 0x3762, 0xae, 0x33, 0xbc, 0x7d, 0xfd, 0xd5, 0x38, 0xf4)]
+interface _DriveNotFoundException(_DriveNotFoundExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d625afd0-8fd9-3113-a900-43912a54c421"))
-_EndOfStreamException : IDispatch
-{};
+RIDL!{#[uuid(0xd625afd0, 0x8fd9, 0x3113, 0xa9, 0x00, 0x43, 0x91, 0x2a, 0x54, 0xc4, 0x21)]
+interface _EndOfStreamException(_EndOfStreamExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5d59051f-e19d-329a-9962-fd00d552e13d"))
-_File : IDispatch
-{};
+RIDL!{#[uuid(0x5d59051f, 0xe19d, 0x329a, 0x99, 0x62, 0xfd, 0x00, 0xd5, 0x52, 0xe1, 0x3d)]
+interface _File(_FileVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c3c429f9-8590-3a01-b2b2-434837f3d16d"))
-_FileInfo : IDispatch
-{};
+RIDL!{#[uuid(0xc3c429f9, 0x8590, 0x3a01, 0xb2, 0xb2, 0x43, 0x48, 0x37, 0xf3, 0xd1, 0x6d)]
+interface _FileInfo(_FileInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("51d2c393-9b70-3551-84b5-ff5409fb3ada"))
-_FileLoadException : IDispatch
-{};
+RIDL!{#[uuid(0x51d2c393, 0x9b70, 0x3551, 0x84, 0xb5, 0xff, 0x54, 0x09, 0xfb, 0x3a, 0xda)]
+interface _FileLoadException(_FileLoadExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a15a976b-81e3-3ef4-8ff1-d75ddbe20aef"))
-_FileNotFoundException : IDispatch
-{};
+RIDL!{#[uuid(0xa15a976b, 0x81e3, 0x3ef4, 0x8f, 0xf1, 0xd7, 0x5d, 0xdb, 0xe2, 0x0a, 0xef)]
+interface _FileNotFoundException(_FileNotFoundExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("74265195-4a46-3d6f-a9dd-69c367ea39c8"))
-_FileStream : IDispatch
-{};
+RIDL!{#[uuid(0x74265195, 0x4a46, 0x3d6f, 0xa9, 0xdd, 0x69, 0xc3, 0x67, 0xea, 0x39, 0xc8)]
+interface _FileStream(_FileStreamVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2dbc46fe-b3dd-3858-afc2-d3a2d492a588"))
-_MemoryStream : IDispatch
-{};
+RIDL!{#[uuid(0x2dbc46fe, 0xb3dd, 0x3858, 0xaf, 0xc2, 0xd3, 0xa2, 0xd4, 0x92, 0xa5, 0x88)]
+interface _MemoryStream(_MemoryStreamVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6df93530-d276-31d9-8573-346778c650af"))
-_Path : IDispatch
-{};
+RIDL!{#[uuid(0x6df93530, 0xd276, 0x31d9, 0x85, 0x73, 0x34, 0x67, 0x78, 0xc6, 0x50, 0xaf)]
+interface _Path(_PathVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("468b8eb4-89ac-381b-8f86-5e47ec0648b4"))
-_PathTooLongException : IDispatch
-{};
+RIDL!{#[uuid(0x468b8eb4, 0x89ac, 0x381b, 0x8f, 0x86, 0x5e, 0x47, 0xec, 0x06, 0x48, 0xb4)]
+interface _PathTooLongException(_PathTooLongExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("897471f2-9450-3f03-a41f-d2e1f1397854"))
-_TextReader : IDispatch
-{};
+RIDL!{#[uuid(0x897471f2, 0x9450, 0x3f03, 0xa4, 0x1f, 0xd2, 0xe1, 0xf1, 0x39, 0x78, 0x54)]
+interface _TextReader(_TextReaderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e645b470-dc3f-3ce0-8104-5837feda04b3"))
-_StreamReader : IDispatch
-{};
+RIDL!{#[uuid(0xe645b470, 0xdc3f, 0x3ce0, 0x81, 0x04, 0x58, 0x37, 0xfe, 0xda, 0x04, 0xb3)]
+interface _StreamReader(_StreamReaderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1f124e1c-d05d-3643-a59f-c3de6051994f"))
-_StreamWriter : IDispatch
-{};
+RIDL!{#[uuid(0x1f124e1c, 0xd05d, 0x3643, 0xa5, 0x9f, 0xc3, 0xde, 0x60, 0x51, 0x99, 0x4f)]
+interface _StreamWriter(_StreamWriterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("59733b03-0ea5-358c-95b5-659fcd9aa0b4"))
-_StringReader : IDispatch
-{};
+RIDL!{#[uuid(0x59733b03, 0x0ea5, 0x358c, 0x95, 0xb5, 0x65, 0x9f, 0xcd, 0x9a, 0xa0, 0xb4)]
+interface _StringReader(_StringReaderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("cb9f94c0-d691-3b62-b0b2-3ce5309cfa62"))
-_StringWriter : IDispatch
-{};
+RIDL!{#[uuid(0xcb9f94c0, 0xd691, 0x3b62, 0xb0, 0xb2, 0x3c, 0xe5, 0x30, 0x9c, 0xfa, 0x62)]
+interface _StringWriter(_StringWriterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("998dcf16-f603-355d-8c89-3b675947997f"))
-_AccessedThroughPropertyAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x998dcf16, 0xf603, 0x355d, 0x8c, 0x89, 0x3b, 0x67, 0x59, 0x47, 0x99, 0x7f)]
+interface _AccessedThroughPropertyAttribute(_AccessedThroughPropertyAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a6c2239b-08e6-3822-9769-e3d4b0431b82"))
-_CallConvCdecl : IDispatch
-{};
+RIDL!{#[uuid(0xa6c2239b, 0x08e6, 0x3822, 0x97, 0x69, 0xe3, 0xd4, 0xb0, 0x43, 0x1b, 0x82)]
+interface _CallConvCdecl(_CallConvCdeclVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8e17a5cd-1160-32dc-8548-407e7c3827c9"))
-_CallConvStdcall : IDispatch
-{};
+RIDL!{#[uuid(0x8e17a5cd, 0x1160, 0x32dc, 0x85, 0x48, 0x40, 0x7e, 0x7c, 0x38, 0x27, 0xc9)]
+interface _CallConvStdcall(_CallConvStdcallVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("fa73dd3d-a472-35ed-b8be-f99a13581f72"))
-_CallConvThiscall : IDispatch
-{};
+RIDL!{#[uuid(0xfa73dd3d, 0xa472, 0x35ed, 0xb8, 0xbe, 0xf9, 0x9a, 0x13, 0x58, 0x1f, 0x72)]
+interface _CallConvThiscall(_CallConvThiscallVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3b452d17-3c5e-36c4-a12d-5e9276036cf8"))
-_CallConvFastcall : IDispatch
-{};
+RIDL!{#[uuid(0x3b452d17, 0x3c5e, 0x36c4, 0xa1, 0x2d, 0x5e, 0x92, 0x76, 0x03, 0x6c, 0xf8)]
+interface _CallConvFastcall(_CallConvFastcallVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("62caf4a2-6a78-3fc7-af81-a6bbf930761f"))
-_CustomConstantAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x62caf4a2, 0x6a78, 0x3fc7, 0xaf, 0x81, 0xa6, 0xbb, 0xf9, 0x30, 0x76, 0x1f)]
+interface _CustomConstantAttribute(_CustomConstantAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ef387020-b664-3acd-a1d2-806345845953"))
-_DateTimeConstantAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xef387020, 0xb664, 0x3acd, 0xa1, 0xd2, 0x80, 0x63, 0x45, 0x84, 0x59, 0x53)]
+interface _DateTimeConstantAttribute(_DateTimeConstantAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3c3a8c69-7417-32fa-aa20-762d85e1b594"))
-_DiscardableAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x3c3a8c69, 0x7417, 0x32fa, 0xaa, 0x20, 0x76, 0x2d, 0x85, 0xe1, 0xb5, 0x94)]
+interface _DiscardableAttribute(_DiscardableAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7e133967-ccec-3e89-8bd2-6cfca649ecbf"))
-_DecimalConstantAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x7e133967, 0xccec, 0x3e89, 0x8b, 0xd2, 0x6c, 0xfc, 0xa6, 0x49, 0xec, 0xbf)]
+interface _DecimalConstantAttribute(_DecimalConstantAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c5c4f625-2329-3382-8994-aaf561e5dfe9"))
-_CompilationRelaxationsAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xc5c4f625, 0x2329, 0x3382, 0x89, 0x94, 0xaa, 0xf5, 0x61, 0xe5, 0xdf, 0xe9)]
+interface _CompilationRelaxationsAttribute(_CompilationRelaxationsAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1eed213e-656a-3a73-a4b9-0d3b26fd942b"))
-_CompilerGlobalScopeAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x1eed213e, 0x656a, 0x3a73, 0xa4, 0xb9, 0x0d, 0x3b, 0x26, 0xfd, 0x94, 0x2b)]
+interface _CompilerGlobalScopeAttribute(_CompilerGlobalScopeAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("243368f5-67c9-3510-9424-335a8a67772f"))
-_IndexerNameAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x243368f5, 0x67c9, 0x3510, 0x94, 0x24, 0x33, 0x5a, 0x8a, 0x67, 0x77, 0x2f)]
+interface _IndexerNameAttribute(_IndexerNameAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0278c819-0c06-3756-b053-601a3e566d9b"))
-_IsVolatile : IDispatch
-{};
+RIDL!{#[uuid(0x0278c819, 0x0c06, 0x3756, 0xb0, 0x53, 0x60, 0x1a, 0x3e, 0x56, 0x6d, 0x9b)]
+interface _IsVolatile(_IsVolatileVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("98966503-5d80-3242-83ef-79e136f6b954"))
-_MethodImplAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x98966503, 0x5d80, 0x3242, 0x83, 0xef, 0x79, 0xe1, 0x36, 0xf6, 0xb9, 0x54)]
+interface _MethodImplAttribute(_MethodImplAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("db2c11d9-3870-35e7-a10c-a3ddc3dc79b1"))
-_RequiredAttributeAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xdb2c11d9, 0x3870, 0x35e7, 0xa1, 0x0c, 0xa3, 0xdd, 0xc3, 0xdc, 0x79, 0xb1)]
+interface _RequiredAttributeAttribute(_RequiredAttributeAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f68a4008-ab94-3370-a9ac-8cc99939f534"))
-_IsCopyConstructed : IDispatch
-{};
+RIDL!{#[uuid(0xf68a4008, 0xab94, 0x3370, 0xa9, 0xac, 0x8c, 0xc9, 0x99, 0x39, 0xf5, 0x34)]
+interface _IsCopyConstructed(_IsCopyConstructedVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("40e8e914-dc23-38a6-936b-90e4e3ab01fa"))
-_NativeCppClassAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x40e8e914, 0xdc23, 0x38a6, 0x93, 0x6b, 0x90, 0xe4, 0xe3, 0xab, 0x01, 0xfa)]
+interface _NativeCppClassAttribute(_NativeCppClassAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("97d0b28a-6932-3d74-b67f-6bcd3c921e7d"))
-_IDispatchConstantAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x97d0b28a, 0x6932, 0x3d74, 0xb6, 0x7f, 0x6b, 0xcd, 0x3c, 0x92, 0x1e, 0x7d)]
+interface _IDispatchConstantAttribute(_IDispatchConstantAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("54542649-ce64-3f96-bce5-fde3bb22f242"))
-_IUnknownConstantAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x54542649, 0xce64, 0x3f96, 0xbc, 0xe5, 0xfd, 0xe3, 0xbb, 0x22, 0xf2, 0x42)]
+interface _IUnknownConstantAttribute(_IUnknownConstantAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8d597c42-2cfd-32b6-b6d6-86c9e2cff00a"))
-_SecurityElement : IDispatch
-{};
+RIDL!{#[uuid(0x8d597c42, 0x2cfd, 0x32b6, 0xb6, 0xd6, 0x86, 0xc9, 0xe2, 0xcf, 0xf0, 0x0a)]
+interface _SecurityElement(_SecurityElementVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("fd46bde5-acdf-3ca5-b189-f0678387077f"))
-ISecurityEncodable : IDispatch
+RIDL!{#[uuid(0xfd46bde5, 0xacdf, 0x3ca5, 0xb1, 0x89, 0xf0, 0x67, 0x83, 0x87, 0x07, 0x7f)]
+interface ISecurityEncodable(ISecurityEncodableVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -2647,10 +2647,10 @@ ISecurityEncodable : IDispatch
         /*[out,retval]*/ struct _SecurityElement * * pRetVal ) = 0;
       virtual HRESULT __stdcall FromXml (
         /*[in]*/ struct _SecurityElement * e ) = 0;
-};
+}}
 
-struct __declspec(uuid("e6c21ba7-21bb-34e9-8e57-db66d8ce4a70"))
-ISecurityPolicyEncodable : IDispatch
+RIDL!{#[uuid(0xe6c21ba7, 0x21bb, 0x34e9, 0x8e, 0x57, 0xdb, 0x66, 0xd8, 0xce, 0x4a, 0x70)]
+interface ISecurityPolicyEncodable(ISecurityPolicyEncodableVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -2662,259 +2662,259 @@ ISecurityPolicyEncodable : IDispatch
       virtual HRESULT __stdcall FromXml (
         /*[in]*/ struct _SecurityElement * e,
         /*[in]*/ struct _PolicyLevel * level ) = 0;
-};
-
-struct __declspec(uuid("d9fcad88-d869-3788-a802-1b1e007c7a22"))
-_XmlSyntaxException : IDispatch
-{};
-
-struct __declspec(uuid("4803ce39-2f30-31fc-b84b-5a0141385269"))
-_CodeAccessPermission : IDispatch
-{};
-
-struct __declspec(uuid("0720590d-5218-352a-a337-5449e6bd19da"))
-_EnvironmentPermission : IDispatch
-{};
-
-struct __declspec(uuid("a8b7138c-8932-3d78-a585-a91569c743ac"))
-_FileDialogPermission : IDispatch
-{};
-
-struct __declspec(uuid("a2ed7efc-8e59-3ccc-ae92-ea2377f4d5ef"))
-_FileIOPermission : IDispatch
-{};
-
-struct __declspec(uuid("48815668-6c27-3312-803e-2757f55ce96a"))
-_SecurityAttribute : IDispatch
-{};
-
-struct __declspec(uuid("9c5149cb-d3c6-32fd-a0d5-95350de7b813"))
-_CodeAccessSecurityAttribute : IDispatch
-{};
-
-struct __declspec(uuid("9f8f73a3-1e99-3e51-a41b-179a41dc747c"))
-_HostProtectionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("7fee7903-f97c-3350-ad42-196b00ad2564"))
-_IsolatedStoragePermission : IDispatch
-{};
-
-struct __declspec(uuid("0d0c83e8-bde1-3ba5-b1ef-a8fc686d8bc9"))
-_IsolatedStorageFilePermission : IDispatch
-{};
-
-struct __declspec(uuid("4164071a-ed12-3bdd-af40-fdabcaa77d5f"))
-_EnvironmentPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("0ccca629-440f-313e-96cd-ba1b4b4997f7"))
-_FileDialogPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("0dca817d-f21a-3943-b54c-5e800ce5bc50"))
-_FileIOPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("edb51d1c-08ad-346a-be6f-d74fd6d6f965"))
-_KeyContainerPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("68ab69e4-5d68-3b51-b74d-1beab9f37f2b"))
-_PrincipalPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("d31eed10-a5f0-308f-a951-e557961ec568"))
-_ReflectionPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("38b6068c-1e94-3119-8841-1eca35ed8578"))
-_RegistryPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("3a5b876c-cde4-32d2-9c7e-020a14aca332"))
-_SecurityPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("1d5c0f70-af29-38a3-9436-3070a310c73b"))
-_UIPermissionAttribute : IDispatch
-{};
-
-struct __declspec(uuid("2e3be3ed-2f22-3b20-9f92-bd29b79d6f42"))
-_ZoneIdentityPermissionAttribute : IDispatch
-{};
+}}
+
+RIDL!{#[uuid(0xd9fcad88, 0xd869, 0x3788, 0xa8, 0x02, 0x1b, 0x1e, 0x00, 0x7c, 0x7a, 0x22)]
+interface _XmlSyntaxException(_XmlSyntaxExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x4803ce39, 0x2f30, 0x31fc, 0xb8, 0x4b, 0x5a, 0x01, 0x41, 0x38, 0x52, 0x69)]
+interface _CodeAccessPermission(_CodeAccessPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0720590d, 0x5218, 0x352a, 0xa3, 0x37, 0x54, 0x49, 0xe6, 0xbd, 0x19, 0xda)]
+interface _EnvironmentPermission(_EnvironmentPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa8b7138c, 0x8932, 0x3d78, 0xa5, 0x85, 0xa9, 0x15, 0x69, 0xc7, 0x43, 0xac)]
+interface _FileDialogPermission(_FileDialogPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xa2ed7efc, 0x8e59, 0x3ccc, 0xae, 0x92, 0xea, 0x23, 0x77, 0xf4, 0xd5, 0xef)]
+interface _FileIOPermission(_FileIOPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x48815668, 0x6c27, 0x3312, 0x80, 0x3e, 0x27, 0x57, 0xf5, 0x5c, 0xe9, 0x6a)]
+interface _SecurityAttribute(_SecurityAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x9c5149cb, 0xd3c6, 0x32fd, 0xa0, 0xd5, 0x95, 0x35, 0x0d, 0xe7, 0xb8, 0x13)]
+interface _CodeAccessSecurityAttribute(_CodeAccessSecurityAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x9f8f73a3, 0x1e99, 0x3e51, 0xa4, 0x1b, 0x17, 0x9a, 0x41, 0xdc, 0x74, 0x7c)]
+interface _HostProtectionAttribute(_HostProtectionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x7fee7903, 0xf97c, 0x3350, 0xad, 0x42, 0x19, 0x6b, 0x00, 0xad, 0x25, 0x64)]
+interface _IsolatedStoragePermission(_IsolatedStoragePermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0d0c83e8, 0xbde1, 0x3ba5, 0xb1, 0xef, 0xa8, 0xfc, 0x68, 0x6d, 0x8b, 0xc9)]
+interface _IsolatedStorageFilePermission(_IsolatedStorageFilePermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x4164071a, 0xed12, 0x3bdd, 0xaf, 0x40, 0xfd, 0xab, 0xca, 0xa7, 0x7d, 0x5f)]
+interface _EnvironmentPermissionAttribute(_EnvironmentPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0ccca629, 0x440f, 0x313e, 0x96, 0xcd, 0xba, 0x1b, 0x4b, 0x49, 0x97, 0xf7)]
+interface _FileDialogPermissionAttribute(_FileDialogPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x0dca817d, 0xf21a, 0x3943, 0xb5, 0x4c, 0x5e, 0x80, 0x0c, 0xe5, 0xbc, 0x50)]
+interface _FileIOPermissionAttribute(_FileIOPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xedb51d1c, 0x08ad, 0x346a, 0xbe, 0x6f, 0xd7, 0x4f, 0xd6, 0xd6, 0xf9, 0x65)]
+interface _KeyContainerPermissionAttribute(_KeyContainerPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x68ab69e4, 0x5d68, 0x3b51, 0xb7, 0x4d, 0x1b, 0xea, 0xb9, 0xf3, 0x7f, 0x2b)]
+interface _PrincipalPermissionAttribute(_PrincipalPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0xd31eed10, 0xa5f0, 0x308f, 0xa9, 0x51, 0xe5, 0x57, 0x96, 0x1e, 0xc5, 0x68)]
+interface _ReflectionPermissionAttribute(_ReflectionPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x38b6068c, 0x1e94, 0x3119, 0x88, 0x41, 0x1e, 0xca, 0x35, 0xed, 0x85, 0x78)]
+interface _RegistryPermissionAttribute(_RegistryPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x3a5b876c, 0xcde4, 0x32d2, 0x9c, 0x7e, 0x02, 0x0a, 0x14, 0xac, 0xa3, 0x32)]
+interface _SecurityPermissionAttribute(_SecurityPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x1d5c0f70, 0xaf29, 0x38a3, 0x94, 0x36, 0x30, 0x70, 0xa3, 0x10, 0xc7, 0x3b)]
+interface _UIPermissionAttribute(_UIPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
+
+RIDL!{#[uuid(0x2e3be3ed, 0x2f22, 0x3b20, 0x9f, 0x92, 0xbd, 0x29, 0xb7, 0x9d, 0x6f, 0x42)]
+interface _ZoneIdentityPermissionAttribute(_ZoneIdentityPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c9a740f4-26e9-39a8-8885-8ca26bd79b21"))
-_StrongNameIdentityPermissionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xc9a740f4, 0x26e9, 0x39a8, 0x88, 0x85, 0x8c, 0xa2, 0x6b, 0xd7, 0x9b, 0x21)]
+interface _StrongNameIdentityPermissionAttribute(_StrongNameIdentityPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6fe6894a-2a53-3fb6-a06e-348f9bdad23b"))
-_SiteIdentityPermissionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x6fe6894a, 0x2a53, 0x3fb6, 0xa0, 0x6e, 0x34, 0x8f, 0x9b, 0xda, 0xd2, 0x3b)]
+interface _SiteIdentityPermissionAttribute(_SiteIdentityPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ca4a2073-48c5-3e61-8349-11701a90dd9b"))
-_UrlIdentityPermissionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xca4a2073, 0x48c5, 0x3e61, 0x83, 0x49, 0x11, 0x70, 0x1a, 0x90, 0xdd, 0x9b)]
+interface _UrlIdentityPermissionAttribute(_UrlIdentityPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6722c730-1239-3784-ac94-c285ae5b901a"))
-_PublisherIdentityPermissionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x6722c730, 0x1239, 0x3784, 0xac, 0x94, 0xc2, 0x85, 0xae, 0x5b, 0x90, 0x1a)]
+interface _PublisherIdentityPermissionAttribute(_PublisherIdentityPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5c4c522f-de4e-3595-9aa9-9319c86a5283"))
-_IsolatedStoragePermissionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x5c4c522f, 0xde4e, 0x3595, 0x9a, 0xa9, 0x93, 0x19, 0xc8, 0x6a, 0x52, 0x83)]
+interface _IsolatedStoragePermissionAttribute(_IsolatedStoragePermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6f1f8aae-d667-39cc-98fa-722bebbbeac3"))
-_IsolatedStorageFilePermissionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x6f1f8aae, 0xd667, 0x39cc, 0x98, 0xfa, 0x72, 0x2b, 0xeb, 0xbb, 0xea, 0xc3)]
+interface _IsolatedStorageFilePermissionAttribute(_IsolatedStorageFilePermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("947a1995-bc16-3e7c-b65a-99e71f39c091"))
-_PermissionSetAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x947a1995, 0xbc16, 0x3e7c, 0xb6, 0x5a, 0x99, 0xe7, 0x1f, 0x39, 0xc0, 0x91)]
+interface _PermissionSetAttribute(_PermissionSetAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("aeb3727f-5c3a-34c4-bf18-a38f088ac8c7"))
-_ReflectionPermission : IDispatch
-{};
+RIDL!{#[uuid(0xaeb3727f, 0x5c3a, 0x34c4, 0xbf, 0x18, 0xa3, 0x8f, 0x08, 0x8a, 0xc8, 0xc7)]
+interface _ReflectionPermission(_ReflectionPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7c6b06d1-63ad-35ef-a938-149b4ad9a71f"))
-_PrincipalPermission : IDispatch
-{};
+RIDL!{#[uuid(0x7c6b06d1, 0x63ad, 0x35ef, 0xa9, 0x38, 0x14, 0x9b, 0x4a, 0xd9, 0xa7, 0x1f)]
+interface _PrincipalPermission(_PrincipalPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("33c54a2d-02bd-3848-80b6-742d537085e5"))
-_SecurityPermission : IDispatch
-{};
+RIDL!{#[uuid(0x33c54a2d, 0x02bd, 0x3848, 0x80, 0xb6, 0x74, 0x2d, 0x53, 0x70, 0x85, 0xe5)]
+interface _SecurityPermission(_SecurityPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("790b3ee9-7e06-3cd0-8243-5848486d6a78"))
-_SiteIdentityPermission : IDispatch
-{};
+RIDL!{#[uuid(0x790b3ee9, 0x7e06, 0x3cd0, 0x82, 0x43, 0x58, 0x48, 0x48, 0x6d, 0x6a, 0x78)]
+interface _SiteIdentityPermission(_SiteIdentityPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5f1562fb-0160-3655-baea-b15bef609161"))
-_StrongNameIdentityPermission : IDispatch
-{};
+RIDL!{#[uuid(0x5f1562fb, 0x0160, 0x3655, 0xba, 0xea, 0xb1, 0x5b, 0xef, 0x60, 0x91, 0x61)]
+interface _StrongNameIdentityPermission(_StrongNameIdentityPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("af53d21a-d6af-3406-b399-7df9d2aad48a"))
-_StrongNamePublicKeyBlob : IDispatch
-{};
+RIDL!{#[uuid(0xaf53d21a, 0xd6af, 0x3406, 0xb3, 0x99, 0x7d, 0xf9, 0xd2, 0xaa, 0xd4, 0x8a)]
+interface _StrongNamePublicKeyBlob(_StrongNamePublicKeyBlobVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("47698389-f182-3a67-87df-aed490e14dc6"))
-_UIPermission : IDispatch
-{};
+RIDL!{#[uuid(0x47698389, 0xf182, 0x3a67, 0x87, 0xdf, 0xae, 0xd4, 0x90, 0xe1, 0x4d, 0xc6)]
+interface _UIPermission(_UIPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ec7cac31-08a2-393b-bdf2-d052eb53af2c"))
-_UrlIdentityPermission : IDispatch
-{};
+RIDL!{#[uuid(0xec7cac31, 0x08a2, 0x393b, 0xbd, 0xf2, 0xd0, 0x52, 0xeb, 0x53, 0xaf, 0x2c)]
+interface _UrlIdentityPermission(_UrlIdentityPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("38b2f8d7-8cf4-323b-9c17-9c55ee287a63"))
-_ZoneIdentityPermission : IDispatch
-{};
+RIDL!{#[uuid(0x38b2f8d7, 0x8cf4, 0x323b, 0x9c, 0x17, 0x9c, 0x55, 0xee, 0x28, 0x7a, 0x63)]
+interface _ZoneIdentityPermission(_ZoneIdentityPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5f19e082-26f8-3361-b338-9bacb98809a4"))
-_GacIdentityPermissionAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x5f19e082, 0x26f8, 0x3361, 0xb3, 0x38, 0x9b, 0xac, 0xb9, 0x88, 0x09, 0xa4)]
+interface _GacIdentityPermissionAttribute(_GacIdentityPermissionAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a9637792-5be8-3c93-a501-49f0e840de38"))
-_GacIdentityPermission : IDispatch
-{};
+RIDL!{#[uuid(0xa9637792, 0x5be8, 0x3c93, 0xa5, 0x01, 0x49, 0xf0, 0xe8, 0x40, 0xde, 0x38)]
+interface _GacIdentityPermission(_GacIdentityPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("094351ea-dbc1-327f-8a83-913b593a66be"))
-_KeyContainerPermissionAccessEntry : IDispatch
-{};
+RIDL!{#[uuid(0x094351ea, 0xdbc1, 0x327f, 0x8a, 0x83, 0x91, 0x3b, 0x59, 0x3a, 0x66, 0xbe)]
+interface _KeyContainerPermissionAccessEntry(_KeyContainerPermissionAccessEntryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("28ecf94e-3510-3a3e-8bd1-f866f45f3b06"))
-_KeyContainerPermissionAccessEntryCollection : IDispatch
-{};
+RIDL!{#[uuid(0x28ecf94e, 0x3510, 0x3a3e, 0x8b, 0xd1, 0xf8, 0x66, 0xf4, 0x5f, 0x3b, 0x06)]
+interface _KeyContainerPermissionAccessEntryCollection(_KeyContainerPermissionAccessEntryCollectionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("293187ea-5f88-316f-86a5-533b0c7b353f"))
-_KeyContainerPermissionAccessEntryEnumerator : IDispatch
-{};
+RIDL!{#[uuid(0x293187ea, 0x5f88, 0x316f, 0x86, 0xa5, 0x53, 0x3b, 0x0c, 0x7b, 0x35, 0x3f)]
+interface _KeyContainerPermissionAccessEntryEnumerator(_KeyContainerPermissionAccessEntryEnumeratorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("107a3cf1-b35e-3a23-b660-60264b231225"))
-_KeyContainerPermission : IDispatch
-{};
+RIDL!{#[uuid(0x107a3cf1, 0xb35e, 0x3a23, 0xb6, 0x60, 0x60, 0x26, 0x4b, 0x23, 0x12, 0x25)]
+interface _KeyContainerPermission(_KeyContainerPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e86cc74a-1233-3df3-b13f-8b27eeaac1f6"))
-_PublisherIdentityPermission : IDispatch
-{};
+RIDL!{#[uuid(0xe86cc74a, 0x1233, 0x3df3, 0xb1, 0x3f, 0x8b, 0x27, 0xee, 0xaa, 0xc1, 0xf6)]
+interface _PublisherIdentityPermission(_PublisherIdentityPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c3fb5510-3454-3b31-b64f-de6aad6be820"))
-_RegistryPermission : IDispatch
-{};
+RIDL!{#[uuid(0xc3fb5510, 0x3454, 0x3b31, 0xb6, 0x4f, 0xde, 0x6a, 0xad, 0x6b, 0xe8, 0x20)]
+interface _RegistryPermission(_RegistryPermissionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
 
-struct __declspec(uuid("8000e51a-541c-3b20-a8ec-c8a8b41116c4"))
-_SuppressUnmanagedCodeSecurityAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x8000e51a, 0x541c, 0x3b20, 0xa8, 0xec, 0xc8, 0xa8, 0xb4, 0x11, 0x16, 0xc4)]
+interface _SuppressUnmanagedCodeSecurityAttribute(_SuppressUnmanagedCodeSecurityAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("41f41c1b-7b8d-39a3-a28f-aae20787f469"))
-_UnverifiableCodeAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x41f41c1b, 0x7b8d, 0x39a3, 0xa2, 0x8f, 0xaa, 0xe2, 0x07, 0x87, 0xf4, 0x69)]
+interface _UnverifiableCodeAttribute(_UnverifiableCodeAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f1c930c4-2233-3924-9840-231d008259b4"))
-_AllowPartiallyTrustedCallersAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xf1c930c4, 0x2233, 0x3924, 0x98, 0x40, 0x23, 0x1d, 0x00, 0x82, 0x59, 0xb4)]
+interface _AllowPartiallyTrustedCallersAttribute(_AllowPartiallyTrustedCallersAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9deae196-48c1-3590-9d0a-33716a214acd"))
-_HostSecurityManager : IDispatch
-{};
+RIDL!{#[uuid(0x9deae196, 0x48c1, 0x3590, 0x9d, 0x0a, 0x33, 0x71, 0x6a, 0x21, 0x4a, 0xcd)]
+interface _HostSecurityManager(_HostSecurityManagerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c2af4970-4fb6-319c-a8aa-0614d27f2b2c"))
-_PermissionSet : IDispatch
-{};
+RIDL!{#[uuid(0xc2af4970, 0x4fb6, 0x319c, 0xa8, 0xaa, 0x06, 0x14, 0xd2, 0x7f, 0x2b, 0x2c)]
+interface _PermissionSet(_PermissionSetVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ba3e053f-ade3-3233-874a-16e624c9a49b"))
-_NamedPermissionSet : IDispatch
-{};
+RIDL!{#[uuid(0xba3e053f, 0xade3, 0x3233, 0x87, 0x4a, 0x16, 0xe6, 0x24, 0xc9, 0xa4, 0x9b)]
+interface _NamedPermissionSet(_NamedPermissionSetVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f174290f-e4cf-3976-88aa-4f8e32eb03db"))
-_SecurityException : IDispatch
-{};
+RIDL!{#[uuid(0xf174290f, 0xe4cf, 0x3976, 0x88, 0xaa, 0x4f, 0x8e, 0x32, 0xeb, 0x03, 0xdb)]
+interface _SecurityException(_SecurityExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ed727a9b-6fc5-3fed-bedd-7b66c847f87a"))
-_HostProtectionException : IDispatch
-{};
+RIDL!{#[uuid(0xed727a9b, 0x6fc5, 0x3fed, 0xbe, 0xdd, 0x7b, 0x66, 0xc8, 0x47, 0xf8, 0x7a)]
+interface _HostProtectionException(_HostProtectionExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("abc04b16-5539-3c7e-92ec-0905a4a24464"))
-_SecurityManager : IDispatch
-{};
+RIDL!{#[uuid(0xabc04b16, 0x5539, 0x3c7e, 0x92, 0xec, 0x09, 0x05, 0xa4, 0xa2, 0x44, 0x64)]
+interface _SecurityManager(_SecurityManagerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f65070df-57af-3ae3-b951-d2ad7d513347"))
-_VerificationException : IDispatch
-{};
+RIDL!{#[uuid(0xf65070df, 0x57af, 0x3ae3, 0xb9, 0x51, 0xd2, 0xad, 0x7d, 0x51, 0x33, 0x47)]
+interface _VerificationException(_VerificationExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f042505b-7aac-313b-a8c7-3f1ac949c311"))
-_ContextAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xf042505b, 0x7aac, 0x313b, 0xa8, 0xc7, 0x3f, 0x1a, 0xc9, 0x49, 0xc3, 0x11)]
+interface _ContextAttribute(_ContextAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3936abe1-b29e-3593-83f1-793d1a7f3898"))
-_AsyncResult : IDispatch
-{};
+RIDL!{#[uuid(0x3936abe1, 0xb29e, 0x3593, 0x83, 0xf1, 0x79, 0x3d, 0x1a, 0x7f, 0x38, 0x98)]
+interface _AsyncResult(_AsyncResultVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ffb2e16e-e5c7-367c-b326-965abf510f24"))
-_ChannelServices : IDispatch
-{};
+RIDL!{#[uuid(0xffb2e16e, 0xe5c7, 0x367c, 0xb3, 0x26, 0x96, 0x5a, 0xbf, 0x51, 0x0f, 0x24)]
+interface _ChannelServices(_ChannelServicesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e1796120-c324-30d8-86f4-20086711463b"))
-_ClientChannelSinkStack : IDispatch
-{};
+RIDL!{#[uuid(0xe1796120, 0xc324, 0x30d8, 0x86, 0xf4, 0x20, 0x08, 0x67, 0x11, 0x46, 0x3b)]
+interface _ClientChannelSinkStack(_ClientChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("52da9f90-89b3-35ab-907b-3562642967de"))
-_ServerChannelSinkStack : IDispatch
-{};
+RIDL!{#[uuid(0x52da9f90, 0x89b3, 0x35ab, 0x90, 0x7b, 0x35, 0x62, 0x64, 0x29, 0x67, 0xde)]
+interface _ServerChannelSinkStack(_ServerChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ff19d114-3bda-30ac-8e89-36ca64a87120"))
-_ClientSponsor : IDispatch
-{};
+RIDL!{#[uuid(0xff19d114, 0x3bda, 0x30ac, 0x8e, 0x89, 0x36, 0xca, 0x64, 0xa8, 0x71, 0x20)]
+interface _ClientSponsor(_ClientSponsorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ee949b7b-439f-363e-b9fc-34db1fb781d7"))
-_CrossContextDelegate : IDispatch
-{};
+RIDL!{#[uuid(0xee949b7b, 0x439f, 0x363e, 0xb9, 0xfc, 0x34, 0xdb, 0x1f, 0xb7, 0x81, 0xd7)]
+interface _CrossContextDelegate(_CrossContextDelegateVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("11a2ea7a-d600-307b-a606-511a6c7950d1"))
-_Context : IDispatch
-{};
+RIDL!{#[uuid(0x11a2ea7a, 0xd600, 0x307b, 0xa6, 0x06, 0x51, 0x1a, 0x6c, 0x79, 0x50, 0xd1)]
+interface _Context(_ContextVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f01d896d-8d5f-3235-be59-20e1e10dc22a"))
-IContextProperty : IDispatch
+RIDL!{#[uuid(0xf01d896d, 0x8d5f, 0x3235, 0xbe, 0x59, 0x20, 0xe1, 0xe1, 0x0d, 0xc2, 0x2a)]
+interface IContextProperty(IContextPropertyVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -2927,82 +2927,82 @@ IContextProperty : IDispatch
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
       virtual HRESULT __stdcall Freeze (
         /*[in]*/ struct _Context * newContext ) = 0;
-};
+}}
 
-struct __declspec(uuid("4acb3495-05db-381b-890a-d12f5340dca3"))
-_ContextProperty : IDispatch
-{};
+RIDL!{#[uuid(0x4acb3495, 0x05db, 0x381b, 0x89, 0x0a, 0xd1, 0x2f, 0x53, 0x40, 0xdc, 0xa3)]
+interface _ContextProperty(_ContextPropertyVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("77c9bceb-9958-33c0-a858-599f66697da7"))
-_EnterpriseServicesHelper : IDispatch
-{};
+RIDL!{#[uuid(0x77c9bceb, 0x9958, 0x33c0, 0xa8, 0x58, 0x59, 0x9f, 0x66, 0x69, 0x7d, 0xa7)]
+interface _EnterpriseServicesHelper(_EnterpriseServicesHelperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("aa6da581-f972-36de-a53b-7585428a68ab"))
-_ChannelDataStore : IDispatch
-{};
+RIDL!{#[uuid(0xaa6da581, 0xf972, 0x36de, 0xa5, 0x3b, 0x75, 0x85, 0x42, 0x8a, 0x68, 0xab)]
+interface _ChannelDataStore(_ChannelDataStoreVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("65887f70-c646-3a66-8697-8a3f7d8fe94d"))
-_TransportHeaders : IDispatch
-{};
+RIDL!{#[uuid(0x65887f70, 0xc646, 0x3a66, 0x86, 0x97, 0x8a, 0x3f, 0x7d, 0x8f, 0xe9, 0x4d)]
+interface _TransportHeaders(_TransportHeadersVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a18545b7-e5ee-31ee-9b9b-41199b11c995"))
-_SinkProviderData : IDispatch
-{};
+RIDL!{#[uuid(0xa18545b7, 0xe5ee, 0x31ee, 0x9b, 0x9b, 0x41, 0x19, 0x9b, 0x11, 0xc9, 0x95)]
+interface _SinkProviderData(_SinkProviderDataVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a1329ec9-e567-369f-8258-18366d89eaf8"))
-_BaseChannelObjectWithProperties : IDispatch
-{};
+RIDL!{#[uuid(0xa1329ec9, 0xe567, 0x369f, 0x82, 0x58, 0x18, 0x36, 0x6d, 0x89, 0xea, 0xf8)]
+interface _BaseChannelObjectWithProperties(_BaseChannelObjectWithPropertiesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8af3451e-154d-3d86-80d8-f8478b9733ed"))
-_BaseChannelSinkWithProperties : IDispatch
-{};
+RIDL!{#[uuid(0x8af3451e, 0x154d, 0x3d86, 0x80, 0xd8, 0xf8, 0x47, 0x8b, 0x97, 0x33, 0xed)]
+interface _BaseChannelSinkWithProperties(_BaseChannelSinkWithPropertiesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("94bb98ed-18bb-3843-a7fe-642824ab4e01"))
-_BaseChannelWithProperties : IDispatch
-{};
+RIDL!{#[uuid(0x94bb98ed, 0x18bb, 0x3843, 0xa7, 0xfe, 0x64, 0x28, 0x24, 0xab, 0x4e, 0x01)]
+interface _BaseChannelWithProperties(_BaseChannelWithPropertiesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b0ad9a21-5439-3d88-8975-4018b828d74c"))
-_LifetimeServices : IDispatch
-{};
+RIDL!{#[uuid(0xb0ad9a21, 0x5439, 0x3d88, 0x89, 0x75, 0x40, 0x18, 0xb8, 0x28, 0xd7, 0x4c)]
+interface _LifetimeServices(_LifetimeServicesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0eeff4c2-84bf-3e4e-bf22-b7bdbb5df899"))
-_ReturnMessage : IDispatch
-{};
+RIDL!{#[uuid(0x0eeff4c2, 0x84bf, 0x3e4e, 0xbf, 0x22, 0xb7, 0xbd, 0xbb, 0x5d, 0xf8, 0x99)]
+interface _ReturnMessage(_ReturnMessageVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("95e01216-5467-371b-8597-4074402ccb06"))
-_MethodCall : IDispatch
-{};
+RIDL!{#[uuid(0x95e01216, 0x5467, 0x371b, 0x85, 0x97, 0x40, 0x74, 0x40, 0x2c, 0xcb, 0x06)]
+interface _MethodCall(_MethodCallVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a2246ae7-eb81-3a20-8e70-c9fa341c7e10"))
-_ConstructionCall : IDispatch
-{};
+RIDL!{#[uuid(0xa2246ae7, 0xeb81, 0x3a20, 0x8e, 0x70, 0xc9, 0xfa, 0x34, 0x1c, 0x7e, 0x10)]
+interface _ConstructionCall(_ConstructionCallVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9e9ea93a-d000-3ab9-bfca-ddeb398a55b9"))
-_MethodResponse : IDispatch
-{};
+RIDL!{#[uuid(0x9e9ea93a, 0xd000, 0x3ab9, 0xbf, 0xca, 0xdd, 0xeb, 0x39, 0x8a, 0x55, 0xb9)]
+interface _MethodResponse(_MethodResponseVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("be457280-6ffa-3e76-9822-83de63c0c4e0"))
-_ConstructionResponse : IDispatch
-{};
+RIDL!{#[uuid(0xbe457280, 0x6ffa, 0x3e76, 0x98, 0x22, 0x83, 0xde, 0x63, 0xc0, 0xc4, 0xe0)]
+interface _ConstructionResponse(_ConstructionResponseVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ef926e1f-3ee7-32bc-8b01-c6e98c24bc19"))
-_InternalMessageWrapper : IDispatch
-{};
+RIDL!{#[uuid(0xef926e1f, 0x3ee7, 0x32bc, 0x8b, 0x01, 0xc6, 0xe9, 0x8c, 0x24, 0xbc, 0x19)]
+interface _InternalMessageWrapper(_InternalMessageWrapperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c9614d78-10ea-3310-87ea-821b70632898"))
-_MethodCallMessageWrapper : IDispatch
-{};
+RIDL!{#[uuid(0xc9614d78, 0x10ea, 0x3310, 0x87, 0xea, 0x82, 0x1b, 0x70, 0x63, 0x28, 0x98)]
+interface _MethodCallMessageWrapper(_MethodCallMessageWrapperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("89304439-a24f-30f6-9a8f-89ce472d85da"))
-_MethodReturnMessageWrapper : IDispatch
-{};
+RIDL!{#[uuid(0x89304439, 0xa24f, 0x30f6, 0x9a, 0x8f, 0x89, 0xce, 0x47, 0x2d, 0x85, 0xda)]
+interface _MethodReturnMessageWrapper(_MethodReturnMessageWrapperVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1dd3cf3d-df8e-32ff-91ec-e19aa10b63fb"))
-_ObjRef : IDispatch
-{};
+RIDL!{#[uuid(0x1dd3cf3d, 0xdf8e, 0x32ff, 0x91, 0xec, 0xe1, 0x9a, 0xa1, 0x0b, 0x63, 0xfb)]
+interface _ObjRef(_ObjRefVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("03ec7d10-17a5-3585-9a2e-0596fcac3870"))
-ITrackingHandler : IDispatch
+RIDL!{#[uuid(0x03ec7d10, 0x17a5, 0x3585, 0x9a, 0x2e, 0x05, 0x96, 0xfc, 0xac, 0x38, 0x70)]
+interface ITrackingHandler(ITrackingHandlerVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -3016,242 +3016,242 @@ ITrackingHandler : IDispatch
         /*[in]*/ struct _ObjRef * ORR ) = 0;
       virtual HRESULT __stdcall DisconnectedObject (
         /*[in]*/ VARIANT obj ) = 0;
-};
+}}
 
-struct __declspec(uuid("8ffedc68-5233-3fa8-813d-405aabb33ecb"))
-_OneWayAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x8ffedc68, 0x5233, 0x3fa8, 0x81, 0x3d, 0x40, 0x5a, 0xab, 0xb3, 0x3e, 0xcb)]
+interface _OneWayAttribute(_OneWayAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d80ff312-2930-3680-a5e9-b48296c7415f"))
-_ProxyAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xd80ff312, 0x2930, 0x3680, 0xa5, 0xe9, 0xb4, 0x82, 0x96, 0xc7, 0x41, 0x5f)]
+interface _ProxyAttribute(_ProxyAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e0cf3f77-c7c3-33da-beb4-46147fc905de"))
-_RealProxy : IDispatch
-{};
+RIDL!{#[uuid(0xe0cf3f77, 0xc7c3, 0x33da, 0xbe, 0xb4, 0x46, 0x14, 0x7f, 0xc9, 0x05, 0xde)]
+interface _RealProxy(_RealProxyVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("725692a5-9e12-37f6-911c-e3da77e5faca"))
-_SoapAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x725692a5, 0x9e12, 0x37f6, 0x91, 0x1c, 0xe3, 0xda, 0x77, 0xe5, 0xfa, 0xca)]
+interface _SoapAttribute(_SoapAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ebcdcd84-8c74-39fd-821c-f5eb3a2704d7"))
-_SoapTypeAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xebcdcd84, 0x8c74, 0x39fd, 0x82, 0x1c, 0xf5, 0xeb, 0x3a, 0x27, 0x04, 0xd7)]
+interface _SoapTypeAttribute(_SoapTypeAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c58145b5-bd5a-3896-95d9-b358f54fbc44"))
-_SoapMethodAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xc58145b5, 0xbd5a, 0x3896, 0x95, 0xd9, 0xb3, 0x58, 0xf5, 0x4f, 0xbc, 0x44)]
+interface _SoapMethodAttribute(_SoapMethodAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("46a3f9ff-f73c-33c7-bcc3-1bef4b25e4ae"))
-_SoapFieldAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x46a3f9ff, 0xf73c, 0x33c7, 0xbc, 0xc3, 0x1b, 0xef, 0x4b, 0x25, 0xe4, 0xae)]
+interface _SoapFieldAttribute(_SoapFieldAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c32abfc9-3917-30bf-a7bc-44250bdfc5d8"))
-_SoapParameterAttribute : IDispatch
-{};
+RIDL!{#[uuid(0xc32abfc9, 0x3917, 0x30bf, 0xa7, 0xbc, 0x44, 0x25, 0x0b, 0xdf, 0xc5, 0xd8)]
+interface _SoapParameterAttribute(_SoapParameterAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4b10971e-d61d-373f-bc8d-2ccf31126215"))
-_RemotingConfiguration : IDispatch
-{};
+RIDL!{#[uuid(0x4b10971e, 0xd61d, 0x373f, 0xbc, 0x8d, 0x2c, 0xcf, 0x31, 0x12, 0x62, 0x15)]
+interface _RemotingConfiguration(_RemotingConfigurationVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8359f3ab-643f-3bcf-91e8-16e779edebe1"))
-_TypeEntry : IDispatch
-{};
+RIDL!{#[uuid(0x8359f3ab, 0x643f, 0x3bcf, 0x91, 0xe8, 0x16, 0xe7, 0x79, 0xed, 0xeb, 0xe1)]
+interface _TypeEntry(_TypeEntryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("bac12781-6865-3558-a8d1-f1cadd2806dd"))
-_ActivatedClientTypeEntry : IDispatch
-{};
+RIDL!{#[uuid(0xbac12781, 0x6865, 0x3558, 0xa8, 0xd1, 0xf1, 0xca, 0xdd, 0x28, 0x06, 0xdd)]
+interface _ActivatedClientTypeEntry(_ActivatedClientTypeEntryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("94855a3b-5ca2-32cf-b1ab-48fd3915822c"))
-_ActivatedServiceTypeEntry : IDispatch
-{};
+RIDL!{#[uuid(0x94855a3b, 0x5ca2, 0x32cf, 0xb1, 0xab, 0x48, 0xfd, 0x39, 0x15, 0x82, 0x2c)]
+interface _ActivatedServiceTypeEntry(_ActivatedServiceTypeEntryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4d0bc339-e3f9-3e9e-8f68-92168e6f6981"))
-_WellKnownClientTypeEntry : IDispatch
-{};
+RIDL!{#[uuid(0x4d0bc339, 0xe3f9, 0x3e9e, 0x8f, 0x68, 0x92, 0x16, 0x8e, 0x6f, 0x69, 0x81)]
+interface _WellKnownClientTypeEntry(_WellKnownClientTypeEntryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("60b8b604-0aed-3093-ac05-eb98fb29fc47"))
-_WellKnownServiceTypeEntry : IDispatch
-{};
+RIDL!{#[uuid(0x60b8b604, 0x0aed, 0x3093, 0xac, 0x05, 0xeb, 0x98, 0xfb, 0x29, 0xfc, 0x47)]
+interface _WellKnownServiceTypeEntry(_WellKnownServiceTypeEntryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7264843f-f60c-39a9-99e1-029126aa0815"))
-_RemotingException : IDispatch
-{};
+RIDL!{#[uuid(0x7264843f, 0xf60c, 0x39a9, 0x99, 0xe1, 0x02, 0x91, 0x26, 0xaa, 0x08, 0x15)]
+interface _RemotingException(_RemotingExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("19373c44-55b4-3487-9ad8-4c621aae85ea"))
-_ServerException : IDispatch
-{};
+RIDL!{#[uuid(0x19373c44, 0x55b4, 0x3487, 0x9a, 0xd8, 0x4c, 0x62, 0x1a, 0xae, 0x85, 0xea)]
+interface _ServerException(_ServerExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("44db8e15-acb1-34ee-81f9-56ed7ae37a5c"))
-_RemotingTimeoutException : IDispatch
-{};
+RIDL!{#[uuid(0x44db8e15, 0xacb1, 0x34ee, 0x81, 0xf9, 0x56, 0xed, 0x7a, 0xe3, 0x7a, 0x5c)]
+interface _RemotingTimeoutException(_RemotingTimeoutExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7b91368d-a50a-3d36-be8e-5b8836a419ad"))
-_RemotingServices : IDispatch
-{};
+RIDL!{#[uuid(0x7b91368d, 0xa50a, 0x3d36, 0xbe, 0x8e, 0x5b, 0x88, 0x36, 0xa4, 0x19, 0xad)]
+interface _RemotingServices(_RemotingServicesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f4efb305-cdc4-31c5-8102-33c9b91774f3"))
-_InternalRemotingServices : IDispatch
-{};
+RIDL!{#[uuid(0xf4efb305, 0xcdc4, 0x31c5, 0x81, 0x02, 0x33, 0xc9, 0xb9, 0x17, 0x74, 0xf3)]
+interface _InternalRemotingServices(_InternalRemotingServicesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("04a35d22-0b08-34e7-a573-88ef2374375e"))
-_MessageSurrogateFilter : IDispatch
-{};
+RIDL!{#[uuid(0x04a35d22, 0x0b08, 0x34e7, 0xa5, 0x73, 0x88, 0xef, 0x23, 0x74, 0x37, 0x5e)]
+interface _MessageSurrogateFilter(_MessageSurrogateFilterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("551f7a57-8651-37db-a94a-6a3ca09c0ed7"))
-_RemotingSurrogateSelector : IDispatch
-{};
+RIDL!{#[uuid(0x551f7a57, 0x8651, 0x37db, 0xa9, 0x4a, 0x6a, 0x3c, 0xa0, 0x9c, 0x0e, 0xd7)]
+interface _RemotingSurrogateSelector(_RemotingSurrogateSelectorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7416b6ee-82e8-3a16-966b-018a40e7b1aa"))
-_SoapServices : IDispatch
-{};
+RIDL!{#[uuid(0x7416b6ee, 0x82e8, 0x3a16, 0x96, 0x6b, 0x01, 0x8a, 0x40, 0xe7, 0xb1, 0xaa)]
+interface _SoapServices(_SoapServicesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1738adbc-156e-3897-844f-c3147c528dea"))
-_SoapDateTime : IDispatch
-{};
+RIDL!{#[uuid(0x1738adbc, 0x156e, 0x3897, 0x84, 0x4f, 0xc3, 0x14, 0x7c, 0x52, 0x8d, 0xea)]
+interface _SoapDateTime(_SoapDateTimeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7ef50ddb-32a5-30a1-b412-47fab911404a"))
-_SoapDuration : IDispatch
-{};
+RIDL!{#[uuid(0x7ef50ddb, 0x32a5, 0x30a1, 0xb4, 0x12, 0x47, 0xfa, 0xb9, 0x11, 0x40, 0x4a)]
+interface _SoapDuration(_SoapDurationVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a3bf0bcd-ec32-38e6-92f2-5f37bad8030d"))
-_SoapTime : IDispatch
-{};
+RIDL!{#[uuid(0xa3bf0bcd, 0xec32, 0x38e6, 0x92, 0xf2, 0x5f, 0x37, 0xba, 0xd8, 0x03, 0x0d)]
+interface _SoapTime(_SoapTimeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("cfa6e9d2-b3de-39a6-94d1-cc691de193f8"))
-_SoapDate : IDispatch
-{};
+RIDL!{#[uuid(0xcfa6e9d2, 0xb3de, 0x39a6, 0x94, 0xd1, 0xcc, 0x69, 0x1d, 0xe1, 0x93, 0xf8)]
+interface _SoapDate(_SoapDateVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("103c7ef9-a9ee-35fb-84c5-3086c9725a20"))
-_SoapYearMonth : IDispatch
-{};
+RIDL!{#[uuid(0x103c7ef9, 0xa9ee, 0x35fb, 0x84, 0xc5, 0x30, 0x86, 0xc9, 0x72, 0x5a, 0x20)]
+interface _SoapYearMonth(_SoapYearMonthVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c20769f3-858d-316a-be6d-c347a47948ad"))
-_SoapYear : IDispatch
-{};
+RIDL!{#[uuid(0xc20769f3, 0x858d, 0x316a, 0xbe, 0x6d, 0xc3, 0x47, 0xa4, 0x79, 0x48, 0xad)]
+interface _SoapYear(_SoapYearVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f9ead0aa-4156-368f-ae05-fd59d70f758d"))
-_SoapMonthDay : IDispatch
-{};
+RIDL!{#[uuid(0xf9ead0aa, 0x4156, 0x368f, 0xae, 0x05, 0xfd, 0x59, 0xd7, 0x0f, 0x75, 0x8d)]
+interface _SoapMonthDay(_SoapMonthDayVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d9e8314d-5053-3497-8a33-97d3dcfe33e2"))
-_SoapDay : IDispatch
-{};
+RIDL!{#[uuid(0xd9e8314d, 0x5053, 0x3497, 0x8a, 0x33, 0x97, 0xd3, 0xdc, 0xfe, 0x33, 0xe2)]
+interface _SoapDay(_SoapDayVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b4e32423-e473-3562-aa12-62fde5a7d4a2"))
-_SoapMonth : IDispatch
-{};
+RIDL!{#[uuid(0xb4e32423, 0xe473, 0x3562, 0xaa, 0x12, 0x62, 0xfd, 0xe5, 0xa7, 0xd4, 0xa2)]
+interface _SoapMonth(_SoapMonthVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("63b9da95-fb91-358a-b7b7-90c34aa34ab7"))
-_SoapHexBinary : IDispatch
-{};
+RIDL!{#[uuid(0x63b9da95, 0xfb91, 0x358a, 0xb7, 0xb7, 0x90, 0xc3, 0x4a, 0xa3, 0x4a, 0xb7)]
+interface _SoapHexBinary(_SoapHexBinaryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8ed115a1-5e7b-34dc-ab85-90316f28015d"))
-_SoapBase64Binary : IDispatch
-{};
+RIDL!{#[uuid(0x8ed115a1, 0x5e7b, 0x34dc, 0xab, 0x85, 0x90, 0x31, 0x6f, 0x28, 0x01, 0x5d)]
+interface _SoapBase64Binary(_SoapBase64BinaryVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("30c65c40-4e54-3051-9d8f-4709b6ab214c"))
-_SoapInteger : IDispatch
-{};
+RIDL!{#[uuid(0x30c65c40, 0x4e54, 0x3051, 0x9d, 0x8f, 0x47, 0x09, 0xb6, 0xab, 0x21, 0x4c)]
+interface _SoapInteger(_SoapIntegerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4979ec29-c2b7-3ad6-986d-5aaf7344cc4e"))
-_SoapPositiveInteger : IDispatch
-{};
+RIDL!{#[uuid(0x4979ec29, 0xc2b7, 0x3ad6, 0x98, 0x6d, 0x5a, 0xaf, 0x73, 0x44, 0xcc, 0x4e)]
+interface _SoapPositiveInteger(_SoapPositiveIntegerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("aaf5401e-f71c-3fe3-8a73-a25074b20d3a"))
-_SoapNonPositiveInteger : IDispatch
-{};
+RIDL!{#[uuid(0xaaf5401e, 0xf71c, 0x3fe3, 0x8a, 0x73, 0xa2, 0x50, 0x74, 0xb2, 0x0d, 0x3a)]
+interface _SoapNonPositiveInteger(_SoapNonPositiveIntegerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("bc261fc6-7132-3fb5-9aac-224845d3aa99"))
-_SoapNonNegativeInteger : IDispatch
-{};
+RIDL!{#[uuid(0xbc261fc6, 0x7132, 0x3fb5, 0x9a, 0xac, 0x22, 0x48, 0x45, 0xd3, 0xaa, 0x99)]
+interface _SoapNonNegativeInteger(_SoapNonNegativeIntegerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e384aa10-a70c-3943-97cf-0f7c282c3bdc"))
-_SoapNegativeInteger : IDispatch
-{};
+RIDL!{#[uuid(0xe384aa10, 0xa70c, 0x3943, 0x97, 0xcf, 0x0f, 0x7c, 0x28, 0x2c, 0x3b, 0xdc)]
+interface _SoapNegativeInteger(_SoapNegativeIntegerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("818ec118-be7e-3cde-92c8-44b99160920e"))
-_SoapAnyUri : IDispatch
-{};
+RIDL!{#[uuid(0x818ec118, 0xbe7e, 0x3cde, 0x92, 0xc8, 0x44, 0xb9, 0x91, 0x60, 0x92, 0x0e)]
+interface _SoapAnyUri(_SoapAnyUriVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3ac646b6-6b84-382f-9aed-22c2433244e6"))
-_SoapQName : IDispatch
-{};
+RIDL!{#[uuid(0x3ac646b6, 0x6b84, 0x382f, 0x9a, 0xed, 0x22, 0xc2, 0x43, 0x32, 0x44, 0xe6)]
+interface _SoapQName(_SoapQNameVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("974f01f4-6086-3137-9448-6a31fc9bef08"))
-_SoapNotation : IDispatch
-{};
+RIDL!{#[uuid(0x974f01f4, 0x6086, 0x3137, 0x94, 0x48, 0x6a, 0x31, 0xfc, 0x9b, 0xef, 0x08)]
+interface _SoapNotation(_SoapNotationVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f4926b50-3f23-37e0-9afa-aa91ff89a7bd"))
-_SoapNormalizedString : IDispatch
-{};
+RIDL!{#[uuid(0xf4926b50, 0x3f23, 0x37e0, 0x9a, 0xfa, 0xaa, 0x91, 0xff, 0x89, 0xa7, 0xbd)]
+interface _SoapNormalizedString(_SoapNormalizedStringVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ab4e97b9-651d-36f4-aaba-28acf5746624"))
-_SoapToken : IDispatch
-{};
+RIDL!{#[uuid(0xab4e97b9, 0x651d, 0x36f4, 0xaa, 0xba, 0x28, 0xac, 0xf5, 0x74, 0x66, 0x24)]
+interface _SoapToken(_SoapTokenVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("14aed851-a168-3462-b877-8f9a01126653"))
-_SoapLanguage : IDispatch
-{};
+RIDL!{#[uuid(0x14aed851, 0xa168, 0x3462, 0xb8, 0x77, 0x8f, 0x9a, 0x01, 0x12, 0x66, 0x53)]
+interface _SoapLanguage(_SoapLanguageVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5eb06bef-4adf-3cc1-a6f2-62f76886b13a"))
-_SoapName : IDispatch
-{};
+RIDL!{#[uuid(0x5eb06bef, 0x4adf, 0x3cc1, 0xa6, 0xf2, 0x62, 0xf7, 0x68, 0x86, 0xb1, 0x3a)]
+interface _SoapName(_SoapNameVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7947a829-adb5-34d0-9cc8-6c172742c803"))
-_SoapIdrefs : IDispatch
-{};
+RIDL!{#[uuid(0x7947a829, 0xadb5, 0x34d0, 0x9c, 0xc8, 0x6c, 0x17, 0x27, 0x42, 0xc8, 0x03)]
+interface _SoapIdrefs(_SoapIdrefsVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("aca96da3-96ed-397e-8a72-ee1be1025f5e"))
-_SoapEntities : IDispatch
-{};
+RIDL!{#[uuid(0xaca96da3, 0x96ed, 0x397e, 0x8a, 0x72, 0xee, 0x1b, 0xe1, 0x02, 0x5f, 0x5e)]
+interface _SoapEntities(_SoapEntitiesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e941fa15-e6c8-3dd4-b060-c0ddfbc0240a"))
-_SoapNmtoken : IDispatch
-{};
+RIDL!{#[uuid(0xe941fa15, 0xe6c8, 0x3dd4, 0xb0, 0x60, 0xc0, 0xdd, 0xfb, 0xc0, 0x24, 0x0a)]
+interface _SoapNmtoken(_SoapNmtokenVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a5e385ae-27fb-3708-baf7-0bf1f3955747"))
-_SoapNmtokens : IDispatch
-{};
+RIDL!{#[uuid(0xa5e385ae, 0x27fb, 0x3708, 0xba, 0xf7, 0x0b, 0xf1, 0xf3, 0x95, 0x57, 0x47)]
+interface _SoapNmtokens(_SoapNmtokensVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("725cdaf7-b739-35c1-8463-e2a923e1f618"))
-_SoapNcName : IDispatch
-{};
+RIDL!{#[uuid(0x725cdaf7, 0xb739, 0x35c1, 0x84, 0x63, 0xe2, 0xa9, 0x23, 0xe1, 0xf6, 0x18)]
+interface _SoapNcName(_SoapNcNameVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6a46b6a2-2d2c-3c67-af67-aae0175f17ae"))
-_SoapId : IDispatch
-{};
+RIDL!{#[uuid(0x6a46b6a2, 0x2d2c, 0x3c67, 0xaf, 0x67, 0xaa, 0xe0, 0x17, 0x5f, 0x17, 0xae)]
+interface _SoapId(_SoapIdVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7db7fd83-de89-38e1-9645-d4cabde694c0"))
-_SoapIdref : IDispatch
-{};
+RIDL!{#[uuid(0x7db7fd83, 0xde89, 0x38e1, 0x96, 0x45, 0xd4, 0xca, 0xbd, 0xe6, 0x94, 0xc0)]
+interface _SoapIdref(_SoapIdrefVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("37171746-b784-3586-a7d5-692a7604a66b"))
-_SoapEntity : IDispatch
-{};
+RIDL!{#[uuid(0x37171746, 0xb784, 0x3586, 0xa7, 0xd5, 0x69, 0x2a, 0x76, 0x04, 0xa6, 0x6b)]
+interface _SoapEntity(_SoapEntityVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2d985674-231c-33d4-b14d-f3a6bd2ebe19"))
-_SynchronizationAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x2d985674, 0x231c, 0x33d4, 0xb1, 0x4d, 0xf3, 0xa6, 0xbd, 0x2e, 0xbe, 0x19)]
+interface _SynchronizationAttribute(_SynchronizationAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f51728f2-2def-308c-874a-cbb1baa9cf9e"))
-_TrackingServices : IDispatch
-{};
+RIDL!{#[uuid(0xf51728f2, 0x2def, 0x308c, 0x87, 0x4a, 0xcb, 0xb1, 0xba, 0xa9, 0xcf, 0x9e)]
+interface _TrackingServices(_TrackingServicesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("717105a3-739b-3bc3-a2b7-ad215903fad2"))
-_UrlAttribute : IDispatch
-{};
+RIDL!{#[uuid(0x717105a3, 0x739b, 0x3bc3, 0xa2, 0xb7, 0xad, 0x21, 0x59, 0x03, 0xfa, 0xd2)]
+interface _UrlAttribute(_UrlAttributeVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0d296515-ad19-3602-b415-d8ec77066081"))
-_Header : IDispatch
-{};
+RIDL!{#[uuid(0x0d296515, 0xad19, 0x3602, 0xb4, 0x15, 0xd8, 0xec, 0x77, 0x06, 0x60, 0x81)]
+interface _Header(_HeaderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5dbbaf39-a3df-30b7-aaea-9fd11394123f"))
-_HeaderHandler : IDispatch
-{};
+RIDL!{#[uuid(0x5dbbaf39, 0xa3df, 0x30b7, 0xaa, 0xea, 0x9f, 0xd1, 0x13, 0x94, 0x12, 0x3f)]
+interface _HeaderHandler(_HeaderHandlerVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ae1850fd-3596-3727-a242-2fc31c5a0312"))
-IRemotingFormatter : IDispatch
+RIDL!{#[uuid(0xae1850fd, 0x3596, 0x3727, 0xa2, 0x42, 0x2f, 0xc3, 0x1c, 0x5a, 0x03, 0x12)]
+interface IRemotingFormatter(IRemotingFormatterVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -3265,214 +3265,214 @@ IRemotingFormatter : IDispatch
         /*[in]*/ struct _Stream * serializationStream,
         /*[in]*/ VARIANT graph,
         /*[in]*/ SAFEARRAY * headers ) = 0;
-};
+}}
 
-struct __declspec(uuid("53bce4d4-6209-396d-bd4a-0b0a0a177df9"))
-_CallContext : IDispatch
-{};
+RIDL!{#[uuid(0x53bce4d4, 0x6209, 0x396d, 0xbd, 0x4a, 0x0b, 0x0a, 0x0a, 0x17, 0x7d, 0xf9)]
+interface _CallContext(_CallContextVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9aff21f5-1c9c-35e7-aea4-c3aa0beb3b77"))
-_LogicalCallContext : IDispatch
-{};
+RIDL!{#[uuid(0x9aff21f5, 0x1c9c, 0x35e7, 0xae, 0xa4, 0xc3, 0xaa, 0x0b, 0xeb, 0x3b, 0x77)]
+interface _LogicalCallContext(_LogicalCallContextVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("34ec3bd7-f2f6-3c20-a639-804bff89df65"))
-_IsolatedStorage : IDispatch
-{};
+RIDL!{#[uuid(0x34ec3bd7, 0xf2f6, 0x3c20, 0xa6, 0x39, 0x80, 0x4b, 0xff, 0x89, 0xdf, 0x65)]
+interface _IsolatedStorage(_IsolatedStorageVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("68d5592b-47c8-381a-8d51-3925c16cf025"))
-_IsolatedStorageFileStream : IDispatch
-{};
+RIDL!{#[uuid(0x68d5592b, 0x47c8, 0x381a, 0x8d, 0x51, 0x39, 0x25, 0xc1, 0x6c, 0xf0, 0x25)]
+interface _IsolatedStorageFileStream(_IsolatedStorageFileStreamVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("aec2b0de-9898-3607-b845-63e2e307cb5f"))
-_IsolatedStorageException : IDispatch
-{};
+RIDL!{#[uuid(0xaec2b0de, 0x9898, 0x3607, 0xb8, 0x45, 0x63, 0xe2, 0xe3, 0x07, 0xcb, 0x5f)]
+interface _IsolatedStorageException(_IsolatedStorageExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("6bbb7dee-186f-3d51-9486-be0a71e915ce"))
-_IsolatedStorageFile : IDispatch
-{};
+RIDL!{#[uuid(0x6bbb7dee, 0x186f, 0x3d51, 0x94, 0x86, 0xbe, 0x0a, 0x71, 0xe9, 0x15, 0xce)]
+interface _IsolatedStorageFile(_IsolatedStorageFileVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("361a5049-1bc8-35a9-946a-53a877902f25"))
-_InternalRM : IDispatch
-{};
+RIDL!{#[uuid(0x361a5049, 0x1bc8, 0x35a9, 0x94, 0x6a, 0x53, 0xa8, 0x77, 0x90, 0x2f, 0x25)]
+interface _InternalRM(_InternalRMVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a864fb13-f945-3dc0-a01c-b903f944fc97"))
-_InternalST : IDispatch
-{};
+RIDL!{#[uuid(0xa864fb13, 0xf945, 0x3dc0, 0xa0, 0x1c, 0xb9, 0x03, 0xf9, 0x44, 0xfc, 0x97)]
+interface _InternalST(_InternalSTVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("bc0847b2-bd5c-37b3-ba67-7d2d54b17238"))
-_SoapMessage : IDispatch
-{};
+RIDL!{#[uuid(0xbc0847b2, 0xbd5c, 0x37b3, 0xba, 0x67, 0x7d, 0x2d, 0x54, 0xb1, 0x72, 0x38)]
+interface _SoapMessage(_SoapMessageVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a1c392fc-314c-39d5-8de6-1f8ebca0a1e2"))
-_SoapFault : IDispatch
-{};
+RIDL!{#[uuid(0xa1c392fc, 0x314c, 0x39d5, 0x8d, 0xe6, 0x1f, 0x8e, 0xbc, 0xa0, 0xa1, 0xe2)]
+interface _SoapFault(_SoapFaultVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("02d1bd78-3bb6-37ad-a9f8-f7d5da273e4e"))
-_ServerFault : IDispatch
-{};
+RIDL!{#[uuid(0x02d1bd78, 0x3bb6, 0x37ad, 0xa9, 0xf8, 0xf7, 0xd5, 0xda, 0x27, 0x3e, 0x4e)]
+interface _ServerFault(_ServerFaultVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3bcf0cb2-a849-375e-8189-1ba5f1f4a9b0"))
-_BinaryFormatter : IDispatch
-{};
+RIDL!{#[uuid(0x3bcf0cb2, 0xa849, 0x375e, 0x81, 0x89, 0x1b, 0xa5, 0xf1, 0xf4, 0xa9, 0xb0)]
+interface _BinaryFormatter(_BinaryFormatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0daeaee7-007b-3fca-8755-a5c6c3158955"))
-_DynamicILInfo : IDispatch
-{};
+RIDL!{#[uuid(0x0daeaee7, 0x007b, 0x3fca, 0x87, 0x55, 0xa5, 0xc6, 0xc3, 0x15, 0x89, 0x55)]
+interface _DynamicILInfo(_DynamicILInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("eaaa2670-0fb1-33ea-852b-f1c97fed1797"))
-_DynamicMethod : IDispatch
-{};
+RIDL!{#[uuid(0xeaaa2670, 0x0fb1, 0x33ea, 0x85, 0x2b, 0xf1, 0xc9, 0x7f, 0xed, 0x17, 0x97)]
+interface _DynamicMethod(_DynamicMethodVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1db1cc2a-da73-389e-828b-5c616f4fac49"))
-_OpCodes : IDispatch
-{};
+RIDL!{#[uuid(0x1db1cc2a, 0xda73, 0x389e, 0x82, 0x8b, 0x5c, 0x61, 0x6f, 0x4f, 0xac, 0x49)]
+interface _OpCodes(_OpCodesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b1a62835-fc19-35a4-b206-a452463d7ee7"))
-_GenericTypeParameterBuilder : IDispatch
-{};
+RIDL!{#[uuid(0xb1a62835, 0xfc19, 0x35a4, 0xb2, 0x06, 0xa4, 0x52, 0x46, 0x3d, 0x7e, 0xe7)]
+interface _GenericTypeParameterBuilder(_GenericTypeParameterBuilderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("fd302d86-240a-3694-a31f-9ef59e6e41bc"))
-_UnmanagedMarshal : IDispatch
-{};
+RIDL!{#[uuid(0xfd302d86, 0x240a, 0x3694, 0xa3, 0x1f, 0x9e, 0xf5, 0x9e, 0x6e, 0x41, 0xbc)]
+interface _UnmanagedMarshal(_UnmanagedMarshalVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8978b0be-a89e-3ff9-9834-77862cebff3d"))
-_KeySizes : IDispatch
-{};
+RIDL!{#[uuid(0x8978b0be, 0xa89e, 0x3ff9, 0x98, 0x34, 0x77, 0x86, 0x2c, 0xeb, 0xff, 0x3d)]
+interface _KeySizes(_KeySizesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4311e8f5-b249-3f81-8ff4-cf853d85306d"))
-_CryptographicException : IDispatch
-{};
+RIDL!{#[uuid(0x4311e8f5, 0xb249, 0x3f81, 0x8f, 0xf4, 0xcf, 0x85, 0x3d, 0x85, 0x30, 0x6d)]
+interface _CryptographicException(_CryptographicExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7fb08423-038f-3acc-b600-e6d072bae160"))
-_CryptographicUnexpectedOperationException : IDispatch
-{};
+RIDL!{#[uuid(0x7fb08423, 0x038f, 0x3acc, 0xb6, 0x00, 0xe6, 0xd0, 0x72, 0xba, 0xe1, 0x60)]
+interface _CryptographicUnexpectedOperationException(_CryptographicUnexpectedOperationExceptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7ae4b03c-414a-36e0-ba68-f9603004c925"))
-_RandomNumberGenerator : IDispatch
-{};
+RIDL!{#[uuid(0x7ae4b03c, 0x414a, 0x36e0, 0xba, 0x68, 0xf9, 0x60, 0x30, 0x04, 0xc9, 0x25)]
+interface _RandomNumberGenerator(_RandomNumberGeneratorVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("2c65d4c0-584c-3e4e-8e6d-1afb112bff69"))
-_RNGCryptoServiceProvider : IDispatch
-{};
+RIDL!{#[uuid(0x2c65d4c0, 0x584c, 0x3e4e, 0x8e, 0x6d, 0x1a, 0xfb, 0x11, 0x2b, 0xff, 0x69)]
+interface _RNGCryptoServiceProvider(_RNGCryptoServiceProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("05bc0e38-7136-3825-9e34-26c1cf2142c9"))
-_SymmetricAlgorithm : IDispatch
-{};
+RIDL!{#[uuid(0x05bc0e38, 0x7136, 0x3825, 0x9e, 0x34, 0x26, 0xc1, 0xcf, 0x21, 0x42, 0xc9)]
+interface _SymmetricAlgorithm(_SymmetricAlgorithmVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("09343ac0-d19a-3e62-bc16-0f600f10180a"))
-_AsymmetricAlgorithm : IDispatch
-{};
+RIDL!{#[uuid(0x09343ac0, 0xd19a, 0x3e62, 0xbc, 0x16, 0x0f, 0x60, 0x0f, 0x10, 0x18, 0x0a)]
+interface _AsymmetricAlgorithm(_AsymmetricAlgorithmVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b6685cca-7a49-37d1-a805-3de829cb8deb"))
-_AsymmetricKeyExchangeDeformatter : IDispatch
-{};
+RIDL!{#[uuid(0xb6685cca, 0x7a49, 0x37d1, 0xa8, 0x05, 0x3d, 0xe8, 0x29, 0xcb, 0x8d, 0xeb)]
+interface _AsymmetricKeyExchangeDeformatter(_AsymmetricKeyExchangeDeformatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1365b84b-6477-3c40-be6a-089dc01eced9"))
-_AsymmetricKeyExchangeFormatter : IDispatch
-{};
+RIDL!{#[uuid(0x1365b84b, 0x6477, 0x3c40, 0xbe, 0x6a, 0x08, 0x9d, 0xc0, 0x1e, 0xce, 0xd9)]
+interface _AsymmetricKeyExchangeFormatter(_AsymmetricKeyExchangeFormatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("7ca5fe57-d1ac-3064-bb0b-f450be40f194"))
-_AsymmetricSignatureDeformatter : IDispatch
-{};
+RIDL!{#[uuid(0x7ca5fe57, 0xd1ac, 0x3064, 0xbb, 0x0b, 0xf4, 0x50, 0xbe, 0x40, 0xf1, 0x94)]
+interface _AsymmetricSignatureDeformatter(_AsymmetricSignatureDeformatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5363d066-6295-3618-be33-3f0b070b7976"))
-_AsymmetricSignatureFormatter : IDispatch
-{};
+RIDL!{#[uuid(0x5363d066, 0x6295, 0x3618, 0xbe, 0x33, 0x3f, 0x0b, 0x07, 0x0b, 0x79, 0x76)]
+interface _AsymmetricSignatureFormatter(_AsymmetricSignatureFormatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("23ded1e1-7d5f-3936-aa4e-18bbcc39b155"))
-_ToBase64Transform : IDispatch
-{};
+RIDL!{#[uuid(0x23ded1e1, 0x7d5f, 0x3936, 0xaa, 0x4e, 0x18, 0xbb, 0xcc, 0x39, 0xb1, 0x55)]
+interface _ToBase64Transform(_ToBase64TransformVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("fc0717a6-2e86-372f-81f4-b35ed4bdf0de"))
-_FromBase64Transform : IDispatch
-{};
+RIDL!{#[uuid(0xfc0717a6, 0x2e86, 0x372f, 0x81, 0xf4, 0xb3, 0x5e, 0xd4, 0xbd, 0xf0, 0xde)]
+interface _FromBase64Transform(_FromBase64TransformVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("983b8639-2ed7-364c-9899-682abb2ce850"))
-_CryptoAPITransform : IDispatch
-{};
+RIDL!{#[uuid(0x983b8639, 0x2ed7, 0x364c, 0x98, 0x99, 0x68, 0x2a, 0xbb, 0x2c, 0xe8, 0x50)]
+interface _CryptoAPITransform(_CryptoAPITransformVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d5331d95-fff2-358f-afd5-588f469ff2e4"))
-_CspParameters : IDispatch
-{};
+RIDL!{#[uuid(0xd5331d95, 0xfff2, 0x358f, 0xaf, 0xd5, 0x58, 0x8f, 0x46, 0x9f, 0xf2, 0xe4)]
+interface _CspParameters(_CspParametersVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ab00f3f8-7dde-3ff5-b805-6c5dbb200549"))
-_CryptoConfig : IDispatch
-{};
+RIDL!{#[uuid(0xab00f3f8, 0x7dde, 0x3ff5, 0xb8, 0x05, 0x6c, 0x5d, 0xbb, 0x20, 0x05, 0x49)]
+interface _CryptoConfig(_CryptoConfigVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4134f762-d0ec-3210-93c0-de4f443d5669"))
-_CryptoStream : IDispatch
-{};
+RIDL!{#[uuid(0x4134f762, 0xd0ec, 0x3210, 0x93, 0xc0, 0xde, 0x4f, 0x44, 0x3d, 0x56, 0x69)]
+interface _CryptoStream(_CryptoStreamVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c7ef0214-b91c-3799-98dd-c994aabfc741"))
-_DES : IDispatch
-{};
+RIDL!{#[uuid(0xc7ef0214, 0xb91c, 0x3799, 0x98, 0xdd, 0xc9, 0x94, 0xaa, 0xbf, 0xc7, 0x41)]
+interface _DES(_DESVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("65e8495e-5207-3248-9250-0fc849b4f096"))
-_DESCryptoServiceProvider : IDispatch
-{};
+RIDL!{#[uuid(0x65e8495e, 0x5207, 0x3248, 0x92, 0x50, 0x0f, 0xc8, 0x49, 0xb4, 0xf0, 0x96)]
+interface _DESCryptoServiceProvider(_DESCryptoServiceProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("140ee78f-067f-3765-9258-c3bc72fe976b"))
-_DeriveBytes : IDispatch
-{};
+RIDL!{#[uuid(0x140ee78f, 0x067f, 0x3765, 0x92, 0x58, 0xc3, 0xbc, 0x72, 0xfe, 0x97, 0x6b)]
+interface _DeriveBytes(_DeriveBytesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0eb5b5e0-1be6-3a5f-87b3-e3323342f44e"))
-_DSA : IDispatch
-{};
+RIDL!{#[uuid(0x0eb5b5e0, 0x1be6, 0x3a5f, 0x87, 0xb3, 0xe3, 0x32, 0x33, 0x42, 0xf4, 0x4e)]
+interface _DSA(_DSAVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1f38aafe-7502-332f-971f-c2fc700a1d55"))
-_DSACryptoServiceProvider : IDispatch
-{};
+RIDL!{#[uuid(0x1f38aafe, 0x7502, 0x332f, 0x97, 0x1f, 0xc2, 0xfc, 0x70, 0x0a, 0x1d, 0x55)]
+interface _DSACryptoServiceProvider(_DSACryptoServiceProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0e774498-ade6-3820-b1d5-426b06397be7"))
-_DSASignatureDeformatter : IDispatch
-{};
+RIDL!{#[uuid(0x0e774498, 0xade6, 0x3820, 0xb1, 0xd5, 0x42, 0x6b, 0x06, 0x39, 0x7b, 0xe7)]
+interface _DSASignatureDeformatter(_DSASignatureDeformatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("4b5fc561-5983-31e4-903b-1404231b2c89"))
-_DSASignatureFormatter : IDispatch
-{};
+RIDL!{#[uuid(0x4b5fc561, 0x5983, 0x31e4, 0x90, 0x3b, 0x14, 0x04, 0x23, 0x1b, 0x2c, 0x89)]
+interface _DSASignatureFormatter(_DSASignatureFormatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("69d3baba-1c3d-354c-acfe-f19109ec3896"))
-_HashAlgorithm : IDispatch
-{};
+RIDL!{#[uuid(0x69d3baba, 0x1c3d, 0x354c, 0xac, 0xfe, 0xf1, 0x91, 0x09, 0xec, 0x38, 0x96)]
+interface _HashAlgorithm(_HashAlgorithmVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d182cf91-628c-3ff6-87f0-41ba51cc7433"))
-_KeyedHashAlgorithm : IDispatch
-{};
+RIDL!{#[uuid(0xd182cf91, 0x628c, 0x3ff6, 0x87, 0xf0, 0x41, 0xba, 0x51, 0xcc, 0x74, 0x33)]
+interface _KeyedHashAlgorithm(_KeyedHashAlgorithmVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e5456726-33f6-34e4-95c2-db2bfa581462"))
-_HMAC : IDispatch
-{};
+RIDL!{#[uuid(0xe5456726, 0x33f6, 0x34e4, 0x95, 0xc2, 0xdb, 0x2b, 0xfa, 0x58, 0x14, 0x62)]
+interface _HMAC(_HMACVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("486360f5-6213-322b-befb-45221579d4af"))
-_HMACMD5 : IDispatch
-{};
+RIDL!{#[uuid(0x486360f5, 0x6213, 0x322b, 0xbe, 0xfb, 0x45, 0x22, 0x15, 0x79, 0xd4, 0xaf)]
+interface _HMACMD5(_HMACMD5Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9fd974a5-338c-37b9-a1b2-d45f0c2b25c2"))
-_HMACRIPEMD160 : IDispatch
-{};
+RIDL!{#[uuid(0x9fd974a5, 0x338c, 0x37b9, 0xa1, 0xb2, 0xd4, 0x5f, 0x0c, 0x2b, 0x25, 0xc2)]
+interface _HMACRIPEMD160(_HMACRIPEMD160Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("63ac7c37-c51a-3d82-8fdd-2a567039e46d"))
-_HMACSHA1 : IDispatch
-{};
+RIDL!{#[uuid(0x63ac7c37, 0xc51a, 0x3d82, 0x8f, 0xdd, 0x2a, 0x56, 0x70, 0x39, 0xe4, 0x6d)]
+interface _HMACSHA1(_HMACSHA1Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("1377ce34-8921-3bd4-96e9-c8d5d5aa1adf"))
-_HMACSHA256 : IDispatch
-{};
+RIDL!{#[uuid(0x1377ce34, 0x8921, 0x3bd4, 0x96, 0xe9, 0xc8, 0xd5, 0xd5, 0xaa, 0x1a, 0xdf)]
+interface _HMACSHA256(_HMACSHA256Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("786f8ac3-93e4-3b6f-9f62-1901b0e5f433"))
-_HMACSHA384 : IDispatch
-{};
+RIDL!{#[uuid(0x786f8ac3, 0x93e4, 0x3b6f, 0x9f, 0x62, 0x19, 0x01, 0xb0, 0xe5, 0xf4, 0x33)]
+interface _HMACSHA384(_HMACSHA384Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("eb081b9d-a766-3abe-b720-505c42162d83"))
-_HMACSHA512 : IDispatch
-{};
+RIDL!{#[uuid(0xeb081b9d, 0xa766, 0x3abe, 0xb7, 0x20, 0x50, 0x5c, 0x42, 0x16, 0x2d, 0x83)]
+interface _HMACSHA512(_HMACSHA512Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("be8619cb-3731-3cb2-a3a8-cd0bfa5566ec"))
-_CspKeyContainerInfo : IDispatch
-{};
+RIDL!{#[uuid(0xbe8619cb, 0x3731, 0x3cb2, 0xa3, 0xa8, 0xcd, 0x0b, 0xfa, 0x55, 0x66, 0xec)]
+interface _CspKeyContainerInfo(_CspKeyContainerInfoVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("494a7583-190e-3693-9ec4-de54dc6a84a2"))
-ICspAsymmetricAlgorithm : IDispatch
+RIDL!{#[uuid(0x494a7583, 0x190e, 0x3693, 0x9e, 0xc4, 0xde, 0x54, 0xdc, 0x6a, 0x84, 0xa2)]
+interface ICspAsymmetricAlgorithm(ICspAsymmetricAlgorithmVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -3485,150 +3485,150 @@ ICspAsymmetricAlgorithm : IDispatch
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
       virtual HRESULT __stdcall ImportCspBlob (
         /*[in]*/ SAFEARRAY * rawData ) = 0;
-};
+}}
 
-struct __declspec(uuid("1cac0bda-ac58-31bc-b624-63f77d0c3d2f"))
-_MACTripleDES : IDispatch
-{};
+RIDL!{#[uuid(0x1cac0bda, 0xac58, 0x31bc, 0xb6, 0x24, 0x63, 0xf7, 0x7d, 0x0c, 0x3d, 0x2f)]
+interface _MACTripleDES(_MACTripleDESVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9aa8765e-69a0-30e3-9cde-ebc70662ae37"))
-_MD5 : IDispatch
-{};
+RIDL!{#[uuid(0x9aa8765e, 0x69a0, 0x30e3, 0x9c, 0xde, 0xeb, 0xc7, 0x06, 0x62, 0xae, 0x37)]
+interface _MD5(_MD5Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("d3f5c812-5867-33c9-8cee-cb170e8d844a"))
-_MD5CryptoServiceProvider : IDispatch
-{};
+RIDL!{#[uuid(0xd3f5c812, 0x5867, 0x33c9, 0x8c, 0xee, 0xcb, 0x17, 0x0e, 0x8d, 0x84, 0x4a)]
+interface _MD5CryptoServiceProvider(_MD5CryptoServiceProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("85601fee-a79d-3710-af21-099089edc0bf"))
-_MaskGenerationMethod : IDispatch
-{};
+RIDL!{#[uuid(0x85601fee, 0xa79d, 0x3710, 0xaf, 0x21, 0x09, 0x90, 0x89, 0xed, 0xc0, 0xbf)]
+interface _MaskGenerationMethod(_MaskGenerationMethodVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3cd62d67-586f-309e-a6d8-1f4baac5ac28"))
-_PasswordDeriveBytes : IDispatch
-{};
+RIDL!{#[uuid(0x3cd62d67, 0x586f, 0x309e, 0xa6, 0xd8, 0x1f, 0x4b, 0xaa, 0xc5, 0xac, 0x28)]
+interface _PasswordDeriveBytes(_PasswordDeriveBytesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("425bff0d-59e4-36a8-b1ff-1f5d39d698f4"))
-_PKCS1MaskGenerationMethod : IDispatch
-{};
+RIDL!{#[uuid(0x425bff0d, 0x59e4, 0x36a8, 0xb1, 0xff, 0x1f, 0x5d, 0x39, 0xd6, 0x98, 0xf4)]
+interface _PKCS1MaskGenerationMethod(_PKCS1MaskGenerationMethodVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("f7c0c4cc-0d49-31ee-a3d3-b8b551e4928c"))
-_RC2 : IDispatch
-{};
+RIDL!{#[uuid(0xf7c0c4cc, 0x0d49, 0x31ee, 0xa3, 0xd3, 0xb8, 0xb5, 0x51, 0xe4, 0x92, 0x8c)]
+interface _RC2(_RC2Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("875715c5-cb64-3920-8156-0ee9cb0e07ea"))
-_RC2CryptoServiceProvider : IDispatch
-{};
+RIDL!{#[uuid(0x875715c5, 0xcb64, 0x3920, 0x81, 0x56, 0x0e, 0xe9, 0xcb, 0x0e, 0x07, 0xea)]
+interface _RC2CryptoServiceProvider(_RC2CryptoServiceProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a6589897-5a67-305f-9497-72e5fe8bead5"))
-_Rfc2898DeriveBytes : IDispatch
-{};
+RIDL!{#[uuid(0xa6589897, 0x5a67, 0x305f, 0x94, 0x97, 0x72, 0xe5, 0xfe, 0x8b, 0xea, 0xd5)]
+interface _Rfc2898DeriveBytes(_Rfc2898DeriveBytesVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("e5481be9-3422-3506-bc35-b96d4535014d"))
-_RIPEMD160 : IDispatch
-{};
+RIDL!{#[uuid(0xe5481be9, 0x3422, 0x3506, 0xbc, 0x35, 0xb9, 0x6d, 0x45, 0x35, 0x01, 0x4d)]
+interface _RIPEMD160(_RIPEMD160Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("814f9c35-b7f8-3ceb-8e43-e01f09157060"))
-_RIPEMD160Managed : IDispatch
-{};
+RIDL!{#[uuid(0x814f9c35, 0xb7f8, 0x3ceb, 0x8e, 0x43, 0xe0, 0x1f, 0x09, 0x15, 0x70, 0x60)]
+interface _RIPEMD160Managed(_RIPEMD160ManagedVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("0b3fb710-a25c-3310-8774-1cf117f95bd4"))
-_RSA : IDispatch
-{};
+RIDL!{#[uuid(0x0b3fb710, 0xa25c, 0x3310, 0x87, 0x74, 0x1c, 0xf1, 0x17, 0xf9, 0x5b, 0xd4)]
+interface _RSA(_RSAVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("bd9df856-2300-3254-bcf0-679ba03c7a13"))
-_RSACryptoServiceProvider : IDispatch
-{};
+RIDL!{#[uuid(0xbd9df856, 0x2300, 0x3254, 0xbc, 0xf0, 0x67, 0x9b, 0xa0, 0x3c, 0x7a, 0x13)]
+interface _RSACryptoServiceProvider(_RSACryptoServiceProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("37625095-7baa-377d-a0dc-7f465c0167aa"))
-_RSAOAEPKeyExchangeDeformatter : IDispatch
-{};
+RIDL!{#[uuid(0x37625095, 0x7baa, 0x377d, 0xa0, 0xdc, 0x7f, 0x46, 0x5c, 0x01, 0x67, 0xaa)]
+interface _RSAOAEPKeyExchangeDeformatter(_RSAOAEPKeyExchangeDeformatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("77a416e7-2ac6-3d0e-98ff-3ba0f586f56f"))
-_RSAOAEPKeyExchangeFormatter : IDispatch
-{};
+RIDL!{#[uuid(0x77a416e7, 0x2ac6, 0x3d0e, 0x98, 0xff, 0x3b, 0xa0, 0xf5, 0x86, 0xf5, 0x6f)]
+interface _RSAOAEPKeyExchangeFormatter(_RSAOAEPKeyExchangeFormatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8034aaf4-3666-3b6f-85cf-463f9bfd31a9"))
-_RSAPKCS1KeyExchangeDeformatter : IDispatch
-{};
+RIDL!{#[uuid(0x8034aaf4, 0x3666, 0x3b6f, 0x85, 0xcf, 0x46, 0x3f, 0x9b, 0xfd, 0x31, 0xa9)]
+interface _RSAPKCS1KeyExchangeDeformatter(_RSAPKCS1KeyExchangeDeformatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("9ff67f8e-a7aa-3ba6-90ee-9d44af6e2f8c"))
-_RSAPKCS1KeyExchangeFormatter : IDispatch
-{};
+RIDL!{#[uuid(0x9ff67f8e, 0xa7aa, 0x3ba6, 0x90, 0xee, 0x9d, 0x44, 0xaf, 0x6e, 0x2f, 0x8c)]
+interface _RSAPKCS1KeyExchangeFormatter(_RSAPKCS1KeyExchangeFormatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("fc38507e-06a4-3300-8652-8d7b54341f65"))
-_RSAPKCS1SignatureDeformatter : IDispatch
-{};
+RIDL!{#[uuid(0xfc38507e, 0x06a4, 0x3300, 0x86, 0x52, 0x8d, 0x7b, 0x54, 0x34, 0x1f, 0x65)]
+interface _RSAPKCS1SignatureDeformatter(_RSAPKCS1SignatureDeformatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("fb7a5ff4-cfa8-3f24-ad5f-d5eb39359707"))
-_RSAPKCS1SignatureFormatter : IDispatch
-{};
+RIDL!{#[uuid(0xfb7a5ff4, 0xcfa8, 0x3f24, 0xad, 0x5f, 0xd5, 0xeb, 0x39, 0x35, 0x97, 0x07)]
+interface _RSAPKCS1SignatureFormatter(_RSAPKCS1SignatureFormatterVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("21b52a91-856f-373c-ad42-4cf3f1021f5a"))
-_Rijndael : IDispatch
-{};
+RIDL!{#[uuid(0x21b52a91, 0x856f, 0x373c, 0xad, 0x42, 0x4c, 0xf3, 0xf1, 0x02, 0x1f, 0x5a)]
+interface _Rijndael(_RijndaelVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("427ea9d3-11d8-3e38-9e05-a4f7fa684183"))
-_RijndaelManaged : IDispatch
-{};
+RIDL!{#[uuid(0x427ea9d3, 0x11d8, 0x3e38, 0x9e, 0x05, 0xa4, 0xf7, 0xfa, 0x68, 0x41, 0x83)]
+interface _RijndaelManaged(_RijndaelManagedVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("5767c78f-f344-35a5-84bc-53b9eaeb68cb"))
-_RijndaelManagedTransform : IDispatch
-{};
+RIDL!{#[uuid(0x5767c78f, 0xf344, 0x35a5, 0x84, 0xbc, 0x53, 0xb9, 0xea, 0xeb, 0x68, 0xcb)]
+interface _RijndaelManagedTransform(_RijndaelManagedTransformVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("48600dd2-0099-337f-92d6-961d1e5010d4"))
-_SHA1 : IDispatch
-{};
+RIDL!{#[uuid(0x48600dd2, 0x0099, 0x337f, 0x92, 0xd6, 0x96, 0x1d, 0x1e, 0x50, 0x10, 0xd4)]
+interface _SHA1(_SHA1Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("a16537bc-1edf-3516-b75e-cc65caf873ab"))
-_SHA1CryptoServiceProvider : IDispatch
-{};
+RIDL!{#[uuid(0xa16537bc, 0x1edf, 0x3516, 0xb7, 0x5e, 0xcc, 0x65, 0xca, 0xf8, 0x73, 0xab)]
+interface _SHA1CryptoServiceProvider(_SHA1CryptoServiceProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c27990bb-3cfd-3d29-8dc0-bbe5fbadeafd"))
-_SHA1Managed : IDispatch
-{};
+RIDL!{#[uuid(0xc27990bb, 0x3cfd, 0x3d29, 0x8d, 0xc0, 0xbb, 0xe5, 0xfb, 0xad, 0xea, 0xfd)]
+interface _SHA1Managed(_SHA1ManagedVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3b274703-dfae-3f9c-a1b5-9990df9d7fa3"))
-_SHA256 : IDispatch
-{};
+RIDL!{#[uuid(0x3b274703, 0xdfae, 0x3f9c, 0xa1, 0xb5, 0x99, 0x90, 0xdf, 0x9d, 0x7f, 0xa3)]
+interface _SHA256(_SHA256Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("3d077954-7bcc-325b-9dda-3b17a03378e0"))
-_SHA256Managed : IDispatch
-{};
+RIDL!{#[uuid(0x3d077954, 0x7bcc, 0x325b, 0x9d, 0xda, 0x3b, 0x17, 0xa0, 0x33, 0x78, 0xe0)]
+interface _SHA256Managed(_SHA256ManagedVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b60ad5d7-2c2e-35b7-8d77-7946156cfe8e"))
-_SHA384 : IDispatch
-{};
+RIDL!{#[uuid(0xb60ad5d7, 0x2c2e, 0x35b7, 0x8d, 0x77, 0x79, 0x46, 0x15, 0x6c, 0xfe, 0x8e)]
+interface _SHA384(_SHA384Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("de541460-f838-3698-b2da-510b09070118"))
-_SHA384Managed : IDispatch
-{};
+RIDL!{#[uuid(0xde541460, 0xf838, 0x3698, 0xb2, 0xda, 0x51, 0x0b, 0x09, 0x07, 0x01, 0x18)]
+interface _SHA384Managed(_SHA384ManagedVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("49dd9e4b-84f3-3d6d-91fb-3fedcef634c7"))
-_SHA512 : IDispatch
-{};
+RIDL!{#[uuid(0x49dd9e4b, 0x84f3, 0x3d6d, 0x91, 0xfb, 0x3f, 0xed, 0xce, 0xf6, 0x34, 0xc7)]
+interface _SHA512(_SHA512Vtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("dc8ce439-7954-36ed-803c-674f72f27249"))
-_SHA512Managed : IDispatch
-{};
+RIDL!{#[uuid(0xdc8ce439, 0x7954, 0x36ed, 0x80, 0x3c, 0x67, 0x4f, 0x72, 0xf2, 0x72, 0x49)]
+interface _SHA512Managed(_SHA512ManagedVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("8017b414-4886-33da-80a3-7865c1350d43"))
-_SignatureDescription : IDispatch
-{};
+RIDL!{#[uuid(0x8017b414, 0x4886, 0x33da, 0x80, 0xa3, 0x78, 0x65, 0xc1, 0x35, 0x0d, 0x43)]
+interface _SignatureDescription(_SignatureDescriptionVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("c040b889-5278-3132-aff9-afa61707a81d"))
-_TripleDES : IDispatch
-{};
+RIDL!{#[uuid(0xc040b889, 0x5278, 0x3132, 0xaf, 0xf9, 0xaf, 0xa6, 0x17, 0x07, 0xa8, 0x1d)]
+interface _TripleDES(_TripleDESVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("ec69d083-3cd0-3c0c-998c-3b738db535d5"))
-_TripleDESCryptoServiceProvider : IDispatch
-{};
+RIDL!{#[uuid(0xec69d083, 0x3cd0, 0x3c0c, 0x99, 0x8c, 0x3b, 0x73, 0x8d, 0xb5, 0x35, 0xd5)]
+interface _TripleDESCryptoServiceProvider(_TripleDESCryptoServiceProviderVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("68fd6f14-a7b2-36c8-a724-d01f90d73477"))
-_X509Certificate : IDispatch
-{};
+RIDL!{#[uuid(0x68fd6f14, 0xa7b2, 0x36c8, 0xa7, 0x24, 0xd0, 0x1f, 0x90, 0xd7, 0x34, 0x77)]
+interface _X509Certificate(_X509CertificateVtbl): IDispatch(IDispatchVtbl)  
+{}}
 
-struct __declspec(uuid("b36b5c63-42ef-38bc-a07e-0b34c98f164a"))
-_Exception : IDispatch
+RIDL!{#[uuid(0xb36b5c63, 0x42ef, 0x38bc, 0xa0, 0x7e, 0x0b, 0x34, 0xc9, 0x8f, 0x16, 0x4a)]
+interface _Exception(_ExceptionVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -3664,10 +3664,10 @@ _Exception : IDispatch
         /*[out,retval]*/ struct _Exception * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_TargetSite (
         /*[out,retval]*/ struct _MethodBase * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("3afab213-f5a2-3241-93ba-329ea4ba8016"))
-IClientResponseChannelSinkStack : IDispatch
+RIDL!{#[uuid(0x3afab213, 0xf5a2, 0x3241, 0x93, 0xba, 0x32, 0x9e, 0xa4, 0xba, 0x80, 0x16)]
+interface IClientResponseChannelSinkStack(IClientResponseChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -3680,10 +3680,10 @@ IClientResponseChannelSinkStack : IDispatch
         /*[in]*/ struct IMessage * msg ) = 0;
       virtual HRESULT __stdcall DispatchException (
         /*[in]*/ struct _Exception * e ) = 0;
-};
+}}
 
-struct __declspec(uuid("f617690a-55f4-36af-9149-d199831f8594"))
-IMethodReturnMessage : IDispatch
+RIDL!{#[uuid(0xf617690a, 0x55f4, 0x36af, 0x91, 0x49, 0xd1, 0x99, 0x83, 0x1f, 0x85, 0x94)]
+interface IMethodReturnMessage(IMethodReturnMessageVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -3703,10 +3703,10 @@ IMethodReturnMessage : IDispatch
         /*[out,retval]*/ struct _Exception * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_ReturnValue (
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("9a604ee7-e630-3ded-9444-baae247075ab"))
-IFormattable : IDispatch
+RIDL!{#[uuid(0x9a604ee7, 0xe630, 0x3ded, 0x94, 0x44, 0xba, 0xae, 0x24, 0x70, 0x75, 0xab)]
+interface IFormattable(IFormattableVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -3716,10 +3716,10 @@ IFormattable : IDispatch
         /*[in]*/ BSTR format,
         /*[in]*/ struct IFormatProvider * formatProvider,
         /*[out,retval]*/ BSTR * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("805e3b62-b5e9-393d-8941-377d8bf4556b"))
-IConvertible : IDispatch
+RIDL!{#[uuid(0x805e3b62, 0xb5e9, 0x393d, 0x89, 0x41, 0x37, 0x7d, 0x8b, 0xf4, 0x55, 0x6b)]
+interface IConvertible(IConvertibleVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -3776,10 +3776,10 @@ IConvertible : IDispatch
         /*[in]*/ struct _Type * conversionType,
         /*[in]*/ struct IFormatProvider * provider,
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("05f696dc-2b29-3663-ad8b-c4389cf2a713"))
-_AppDomain : IUnknown
+RIDL!{#[uuid(0x05f696dc, 0x2b29, 0x3663, 0xad, 0x8b, 0xc4, 0x38, 0x9c, 0xf2, 0xa7, 0x13)]
+interface _AppDomain(_AppDomainVtbl): IUnknown(IUnknownVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4023,10 +4023,10 @@ _AppDomain : IUnknown
         /*[in]*/ struct _CrossAppDomainDelegate * theDelegate ) = 0;
       virtual HRESULT __stdcall get_DynamicDirectory (
         /*[out,retval]*/ BSTR * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("2b130940-ca5e-3406-8385-e259e68ab039"))
-ICustomFormatter : IDispatch
+RIDL!{#[uuid(0x2b130940, 0xca5e, 0x3406, 0x83, 0x85, 0xe2, 0x59, 0xe6, 0x8a, 0xb0, 0x39)]
+interface ICustomFormatter(ICustomFormatterVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4037,10 +4037,10 @@ ICustomFormatter : IDispatch
         /*[in]*/ VARIANT arg,
         /*[in]*/ struct IFormatProvider * formatProvider,
         /*[out,retval]*/ BSTR * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("c8cb1ded-2814-396a-9cc0-473ca49779cc"))
-IFormatProvider : IDispatch
+RIDL!{#[uuid(0xc8cb1ded, 0x2814, 0x396a, 0x9c, 0xc0, 0x47, 0x3c, 0xa4, 0x97, 0x79, 0xcc)]
+interface IFormatProvider(IFormatProviderVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4049,10 +4049,10 @@ IFormatProvider : IDispatch
       virtual HRESULT __stdcall GetFormat (
         /*[in]*/ struct _Type * formatType,
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("b9b91146-d6c2-3a62-8159-c2d1794cdeb0"))
-ICustomAttributeProvider : IDispatch
+RIDL!{#[uuid(0xb9b91146, 0xd6c2, 0x3a62, 0x81, 0x59, 0xc2, 0xd1, 0x79, 0x4c, 0xde, 0xb0)]
+interface ICustomAttributeProvider(ICustomAttributeProviderVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4069,11 +4069,11 @@ ICustomAttributeProvider : IDispatch
         /*[in]*/ struct _Type * attributeType,
         /*[in]*/ VARIANT_BOOL inherit,
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
 
-struct __declspec(uuid("f4f5c303-fad3-3d0c-a4df-bb82b5ee308f"))
-IFormatterConverter : IDispatch
+RIDL!{#[uuid(0xf4f5c303, 0xfad3, 0x3d0c, 0xa4, 0xdf, 0xbb, 0x82, 0xb5, 0xee, 0x30, 0x8f)]
+interface IFormatterConverter(IFormatterConverterVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4132,11 +4132,11 @@ IFormatterConverter : IDispatch
       virtual HRESULT __stdcall get_ToString (
         /*[in]*/ VARIANT val,
         /*[out,retval]*/ BSTR * pRetVal ) = 0;
-};
+}}
 
 
-struct __declspec(uuid("0ca9008e-ee90-356e-9f6d-b59e6006b9a4"))
-ICustomFactory : IDispatch
+RIDL!{#[uuid(0x0ca9008e, 0xee90, 0x356e, 0x9f, 0x6d, 0xb5, 0x9e, 0x60, 0x06, 0xb9, 0xa4)]
+interface ICustomFactory(ICustomFactoryVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4145,10 +4145,10 @@ ICustomFactory : IDispatch
       virtual HRESULT __stdcall CreateInstance (
         /*[in]*/ struct _Type * serverType,
         /*[out,retval]*/ struct _MarshalByRefObject * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("c09effa9-1ffe-3a52-a733-6236cbc45e7b"))
-IRemotingTypeInfo : IDispatch
+RIDL!{#[uuid(0xc09effa9, 0x1ffe, 0x3a52, 0xa7, 0x33, 0x62, 0x36, 0xcb, 0xc4, 0x5e, 0x7b)]
+interface IRemotingTypeInfo(IRemotingTypeInfoVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4162,10 +4162,10 @@ IRemotingTypeInfo : IDispatch
         /*[in]*/ struct _Type * fromType,
         /*[in]*/ VARIANT o,
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("65074f7f-63c0-304e-af0a-d51741cb4a8d"))
-_Object : IDispatch
+RIDL!{#[uuid(0x65074f7f, 0x63c0, 0x304e, 0xaf, 0x0a, 0xd5, 0x17, 0x41, 0xcb, 0x4a, 0x8d)]
+interface _Object(_ObjectVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4180,10 +4180,10 @@ _Object : IDispatch
         /*[out,retval]*/ long * pRetVal ) = 0;
       virtual HRESULT __stdcall GetType (
         /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("ea675b47-64e0-3b5f-9be7-f7dc2990730d"))
-_ObjectHandle : IDispatch
+RIDL!{#[uuid(0xea675b47, 0x64e0, 0x3b5f, 0x9b, 0xe7, 0xf7, 0xdc, 0x29, 0x90, 0x73, 0x0d)]
+interface _ObjectHandle(_ObjectHandleVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4207,10 +4207,10 @@ _ObjectHandle : IDispatch
         /*[out,retval]*/ struct _ObjRef * * pRetVal ) = 0;
       virtual HRESULT __stdcall Unwrap (
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("afbf15e5-c37c-11d2-b88e-00a0c9b471b8"))
-IReflect : IDispatch
+RIDL!{#[uuid(0xafbf15e5, 0xc37c, 0x11d2, 0xb8, 0x8e, 0x00, 0xa0, 0xc9, 0xb4, 0x71, 0xb8)]
+interface IReflect(IReflectVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4271,10 +4271,10 @@ IReflect : IDispatch
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
       virtual HRESULT __stdcall get_UnderlyingSystemType (
         /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("20808adc-cc01-3f3a-8f09-ed12940fc212"))
-ISymbolBinder : IDispatch
+RIDL!{#[uuid(0x20808adc, 0xcc01, 0x3f3a, 0x8f, 0x09, 0xed, 0x12, 0x94, 0x0f, 0xc2, 0x12)]
+interface ISymbolBinder(ISymbolBinderVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4285,10 +4285,10 @@ ISymbolBinder : IDispatch
         /*[in]*/ BSTR filename,
         /*[in]*/ BSTR searchPath,
         /*[out,retval]*/ struct ISymbolReader * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("027c036a-4052-3821-85de-b53319df1211"))
-ISymbolBinder1 : IDispatch
+RIDL!{#[uuid(0x027c036a, 0x4052, 0x3821, 0x85, 0xde, 0xb5, 0x33, 0x19, 0xdf, 0x12, 0x11)]
+interface ISymbolBinder1(ISymbolBinder1Vtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4299,10 +4299,10 @@ ISymbolBinder1 : IDispatch
         /*[in]*/ BSTR filename,
         /*[in]*/ BSTR searchPath,
         /*[out,retval]*/ struct ISymbolReader * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("25c72eb0-e437-3f17-946d-3b72a3acff37"))
-ISymbolMethod : IDispatch
+RIDL!{#[uuid(0x25c72eb0, 0xe437, 0x3f17, 0x94, 0x6d, 0x3b, 0x72, 0xa3, 0xac, 0xff, 0x37)]
+interface ISymbolMethod(ISymbolMethodVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4343,10 +4343,10 @@ ISymbolMethod : IDispatch
         /*[in]*/ SAFEARRAY * lines,
         /*[in]*/ SAFEARRAY * columns,
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("e809a5f1-d3d7-3144-9bef-fe8ac0364699"))
-ISymbolReader : IDispatch
+RIDL!{#[uuid(0xe809a5f1, 0xd3d7, 0x3144, 0x9b, 0xef, 0xfe, 0x8a, 0xc0, 0x36, 0x46, 0x99)]
+interface ISymbolReader(ISymbolReaderVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4385,10 +4385,10 @@ ISymbolReader : IDispatch
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
       virtual HRESULT __stdcall GetNamespaces (
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("1cee3a11-01ae-3244-a939-4972fc9703ef"))
-ISymbolScope : IDispatch
+RIDL!{#[uuid(0x1cee3a11, 0x01ae, 0x3244, 0xa9, 0x39, 0x49, 0x72, 0xfc, 0x97, 0x03, 0xef)]
+interface ISymbolScope(ISymbolScopeVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4408,10 +4408,10 @@ ISymbolScope : IDispatch
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
       virtual HRESULT __stdcall GetNamespaces (
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("17156360-2f1a-384a-bc52-fde93c215c5b"))
-_Assembly : IDispatch
+RIDL!{#[uuid(0x17156360, 0x2f1a, 0x384a, 0xbc, 0x52, 0xfd, 0xe9, 0x3c, 0x21, 0x5c, 0x5b)]
+interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4546,10 +4546,10 @@ _Assembly : IDispatch
         /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_GlobalAssemblyCache (
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("f1c3bf76-c3e4-11d3-88e7-00902754c43a"))
-ITypeLibImporterNotifySink : IUnknown
+RIDL!{#[uuid(0xf1c3bf76, 0xc3e4, 0x11d3, 0x88, 0xe7, 0x00, 0x90, 0x27, 0x54, 0xc4, 0x3a)]
+interface ITypeLibImporterNotifySink(ITypeLibImporterNotifySinkVtbl): IUnknown(IUnknownVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4562,10 +4562,10 @@ ITypeLibImporterNotifySink : IUnknown
       virtual HRESULT __stdcall ResolveRef (
         /*[in]*/ IUnknown * typeLib,
         /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("ccbd682c-73a5-4568-b8b0-c7007e11aba2"))
-IRegistrationServices : IDispatch
+RIDL!{#[uuid(0xccbd682c, 0x73a5, 0x4568, 0xb8, 0xb0, 0xc7, 0x00, 0x7e, 0x11, 0xab, 0xa2)]
+interface IRegistrationServices(IRegistrationServicesVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4595,11 +4595,11 @@ IRegistrationServices : IDispatch
       virtual HRESULT __stdcall TypeRepresentsComType (
         /*[in]*/ struct _Type * Type,
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
 
-struct __declspec(uuid("8e5e0b95-750e-310d-892c-8ca7231cf75b"))
-IMethodMessage : IDispatch
+RIDL!{#[uuid(0x8e5e0b95, 0x750e, 0x310d, 0x89, 0x2c, 0x8c, 0xa7, 0x23, 0x1c, 0xf7, 0x5b)]
+interface IMethodMessage(IMethodMessageVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4629,11 +4629,11 @@ IMethodMessage : IDispatch
         /*[out,retval]*/ struct _LogicalCallContext * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_MethodBase (
         /*[out,retval]*/ struct _MethodBase * * pRetVal ) = 0;
-};
+}}
 
 
-struct __declspec(uuid("fb6ab00f-5096-3af8-a33d-d7885a5fa829"))
-_Delegate : IDispatch
+RIDL!{#[uuid(0xfb6ab00f, 0x5096, 0x3af8, 0xa3, 0x3d, 0xd7, 0x88, 0x5a, 0x5f, 0xa8, 0x29)]
+interface _Delegate(_DelegateVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4662,11 +4662,11 @@ _Delegate : IDispatch
         /*[out,retval]*/ struct _MethodInfo * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_Target (
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-};
+}}
 
 
-struct __declspec(uuid("afbf15e6-c37c-11d2-b88e-00a0c9b471b8"))
-IExpando : IDispatch
+RIDL!{#[uuid(0xafbf15e6, 0xc37c, 0x11d2, 0xb8, 0x8e, 0x00, 0xa0, 0xc9, 0xb4, 0x71, 0xb8)]
+interface IExpando(IExpandoVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4684,10 +4684,10 @@ IExpando : IDispatch
         /*[out,retval]*/ struct _MethodInfo * * pRetVal ) = 0;
       virtual HRESULT __stdcall RemoveMember (
         /*[in]*/ struct _MemberInfo * m ) = 0;
-};
+}}
 
-struct __declspec(uuid("3169ab11-7109-3808-9a61-ef4ba0534fd9"))
-_Binder : IDispatch
+RIDL!{#[uuid(0x3169ab11, 0x7109, 0x3808, 0x9a, 0x61, 0xef, 0x4b, 0xa0, 0x53, 0x4f, 0xd9)]
+interface _Binder(_BinderVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4738,10 +4738,10 @@ _Binder : IDispatch
       virtual HRESULT __stdcall ReorderArgumentArray (
         /*[in,out]*/ SAFEARRAY * * args,
         /*[in]*/ VARIANT state ) = 0;
-};
+}}
 
-struct __declspec(uuid("62339172-dbfa-337b-8ac8-053b241e06ab"))
-ISerializationSurrogate : IDispatch
+RIDL!{#[uuid(0x62339172, 0xdbfa, 0x337b, 0x8a, 0xc8, 0x05, 0x3b, 0x24, 0x1e, 0x06, 0xab)]
+interface ISerializationSurrogate(ISerializationSurrogateVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4757,10 +4757,10 @@ ISerializationSurrogate : IDispatch
         /*[in]*/ struct StreamingContext Context,
         /*[in]*/ struct ISurrogateSelector * selector,
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("7c66ff18-a1a5-3e19-857b-0e7b6a9e3f38"))
-ISurrogateSelector : IDispatch
+RIDL!{#[uuid(0x7c66ff18, 0xa1a5, 0x3e19, 0x85, 0x7b, 0x0e, 0x7b, 0x6a, 0x9e, 0x3f, 0x38)]
+interface ISurrogateSelector(ISurrogateSelectorVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4775,10 +4775,10 @@ ISurrogateSelector : IDispatch
         /*[out,retval]*/ struct ISerializationSurrogate * * pRetVal ) = 0;
       virtual HRESULT __stdcall GetNextSelector (
         /*[out,retval]*/ struct ISurrogateSelector * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("93d7a8c5-d2eb-319b-a374-a65d321f2aa9"))
-IFormatter : IDispatch
+RIDL!{#[uuid(0x93d7a8c5, 0xd2eb, 0x319b, 0xa3, 0x74, 0xa6, 0x5d, 0x32, 0x1f, 0x2a, 0xa9)]
+interface IFormatter(IFormatterVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4802,10 +4802,10 @@ IFormatter : IDispatch
         /*[out,retval]*/ struct StreamingContext * pRetVal ) = 0;
       virtual HRESULT __stdcall put_Context (
         /*[in]*/ struct StreamingContext pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("4a68baa3-27aa-314a-bdbb-6ae9bdfc0420"))
-IContextAttribute : IDispatch
+RIDL!{#[uuid(0x4a68baa3, 0x27aa, 0x314a, 0xbd, 0xbb, 0x6a, 0xe9, 0xbd, 0xfc, 0x04, 0x20)]
+interface IContextAttribute(IContextAttributeVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4817,10 +4817,10 @@ IContextAttribute : IDispatch
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
       virtual HRESULT __stdcall GetPropertiesForNewContext (
         /*[in]*/ struct IConstructionCallMessage * msg ) = 0;
-};
+}}
 
-struct __declspec(uuid("c02bbb79-5aa8-390d-927f-717b7bff06a1"))
-IActivator : IDispatch
+RIDL!{#[uuid(0xc02bbb79, 0x5aa8, 0x390d, 0x92, 0x7f, 0x71, 0x7b, 0x7b, 0xff, 0x06, 0xa1)]
+interface IActivator(IActivatorVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4835,10 +4835,10 @@ IActivator : IDispatch
         /*[out,retval]*/ struct IConstructionReturnMessage * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_level (
         /*[out,retval]*/ enum ActivatorLevel * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("fa28e3af-7d09-31d5-beeb-7f2626497cde"))
-IConstructionCallMessage : IDispatch
+RIDL!{#[uuid(0xfa28e3af, 0x7d09, 0x31d5, 0xbe, 0xeb, 0x7f, 0x26, 0x26, 0x49, 0x7c, 0xde)]
+interface IConstructionCallMessage(IConstructionCallMessageVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4856,10 +4856,10 @@ IConstructionCallMessage : IDispatch
         /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_ContextProperties (
         /*[out,retval]*/ struct IList * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("7197b56b-5fa1-31ef-b38b-62fee737277f"))
-IContextPropertyActivator : IDispatch
+RIDL!{#[uuid(0x7197b56b, 0x5fa1, 0x31ef, 0xb3, 0x8b, 0x62, 0xfe, 0xe7, 0x37, 0x27, 0x7f)]
+interface IContextPropertyActivator(IContextPropertyActivatorVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4878,10 +4878,10 @@ IContextPropertyActivator : IDispatch
       virtual HRESULT __stdcall DeliverServerContextToClientContext (
         /*[in]*/ struct IConstructionReturnMessage * msg,
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("3a5fde6b-db46-34e8-bacd-16ea5a440540"))
-IClientChannelSinkStack : IDispatch
+RIDL!{#[uuid(0x3a5fde6b, 0xdb46, 0x34e8, 0xba, 0xcd, 0x16, 0xea, 0x5a, 0x44, 0x05, 0x40)]
+interface IClientChannelSinkStack(IClientChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4893,10 +4893,10 @@ IClientChannelSinkStack : IDispatch
       virtual HRESULT __stdcall Pop (
         /*[in]*/ struct IClientChannelSink * sink,
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("ff726320-6b92-3e6c-aaac-f97063d0b142"))
-IClientChannelSink : IDispatch
+RIDL!{#[uuid(0xff726320, 0x6b92, 0x3e6c, 0xaa, 0xac, 0xf9, 0x70, 0x63, 0xd0, 0xb1, 0x42)]
+interface IClientChannelSink(IClientChannelSinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4924,10 +4924,10 @@ IClientChannelSink : IDispatch
         /*[out,retval]*/ struct _Stream * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_NextChannelSink (
         /*[out,retval]*/ struct IClientChannelSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("3f8742c2-ac57-3440-a283-fe5ff4c75025"))
-IClientChannelSinkProvider : IDispatch
+RIDL!{#[uuid(0x3f8742c2, 0xac57, 0x3440, 0xa2, 0x83, 0xfe, 0x5f, 0xf4, 0xc7, 0x50, 0x25)]
+interface IClientChannelSinkProvider(IClientChannelSinkProviderVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4942,10 +4942,10 @@ IClientChannelSinkProvider : IDispatch
         /*[out,retval]*/ struct IClientChannelSinkProvider * * pRetVal ) = 0;
       virtual HRESULT __stdcall putref_Next (
         /*[in]*/ struct IClientChannelSinkProvider * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("e694a733-768d-314d-b317-dcead136b11d"))
-IServerChannelSinkStack : IDispatch
+RIDL!{#[uuid(0xe694a733, 0x768d, 0x314d, 0xb3, 0x17, 0xdc, 0xea, 0xd1, 0x36, 0xb1, 0x1d)]
+interface IServerChannelSinkStack(IServerChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4965,10 +4965,10 @@ IServerChannelSinkStack : IDispatch
         /*[in]*/ VARIANT state ) = 0;
       virtual HRESULT __stdcall ServerCallback (
         /*[in]*/ struct IAsyncResult * ar ) = 0;
-};
+}}
 
-struct __declspec(uuid("21b5f37b-bef3-354c-8f84-0f9f0863f5c5"))
-IServerChannelSink : IDispatch
+RIDL!{#[uuid(0x21b5f37b, 0xbef3, 0x354c, 0x8f, 0x84, 0x0f, 0x9f, 0x08, 0x63, 0xf5, 0xc5)]
+interface IServerChannelSink(IServerChannelSinkVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -4997,10 +4997,10 @@ IServerChannelSink : IDispatch
         /*[out,retval]*/ struct _Stream * * pRetVal ) = 0;
       virtual HRESULT __stdcall get_NextChannelSink (
         /*[out,retval]*/ struct IServerChannelSink * * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("7dd6e975-24ea-323c-a98c-0fde96f9c4e6"))
-IServerChannelSinkProvider : IDispatch
+RIDL!{#[uuid(0x7dd6e975, 0x24ea, 0x323c, 0xa9, 0x8c, 0x0f, 0xde, 0x96, 0xf9, 0xc4, 0xe6)]
+interface IServerChannelSinkProvider(IServerChannelSinkProviderVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -5015,10 +5015,10 @@ IServerChannelSinkProvider : IDispatch
         /*[out,retval]*/ struct IServerChannelSinkProvider * * pRetVal ) = 0;
       virtual HRESULT __stdcall putref_Next (
         /*[in]*/ struct IServerChannelSinkProvider * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("3a02d3f7-3f40-3022-853d-cfda765182fe"))
-IChannelReceiverHook : IDispatch
+RIDL!{#[uuid(0x3a02d3f7, 0x3f40, 0x3022, 0x85, 0x3d, 0xcf, 0xda, 0x76, 0x51, 0x82, 0xfe)]
+interface IChannelReceiverHook(IChannelReceiverHookVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -5032,10 +5032,10 @@ IChannelReceiverHook : IDispatch
         /*[out,retval]*/ struct IServerChannelSink * * pRetVal ) = 0;
       virtual HRESULT __stdcall AddHookChannelUri (
         /*[in]*/ BSTR channelUri ) = 0;
-};
+}}
 
-struct __declspec(uuid("675591af-0508-3131-a7cc-287d265ca7d6"))
-ISponsor : IDispatch
+RIDL!{#[uuid(0x675591af, 0x0508, 0x3131, 0xa7, 0xcc, 0x28, 0x7d, 0x26, 0x5c, 0xa7, 0xd6)]
+interface ISponsor(ISponsorVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -5044,10 +5044,10 @@ ISponsor : IDispatch
       virtual HRESULT __stdcall Renewal (
         /*[in]*/ struct ILease * lease,
         /*[out,retval]*/ struct TimeSpan * pRetVal ) = 0;
-};
+}}
 
-struct __declspec(uuid("53a561f2-cbbf-3748-bffe-2180002db3df"))
-ILease : IDispatch
+RIDL!{#[uuid(0x53a561f2, 0xcbbf, 0x3748, 0xbf, 0xfe, 0x21, 0x80, 0x00, 0x2d, 0xb3, 0xdf)]
+interface ILease(ILeaseVtbl): IDispatch(IDispatchVtbl)  
 {
     //
     // Raw methods provided by interface
@@ -5079,4 +5079,4 @@ ILease : IDispatch
         /*[out,retval]*/ struct TimeSpan * pRetVal ) = 0;
       virtual HRESULT __stdcall get_CurrentState (
         /*[out,retval]*/ enum LeaseState * pRetVal ) = 0;
-};
+}}

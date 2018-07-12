@@ -300,8 +300,8 @@ interface ITypeLibExporterNameProvider(ITypeLibExporterNameProviderVtbl) : IUnkn
     ) -> HRESULT,
 }}
 
-struct __declspec(uuid("bebb2505-8b54-3443-aead-142a16dd9cc7"))
-_AssemblyBuilder : IUnknown
+RIDL!{#[uuid(0xbebb2505, 0x8b54, 0x3443, 0xae, 0xad, 0x14, 0x2a, 0x16, 0xdd, 0x9c, 0xc7)]
+interface _AssemblyBuilder(_AssemblyBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -330,8 +330,8 @@ _AssemblyBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("ed3e4384-d7e2-3fa7-8ffd-8940d330519a"))
-_ConstructorBuilder : IUnknown
+RIDL!{#[uuid(0xed3e4384, 0xd7e2, 0x3fa7, 0x8f, 0xfd, 0x89, 0x40, 0xd3, 0x30, 0x51, 0x9a)]
+interface _ConstructorBuilder(_ConstructorBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -360,8 +360,8 @@ _ConstructorBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("be9acce8-aaff-3b91-81ae-8211663f5cad"))
-_CustomAttributeBuilder : IUnknown
+RIDL!{#[uuid(0xbe9acce8, 0xaaff, 0x3b91, 0x81, 0xae, 0x82, 0x11, 0x66, 0x3f, 0x5c, 0xad)]
+interface _CustomAttributeBuilder(_CustomAttributeBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -390,8 +390,8 @@ _CustomAttributeBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("c7bd73de-9f85-3290-88ee-090b8bdfe2df"))
-_EnumBuilder : IUnknown
+RIDL!{#[uuid(0xc7bd73de, 0x9f85, 0x3290, 0x88, 0xee, 0x09, 0x0b, 0x8b, 0xdf, 0xe2, 0xdf)]
+interface _EnumBuilder(_EnumBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -420,8 +420,8 @@ _EnumBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("aadaba99-895d-3d65-9760-b1f12621fae8"))
-_EventBuilder : IUnknown
+RIDL!{#[uuid(0xaadaba99, 0x895d, 0x3d65, 0x97, 0x60, 0xb1, 0xf1, 0x26, 0x21, 0xfa, 0xe8)]
+interface _EventBuilder(_EventBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -450,8 +450,8 @@ _EventBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("ce1a3bf5-975e-30cc-97c9-1ef70f8f3993"))
-_FieldBuilder : IUnknown
+RIDL!{#[uuid(0xce1a3bf5, 0x975e, 0x30cc, 0x97, 0xc9, 0x1e, 0xf7, 0x0f, 0x8f, 0x39, 0x93)]
+interface _FieldBuilder(_FieldBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -480,8 +480,8 @@ _FieldBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("a4924b27-6e3b-37f7-9b83-a4501955e6a7"))
-_ILGenerator : IUnknown
+RIDL!{#[uuid(0xa4924b27, 0x6e3b, 0x37f7, 0x9b, 0x83, 0xa4, 0x50, 0x19, 0x55, 0xe6, 0xa7)]
+interface _ILGenerator(_ILGeneratorVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -510,8 +510,8 @@ _ILGenerator : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("4e6350d1-a08b-3dec-9a3e-c465f9aeec0c"))
-_LocalBuilder : IUnknown
+RIDL!{#[uuid(0x4e6350d1, 0xa08b, 0x3dec, 0x9a, 0x3e, 0xc4, 0x65, 0xf9, 0xae, 0xec, 0x0c)]
+interface _LocalBuilder(_LocalBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -540,8 +540,8 @@ _LocalBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("007d8a14-fdf3-363e-9a0b-fec0618260a2"))
-_MethodBuilder : IUnknown
+RIDL!{#[uuid(0x007d8a14, 0xfdf3, 0x363e, 0x9a, 0x0b, 0xfe, 0xc0, 0x61, 0x82, 0x60, 0xa2)]
+interface _MethodBuilder(_MethodBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -570,8 +570,8 @@ _MethodBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("c2323c25-f57f-3880-8a4d-12ebea7a5852"))
-_MethodRental : IUnknown
+RIDL!{#[uuid(0xc2323c25, 0xf57f, 0x3880, 0x8a, 0x4d, 0x12, 0xeb, 0xea, 0x7a, 0x58, 0x52)]
+interface _MethodRental(_MethodRentalVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -600,8 +600,8 @@ _MethodRental : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("d05ffa9a-04af-3519-8ee1-8d93ad73430b"))
-_ModuleBuilder : IUnknown
+RIDL!{#[uuid(0xd05ffa9a, 0x04af, 0x3519, 0x8e, 0xe1, 0x8d, 0x93, 0xad, 0x73, 0x43, 0x0b)]
+interface _ModuleBuilder(_ModuleBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -630,8 +630,8 @@ _ModuleBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("36329eba-f97a-3565-bc07-0ed5c6ef19fc"))
-_ParameterBuilder : IUnknown
+RIDL!{#[uuid(0x36329eba, 0xf97a, 0x3565, 0xbc, 0x07, 0x0e, 0xd5, 0xc6, 0xef, 0x19, 0xfc)]
+interface _ParameterBuilder(_ParameterBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -660,8 +660,8 @@ _ParameterBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("15f9a479-9397-3a63-acbd-f51977fb0f02"))
-_PropertyBuilder : IUnknown
+RIDL!{#[uuid(0x15f9a479, 0x9397, 0x3a63, 0xac, 0xbd, 0xf5, 0x19, 0x77, 0xfb, 0x0f, 0x02)]
+interface _PropertyBuilder(_PropertyBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -690,8 +690,8 @@ _PropertyBuilder : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("7d13dd37-5a04-393c-bbca-a5fea802893d"))
-_SignatureHelper : IUnknown
+RIDL!{#[uuid(0x7d13dd37, 0x5a04, 0x393c, 0xbb, 0xca, 0xa5, 0xfe, 0xa8, 0x02, 0x89, 0x3d)]
+interface _SignatureHelper(_SignatureHelperVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -720,8 +720,8 @@ _SignatureHelper : IUnknown
         /*[in]*/ long puArgErr ) = 0;
 };
 
-struct __declspec(uuid("7e5678ee-48b3-3f83-b076-c58543498a58"))
-_TypeBuilder : IUnknown
+RIDL!{#[uuid(0x7e5678ee, 0x48b3, 0x3f83, 0xb0, 0x76, 0xc5, 0x85, 0x43, 0x49, 0x8a, 0x58)]
+interface _TypeBuilder(_TypeBuilderVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -751,8 +751,8 @@ _TypeBuilder : IUnknown
 };
 
 
-struct __declspec(uuid("f7102fa9-cabb-3a74-a6da-b4567ef1b079"))
-_MemberInfo : IUnknown
+RIDL!{#[uuid(0xf7102fa9, 0xcabb, 0x3a74, 0xa6, 0xda, 0xb4, 0x56, 0x7e, 0xf1, 0xb0, 0x79)]
+interface _MemberInfo(_MemberInfoVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -809,8 +809,8 @@ _MemberInfo : IUnknown
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
 };
 
-struct __declspec(uuid("bca8b44d-aad6-3a86-8ab7-03349f4f2da2"))
-_Type : IUnknown
+RIDL!{#[uuid(0xbca8b44d, 0xaad6, 0x3a86, 0x8a, 0xb7, 0x03, 0x34, 0x9f, 0x4f, 0x2d, 0xa2)]
+interface _Type(_TypeVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -1166,8 +1166,8 @@ _Type : IUnknown
 };
 
 
-struct __declspec(uuid("f1c3bf77-c3e4-11d3-88e7-00902754c43a"))
-ITypeLibExporterNotifySink : IUnknown
+RIDL!{#[uuid(0xf1c3bf77, 0xc3e4, 0x11d3, 0x88, 0xe7, 0x00, 0x90, 0x27, 0x54, 0xc4, 0x3a)]
+interface ITypeLibExporterNotifySink(ITypeLibExporterNotifySinkVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -1182,8 +1182,8 @@ ITypeLibExporterNotifySink : IUnknown
         /*[out,retval]*/ IUnknown * * pRetVal ) = 0;
 };
 
-struct __declspec(uuid("f1c3bf78-c3e4-11d3-88e7-00902754c43a"))
-ITypeLibConverter : IUnknown
+RIDL!{#[uuid(0xf1c3bf78, 0xc3e4, 0x11d3, 0x88, 0xe7, 0x00, 0x90, 0x27, 0x54, 0xc4, 0x3a)]
+interface ITypeLibConverter(ITypeLibConverterVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -1224,8 +1224,8 @@ ITypeLibConverter : IUnknown
         /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
 };
 
-struct __declspec(uuid("6240837a-707f-3181-8e98-a36ae086766b"))
-_MethodBase : IUnknown
+RIDL!{#[uuid(0x6240837a, 0x707f, 0x3181, 0x8e, 0x98, 0xa3, 0x6a, 0xe0, 0x86, 0x76, 0x6b)]
+interface _MethodBase(_MethodBaseVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -1330,8 +1330,8 @@ _MethodBase : IUnknown
 };
 
 
-struct __declspec(uuid("ffcc1b5d-ecb8-38dd-9b01-3dc8abc2aa5f"))
-_MethodInfo : IUnknown
+RIDL!{#[uuid(0xffcc1b5d, 0xecb8, 0x38dd, 0x9b, 0x01, 0x3d, 0xc8, 0xab, 0xc2, 0xaa, 0x5f)]
+interface _MethodInfo(_MethodInfoVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -1442,8 +1442,8 @@ _MethodInfo : IUnknown
 };
 
 
-struct __declspec(uuid("9de59c64-d889-35a1-b897-587d74469e5b"))
-_EventInfo : IUnknown
+RIDL!{#[uuid(0x9de59c64, 0xd889, 0x35a1, 0xb8, 0x97, 0x58, 0x7d, 0x74, 0x46, 0x9e, 0x5b)]
+interface _EventInfo(_EventInfoVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -1529,8 +1529,8 @@ _EventInfo : IUnknown
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
 };
 
-struct __declspec(uuid("e9a19478-9646-3679-9b10-8411ae1fd57d"))
-_ConstructorInfo : IUnknown
+RIDL!{#[uuid(0xe9a19478, 0x9646, 0x3679, 0x9b, 0x10, 0x84, 0x11, 0xae, 0x1f, 0xd5, 0x7d)]
+interface _ConstructorInfo(_ConstructorInfoVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -1643,8 +1643,8 @@ _ConstructorInfo : IUnknown
         /*[out,retval]*/ VARIANT * pRetVal ) = 0;
 };
 
-struct __declspec(uuid("8a7c1442-a9fb-366b-80d8-4939ffa6dbe0"))
-_FieldInfo : IUnknown
+RIDL!{#[uuid(0x8a7c1442, 0xa9fb, 0x366b, 0x80, 0xd8, 0x49, 0x39, 0xff, 0xa6, 0xdb, 0xe0)]
+interface _FieldInfo(_FieldInfoVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
@@ -1749,8 +1749,8 @@ _FieldInfo : IUnknown
         /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
 };
 
-struct __declspec(uuid("f59ed4e4-e68f-3218-bd77-061aa82824bf"))
-_PropertyInfo : IUnknown
+RIDL!{#[uuid(0xf59ed4e4, 0xe68f, 0x3218, 0xbd, 0x77, 0x06, 0x1a, 0xa8, 0x28, 0x24, 0xbf)]
+interface _PropertyInfo(_PropertyInfoVtbl): IUnknown(IUnknownVtbl)   
 {
     //
     // Raw methods provided by interface
