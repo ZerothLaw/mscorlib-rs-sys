@@ -1193,7 +1193,7 @@ ENUM!{enum PolicyLevelType
 }}
 
 //enum __declspec(uuid("902a6b65-41bd-32f1-a233-075f009d459c"))
-ENUM!{enum SecurityZone
+SIGNED_ENUM!{enum SecurityZone
 {
     SecurityZone_MyComputer = 0,
     SecurityZone_Intranet = 1,

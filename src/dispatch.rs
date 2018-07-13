@@ -2,11 +2,12 @@
 
 //3rd party
 
-use winapi::ctypes::c_long;
+use winapi::ctypes::{c_char, c_short, c_double, c_float, c_long};
 
 use winapi::shared::guiddef::{GUID,};
+use winapi::shared::minwindef::{UCHAR, ULONG, USHORT};
 use winapi::shared::ntdef::{HRESULT};
-use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
+use winapi::shared::wtypes::{BSTR, DATE, DECIMAL, VARIANT_BOOL};
 
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::um::oaidl::{SAFEARRAY, VARIANT};
@@ -526,100 +527,92 @@ interface ICustomAdapter(ICustomAdapterVtbl) : IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0xa19b3fc6, 0xd680, 0x3dd4, 0xa1, 0x7a, 0xf5, 0x8a, 0x7d, 0x48, 0x14, 0x94)]
 interface IPermission(IPermissionVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Copy (
-        /*[out,retval]*/ struct IPermission * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Intersect (
-        /*[in]*/ struct IPermission * Target,
-        /*[out,retval]*/ struct IPermission * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Union (
-        /*[in]*/ struct IPermission * Target,
-        /*[out,retval]*/ struct IPermission * * pRetVal ) = 0;
-      virtual HRESULT __stdcall IsSubsetOf (
-        /*[in]*/ struct IPermission * Target,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall Demand ( ) = 0;
+    fn Copy(
+	    pRetVal: *mut *mut IPermission ,
+	) -> HRESULT,
+    fn Intersect(
+		Target: *mut IPermission ,
+		pRetVal: *mut *mut  IPermission ,
+    ) -> HRESULT,
+    fn Union(
+	    Target: *mut IPermission ,
+		pRetVal: *mut *mut IPermission ,
+	) -> HRESULT,
+    fn IsSubsetOf(
+	    Target: *mut  IPermission ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
+    fn Demand() -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x60fc57b0, 0x4a46, 0x32a0, 0xa5, 0xb4, 0xb0, 0x5b, 0x0d, 0xe8, 0xe7, 0x81)]
 interface IStackWalk(IStackWalkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Assert ( ) = 0;
-      virtual HRESULT __stdcall Demand ( ) = 0;
-      virtual HRESULT __stdcall Deny ( ) = 0;
-      virtual HRESULT __stdcall PermitOnly ( ) = 0;
+    fn Assert() -> HRESULT,
+    fn Demand() -> HRESULT,
+    fn Deny() -> HRESULT,
+    fn PermitOnly() -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x0f1284e6, 0x4399, 0x3963, 0x8d, 0xdd, 0xa6, 0xa4, 0x90, 0x4f, 0x66, 0xc8)]
 interface IUnrestrictedPermission(IUnrestrictedPermissionVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall IsUnrestricted (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+    fn IsUnrestricted(
+        pRetVal: VARIANT_BOOL,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x563581e8, 0xc86d, 0x39e2, 0xb2, 0xe8, 0x6c, 0x23, 0xf7, 0x98, 0x7a, 0x4b)]
 interface IChannel(IChannelVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ChannelPriority (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ChannelName (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Parse (
-        /*[in]*/ BSTR Url,
-        /*[out]*/ BSTR * objectURI,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+    fn get_ChannelPriority(
+        pRetVal: c_long,
+    ) -> HRESULT,
+    fn get_ChannelName(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn Parse(
+        Url: BSTR,
+        URI: *mut BSTR,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x48ad41da, 0x0872, 0x31da, 0x98, 0x87, 0xf8, 0x1f, 0x21, 0x35, 0x27, 0xe6)]
 interface IChannelReceiver(IChannelReceiverVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ChannelData (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetUrlsForUri (
-        /*[in]*/ BSTR objectURI,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall StartListening (
-        /*[in]*/ VARIANT data ) = 0;
-      virtual HRESULT __stdcall StopListening (
-        /*[in]*/ VARIANT data ) = 0;
+    fn get_ChannelData(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
+    fn GetUrlsForUri(
+        objectURI: BSTR,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn StartListening(
+        data: VARIANT,
+    ) -> HRESULT,
+    fn StopListening(
+        data: VARIANT,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xb90efaa6, 0x25e4, 0x33d2, 0xac, 0xa3, 0x94, 0xbf, 0x74, 0xdc, 0x4a, 0xb9)]
 interface IMethodCallMessage(IMethodCallMessageVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_InArgCount (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetInArgName (
-        /*[in]*/ long index,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetInArg (
-        /*[in]*/ long argNum,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_InArgs (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
+    fn get_InArgCount(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetInArgName(
+        index: c_long,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
+    fn GetInArg(
+        argNum: c_long,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn get_InArgs(
+	    pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xca0ab564, 0xf5e9, 0x3a7f, 0xa8, 0x0b, 0xeb, 0x0a, 0xee, 0xfa, 0x44, 0xe9)]
@@ -642,99 +635,86 @@ interface IClientFormatterSink(IClientFormatterSinkVtbl): IDispatch(IDispatchVtb
 RIDL!{#[uuid(0x1e250ccd, 0xdc30, 0x3217, 0xa7, 0xe4, 0x14, 0x8f, 0x37, 0x5a, 0x00, 0x88)]
 interface IChannelDataStore(IChannelDataStoreVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ChannelUris (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Item (
-        /*[in]*/ VARIANT key,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_Item (
-        /*[in]*/ VARIANT key,
-        /*[in]*/ VARIANT pRetVal ) = 0;
+    fn get_ChannelUris(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn get_Item(
+        key: VARIANT,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn putref_Item(
+        key: VARIANT,
+        pRetVal: VARIANT,
+    ) -> HRESULT,
 }}
 
 
 RIDL!{#[uuid(0x1ac82fbe, 0x4ff0, 0x383c, 0xbb, 0xfd, 0xfe, 0x40, 0xec, 0xb3, 0x62, 0x8d)]
 interface ITransportHeaders(ITransportHeadersVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_Item (
-        /*[in]*/ VARIANT key,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_Item (
-        /*[in]*/ VARIANT key,
-        /*[in]*/ VARIANT pRetVal ) = 0;
-      virtual HRESULT __stdcall GetEnumerator (
-        /*[out,retval]*/ struct IEnumVARIANT * * pRetVal ) = 0;
+    fn get_Item(
+        key: VARIANT,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn putref_Item(
+        key: VARIANT,
+        pRetVal: VARIANT,
+    ) -> HRESULT,
+    fn GetEnumerator(
+        pRetVal: *mut *mut IEnumVARIANT,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x00a358d4, 0x4d58, 0x3b9d, 0x8f, 0xb6, 0xfb, 0x7f, 0x6b, 0xc1, 0x71, 0x3b)]
 interface IDynamicProperty(IDynamicPropertyVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_name (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+    fn get_name(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x3677cbb0, 0x784d, 0x3c15, 0xbb, 0xc8, 0x75, 0xcd, 0x7d, 0xc3, 0x90, 0x1e)]
 interface IMessageCtrl(IMessageCtrlVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Cancel (
-        /*[in]*/ long msToCancel ) = 0;
+    fn Cancel(
+        msToCancel: c_long,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xcc18fd4d, 0xaa2d, 0x3ab4, 0x98, 0x48, 0x58, 0x4b, 0xba, 0xe4, 0xab, 0x44)]
 interface IFieldInfo(IFieldInfoVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_FieldNames (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_FieldNames (
-        /*[in]*/ SAFEARRAY * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_FieldTypes (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_FieldTypes (
-        /*[in]*/ SAFEARRAY * pRetVal ) = 0;
+    fn get_FieldNames(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn put_FieldNames(
+        pRetVal: *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn get_FieldTypes(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn put_FieldTypes(
+        pRetVal: *mut SAFEARRAY,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x855e6566, 0x014a, 0x3fe8, 0xaa, 0x70, 0x1e, 0xac, 0x77, 0x1e, 0x3a, 0x88)]
 interface IChannelInfo(IChannelInfoVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ChannelData (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_ChannelData (
-        /*[in]*/ SAFEARRAY * pRetVal ) = 0;
+    fn get_ChannelData(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn put_ChannelData(
+        pRetVal: *mut SAFEARRAY,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x80031d2a, 0xad59, 0x3fb4, 0x97, 0xf3, 0xb8, 0x64, 0xd7, 0x1d, 0xa8, 0x6b)]
 interface ISoapXsd(ISoapXsdVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetXsdType (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+    fn GetXsdType(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x4d125449, 0xba27, 0x3927, 0x85, 0x89, 0x3e, 0x1b, 0x34, 0xb6, 0x22, 0xe5)]
@@ -744,12 +724,9 @@ interface ILogicalThreadAffinative(ILogicalThreadAffinativeVtbl): IDispatch(IDis
 RIDL!{#[uuid(0xf5006531, 0xd4d7, 0x319e, 0x9e, 0xda, 0x9b, 0x4b, 0x65, 0xad, 0x8d, 0x4f)]
 interface INormalizeForIsolatedStorage(INormalizeForIsolatedStorageVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Normalize (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
+    fn Normalize(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xe699146c, 0x7793, 0x3455, 0x9b, 0xef, 0x96, 0x4c, 0x90, 0xd8, 0xf9, 0x95)]
@@ -759,60 +736,74 @@ interface ISoapMessage(ISoapMessageVtbl): IDispatch(IDispatchVtbl)
     // Raw methods provided by interface
     //
 
-      virtual HRESULT __stdcall get_ParamNames (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_ParamNames (
-        /*[in]*/ SAFEARRAY * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ParamValues (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_ParamValues (
-        /*[in]*/ SAFEARRAY * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ParamTypes (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_ParamTypes (
-        /*[in]*/ SAFEARRAY * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_MethodName (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_MethodName (
-        /*[in]*/ BSTR pRetVal ) = 0;
-      virtual HRESULT __stdcall get_XmlNameSpace (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_XmlNameSpace (
-        /*[in]*/ BSTR pRetVal ) = 0;
-      virtual HRESULT __stdcall get_headers (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_headers (
-        /*[in]*/ SAFEARRAY * pRetVal ) = 0;
+    fn get_ParamNames(
+	    pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn put_ParamNames(
+        pRetVal: *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn get_ParamValues(
+	    pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn put_ParamValues(
+        pRetVal: *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn get_ParamTypes(
+	    pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn put_ParamTypes(
+        pRetVal: *mut SAFEARRAY,
+    ) -> HRESULT,
+      fn get_MethodName(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+      fn put_MethodName(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn get_XmlNameSpace(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn put_XmlNameSpace(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn get_headers(
+	    pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn put_headers(
+        pRetVal: *mut SAFEARRAY,
+    ) -> HRESULT,
 }}
 
 
 RIDL!{#[uuid(0x8abad867, 0xf515, 0x3cf6, 0xbb, 0x62, 0x5f, 0x0c, 0x88, 0xb3, 0xbb, 0x11)]
 interface ICryptoTransform(ICryptoTransformVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_InputBlockSize (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_OutputBlockSize (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_CanTransformMultipleBlocks (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_CanReuseTransform (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall TransformBlock (
-        /*[in]*/ SAFEARRAY * inputBuffer,
-        /*[in]*/ long inputOffset,
-        /*[in]*/ long inputCount,
-        /*[in]*/ SAFEARRAY * outputBuffer,
-        /*[in]*/ long outputOffset,
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall TransformFinalBlock (
-        /*[in]*/ SAFEARRAY * inputBuffer,
-        /*[in]*/ long inputOffset,
-        /*[in]*/ long inputCount,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
+    fn get_InputBlockSize(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn get_OutputBlockSize(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn get_CanTransformMultipleBlocks(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
+    fn get_CanReuseTransform(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
+    fn TransformBlock(
+        inputBuffer: *mut SAFEARRAY, 
+        inputOffset: c_long,
+        inputCount: c_long, 
+        outputBuffer: *mut SAFEARRAY,
+        outputOffset: c_long,
+        pRetVal: *mut c_long, 
+    ) -> HRESULT,
+    fn TransformFinalBlock(
+        inputBuffer: *mut SAFEARRAY,
+        inputOffset: c_long,
+        inputCount: c_long,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
 }}
 
 
@@ -835,172 +826,155 @@ interface _Array(_ArrayVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0xde8db6f8, 0xd101, 0x3a92, 0x8d, 0x1c, 0xe7, 0x2e, 0x5f, 0x10, 0xe9, 0x92)]
 interface ICollection(ICollectionVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall CopyTo (
-        /*[in]*/ struct _Array * Array,
-        /*[in]*/ long index ) = 0;
-      virtual HRESULT __stdcall get_Count (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_SyncRoot (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_IsSynchronized (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+    fn CopyTo(
+        Array: *mut _Array,
+        index: c_long,
+    ) -> HRESULT,
+    fn get_Count(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+      fn get_SyncRoot(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
+      fn get_IsSynchronized(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x6a6841df, 0x3287, 0x3d87, 0x80, 0x60, 0xce, 0x0b, 0x4c, 0x77, 0xd2, 0xa1)]
 interface IDictionary(IDictionaryVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_Item (
-        /*[in]*/ VARIANT key,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_Item (
-        /*[in]*/ VARIANT key,
-        /*[in]*/ VARIANT pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Keys (
-        /*[out,retval]*/ struct ICollection * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Values (
-        /*[out,retval]*/ struct ICollection * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Contains (
-        /*[in]*/ VARIANT key,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall Add (
-        /*[in]*/ VARIANT key,
-        /*[in]*/ VARIANT val ) = 0;
-      virtual HRESULT __stdcall Clear ( ) = 0;
-      virtual HRESULT __stdcall get_IsReadOnly (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_IsFixedSize (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetEnumerator (
-        /*[out,retval]*/ struct IDictionaryEnumerator * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Remove (
-        /*[in]*/ VARIANT key ) = 0;
+    fn get_Item(
+        key: VARIANT,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn putref_Item(
+        key: VARIANT,
+        pRetVal: VARIANT,
+    ) -> HRESULT,
+    fn get_Keys(
+		pRetVal: *mut *mut  ICollection ,
+	) -> HRESULT,
+    fn get_Values(
+		pRetVal: *mut *mut  ICollection ,
+	) -> HRESULT,
+    fn Contains(
+        key: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn Add(
+        key: VARIANT,
+        val: VARIANT,
+    ) -> HRESULT,
+    fn Clear() -> HRESULT,
+    fn get_IsReadOnly(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
+    fn get_IsFixedSize(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
+    fn GetEnumerator(
+		pRetVal: *mut *mut  IDictionaryEnumerator ,
+	) -> HRESULT,
+    fn Remove(
+        key: VARIANT,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x308de042, 0xacc8, 0x32f8, 0xb6, 0x32, 0x7c, 0xb9, 0x79, 0x9d, 0x9a, 0xa6)]
 interface IChannelSinkBase(IChannelSinkBaseVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_Properties (
-        /*[out,retval]*/ struct IDictionary * * pRetVal ) = 0;
+    fn get_Properties(
+		pRetVal: *mut *mut  IDictionary ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x1a8b0de6, 0xb825, 0x38c5, 0xb7, 0x44, 0x8f, 0x93, 0x07, 0x5f, 0xd6, 0xfa)]
 interface IMessage(IMessageVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_Properties (
-        /*[out,retval]*/ struct IDictionary * * pRetVal ) = 0;
+    fn get_Properties(
+		pRetVal: *mut *mut  IDictionary ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x941f8aaa, 0xa353, 0x3b1d, 0xa0, 0x19, 0x12, 0xe4, 0x43, 0x77, 0xf1, 0xcd)]
 interface IMessageSink(IMessageSinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall SyncProcessMessage (
-        /*[in]*/ struct IMessage * msg,
-        /*[out,retval]*/ struct IMessage * * pRetVal ) = 0;
-      virtual HRESULT __stdcall AsyncProcessMessage (
-        /*[in]*/ struct IMessage * msg,
-        /*[in]*/ struct IMessageSink * replySink,
-        /*[out,retval]*/ struct IMessageCtrl * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_NextSink (
-        /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
+    fn SyncProcessMessage(
+		msg: *mut  IMessage ,
+		pRetVal: *mut *mut  IMessage ,
+	) -> HRESULT,
+    fn AsyncProcessMessage(
+        msg: *mut IMessage, 
+        replySink: *mut IMessageSink, 
+        pRetVal: *mut *mut IMessageCtrl, 
+    ) -> HRESULT,
+    fn get_NextSink(
+		pRetVal: *mut *mut  IMessageSink ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x10f1d605, 0xe201, 0x3145, 0xb7, 0xae, 0x3a, 0xd7, 0x46, 0x70, 0x19, 0x86)]
 interface IChannelSender(IChannelSenderVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall CreateMessageSink (
-        /*[in]*/ BSTR Url,
-        /*[in]*/ VARIANT remoteChannelData,
-        /*[out]*/ BSTR * objectURI,
-        /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
+    fn CreateMessageSink(
+        Url: BSTR, 
+        remoteChannelData: VARIANT,
+        objectURI: *mut BSTR, 
+        pRetVal: *mut *mut IMessageSink,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x4db956b7, 0x69d0, 0x312a, 0xaa, 0x75, 0x44, 0xfb, 0x55, 0xfd, 0x5d, 0x4b)]
 interface IContributeClientContextSink(IContributeClientContextSinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetClientContextSink (
-        /*[in]*/ struct IMessageSink * NextSink,
-        /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
+    fn GetClientContextSink(
+		NextSink: *mut  IMessageSink ,
+		pRetVal: *mut *mut  IMessageSink ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x0caa23ec, 0xf78c, 0x39c9, 0x8d, 0x25, 0xb7, 0xa9, 0xce, 0x40, 0x97, 0xa7)]
 interface IContributeServerContextSink(IContributeServerContextSinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetServerContextSink (
-        /*[in]*/ struct IMessageSink * NextSink,
-        /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
+    fn GetServerContextSink(
+		NextSink: *mut  IMessageSink ,
+		pRetVal: *mut *mut  IMessageSink ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xc74076bb, 0x8a2d, 0x3c20, 0xa5, 0x42, 0x62, 0x53, 0x29, 0xe9, 0xaf, 0x04)]
 interface IDynamicMessageSink(IDynamicMessageSinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall ProcessMessageStart (
-        /*[in]*/ struct IMessage * reqMsg,
-        /*[in]*/ VARIANT_BOOL bCliSide,
-        /*[in]*/ VARIANT_BOOL bAsync ) = 0;
-      virtual HRESULT __stdcall ProcessMessageFinish (
-        /*[in]*/ struct IMessage * replyMsg,
-        /*[in]*/ VARIANT_BOOL bCliSide,
-        /*[in]*/ VARIANT_BOOL bAsync ) = 0;
+    fn ProcessMessageStart(
+        reqMsg: *mut IMessage,
+        bCliSide: VARIANT_BOOL,
+        bAsync: VARIANT_BOOL,
+    ) -> HRESULT,
+    fn ProcessMessageFinish(
+        reqMsg: *mut IMessage,
+        bCliSide: VARIANT_BOOL,
+        bAsync: VARIANT_BOOL,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xa0fe9b86, 0x0c06, 0x32ce, 0x85, 0xfa, 0x2f, 0xf1, 0xb5, 0x86, 0x97, 0xfb)]
 interface IContributeDynamicSink(IContributeDynamicSinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetDynamicSink (
-        /*[out,retval]*/ struct IDynamicMessageSink * * pRetVal ) = 0;
+    fn GetDynamicSink(
+		pRetVal: *mut *mut  IDynamicMessageSink ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x2a6e91b9, 0xa874, 0x38e4, 0x99, 0xc2, 0xc5, 0xd8, 0x3d, 0x78, 0x14, 0x0d)]
 interface IEnvoyInfo(IEnvoyInfoVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_EnvoySinks (
-        /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_EnvoySinks (
-        /*[in]*/ struct IMessageSink * pRetVal ) = 0;
+    fn get_EnvoySinks(
+		pRetVal: *mut *mut  IMessageSink ,
+	) -> HRESULT,
+    fn putref_EnvoySinks (
+        pRetVal: *mut IMessageSink,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x36936699, 0xfc79, 0x324d, 0xab, 0x43, 0xe3, 0x3c, 0x1f, 0x94, 0xe2, 0x63)]
@@ -1082,27 +1056,21 @@ interface _MarshalByRefObject(_MarshalByRefObjectVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0x124777b6, 0x0308, 0x3569, 0x97, 0xe5, 0xe6, 0xfe, 0x88, 0xea, 0xe4, 0xeb)]
 interface IContributeEnvoySink(IContributeEnvoySinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetEnvoySink (
-        /*[in]*/ struct _MarshalByRefObject * obj,
-        /*[in]*/ struct IMessageSink * NextSink,
-        /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
+    fn GetEnvoySink(
+        obj: *mut _MarshalByRefObject,
+        NextSink: *mut IMessageSink, 
+        pRetVal: *mut *mut IMessageSink,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x6a5d38bc, 0x2789, 0x3546, 0x81, 0xa1, 0xf1, 0x0c, 0x0f, 0xb5, 0x93, 0x66)]
 interface IContributeObjectSink(IContributeObjectSinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetObjectSink (
-        /*[in]*/ struct _MarshalByRefObject * obj,
-        /*[in]*/ struct IMessageSink * NextSink,
-        /*[out,retval]*/ struct IMessageSink * * pRetVal ) = 0;
+    fn GetObjectSink(
+        obj: *mut _MarshalByRefObject,
+        NextSink: *mut IMessageSink, 
+        pRetVal: *mut *mut IMessageSink,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xaf93163f, 0xc2f4, 0x3fab, 0x9f, 0xf1, 0x72, 0x8a, 0x7a, 0xaa, 0xd1, 0xcb)]
@@ -1401,14 +1369,18 @@ interface IAsyncResult(IAsyncResultVtbl): IDispatch(IDispatchVtbl)
     // Raw methods provided by interface
     //
 
-      virtual HRESULT __stdcall get_IsCompleted (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_AsyncWaitHandle (
-        /*[out,retval]*/ struct _WaitHandle * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_AsyncState (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_CompletedSynchronously (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+      fn get_IsCompleted(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
+      fn get_AsyncWaitHandle(
+			pRetVal: *mut *mut  _WaitHandle ,
+		) -> HRESULT,
+      fn get_AsyncState(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
+      fn get_CompletedSynchronously(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xe142db4a, 0x1a52, 0x34ce, 0x96, 0x5e, 0x13, 0xaf, 0xfd, 0x54, 0x47, 0xd0)]
@@ -1818,13 +1790,10 @@ interface _SerializationInfo(_SerializationInfoVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0xd0eeaa62, 0x3d30, 0x3ee2, 0xb8, 0x96, 0xa2, 0xf3, 0x4d, 0xda, 0x47, 0xd8)]
 interface ISerializable(ISerializableVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetObjectData (
-        /*[in]*/ struct _SerializationInfo * info,
-        /*[in]*/ struct StreamingContext Context ) = 0;
+    fn GetObjectData(
+        info: *mut _SerializationInfo,
+        Context: StreamingContext,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x607056c6, 0x1bca, 0x36c8, 0xab, 0x87, 0x33, 0xb2, 0x02, 0xeb, 0xf0, 0xd8)]
@@ -2043,43 +2012,37 @@ interface _Evidence(_EvidenceVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0x35a8f3ac, 0xfe28, 0x360f, 0xa0, 0xc0, 0x9a, 0x4d, 0x50, 0xc4, 0x68, 0x2a)]
 interface IEvidenceFactory(IEvidenceFactoryVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_Evidence (
-        /*[out,retval]*/ struct _Evidence * * pRetVal ) = 0;
+    fn get_Evidence(
+		pRetVal: *mut *mut  _Evidence ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x6844eff4, 0x4f86, 0x3ca1, 0xa1, 0xea, 0xaa, 0xf5, 0x83, 0xa6, 0x39, 0x5e)]
 interface IMembershipCondition(IMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Check (
-        /*[in]*/ struct _Evidence * Evidence,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall Copy (
-        /*[out,retval]*/ struct IMembershipCondition * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ToString (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Equals (
-        /*[in]*/ VARIANT obj,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+    fn Check(
+		Evidence: *mut  _Evidence ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
+    fn Copy(
+		pRetVal: *mut *mut  IMembershipCondition ,
+	) -> HRESULT,
+    fn get_ToString(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn Equals(
+        obj: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x4e95244e, 0xc6fc, 0x3a86, 0x8d, 0xb7, 0x17, 0x12, 0x45, 0x4d, 0xe3, 0xb6)]
 interface IIdentityPermissionFactory(IIdentityPermissionFactoryVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall CreateIdentityPermission (
-        /*[in]*/ struct _Evidence * Evidence,
-        /*[out,retval]*/ struct IPermission * * pRetVal ) = 0;
+    fn CreateIdentityPermission(
+		Evidence: *mut  _Evidence ,
+		pRetVal: *mut *mut  IPermission ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xdfad74dc, 0x8390, 0x32f6, 0x96, 0x12, 0x1b, 0xd2, 0x93, 0xb2, 0x33, 0xf4)]
@@ -2097,14 +2060,11 @@ interface _TrustManagerContext(_TrustManagerContextVtbl): IDispatch(IDispatchVtb
 RIDL!{#[uuid(0x427e255d, 0xaf02, 0x3b0d, 0x8c, 0xe3, 0xa2, 0xbb, 0x94, 0xba, 0x30, 0x0f)]
 interface IApplicationTrustManager(IApplicationTrustManagerVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall DetermineApplicationTrust (
-        /*[in]*/ IUnknown * activationContext,
-        /*[in]*/ struct _TrustManagerContext * Context,
-        /*[out,retval]*/ struct _ApplicationTrust * * pRetVal ) = 0;
+    fn DetermineApplicationTrust(
+        activationContext: *mut IUnknown,
+        Context: *mut _TrustManagerContext,
+        pRetVal: *mut *mut _ApplicationTrust,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xfe8a2546, 0x3478, 0x3fad, 0xbe, 0x1d, 0xda, 0x7b, 0xc2, 0x5c, 0x4e, 0x4e)]
@@ -2446,18 +2406,17 @@ interface _Stream(_StreamVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0x9be679a6, 0x61fd, 0x38fc, 0xa7, 0xb2, 0x89, 0x98, 0x2d, 0x33, 0x33, 0x8b)]
 interface IServerResponseChannelSinkStack(IServerResponseChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
+    fn AsyncProcessResponse(
+        msg: *mut IMessage,
+        headers: *mut ITransportHeaders,
+        Stream: *mut _Stream,
+    ) -> HRESULT,
 
-      virtual HRESULT __stdcall AsyncProcessResponse (
-        /*[in]*/ struct IMessage * msg,
-        /*[in]*/ struct ITransportHeaders * headers,
-        /*[in]*/ struct _Stream * Stream ) = 0;
-      virtual HRESULT __stdcall GetResponseStream (
-        /*[in]*/ struct IMessage * msg,
-        /*[in]*/ struct ITransportHeaders * headers,
-        /*[out,retval]*/ struct _Stream * * pRetVal ) = 0;
+    fn GetResponseStream(
+        msg: *mut IMessage,
+        headers: *mut ITransportHeaders,
+        pRetVal: *mut *mut _Stream,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x442e3c03, 0xa205, 0x3f21, 0xaa, 0x4d, 0x31, 0x76, 0x8b, 0xb8, 0xea, 0x28)]
@@ -2639,29 +2598,25 @@ interface _SecurityElement(_SecurityElementVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0xfd46bde5, 0xacdf, 0x3ca5, 0xb1, 0x89, 0xf0, 0x67, 0x83, 0x87, 0x07, 0x7f)]
 interface ISecurityEncodable(ISecurityEncodableVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall ToXml (
-        /*[out,retval]*/ struct _SecurityElement * * pRetVal ) = 0;
-      virtual HRESULT __stdcall FromXml (
-        /*[in]*/ struct _SecurityElement * e ) = 0;
+    fn ToXml(
+		pRetVal: *mut *mut  _SecurityElement ,
+	) -> HRESULT,
+    fn FromXml(
+        e: *mut _SecurityElement,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xe6c21ba7, 0x21bb, 0x34e9, 0x8e, 0x57, 0xdb, 0x66, 0xd8, 0xce, 0x4a, 0x70)]
 interface ISecurityPolicyEncodable(ISecurityPolicyEncodableVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall ToXml (
-        /*[in]*/ struct _PolicyLevel * level,
-        /*[out,retval]*/ struct _SecurityElement * * pRetVal ) = 0;
-      virtual HRESULT __stdcall FromXml (
-        /*[in]*/ struct _SecurityElement * e,
-        /*[in]*/ struct _PolicyLevel * level ) = 0;
+    fn ToXml(
+		level: *mut  _PolicyLevel ,
+		pRetVal: *mut *mut  _SecurityElement ,
+	) -> HRESULT,
+    fn FromXml(
+        e: *mut _SecurityElement,
+        level: *mut _PolicyLevel,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xd9fcad88, 0xd869, 0x3788, 0xa8, 0x02, 0x1b, 0x1e, 0x00, 0x7c, 0x7a, 0x22)]
@@ -2916,17 +2871,16 @@ interface _Context(_ContextVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0xf01d896d, 0x8d5f, 0x3235, 0xbe, 0x59, 0x20, 0xe1, 0xe1, 0x0d, 0xc2, 0x2a)]
 interface IContextProperty(IContextPropertyVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_name (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall IsNewContextOK (
-        /*[in]*/ struct _Context * newCtx,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall Freeze (
-        /*[in]*/ struct _Context * newContext ) = 0;
+    fn get_name(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn IsNewContextOK(
+		newCtx: *mut  _Context ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
+    fn Freeze(
+        newContext: *mut _Context,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x4acb3495, 0x05db, 0x381b, 0x89, 0x0a, 0xd1, 0x2f, 0x53, 0x40, 0xdc, 0xa3)]
@@ -3004,18 +2958,19 @@ interface _ObjRef(_ObjRefVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0x03ec7d10, 0x17a5, 0x3585, 0x9a, 0x2e, 0x05, 0x96, 0xfc, 0xac, 0x38, 0x70)]
 interface ITrackingHandler(ITrackingHandlerVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
+    fn MarshaledObject(
+        obj: VARIANT, 
+        ORR: *mut _ObjRef,
+    ) -> HRESULT,
 
-      virtual HRESULT __stdcall MarshaledObject (
-        /*[in]*/ VARIANT obj,
-        /*[in]*/ struct _ObjRef * ORR ) = 0;
-      virtual HRESULT __stdcall UnmarshaledObject (
-        /*[in]*/ VARIANT obj,
-        /*[in]*/ struct _ObjRef * ORR ) = 0;
-      virtual HRESULT __stdcall DisconnectedObject (
-        /*[in]*/ VARIANT obj ) = 0;
+    fn UnmarshaledObject(
+        obj: VARIANT, 
+        ORR: *mut _ObjRef,
+    ) -> HRESULT,
+    
+    fn DisconnectedObject(
+        obj: VARIANT,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x8ffedc68, 0x5233, 0x3fa8, 0x81, 0x3d, 0x40, 0x5a, 0xab, 0xb3, 0x3e, 0xcb)]
@@ -3253,18 +3208,17 @@ interface _HeaderHandler(_HeaderHandlerVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0xae1850fd, 0x3596, 0x3727, 0xa2, 0x42, 0x2f, 0xc3, 0x1c, 0x5a, 0x03, 0x12)]
 interface IRemotingFormatter(IRemotingFormatterVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
+    fn Deserialize(
+        serializationStream: *mut _Stream,
+        handler: *mut _HeaderHandler,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
 
-      virtual HRESULT __stdcall Deserialize (
-        /*[in]*/ struct _Stream * serializationStream,
-        /*[in]*/ struct _HeaderHandler * handler,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall Serialize (
-        /*[in]*/ struct _Stream * serializationStream,
-        /*[in]*/ VARIANT graph,
-        /*[in]*/ SAFEARRAY * headers ) = 0;
+    fn Serialize(
+        serializationStream: *mut _Stream, 
+        graph: VARIANT,
+        headers: *mut SAFEARRAY,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x53bce4d4, 0x6209, 0x396d, 0xbd, 0x4a, 0x0b, 0x0a, 0x0a, 0x17, 0x7d, 0xf9)]
@@ -3474,17 +3428,16 @@ interface _CspKeyContainerInfo(_CspKeyContainerInfoVtbl): IDispatch(IDispatchVtb
 RIDL!{#[uuid(0x494a7583, 0x190e, 0x3693, 0x9e, 0xc4, 0xde, 0x54, 0xdc, 0x6a, 0x84, 0xa2)]
 interface ICspAsymmetricAlgorithm(ICspAsymmetricAlgorithmVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_CspKeyContainerInfo (
-        /*[out,retval]*/ struct _CspKeyContainerInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall ExportCspBlob (
-        /*[in]*/ VARIANT_BOOL includePrivateParameters,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall ImportCspBlob (
-        /*[in]*/ SAFEARRAY * rawData ) = 0;
+    fn get_CspKeyContainerInfo(
+		pRetVal: *mut *mut  _CspKeyContainerInfo ,
+	) -> HRESULT,
+    fn ExportCspBlob(
+        includePrivateParameters: VARIANT_BOOL,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn ImportCspBlob(
+        rawData: *mut SAFEARRAY,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x1cac0bda, 0xac58, 0x31bc, 0xb6, 0x24, 0x63, 0xf7, 0x7d, 0x0c, 0x3d, 0x2f)]
@@ -3630,675 +3583,457 @@ interface _X509Certificate(_X509CertificateVtbl): IDispatch(IDispatchVtbl)
 RIDL!{#[uuid(0xb36b5c63, 0x42ef, 0x38bc, 0xa0, 0x7e, 0x0b, 0x34, 0xc9, 0x8f, 0x16, 0x4a)]
 interface _Exception(_ExceptionVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ToString (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Equals (
-        /*[in]*/ VARIANT obj,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetHashCode (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Message (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetBaseException (
-        /*[out,retval]*/ struct _Exception * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_StackTrace (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_HelpLink (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_HelpLink (
-        /*[in]*/ BSTR pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Source (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_Source (
-        /*[in]*/ BSTR pRetVal ) = 0;
-      virtual HRESULT __stdcall GetObjectData (
-        /*[in]*/ struct _SerializationInfo * info,
-        /*[in]*/ struct StreamingContext Context ) = 0;
-      virtual HRESULT __stdcall get_InnerException (
-        /*[out,retval]*/ struct _Exception * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_TargetSite (
-        /*[out,retval]*/ struct _MethodBase * * pRetVal ) = 0;
+    fn get_ToString(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn Equals(
+        obj: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn GetHashCode(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetType(
+		pRetVal: *mut *mut  _Type ,
+	) -> HRESULT,
+    fn get_Message(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn GetBaseException(
+		pRetVal: *mut *mut  _Exception ,
+	) -> HRESULT,
+    fn get_StackTrace(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_HelpLink(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn put_HelpLink(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn get_Source(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn put_Source(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn GetObjectData(
+        info: *mut _SerializationInfo,
+        Context: StreamingContext,
+    ) -> HRESULT,
+    fn get_InnerException(
+		pRetVal: *mut *mut  _Exception ,
+	) -> HRESULT,
+    fn get_TargetSite(
+		pRetVal: *mut *mut  _MethodBase ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x3afab213, 0xf5a2, 0x3241, 0x93, 0xba, 0x32, 0x9e, 0xa4, 0xba, 0x80, 0x16)]
 interface IClientResponseChannelSinkStack(IClientResponseChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
+    fn AsyncProcessResponse(
+        headers: *mut ITransportHeaders, 
+        Stream: *mut _Stream, 
+    ) -> HRESULT,
 
-      virtual HRESULT __stdcall AsyncProcessResponse (
-        /*[in]*/ struct ITransportHeaders * headers,
-        /*[in]*/ struct _Stream * Stream ) = 0;
-      virtual HRESULT __stdcall DispatchReplyMessage (
-        /*[in]*/ struct IMessage * msg ) = 0;
-      virtual HRESULT __stdcall DispatchException (
-        /*[in]*/ struct _Exception * e ) = 0;
+    fn DispatchReplyMessage(
+        msg: *mut IMessage, 
+    ) -> HRESULT,
+
+    fn DispatchException(
+        e: *mut _Exception,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xf617690a, 0x55f4, 0x36af, 0x91, 0x49, 0xd1, 0x99, 0x83, 0x1f, 0x85, 0x94)]
 interface IMethodReturnMessage(IMethodReturnMessageVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_OutArgCount (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetOutArgName (
-        /*[in]*/ long index,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetOutArg (
-        /*[in]*/ long argNum,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_OutArgs (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Exception (
-        /*[out,retval]*/ struct _Exception * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ReturnValue (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
+    fn get_OutArgCount(
+        pRetVal: c_long,
+    ) -> HRESULT,
+    fn GetOutArgName(
+        index: c_long,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
+    fn GetOutArg(
+        argNum: c_long,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn get_OutArgs(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn get_Exception(
+		pRetVal: *mut *mut  _Exception ,
+	) -> HRESULT,
+    fn get_ReturnValue(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x9a604ee7, 0xe630, 0x3ded, 0x94, 0x44, 0xba, 0xae, 0x24, 0x70, 0x75, 0xab)]
 interface IFormattable(IFormattableVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ToString (
-        /*[in]*/ BSTR format,
-        /*[in]*/ struct IFormatProvider * formatProvider,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+    fn get_ToString(
+        format: BSTR, 
+        formatProvider: *mut IFormatProvider, 
+        pRetVal: *mut BSTR, 
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x805e3b62, 0xb5e9, 0x393d, 0x89, 0x41, 0x37, 0x7d, 0x8b, 0xf4, 0x55, 0x6b)]
 interface IConvertible(IConvertibleVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetTypeCode (
-        /*[out,retval]*/ enum TypeCode * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToBoolean (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToChar (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ unsigned short * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToSByte (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ char * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToByte (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ unsigned char * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToInt16 (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ short * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToUInt16 (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ unsigned short * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToInt32 (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToUInt32 (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ unsigned long * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToInt64 (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ __int64 * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToUInt64 (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ unsigned __int64 * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToSingle (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ float * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToDouble (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ double * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToDecimal (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ DECIMAL * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToDateTime (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ DATE * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ToString (
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToType (
-        /*[in]*/ struct _Type * conversionType,
-        /*[in]*/ struct IFormatProvider * provider,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-}}
-
-RIDL!{#[uuid(0x05f696dc, 0x2b29, 0x3663, 0xad, 0x8b, 0xc4, 0x38, 0x9c, 0xf2, 0xa7, 0x13)]
-interface _AppDomain(_AppDomainVtbl): IUnknown(IUnknownVtbl)  
-{
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetTypeInfoCount (
-        /*[out]*/ unsigned long * pcTInfo ) = 0;
-      virtual HRESULT __stdcall GetTypeInfo (
-        /*[in]*/ unsigned long iTInfo,
-        /*[in]*/ unsigned long lcid,
-        /*[in]*/ long ppTInfo ) = 0;
-      virtual HRESULT __stdcall GetIDsOfNames (
-        /*[in]*/ GUID * riid,
-        /*[in]*/ long rgszNames,
-        /*[in]*/ unsigned long cNames,
-        /*[in]*/ unsigned long lcid,
-        /*[in]*/ long rgDispId ) = 0;
-      virtual HRESULT __stdcall Invoke (
-        /*[in]*/ unsigned long dispIdMember,
-        /*[in]*/ GUID * riid,
-        /*[in]*/ unsigned long lcid,
-        /*[in]*/ short wFlags,
-        /*[in]*/ long pDispParams,
-        /*[in]*/ long pVarResult,
-        /*[in]*/ long pExcepInfo,
-        /*[in]*/ long puArgErr ) = 0;
-      virtual HRESULT __stdcall get_ToString (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Equals (
-        /*[in]*/ VARIANT other,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetHashCode (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall InitializeLifetimeService (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetLifetimeService (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Evidence (
-        /*[out,retval]*/ struct _Evidence * * pRetVal ) = 0;
-      virtual HRESULT __stdcall add_DomainUnload (
-        /*[in]*/ struct _EventHandler * val ) = 0;
-      virtual HRESULT __stdcall remove_DomainUnload (
-        /*[in]*/ struct _EventHandler * val ) = 0;
-      virtual HRESULT __stdcall add_AssemblyLoad (
-        /*[in]*/ struct _AssemblyLoadEventHandler * val ) = 0;
-      virtual HRESULT __stdcall remove_AssemblyLoad (
-        /*[in]*/ struct _AssemblyLoadEventHandler * val ) = 0;
-      virtual HRESULT __stdcall add_ProcessExit (
-        /*[in]*/ struct _EventHandler * val ) = 0;
-      virtual HRESULT __stdcall remove_ProcessExit (
-        /*[in]*/ struct _EventHandler * val ) = 0;
-      virtual HRESULT __stdcall add_TypeResolve (
-        /*[in]*/ struct _ResolveEventHandler * val ) = 0;
-      virtual HRESULT __stdcall remove_TypeResolve (
-        /*[in]*/ struct _ResolveEventHandler * val ) = 0;
-      virtual HRESULT __stdcall add_ResourceResolve (
-        /*[in]*/ struct _ResolveEventHandler * val ) = 0;
-      virtual HRESULT __stdcall remove_ResourceResolve (
-        /*[in]*/ struct _ResolveEventHandler * val ) = 0;
-      virtual HRESULT __stdcall add_AssemblyResolve (
-        /*[in]*/ struct _ResolveEventHandler * val ) = 0;
-      virtual HRESULT __stdcall remove_AssemblyResolve (
-        /*[in]*/ struct _ResolveEventHandler * val ) = 0;
-      virtual HRESULT __stdcall add_UnhandledException (
-        /*[in]*/ struct _UnhandledExceptionEventHandler * val ) = 0;
-      virtual HRESULT __stdcall remove_UnhandledException (
-        /*[in]*/ struct _UnhandledExceptionEventHandler * val ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly_2 (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[in]*/ BSTR dir,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly_3 (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[in]*/ struct _Evidence * Evidence,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly_4 (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[in]*/ struct _PermissionSet * requiredPermissions,
-        /*[in]*/ struct _PermissionSet * optionalPermissions,
-        /*[in]*/ struct _PermissionSet * refusedPermissions,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly_5 (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[in]*/ BSTR dir,
-        /*[in]*/ struct _Evidence * Evidence,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly_6 (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[in]*/ BSTR dir,
-        /*[in]*/ struct _PermissionSet * requiredPermissions,
-        /*[in]*/ struct _PermissionSet * optionalPermissions,
-        /*[in]*/ struct _PermissionSet * refusedPermissions,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly_7 (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[in]*/ struct _Evidence * Evidence,
-        /*[in]*/ struct _PermissionSet * requiredPermissions,
-        /*[in]*/ struct _PermissionSet * optionalPermissions,
-        /*[in]*/ struct _PermissionSet * refusedPermissions,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly_8 (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[in]*/ BSTR dir,
-        /*[in]*/ struct _Evidence * Evidence,
-        /*[in]*/ struct _PermissionSet * requiredPermissions,
-        /*[in]*/ struct _PermissionSet * optionalPermissions,
-        /*[in]*/ struct _PermissionSet * refusedPermissions,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall DefineDynamicAssembly_9 (
-        /*[in]*/ struct _AssemblyName * name,
-        /*[in]*/ enum AssemblyBuilderAccess access,
-        /*[in]*/ BSTR dir,
-        /*[in]*/ struct _Evidence * Evidence,
-        /*[in]*/ struct _PermissionSet * requiredPermissions,
-        /*[in]*/ struct _PermissionSet * optionalPermissions,
-        /*[in]*/ struct _PermissionSet * refusedPermissions,
-        /*[in]*/ VARIANT_BOOL IsSynchronized,
-        /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstance (
-        /*[in]*/ BSTR AssemblyName,
-        /*[in]*/ BSTR typeName,
-        /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstanceFrom (
-        /*[in]*/ BSTR assemblyFile,
-        /*[in]*/ BSTR typeName,
-        /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstance_2 (
-        /*[in]*/ BSTR AssemblyName,
-        /*[in]*/ BSTR typeName,
-        /*[in]*/ SAFEARRAY * activationAttributes,
-        /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstanceFrom_2 (
-        /*[in]*/ BSTR assemblyFile,
-        /*[in]*/ BSTR typeName,
-        /*[in]*/ SAFEARRAY * activationAttributes,
-        /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstance_3 (
-        /*[in]*/ BSTR AssemblyName,
-        /*[in]*/ BSTR typeName,
-        /*[in]*/ VARIANT_BOOL ignoreCase,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ struct _Binder * Binder,
-        /*[in]*/ SAFEARRAY * args,
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[in]*/ SAFEARRAY * activationAttributes,
-        /*[in]*/ struct _Evidence * securityAttributes,
-        /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstanceFrom_3 (
-        /*[in]*/ BSTR assemblyFile,
-        /*[in]*/ BSTR typeName,
-        /*[in]*/ VARIANT_BOOL ignoreCase,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ struct _Binder * Binder,
-        /*[in]*/ SAFEARRAY * args,
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[in]*/ SAFEARRAY * activationAttributes,
-        /*[in]*/ struct _Evidence * securityAttributes,
-        /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Load (
-        /*[in]*/ struct _AssemblyName * assemblyRef,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Load_2 (
-        /*[in]*/ BSTR assemblyString,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Load_3 (
-        /*[in]*/ SAFEARRAY * rawAssembly,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Load_4 (
-        /*[in]*/ SAFEARRAY * rawAssembly,
-        /*[in]*/ SAFEARRAY * rawSymbolStore,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Load_5 (
-        /*[in]*/ SAFEARRAY * rawAssembly,
-        /*[in]*/ SAFEARRAY * rawSymbolStore,
-        /*[in]*/ struct _Evidence * securityEvidence,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Load_6 (
-        /*[in]*/ struct _AssemblyName * assemblyRef,
-        /*[in]*/ struct _Evidence * assemblySecurity,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Load_7 (
-        /*[in]*/ BSTR assemblyString,
-        /*[in]*/ struct _Evidence * assemblySecurity,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall ExecuteAssembly (
-        /*[in]*/ BSTR assemblyFile,
-        /*[in]*/ struct _Evidence * assemblySecurity,
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall ExecuteAssembly_2 (
-        /*[in]*/ BSTR assemblyFile,
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall ExecuteAssembly_3 (
-        /*[in]*/ BSTR assemblyFile,
-        /*[in]*/ struct _Evidence * assemblySecurity,
-        /*[in]*/ SAFEARRAY * args,
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_FriendlyName (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_BaseDirectory (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_RelativeSearchPath (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ShadowCopyFiles (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetAssemblies (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall AppendPrivatePath (
-        /*[in]*/ BSTR Path ) = 0;
-      virtual HRESULT __stdcall ClearPrivatePath ( ) = 0;
-      virtual HRESULT __stdcall SetShadowCopyPath (
-        /*[in]*/ BSTR s ) = 0;
-      virtual HRESULT __stdcall ClearShadowCopyPath ( ) = 0;
-      virtual HRESULT __stdcall SetCachePath (
-        /*[in]*/ BSTR s ) = 0;
-      virtual HRESULT __stdcall SetData (
-        /*[in]*/ BSTR name,
-        /*[in]*/ VARIANT data ) = 0;
-      virtual HRESULT __stdcall GetData (
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall SetAppDomainPolicy (
-        /*[in]*/ struct _PolicyLevel * domainPolicy ) = 0;
-      virtual HRESULT __stdcall SetThreadPrincipal (
-        /*[in]*/ struct IPrincipal * principal ) = 0;
-      virtual HRESULT __stdcall SetPrincipalPolicy (
-        /*[in]*/ enum PrincipalPolicy policy ) = 0;
-      virtual HRESULT __stdcall DoCallBack (
-        /*[in]*/ struct _CrossAppDomainDelegate * theDelegate ) = 0;
-      virtual HRESULT __stdcall get_DynamicDirectory (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+    fn GetTypeCode(
+        pRetVal: TypeCode ,
+    ) -> HRESULT,
+    fn ToBoolean(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut VARIANT_BOOL ,
+    ) -> HRESULT,
+    fn ToChar(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut USHORT,
+    ) -> HRESULT,
+    fn ToSByte(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut c_char,
+    ) -> HRESULT,
+    fn ToByte(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut UCHAR,
+    ) -> HRESULT,
+    fn ToInt16(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut c_short,
+    ) -> HRESULT,
+    fn ToUInt16(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut USHORT,
+    ) -> HRESULT,
+    fn ToInt32(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut c_long,
+    ) -> HRESULT,
+    fn ToUInt32(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut ULONG,
+    ) -> HRESULT,
+    fn ToInt64(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut i64,
+    ) -> HRESULT,
+    fn ToUInt64(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut u64 ,
+    ) -> HRESULT,
+    fn ToSingle(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut c_float ,
+    ) -> HRESULT,
+    fn ToDouble(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut c_double,
+    ) -> HRESULT,
+    fn ToDecimal(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut DECIMAL,
+    ) -> HRESULT,
+    fn ToDateTime(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut DATE,
+    ) -> HRESULT,
+    fn get_ToString(
+        provider: *mut  IFormatProvider ,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
+    fn ToType(
+        conversionType: *mut _Type, 
+        provider: *mut IFormatProvider,
+        pRetVal: *mut VARIANT, 
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x2b130940, 0xca5e, 0x3406, 0x83, 0x85, 0xe2, 0x59, 0xe6, 0x8a, 0xb0, 0x39)]
 interface ICustomFormatter(ICustomFormatterVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall format (
-        /*[in]*/ BSTR format,
-        /*[in]*/ VARIANT arg,
-        /*[in]*/ struct IFormatProvider * formatProvider,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+    fn format(
+        format: BSTR, 
+        arg: VARIANT, 
+        formatProvider: *mut IFormatProvider,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xc8cb1ded, 0x2814, 0x396a, 0x9c, 0xc0, 0x47, 0x3c, 0xa4, 0x97, 0x79, 0xcc)]
 interface IFormatProvider(IFormatProviderVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetFormat (
-        /*[in]*/ struct _Type * formatType,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
+    fn GetFormat(
+		formatType: *mut  _Type,
+		pRetVal: *mut VARIANT,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xb9b91146, 0xd6c2, 0x3a62, 0x81, 0x59, 0xc2, 0xd1, 0x79, 0x4c, 0xde, 0xb0)]
 interface ICustomAttributeProvider(ICustomAttributeProviderVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetCustomAttributes (
-        /*[in]*/ struct _Type * attributeType,
-        /*[in]*/ VARIANT_BOOL inherit,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetCustomAttributes_2 (
-        /*[in]*/ VARIANT_BOOL inherit,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall IsDefined (
-        /*[in]*/ struct _Type * attributeType,
-        /*[in]*/ VARIANT_BOOL inherit,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+    fn GetCustomAttributes(
+        attributeType: *mut _Type,
+        inherit: VARIANT_BOOL,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn GetCustomAttributes_2(
+        inherit: VARIANT_BOOL,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn IsDefined(
+        attributeType: *mut _Type,
+        inherit: VARIANT_BOOL,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
 }}
 
 
 RIDL!{#[uuid(0xf4f5c303, 0xfad3, 0x3d0c, 0xa4, 0xdf, 0xbb, 0x82, 0xb5, 0xee, 0x30, 0x8f)]
 interface IFormatterConverter(IFormatterConverterVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Convert (
-        /*[in]*/ VARIANT val,
-        /*[in]*/ struct _Type * Type,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall Convert_2 (
-        /*[in]*/ VARIANT val,
-        /*[in]*/ enum TypeCode TypeCode,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToBoolean (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToChar (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ unsigned short * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToSByte (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ char * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToByte (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ unsigned char * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToInt16 (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ short * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToUInt16 (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ unsigned short * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToInt32 (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToUInt32 (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ unsigned long * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToInt64 (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ __int64 * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToUInt64 (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ unsigned __int64 * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToSingle (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ float * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToDouble (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ double * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToDecimal (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ DECIMAL * pRetVal ) = 0;
-      virtual HRESULT __stdcall ToDateTime (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ DATE * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ToString (
-        /*[in]*/ VARIANT val,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
+    fn Convert(
+        val: VARIANT, 
+        Type_: *mut _Type,
+        pRetVal: *mut VARIANT, 
+    ) -> HRESULT,
+    fn Convert_2(
+        val: VARIANT, 
+        typeCode: *mut TypeCode,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn ToBoolean(
+        val: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn ToChar(
+        val: VARIANT, 
+        pRetVal: *mut USHORT,
+    ) -> HRESULT,
+    fn ToSByte(
+        val: VARIANT,
+        pRetVal: *mut char,
+    ) -> HRESULT,
+    fn ToByte(
+        val: VARIANT, 
+        pRetVal: *mut UCHAR,
+    ) -> HRESULT,
+    fn ToInt16(
+        val: VARIANT,
+        pRetVal: *mut c_short,
+    ) -> HRESULT,
+    fn ToUInt16(
+        val: VARIANT, 
+        pRetVal: *mut USHORT, 
+    ) -> HRESULT,
+    fn ToInt32(
+        val: VARIANT,
+        pRetVal: *mut c_long,
+    ) -> HRESULT,
+    fn ToUInt32(
+        val: VARIANT, 
+        pRetVal: *mut ULONG,
+    ) -> HRESULT,
+    fn ToInt64(
+        val: VARIANT,
+        pRetVal: *mut i64,
+    ) -> HRESULT,
+    fn ToUInt64(
+        val: VARIANT, 
+        pRetVal: *mut u64,
+    ) -> HRESULT,
+    fn ToSingle(
+        val: VARIANT,
+        pRetVal: *mut c_float,
+    ) -> HRESULT,
+    fn ToDouble(
+        val: VARIANT,
+        pRetVal: *mut c_double,
+    ) -> HRESULT,
+    fn ToDecimal(
+        val: VARIANT,
+        pRetVal: *mut DECIMAL,
+    ) -> HRESULT,
+    fn ToDateTime(
+        val: VARIANT,
+        pRetVal: *mut DATE,
+    ) -> HRESULT,
+    fn get_ToString(
+        val: VARIANT,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
 }}
-
 
 RIDL!{#[uuid(0x0ca9008e, 0xee90, 0x356e, 0x9f, 0x6d, 0xb5, 0x9e, 0x60, 0x06, 0xb9, 0xa4)]
 interface ICustomFactory(ICustomFactoryVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall CreateInstance (
-        /*[in]*/ struct _Type * serverType,
-        /*[out,retval]*/ struct _MarshalByRefObject * * pRetVal ) = 0;
+    fn CreateInstance(
+		serverType: *mut  _Type,
+		pRetVal: *mut *mut  _MarshalByRefObject,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xc09effa9, 0x1ffe, 0x3a52, 0xa7, 0x33, 0x62, 0x36, 0xcb, 0xc4, 0x5e, 0x7b)]
 interface IRemotingTypeInfo(IRemotingTypeInfoVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_typeName (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_typeName (
-        /*[in]*/ BSTR pRetVal ) = 0;
-      virtual HRESULT __stdcall CanCastTo (
-        /*[in]*/ struct _Type * fromType,
-        /*[in]*/ VARIANT o,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+    fn get_typeName(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn put_typeName(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn CanCastTo(
+        fromType: *mut _Type,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x65074f7f, 0x63c0, 0x304e, 0xaf, 0x0a, 0xd5, 0x17, 0x41, 0xcb, 0x4a, 0x8d)]
 interface _Object(_ObjectVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ToString (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Equals (
-        /*[in]*/ VARIANT obj,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetHashCode (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
+    fn get_ToString(
+        pRetVal: BSTR,
+    ) -> HRESULT,
+    fn Equals(
+        obj: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn GetHashCode(
+        pRetVal: c_long,
+    ) -> HRESULT,
+    fn GetType(
+		pRetVal: *mut *mut  _Type ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xea675b47, 0x64e0, 0x3b5f, 0x9b, 0xe7, 0xf7, 0xdc, 0x29, 0x90, 0x73, 0x0d)]
 interface _ObjectHandle(_ObjectHandleVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ToString (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Equals (
-        /*[in]*/ VARIANT obj,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetHashCode (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetLifetimeService (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall InitializeLifetimeService (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateObjRef (
-        /*[in]*/ struct _Type * requestedType,
-        /*[out,retval]*/ struct _ObjRef * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Unwrap (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
+    fn get_ToString(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn Equals(
+        obj: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+      fn GetHashCode(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetType(
+		pRetVal: *mut *mut  _Type ,
+	) -> HRESULT,
+    fn GetLifetimeService(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
+    fn InitializeLifetimeService(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
+    fn CreateObjRef(
+		requestedType: *mut  _Type ,
+		pRetVal: *mut *mut  _ObjRef ,
+	) -> HRESULT,
+    fn Unwrap(
+        pRetVal: VARIANT,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xafbf15e5, 0xc37c, 0x11d2, 0xb8, 0x8e, 0x00, 0xa0, 0xc9, 0xb4, 0x71, 0xb8)]
 interface IReflect(IReflectVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetMethod (
-        /*[in]*/ BSTR name,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ struct _Binder * Binder,
-        /*[in]*/ SAFEARRAY * types,
-        /*[in]*/ SAFEARRAY * modifiers,
-        /*[out,retval]*/ struct _MethodInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetMethod_2 (
-        /*[in]*/ BSTR name,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[out,retval]*/ struct _MethodInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetMethods (
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetField (
-        /*[in]*/ BSTR name,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[out,retval]*/ struct _FieldInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetFields (
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetProperty (
-        /*[in]*/ BSTR name,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[out,retval]*/ struct _PropertyInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetProperty_2 (
-        /*[in]*/ BSTR name,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ struct _Binder * Binder,
-        /*[in]*/ struct _Type * returnType,
-        /*[in]*/ SAFEARRAY * types,
-        /*[in]*/ SAFEARRAY * modifiers,
-        /*[out,retval]*/ struct _PropertyInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetProperties (
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetMember (
-        /*[in]*/ BSTR name,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetMembers (
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall InvokeMember (
-        /*[in]*/ BSTR name,
-        /*[in]*/ enum BindingFlags invokeAttr,
-        /*[in]*/ struct _Binder * Binder,
-        /*[in]*/ VARIANT Target,
-        /*[in]*/ SAFEARRAY * args,
-        /*[in]*/ SAFEARRAY * modifiers,
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[in]*/ SAFEARRAY * namedParameters,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_UnderlyingSystemType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
+    fn GetMethod(
+        name: BSTR, 
+        bindingAttr: BindingFlags,
+        Binder: *mut _Binder, 
+        types: *mut SAFEARRAY, 
+        modifiers: *mut SAFEARRAY, 
+        pRetVal: *mut *mut _MethodInfo,
+    ) -> HRESULT,
+    fn GetMethod_2(
+        name: BSTR, 
+        bindingAttr: BindingFlags,
+        pRetVal: *mut *mut _MethodInfo,
+    ) -> HRESULT,
+    fn GetMethods(
+        bindingAttr: BindingFlags, 
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn GetField(
+        name: BSTR, 
+        bindingAttr: BindingFlags, 
+        pRetVal: *mut *mut _FieldInfo, 
+    ) -> HRESULT,
+    fn GetFields(
+        bindingAttr: BindingFlags,
+        pRetVal: MUT_LPSAFEARRAY,
+    ) -> HRESULT,
+    fn GetProperty(
+        name: BSTR, 
+        bindingAttr: BindingFlags, 
+        pRetVal: *mut *mut _PropertyInfo, 
+    ) -> HRESULT,
+    fn GetProperty_2(
+        name: BSTR, 
+        bindingAttr: BindingFlags,
+        Binder: *mut _Binder, 
+        returnType: *mut _Type,
+        types: *mut SAFEARRAY, 
+        modifiers: *mut SAFEARRAY, 
+        pRetVal: *mut *mut _PropertyInfo,
+    ) -> HRESULT,
+    fn GetProperties(
+        bindingAttr: BindingFlags, 
+        pRetVal: MUT_LPSAFEARRAY,
+    ) -> HRESULT,
+    fn GetMember(
+        name: BSTR,
+        bindingAttr: BindingFlags,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn GetMembers(
+        bindingAttr: BindingFlags,
+        pRetVal: MUT_LPSAFEARRAY,
+    ) -> HRESULT,
+    fn InvokeMember(
+        name: BSTR, 
+        invokeAttr: BindingFlags, 
+        Binder: *mut _Binder,
+        Target: VARIANT, 
+        args: *mut SAFEARRAY, 
+        modifiers: *mut SAFEARRAY, 
+        culture: *mut _CultureInfo, 
+        namedParameters: *mut SAFEARRAY, 
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn get_UnderlyingSystemType(
+		pRetVal: *mut *mut  _Type ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x20808adc, 0xcc01, 0x3f3a, 0x8f, 0x09, 0xed, 0x12, 0x94, 0x0f, 0xc2, 0x12)]
 interface ISymbolBinder(ISymbolBinderVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetReader (
-        /*[in]*/ long importer,
-        /*[in]*/ BSTR filename,
-        /*[in]*/ BSTR searchPath,
-        /*[out,retval]*/ struct ISymbolReader * * pRetVal ) = 0;
+    fn GetReader(
+        importer: c_long, 
+        filename: BSTR, 
+        searchPath: BSTR, 
+        pRetVal: *mut *mut ISymbolReader, 
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x027c036a, 0x4052, 0x3821, 0x85, 0xde, 0xb5, 0x33, 0x19, 0xdf, 0x12, 0x11)]
 interface ISymbolBinder1(ISymbolBinder1Vtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetReader (
-        /*[in]*/ long importer,
-        /*[in]*/ BSTR filename,
-        /*[in]*/ BSTR searchPath,
-        /*[out,retval]*/ struct ISymbolReader * * pRetVal ) = 0;
+    fn GetReader(
+        importer: c_long, 
+        filename: BSTR, 
+        searchPath: BSTR, 
+        pRetVal: *mut *mut ISymbolReader, 
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x25c72eb0, 0xe437, 0x3f17, 0x94, 0x6d, 0x3b, 0x72, 0xa3, 0xac, 0xff, 0x37)]
@@ -4308,775 +4043,845 @@ interface ISymbolMethod(ISymbolMethodVtbl): IDispatch(IDispatchVtbl)
     // Raw methods provided by interface
     //
 
-      virtual HRESULT __stdcall get_Token (
-        /*[out,retval]*/ struct SymbolToken * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_SequencePointCount (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetSequencePoints (
-        /*[in]*/ SAFEARRAY * offsets,
-        /*[in]*/ SAFEARRAY * documents,
-        /*[in]*/ SAFEARRAY * lines,
-        /*[in]*/ SAFEARRAY * columns,
-        /*[in]*/ SAFEARRAY * endLines,
-        /*[in]*/ SAFEARRAY * endColumns ) = 0;
-      virtual HRESULT __stdcall get_RootScope (
-        /*[out,retval]*/ struct ISymbolScope * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetScope (
-        /*[in]*/ long offset,
-        /*[out,retval]*/ struct ISymbolScope * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetOffset (
-        /*[in]*/ struct ISymbolDocument * document,
-        /*[in]*/ long line,
-        /*[in]*/ long column,
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetRanges (
-        /*[in]*/ struct ISymbolDocument * document,
-        /*[in]*/ long line,
-        /*[in]*/ long column,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetParameters (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetNamespace (
-        /*[out,retval]*/ struct ISymbolNamespace * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetSourceStartEnd (
-        /*[in]*/ SAFEARRAY * docs,
-        /*[in]*/ SAFEARRAY * lines,
-        /*[in]*/ SAFEARRAY * columns,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+    fn get_Token(
+        pRetVal: SymbolToken,
+    ) -> HRESULT,
+    fn get_SequencePointCount(
+        pRetVal: c_long,
+    ) -> HRESULT,
+
+    fn GetSequencePoints(
+        offsets: *mut SAFEARRAY, 
+        documents: *mut SAFEARRAY,
+        lines: *mut SAFEARRAY,
+        columns: *mut SAFEARRAY,
+        endLines: *mut SAFEARRAY,
+        endColumns: *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn get_RootScope(
+		pRetVal: *mut *mut  ISymbolScope ,
+	) -> HRESULT,
+    fn GetScope(
+        offset: c_long, 
+        pRetVal: *mut *mut ISymbolScope,
+    ) -> HRESULT,
+    fn GetOffset(
+        document: *mut ISymbolDocument, 
+        line: c_long, 
+        column: c_long, 
+        pRetVal: *mut c_long,
+    ) -> HRESULT,
+    fn GetRanges(
+        document: *mut ISymbolDocument, 
+        line: c_long, 
+        column: c_long, 
+        pRetVal: MUT_LPSAFEARRAY, 
+    ) -> HRESULT,
+    fn GetParameters(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetNamespace(
+		pRetVal: *mut *mut  ISymbolNamespace ,
+	) -> HRESULT,
+    fn GetSourceStartEnd(
+        docs: *mut SAFEARRAY, 
+        lines: *mut SAFEARRAY, 
+        columns: *mut SAFEARRAY, 
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xe809a5f1, 0xd3d7, 0x3144, 0x9b, 0xef, 0xfe, 0x8a, 0xc0, 0x36, 0x46, 0x99)]
 interface ISymbolReader(ISymbolReaderVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetDocument (
-        /*[in]*/ BSTR Url,
-        /*[in]*/ GUID Language,
-        /*[in]*/ GUID LanguageVendor,
-        /*[in]*/ GUID DocumentType,
-        /*[out,retval]*/ struct ISymbolDocument * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetDocuments (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_UserEntryPoint (
-        /*[out,retval]*/ struct SymbolToken * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetMethod (
-        /*[in]*/ struct SymbolToken Method,
-        /*[out,retval]*/ struct ISymbolMethod * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetMethod_2 (
-        /*[in]*/ struct SymbolToken Method,
-        /*[in]*/ long Version,
-        /*[out,retval]*/ struct ISymbolMethod * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetVariables (
-        /*[in]*/ struct SymbolToken parent,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetGlobalVariables (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetMethodFromDocumentPosition (
-        /*[in]*/ struct ISymbolDocument * document,
-        /*[in]*/ long line,
-        /*[in]*/ long column,
-        /*[out,retval]*/ struct ISymbolMethod * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetSymAttribute (
-        /*[in]*/ struct SymbolToken parent,
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetNamespaces (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
+    fn GetDocument(
+        Url: BSTR,
+        Language: GUID, 
+        LanguageVendor: GUID, 
+        DocumentType: GUID, 
+        pRetVal: *mut *mut ISymbolDocument, 
+    ) -> HRESULT,
+    fn GetDocuments(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn get_UserEntryPoint(
+        pRetVal: *mut SymbolToken,
+    ) -> HRESULT,
+    fn GetMethod(
+        Method: SymbolToken, 
+        pRetVal: *mut *mut ISymbolMethod,
+    ) -> HRESULT,
+    fn GetMethod_2(
+        Method: SymbolToken, 
+        Version: c_long,
+    ) -> HRESULT,
+    fn GetVariables(
+        parent: SymbolToken, 
+        pRetVal: MUT_LPSAFEARRAY, 
+    ) -> HRESULT,
+    fn GetGlobalVariables(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetMethodFromDocumentPosition(
+        document: *mut ISymbolDocument, 
+        line: c_long, 
+        column: c_long, 
+        pRetVal: *mut *mut ISymbolMethod,
+    ) -> HRESULT, 
+    fn GetSymAttribute(
+        parent: SymbolToken, 
+        name: BSTR, 
+        pRetVal: MUT_LPSAFEARRAY, 
+    ) -> HRESULT,
+    fn GetNamespaces(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x1cee3a11, 0x01ae, 0x3244, 0xa9, 0x39, 0x49, 0x72, 0xfc, 0x97, 0x03, 0xef)]
 interface ISymbolScope(ISymbolScopeVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_Method (
-        /*[out,retval]*/ struct ISymbolMethod * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_parent (
-        /*[out,retval]*/ struct ISymbolScope * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetChildren (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_StartOffset (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_EndOffset (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetLocals (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetNamespaces (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
+    fn get_Method(
+		pRetVal: *mut *mut  ISymbolMethod ,
+	) -> HRESULT,
+    fn get_parent(
+		pRetVal: *mut *mut  ISymbolScope ,
+	) -> HRESULT,
+    fn GetChildren(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn get_StartOffset(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn get_EndOffset(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetLocals(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetNamespaces(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x17156360, 0x2f1a, 0x384a, 0xbc, 0x52, 0xfd, 0xe9, 0x3c, 0x21, 0x5c, 0x5b)]
 interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ToString (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Equals (
-        /*[in]*/ VARIANT other,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetHashCode (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_CodeBase (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_EscapedCodeBase (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetName (
-        /*[out,retval]*/ struct _AssemblyName * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetName_2 (
-        /*[in]*/ VARIANT_BOOL copiedName,
-        /*[out,retval]*/ struct _AssemblyName * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_FullName (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_EntryPoint (
-        /*[out,retval]*/ struct _MethodInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType_2 (
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType_3 (
-        /*[in]*/ BSTR name,
-        /*[in]*/ VARIANT_BOOL throwOnError,
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetExportedTypes (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetTypes (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetManifestResourceStream (
-        /*[in]*/ struct _Type * Type,
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ struct _Stream * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetManifestResourceStream_2 (
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ struct _Stream * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetFile (
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ struct _FileStream * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetFiles (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetFiles_2 (
-        /*[in]*/ VARIANT_BOOL getResourceModules,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetManifestResourceNames (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetManifestResourceInfo (
-        /*[in]*/ BSTR resourceName,
-        /*[out,retval]*/ struct _ManifestResourceInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Location (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Evidence (
-        /*[out,retval]*/ struct _Evidence * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetCustomAttributes (
-        /*[in]*/ struct _Type * attributeType,
-        /*[in]*/ VARIANT_BOOL inherit,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetCustomAttributes_2 (
-        /*[in]*/ VARIANT_BOOL inherit,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall IsDefined (
-        /*[in]*/ struct _Type * attributeType,
-        /*[in]*/ VARIANT_BOOL inherit,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetObjectData (
-        /*[in]*/ struct _SerializationInfo * info,
-        /*[in]*/ struct StreamingContext Context ) = 0;
-      virtual HRESULT __stdcall add_ModuleResolve (
-        /*[in]*/ struct _ModuleResolveEventHandler * val ) = 0;
-      virtual HRESULT __stdcall remove_ModuleResolve (
-        /*[in]*/ struct _ModuleResolveEventHandler * val ) = 0;
-      virtual HRESULT __stdcall GetType_4 (
-        /*[in]*/ BSTR name,
-        /*[in]*/ VARIANT_BOOL throwOnError,
-        /*[in]*/ VARIANT_BOOL ignoreCase,
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetSatelliteAssembly (
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetSatelliteAssembly_2 (
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[in]*/ struct _Version * Version,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-      virtual HRESULT __stdcall LoadModule (
-        /*[in]*/ BSTR moduleName,
-        /*[in]*/ SAFEARRAY * rawModule,
-        /*[out,retval]*/ struct _Module * * pRetVal ) = 0;
-      virtual HRESULT __stdcall LoadModule_2 (
-        /*[in]*/ BSTR moduleName,
-        /*[in]*/ SAFEARRAY * rawModule,
-        /*[in]*/ SAFEARRAY * rawSymbolStore,
-        /*[out,retval]*/ struct _Module * * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstance (
-        /*[in]*/ BSTR typeName,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstance_2 (
-        /*[in]*/ BSTR typeName,
-        /*[in]*/ VARIANT_BOOL ignoreCase,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall CreateInstance_3 (
-        /*[in]*/ BSTR typeName,
-        /*[in]*/ VARIANT_BOOL ignoreCase,
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ struct _Binder * Binder,
-        /*[in]*/ SAFEARRAY * args,
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[in]*/ SAFEARRAY * activationAttributes,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetLoadedModules (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetLoadedModules_2 (
-        /*[in]*/ VARIANT_BOOL getResourceModules,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetModules (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetModules_2 (
-        /*[in]*/ VARIANT_BOOL getResourceModules,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetModule (
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ struct _Module * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetReferencedAssemblies (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_GlobalAssemblyCache (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-}}
-
-RIDL!{#[uuid(0xf1c3bf76, 0xc3e4, 0x11d3, 0x88, 0xe7, 0x00, 0x90, 0x27, 0x54, 0xc4, 0x3a)]
-interface ITypeLibImporterNotifySink(ITypeLibImporterNotifySinkVtbl): IUnknown(IUnknownVtbl)  
-{
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall InteropServices_ReportEvent (
-        /*[in]*/ enum ImporterEventKind eventKind,
-        /*[in]*/ long eventCode,
-        /*[in]*/ BSTR eventMsg ) = 0;
-      virtual HRESULT __stdcall ResolveRef (
-        /*[in]*/ IUnknown * typeLib,
-        /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
+    fn get_ToString(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn Equals(
+        other: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn GetHashCode(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetType(
+		pRetVal: *mut *mut  _Type ,
+	) -> HRESULT,
+    fn get_CodeBase(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_EscapedCodeBase(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn GetName(
+		pRetVal: *mut *mut  _AssemblyName ,
+	) -> HRESULT,
+    fn GetName_2(
+        copiedName: VARIANT_BOOL, 
+        pRetVal: *mut *mut _AssemblyName,
+    ) -> HRESULT,
+    fn get_FullName(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_EntryPoint(
+		pRetVal: *mut *mut  _MethodInfo ,
+	) -> HRESULT,
+    fn GetType_2(
+        name: BSTR, 
+        pRetVal: *mut *mut _Type, 
+    ) -> HRESULT,
+    fn GetType_3(
+        name: BSTR, 
+        throwOnError: VARIANT_BOOL, 
+        pRetVal: *mut *mut _Type,
+    ) -> HRESULT,
+    fn GetExportedTypes(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetTypes(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetManifestResourceStream(
+        Type_: *mut _Type, 
+        name: BSTR, 
+        pRetVal: *mut *mut _Stream,
+    ) -> HRESULT,
+    fn GetManifestResourceStream_2(
+        name: BSTR, 
+        pRetVal: *mut *mut _Stream,
+    ) -> HRESULT, 
+    fn GetFile(
+        name: BSTR, 
+        pRetVal: *mut *mut _FileStream,
+    ) -> HRESULT,
+    fn GetFiles(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetFiles_2(
+        getResourceModules: VARIANT_BOOL,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn GetManifestResourceNames(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetManifestResourceInfo(
+        resourceName: BSTR, 
+        pRetVal: *mut *mut _ManifestResourceInfo,
+    ) -> HRESULT,
+    fn get_Location(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_Evidence(
+		pRetVal: *mut *mut  _Evidence ,
+	) -> HRESULT,
+    fn GetCustomAttributes(
+        attributeType: *mut _Type, 
+        inherit: VARIANT_BOOL, 
+        pRetVal: MUT_LPSAFEARRAY, 
+    ) -> HRESULT,
+    fn GetCustomAttributes_2(
+        inherit: VARIANT_BOOL,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn IsDefined(
+        attributeType: *mut _Type, 
+        inherit: VARIANT_BOOL,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn GetObjectData(
+        info: *mut _SerializationInfo,
+        Context: StreamingContext,
+    ) -> HRESULT,
+    fn add_ModuleResolve(
+        val: *mut _ModuleResolveEventHandler, 
+    ) -> HRESULT,
+    fn remove_ModuleResolve(
+        val: *mut _ModuleResolveEventHandler,
+    ) -> HRESULT,
+    fn GetType_4(
+        name: BSTR, 
+        throwOnError: VARIANT_BOOL, 
+        ignoreCase: VARIANT_BOOL, 
+        pRetVal: *mut *mut _Type,
+    ) -> HRESULT,
+    fn GetSatelliteAssembly(
+		culture: *mut  _CultureInfo ,
+		pRetVal: *mut *mut  _Assembly ,
+	) -> HRESULT,
+    fn GetSatelliteAssembly_2(
+        culture: *mut _CultureInfo,
+        Version: *mut _Version, 
+        pRetVal: *mut *mut _Assembly,
+    ) -> HRESULT,
+    fn LoadModule(
+        moduleName: BSTR, 
+        rawModule: *mut SAFEARRAY, 
+        pRetVal: *mut *mut _Module,
+    ) -> HRESULT,
+    fn LoadModule_2(
+        moduleName: BSTR, 
+        rawModule: *mut SAFEARRAY, 
+        rawSymbolStore: *mut SAFEARRAY, 
+        pRetVal: *mut *mut _Module,
+    ) -> HRESULT,
+    fn CreateInstance(
+        typeName: BSTR,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn CreateInstance_2(
+        typeName: BSTR, 
+        ignoreCase: VARIANT_BOOL, 
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn CreateInstance_3(
+        typeName: BSTR, 
+        ignoreCase: VARIANT_BOOL, 
+        bindingAttr: BindingFlags, 
+        Binder: *mut _Binder,
+        args: *mut SAFEARRAY, 
+        culture: *mut _CultureInfo, 
+        activationAttributes: *mut SAFEARRAY, 
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn GetLoadedModules(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetLoadedModules_2(
+        getResourceModules: VARIANT_BOOL,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn GetModules(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetModules_2(
+        getResourceModules: VARIANT_BOOL,
+        pRetVal: *mut *mut SAFEARRAY,
+    ) -> HRESULT,
+    fn GetModule(
+        name: BSTR, 
+        pRetVal: *mut *mut _Module,
+    ) -> HRESULT,
+    fn GetReferencedAssemblies(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn get_GlobalAssemblyCache(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xccbd682c, 0x73a5, 0x4568, 0xb8, 0xb0, 0xc7, 0x00, 0x7e, 0x11, 0xab, 0xa2)]
 interface IRegistrationServices(IRegistrationServicesVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall RegisterAssembly (
-        /*[in]*/ struct _Assembly * Assembly,
-        /*[in]*/ enum AssemblyRegistrationFlags flags,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall UnregisterAssembly (
-        /*[in]*/ struct _Assembly * Assembly,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetRegistrableTypesInAssembly (
-        /*[in]*/ struct _Assembly * Assembly,
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetProgIdForType (
-        /*[in]*/ struct _Type * Type,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall RegisterTypeForComClients (
-        /*[in]*/ struct _Type * Type,
-        /*[in,out]*/ GUID * G ) = 0;
-      virtual HRESULT __stdcall GetManagedCategoryGuid (
-        /*[out,retval]*/ GUID * pRetVal ) = 0;
-      virtual HRESULT __stdcall TypeRequiresRegistration (
-        /*[in]*/ struct _Type * Type,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall TypeRepresentsComType (
-        /*[in]*/ struct _Type * Type,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+    fn RegisterAssembly(
+        Assembly: *mut _Assembly,
+        flags: AssemblyRegistrationFlags, 
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn UnregisterAssembly(
+		Assembly: *mut  _Assembly ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
+    fn GetRegistrableTypesInAssembly(
+		Assembly: *mut  _Assembly ,
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn GetProgIdForType(
+		Type: *mut  _Type ,
+		pRetVal: *mut BSTR ,
+	) -> HRESULT,
+    fn RegisterTypeForComClients(
+        Type_: *mut _Type, 
+        G: *mut GUID, 
+    ) -> HRESULT,
+    fn GetManagedCategoryGuid(
+        pRetVal: GUID ,
+    ) -> HRESULT,
+    fn TypeRequiresRegistration(
+		Type: *mut  _Type ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
+    fn TypeRepresentsComType(
+		Type: *mut  _Type ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
 }}
-
 
 RIDL!{#[uuid(0x8e5e0b95, 0x750e, 0x310d, 0x89, 0x2c, 0x8c, 0xa7, 0x23, 0x1c, 0xf7, 0x5b)]
 interface IMethodMessage(IMethodMessageVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_Uri (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_MethodName (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_typeName (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_MethodSignature (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ArgCount (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetArgName (
-        /*[in]*/ long index,
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetArg (
-        /*[in]*/ long argNum,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_args (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_HasVarArgs (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_LogicalCallContext (
-        /*[out,retval]*/ struct _LogicalCallContext * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_MethodBase (
-        /*[out,retval]*/ struct _MethodBase * * pRetVal ) = 0;
+    fn get_Uri(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_MethodName(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_typeName(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_MethodSignature(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
+    fn get_ArgCount(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetArgName(
+        index: c_long,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
+    fn GetArg(
+        argNum: c_long,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn get_args(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn get_HasVarArgs(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
+    fn get_LogicalCallContext(
+		pRetVal: *mut *mut  _LogicalCallContext ,
+	) -> HRESULT,
+    fn get_MethodBase(
+		pRetVal: *mut *mut  _MethodBase ,
+	) -> HRESULT,
 }}
 
 
 RIDL!{#[uuid(0xfb6ab00f, 0x5096, 0x3af8, 0xa3, 0x3d, 0xd7, 0x88, 0x5a, 0x5f, 0xa8, 0x29)]
 interface _Delegate(_DelegateVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ToString (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Equals (
-        /*[in]*/ VARIANT obj,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetHashCode (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetInvocationList (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall Clone (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetObjectData (
-        /*[in]*/ struct _SerializationInfo * info,
-        /*[in]*/ struct StreamingContext Context ) = 0;
-      virtual HRESULT __stdcall DynamicInvoke (
-        /*[in]*/ SAFEARRAY * args,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Method (
-        /*[out,retval]*/ struct _MethodInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Target (
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
+    fn get_ToString(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn Equals(
+        obj: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn GetHashCode(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetType(
+		pRetVal: *mut *mut  _Type ,
+	) -> HRESULT,
+    fn GetInvocationList(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn Clone(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
+    fn GetObjectData(
+        info: *mut _SerializationInfo, 
+        Context: StreamingContext,
+    ) -> HRESULT,
+    fn DynamicInvoke(
+		args: *mut SAFEARRAY ,
+		pRetVal: *mut VARIANT ,
+	) -> HRESULT,
+    fn get_Method(
+		pRetVal: *mut *mut  _MethodInfo ,
+	) -> HRESULT,
+    fn get_Target(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
 }}
 
 
 RIDL!{#[uuid(0xafbf15e6, 0xc37c, 0x11d2, 0xb8, 0x8e, 0x00, 0xa0, 0xc9, 0xb4, 0x71, 0xb8)]
 interface IExpando(IExpandoVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall AddField (
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ struct _FieldInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall AddProperty (
-        /*[in]*/ BSTR name,
-        /*[out,retval]*/ struct _PropertyInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall AddMethod (
-        /*[in]*/ BSTR name,
-        /*[in]*/ struct _Delegate * Method,
-        /*[out,retval]*/ struct _MethodInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall RemoveMember (
-        /*[in]*/ struct _MemberInfo * m ) = 0;
+    fn AddField(
+        name: BSTR, 
+        pRetVal: *mut *mut _FieldInfo,
+    ) -> HRESULT,
+    fn AddProperty(
+        name: BSTR, 
+        pRetVal: *mut *mut _PropertyInfo, 
+    ) -> HRESULT,
+    fn AddMethod(
+        name: BSTR, 
+        Method: *mut _Delegate, 
+        pRetVal: *mut *mut _MethodInfo, 
+    ) -> HRESULT,
+    fn RemoveMember(
+        m: *mut _MemberInfo,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x3169ab11, 0x7109, 0x3808, 0x9a, 0x61, 0xef, 0x4b, 0xa0, 0x53, 0x4f, 0xd9)]
 interface _Binder(_BinderVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ToString (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall Equals (
-        /*[in]*/ VARIANT obj,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetHashCode (
-        /*[out,retval]*/ long * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall BindToMethod (
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ SAFEARRAY * match,
-        /*[in,out]*/ SAFEARRAY * * args,
-        /*[in]*/ SAFEARRAY * modifiers,
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[in]*/ SAFEARRAY * names,
-        /*[out]*/ VARIANT * state,
-        /*[out,retval]*/ struct _MethodBase * * pRetVal ) = 0;
-      virtual HRESULT __stdcall BindToField (
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ SAFEARRAY * match,
-        /*[in]*/ VARIANT val,
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[out,retval]*/ struct _FieldInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall SelectMethod (
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ SAFEARRAY * match,
-        /*[in]*/ SAFEARRAY * types,
-        /*[in]*/ SAFEARRAY * modifiers,
-        /*[out,retval]*/ struct _MethodBase * * pRetVal ) = 0;
-      virtual HRESULT __stdcall SelectProperty (
-        /*[in]*/ enum BindingFlags bindingAttr,
-        /*[in]*/ SAFEARRAY * match,
-        /*[in]*/ struct _Type * returnType,
-        /*[in]*/ SAFEARRAY * indexes,
-        /*[in]*/ SAFEARRAY * modifiers,
-        /*[out,retval]*/ struct _PropertyInfo * * pRetVal ) = 0;
-      virtual HRESULT __stdcall ChangeType (
-        /*[in]*/ VARIANT val,
-        /*[in]*/ struct _Type * Type,
-        /*[in]*/ struct _CultureInfo * culture,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall ReorderArgumentArray (
-        /*[in,out]*/ SAFEARRAY * * args,
-        /*[in]*/ VARIANT state ) = 0;
+    fn get_ToString(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn Equals(
+        obj: VARIANT,
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+      fn GetHashCode(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetType(
+		pRetVal: *mut *mut  _Type ,
+	) -> HRESULT,
+    fn BindToMethod(
+        bindingAttr: BindingFlags,
+        match_: *mut SAFEARRAY, 
+        args: MUT_LPSAFEARRAY, 
+        modifiers: *mut SAFEARRAY, 
+        culture: *mut _CultureInfo, 
+        names: *mut SAFEARRAY, 
+        state: *mut VARIANT, 
+        pRetVal: *mut *mut _MethodBase,
+    ) -> HRESULT,
+    fn BindToField(
+        bindingAttr: BindingFlags,
+        match_: *mut SAFEARRAY, 
+        val: VARIANT, 
+        culture: *mut _CultureInfo, 
+        pRetVal: *mut *mut _FieldInfo,
+    ) -> HRESULT,
+    fn SelectMethod(
+        bindingAttr: BindingFlags, 
+        match_: *mut SAFEARRAY, 
+        types: *mut SAFEARRAY, 
+        modifiers: *mut SAFEARRAY, 
+        pRetVal: *mut *mut _MethodBase, 
+    ) -> HRESULT,
+    fn SelectProperty(
+        bindingAttr: BindingFlags, 
+        match_: *mut SAFEARRAY,
+        returnType: *mut _Type, 
+        indexes: *mut SAFEARRAY, 
+        modifiers: *mut SAFEARRAY, 
+        pRetVal: *mut *mut _PropertyInfo, 
+    ) -> HRESULT,
+    fn ChangeType(
+        val: VARIANT, 
+        Type_: *mut _Type, 
+        culture: *mut _CultureInfo, 
+        pRetVal: *mut VARIANT, 
+    ) -> HRESULT,
+    fn ReorderArgumentArray(
+        args: MUT_LPSAFEARRAY, 
+        state: VARIANT,
+    ) -> HRESULT, 
 }}
 
 RIDL!{#[uuid(0x62339172, 0xdbfa, 0x337b, 0x8a, 0xc8, 0x05, 0x3b, 0x24, 0x1e, 0x06, 0xab)]
 interface ISerializationSurrogate(ISerializationSurrogateVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetObjectData (
-        /*[in]*/ VARIANT obj,
-        /*[in]*/ struct _SerializationInfo * info,
-        /*[in]*/ struct StreamingContext Context ) = 0;
-      virtual HRESULT __stdcall SetObjectData (
-        /*[in]*/ VARIANT obj,
-        /*[in]*/ struct _SerializationInfo * info,
-        /*[in]*/ struct StreamingContext Context,
-        /*[in]*/ struct ISurrogateSelector * selector,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
+    fn GetObjectData(
+        obj: VARIANT, 
+        info: *mut _SerializationInfo, 
+        Context: StreamingContext,
+    ) -> HRESULT,
+    fn SetObjectData(
+        obj: VARIANT, 
+        info: *mut _SerializationInfo, 
+        Context: StreamingContext, 
+        selector: *mut ISurrogateSelector, 
+        pRetVal: *mut VARIANT, 
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x7c66ff18, 0xa1a5, 0x3e19, 0x85, 0x7b, 0x0e, 0x7b, 0x6a, 0x9e, 0x3f, 0x38)]
 interface ISurrogateSelector(ISurrogateSelectorVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall ChainSelector (
-        /*[in]*/ struct ISurrogateSelector * selector ) = 0;
-      virtual HRESULT __stdcall GetSurrogate (
-        /*[in]*/ struct _Type * Type,
-        /*[in]*/ struct StreamingContext Context,
-        /*[out]*/ struct ISurrogateSelector * * selector,
-        /*[out,retval]*/ struct ISerializationSurrogate * * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetNextSelector (
-        /*[out,retval]*/ struct ISurrogateSelector * * pRetVal ) = 0;
+    fn ChainSelector(
+        selector: *mut ISurrogateSelector,
+    ) -> HRESULT,
+    fn GetSurrogate(
+        Type_: *mut _Type, 
+        Context: StreamingContext, 
+        selector: *mut *mut ISurrogateSelector, 
+        pRetVal: *mut *mut ISerializationSurrogate,
+    ) -> HRESULT,
+    fn GetNextSelector(
+		pRetVal: *mut *mut  ISurrogateSelector ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x93d7a8c5, 0xd2eb, 0x319b, 0xa3, 0x74, 0xa6, 0x5d, 0x32, 0x1f, 0x2a, 0xa9)]
 interface IFormatter(IFormatterVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Deserialize (
-        /*[in]*/ struct _Stream * serializationStream,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall Serialize (
-        /*[in]*/ struct _Stream * serializationStream,
-        /*[in]*/ VARIANT graph ) = 0;
-      virtual HRESULT __stdcall get_SurrogateSelector (
-        /*[out,retval]*/ struct ISurrogateSelector * * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_SurrogateSelector (
-        /*[in]*/ struct ISurrogateSelector * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Binder (
-        /*[out,retval]*/ struct _SerializationBinder * * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_Binder (
-        /*[in]*/ struct _SerializationBinder * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Context (
-        /*[out,retval]*/ struct StreamingContext * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_Context (
-        /*[in]*/ struct StreamingContext pRetVal ) = 0;
+    fn Deserialize(
+		serializationStream: *mut  _Stream ,
+		pRetVal: *mut VARIANT ,
+	) -> HRESULT,
+    fn Serialize(
+        serializationStream: *mut _Stream, 
+        graph: VARIANT, 
+    ) -> HRESULT,
+    fn get_SurrogateSelector(
+		pRetVal: *mut *mut  ISurrogateSelector ,
+	) -> HRESULT,
+    fn putref_SurrogateSelector(
+        pRetVal: *mut ISurrogateSelector, 
+    ) -> HRESULT,
+    fn get_Binder(
+		pRetVal: *mut *mut  _SerializationBinder ,
+	) -> HRESULT,
+    fn putref_Binder(
+        pRetVal: *mut _SerializationBinder,
+    ) -> HRESULT,
+    fn get_Context(
+        pRetVal: StreamingContext ,
+    ) -> HRESULT,
+    fn put_Context(
+        pRetVal: StreamingContext,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x4a68baa3, 0x27aa, 0x314a, 0xbd, 0xbb, 0x6a, 0xe9, 0xbd, 0xfc, 0x04, 0x20)]
 interface IContextAttribute(IContextAttributeVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall IsContextOK (
-        /*[in]*/ struct _Context * ctx,
-        /*[in]*/ struct IConstructionCallMessage * msg,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall GetPropertiesForNewContext (
-        /*[in]*/ struct IConstructionCallMessage * msg ) = 0;
+    fn IsContextOk(
+        ctx: *mut _Context, 
+        msg: *mut IConstructionCallMessage, 
+        pRetVal: *mut VARIANT_BOOL,
+    ) -> HRESULT,
+    fn GetPropertiesForNewContext(
+        msg: *mut IConstructionCallMessage,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xc02bbb79, 0x5aa8, 0x390d, 0x92, 0x7f, 0x71, 0x7b, 0x7b, 0xff, 0x06, 0xa1)]
 interface IActivator(IActivatorVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_NextActivator (
-        /*[out,retval]*/ struct IActivator * * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_NextActivator (
-        /*[in]*/ struct IActivator * pRetVal ) = 0;
-      virtual HRESULT __stdcall Activate (
-        /*[in]*/ struct IConstructionCallMessage * msg,
-        /*[out,retval]*/ struct IConstructionReturnMessage * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_level (
-        /*[out,retval]*/ enum ActivatorLevel * pRetVal ) = 0;
+    fn get_NextActivator(
+		pRetVal: *mut *mut  IActivator ,
+	) -> HRESULT,
+    fn putref_Activator(
+        pRetVal: *mut IActivator,
+    ) -> HRESULT,
+    fn Activate(
+		msg: *mut  IConstructionCallMessage ,
+		pRetVal: *mut *mut  IConstructionReturnMessage ,
+	) -> HRESULT,
+    fn get_level(
+        pRetVal: ActivatorLevel ,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xfa28e3af, 0x7d09, 0x31d5, 0xbe, 0xeb, 0x7f, 0x26, 0x26, 0x49, 0x7c, 0xde)]
 interface IConstructionCallMessage(IConstructionCallMessageVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_Activator (
-        /*[out,retval]*/ struct IActivator * * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_Activator (
-        /*[in]*/ struct IActivator * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_CallSiteActivationAttributes (
-        /*[out,retval]*/ SAFEARRAY * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ActivationTypeName (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ActivationType (
-        /*[out,retval]*/ struct _Type * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ContextProperties (
-        /*[out,retval]*/ struct IList * * pRetVal ) = 0;
+    fn get_Activator(
+		pRetVal: *mut *mut  IActivator ,
+	) -> HRESULT,
+    fn putref_Activator(
+        pRetVal: *mut IActivator,
+    ) -> HRESULT,
+    fn get_CallSiteActivationAttributes(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn get_ActivationTypeName(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_ActivationType(
+		pRetVal: *mut *mut  _Type ,
+	) -> HRESULT,
+    fn get_ContextProperties(
+		pRetVal: *mut *mut  IList ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x7197b56b, 0x5fa1, 0x31ef, 0xb3, 0x8b, 0x62, 0xfe, 0xe7, 0x37, 0x27, 0x7f)]
 interface IContextPropertyActivator(IContextPropertyActivatorVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall IsOKToActivate (
-        /*[in]*/ struct IConstructionCallMessage * msg,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall CollectFromClientContext (
-        /*[in]*/ struct IConstructionCallMessage * msg ) = 0;
-      virtual HRESULT __stdcall DeliverClientContextToServerContext (
-        /*[in]*/ struct IConstructionCallMessage * msg,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall CollectFromServerContext (
-        /*[in]*/ struct IConstructionReturnMessage * msg ) = 0;
-      virtual HRESULT __stdcall DeliverServerContextToClientContext (
-        /*[in]*/ struct IConstructionReturnMessage * msg,
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
+    fn IsOKToActivate(
+		msg: *mut  IConstructionCallMessage ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
+    fn CollectFromClientContext(
+        msg: *mut IConstructionCallMessage,
+    ) -> HRESULT,
+    fn DeliverClientContextToServerContext(
+		msg: *mut  IConstructionCallMessage ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
+    fn CollectFromServerContext(
+        msg: *mut IConstructionReturnMessage,
+    ) -> HRESULT,
+    fn DeliverServerContextToClientContext(
+		msg: *mut  IConstructionReturnMessage ,
+		pRetVal: *mut VARIANT_BOOL ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x3a5fde6b, 0xdb46, 0x34e8, 0xba, 0xcd, 0x16, 0xea, 0x5a, 0x44, 0x05, 0x40)]
 interface IClientChannelSinkStack(IClientChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Push (
-        /*[in]*/ struct IClientChannelSink * sink,
-        /*[in]*/ VARIANT state ) = 0;
-      virtual HRESULT __stdcall Pop (
-        /*[in]*/ struct IClientChannelSink * sink,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
+    fn Push(
+        sink: *mut IClientChannelSink, 
+        state: VARIANT, 
+    ) -> HRESULT,
+    fn Pop(
+		sink: *mut  IClientChannelSink ,
+		pRetVal: *mut VARIANT ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xff726320, 0x6b92, 0x3e6c, 0xaa, 0xac, 0xf9, 0x70, 0x63, 0xd0, 0xb1, 0x42)]
 interface IClientChannelSink(IClientChannelSinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall ProcessMessage (
-        /*[in]*/ struct IMessage * msg,
-        /*[in]*/ struct ITransportHeaders * requestHeaders,
-        /*[in]*/ struct _Stream * requestStream,
-        /*[out]*/ struct ITransportHeaders * * responseHeaders,
-        /*[out]*/ struct _Stream * * responseStream ) = 0;
-      virtual HRESULT __stdcall AsyncProcessRequest (
-        /*[in]*/ struct IClientChannelSinkStack * sinkStack,
-        /*[in]*/ struct IMessage * msg,
-        /*[in]*/ struct ITransportHeaders * headers,
-        /*[in]*/ struct _Stream * Stream ) = 0;
-      virtual HRESULT __stdcall AsyncProcessResponse (
-        /*[in]*/ struct IClientResponseChannelSinkStack * sinkStack,
-        /*[in]*/ VARIANT state,
-        /*[in]*/ struct ITransportHeaders * headers,
-        /*[in]*/ struct _Stream * Stream ) = 0;
-      virtual HRESULT __stdcall GetRequestStream (
-        /*[in]*/ struct IMessage * msg,
-        /*[in]*/ struct ITransportHeaders * headers,
-        /*[out,retval]*/ struct _Stream * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_NextChannelSink (
-        /*[out,retval]*/ struct IClientChannelSink * * pRetVal ) = 0;
+    fn ProcessMessage(
+        msg: *mut IMessage, 
+        requestHeaders: *mut ITransportHeaders, 
+        requestStream: *mut _Stream, 
+        responseHeaders: *mut *mut ITransportHeaders,
+        responseStream: *mut *mut _Stream,
+    ) -> HRESULT,
+    fn AsyncProcessRequest(
+        sinkStack: *mut IClientChannelSink, 
+        msg: *mut IMessage, 
+        headers: *mut ITransportHeaders, 
+        Stream: *mut _Stream,
+    ) -> HRESULT,
+    fn AsyncProcessResponse(
+        sinkStack: *mut IClientResponseChannelSinkStack, 
+        state: VARIANT, 
+        headers: *mut ITransportHeaders, 
+        Stream: *mut _Stream,
+    ) -> HRESULT,
+    fn GetRequestStream(
+        msg: *mut IMessage, 
+        headers: *mut ITransportHeaders, 
+        pRetVal: *mut *mut _Stream, 
+    ) -> HRESULT,
+    fn get_NextChannelSink(
+		pRetVal: *mut *mut  IClientChannelSink ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x3f8742c2, 0xac57, 0x3440, 0xa2, 0x83, 0xfe, 0x5f, 0xf4, 0xc7, 0x50, 0x25)]
 interface IClientChannelSinkProvider(IClientChannelSinkProviderVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall CreateSink (
-        /*[in]*/ struct IChannelSender * channel,
-        /*[in]*/ BSTR Url,
-        /*[in]*/ VARIANT remoteChannelData,
-        /*[out,retval]*/ struct IClientChannelSink * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Next (
-        /*[out,retval]*/ struct IClientChannelSinkProvider * * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_Next (
-        /*[in]*/ struct IClientChannelSinkProvider * pRetVal ) = 0;
+    fn CreateSink(
+        channel: *mut IChannelSender, 
+        Url: BSTR, 
+        remoteChannelData: VARIANT, 
+        pRetVal: *mut *mut IClientChannelSink,
+    ) -> HRESULT,
+    fn get_Next(
+		pRetVal: *mut *mut  IClientChannelSinkProvider ,
+	) -> HRESULT,
+    fn putref_Next(
+        pRetVal: *mut IClientChannelSinkProvider,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xe694a733, 0x768d, 0x314d, 0xb3, 0x17, 0xdc, 0xea, 0xd1, 0x36, 0xb1, 0x1d)]
 interface IServerChannelSinkStack(IServerChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Push (
-        /*[in]*/ struct IServerChannelSink * sink,
-        /*[in]*/ VARIANT state ) = 0;
-      virtual HRESULT __stdcall Pop (
-        /*[in]*/ struct IServerChannelSink * sink,
-        /*[out,retval]*/ VARIANT * pRetVal ) = 0;
-      virtual HRESULT __stdcall Store (
-        /*[in]*/ struct IServerChannelSink * sink,
-        /*[in]*/ VARIANT state ) = 0;
-      virtual HRESULT __stdcall StoreAndDispatch (
-        /*[in]*/ struct IServerChannelSink * sink,
-        /*[in]*/ VARIANT state ) = 0;
-      virtual HRESULT __stdcall ServerCallback (
-        /*[in]*/ struct IAsyncResult * ar ) = 0;
+    fn Push(
+        sink: IServerChannelSink, 
+        state: VARIANT, 
+    ) -> HRESULT,
+    fn Pop(
+		sink: *mut  IServerChannelSink ,
+		pRetVal: *mut VARIANT ,
+	) -> HRESULT,
+    fn Store(
+        sink: *mut IServerChannelSink, 
+        state: VARIANT, 
+    ) -> HRESULT,
+    fn StoreAndDispatch(
+        sink: *mut IServerChannelSink, 
+    ) -> HRESULT,
+    fn ServerCallback(
+        ar: *mut IAsyncResult,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x21b5f37b, 0xbef3, 0x354c, 0x8f, 0x84, 0x0f, 0x9f, 0x08, 0x63, 0xf5, 0xc5)]
 interface IServerChannelSink(IServerChannelSinkVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall ProcessMessage (
-        /*[in]*/ struct IServerChannelSinkStack * sinkStack,
-        /*[in]*/ struct IMessage * requestMsg,
-        /*[in]*/ struct ITransportHeaders * requestHeaders,
-        /*[in]*/ struct _Stream * requestStream,
-        /*[out]*/ struct IMessage * * responseMsg,
-        /*[out]*/ struct ITransportHeaders * * responseHeaders,
-        /*[out]*/ struct _Stream * * responseStream,
-        /*[out,retval]*/ enum ServerProcessing * pRetVal ) = 0;
-      virtual HRESULT __stdcall AsyncProcessResponse (
-        /*[in]*/ struct IServerResponseChannelSinkStack * sinkStack,
-        /*[in]*/ VARIANT state,
-        /*[in]*/ struct IMessage * msg,
-        /*[in]*/ struct ITransportHeaders * headers,
-        /*[in]*/ struct _Stream * Stream ) = 0;
-      virtual HRESULT __stdcall GetResponseStream (
-        /*[in]*/ struct IServerResponseChannelSinkStack * sinkStack,
-        /*[in]*/ VARIANT state,
-        /*[in]*/ struct IMessage * msg,
-        /*[in]*/ struct ITransportHeaders * headers,
-        /*[out,retval]*/ struct _Stream * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_NextChannelSink (
-        /*[out,retval]*/ struct IServerChannelSink * * pRetVal ) = 0;
+    fn ProcessMessage(
+        sinkStack: *mut IServerChannelSink, 
+        requestMsg: *mut IMessage, 
+        requestHeaders: *mut ITransportHeaders, 
+        requestStream: *mut _Stream, 
+        responseMsg: *mut *mut IMessage, 
+        responseHeaders: *mut *mut ITransportHeaders, 
+        responseStream: *mut *mut _Stream, 
+        pRetVal: *mut ServerProcessing,
+    ) -> HRESULT,
+    fn AsyncProcessResponse(
+        sinkStack: *mut IServerResponseChannelSinkStack, 
+        state: VARIANT, 
+        msg: *mut IMessage, 
+        headers: *mut ITransportHeaders, 
+        Stream_: *mut _Stream,
+    ) -> HRESULT,
+    fn GetResponseStream(
+        sinkStack: *mut IServerResponseChannelSinkStack, 
+        state: VARIANT, 
+        msg: *mut IMessage, 
+        headers: *mut ITransportHeaders, 
+        pRetVal: *mut *mut _Stream,
+    ) -> HRESULT,
+    fn get_NextChannelSink(
+		pRetVal: *mut *mut  IServerChannelSink ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x7dd6e975, 0x24ea, 0x323c, 0xa9, 0x8c, 0x0f, 0xde, 0x96, 0xf9, 0xc4, 0xe6)]
 interface IServerChannelSinkProvider(IServerChannelSinkProviderVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall GetChannelData (
-        /*[in]*/ struct IChannelDataStore * ChannelData ) = 0;
-      virtual HRESULT __stdcall CreateSink (
-        /*[in]*/ struct IChannelReceiver * channel,
-        /*[out,retval]*/ struct IServerChannelSink * * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_Next (
-        /*[out,retval]*/ struct IServerChannelSinkProvider * * pRetVal ) = 0;
-      virtual HRESULT __stdcall putref_Next (
-        /*[in]*/ struct IServerChannelSinkProvider * pRetVal ) = 0;
+    fn GetChannelData(
+        ChannelData: *mut IChannelDataStore,
+    ) -> HRESULT,
+    fn CreateSink(
+		channel: *mut  IChannelReceiver ,
+		pRetVal: *mut *mut  IServerChannelSink ,
+	) -> HRESULT,
+    fn get_Next(
+		pRetVal: *mut *mut  IServerChannelSinkProvider ,
+	) -> HRESULT,
+    fn putref_Next(
+        pRetVal: *mut IServerChannelSinkProvider,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x3a02d3f7, 0x3f40, 0x3022, 0x85, 0x3d, 0xcf, 0xda, 0x76, 0x51, 0x82, 0xfe)]
 interface IChannelReceiverHook(IChannelReceiverHookVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall get_ChannelScheme (
-        /*[out,retval]*/ BSTR * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_WantsToListen (
-        /*[out,retval]*/ VARIANT_BOOL * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_ChannelSinkChain (
-        /*[out,retval]*/ struct IServerChannelSink * * pRetVal ) = 0;
-      virtual HRESULT __stdcall AddHookChannelUri (
-        /*[in]*/ BSTR channelUri ) = 0;
+    fn get_ChannelScheme(
+        pRetVal: BSTR ,
+    ) -> HRESULT,
+    fn get_WantsToListen(
+        pRetVal: VARIANT_BOOL ,
+    ) -> HRESULT,
+    fn get_ChannelSinkChain(
+		pRetVal: *mut *mut  IServerChannelSink ,
+	) -> HRESULT,
+    fn AddHookChannelUri(
+        channelUri: BSTR,
+    ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x675591af, 0x0508, 0x3131, 0xa7, 0xcc, 0x28, 0x7d, 0x26, 0x5c, 0xa7, 0xd6)]
 interface ISponsor(ISponsorVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Renewal (
-        /*[in]*/ struct ILease * lease,
-        /*[out,retval]*/ struct TimeSpan * pRetVal ) = 0;
+    fn Renewal(
+		lease: *mut  ILease ,
+		pRetVal: *mut  TimeSpan ,
+	) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0x53a561f2, 0xcbbf, 0x3748, 0xbf, 0xfe, 0x21, 0x80, 0x00, 0x2d, 0xb3, 0xdf)]
 interface ILease(ILeaseVtbl): IDispatch(IDispatchVtbl)  
 {
-    //
-    // Raw methods provided by interface
-    //
-
-      virtual HRESULT __stdcall Register (
-        /*[in]*/ struct ISponsor * obj,
-        /*[in]*/ struct TimeSpan renewalTime ) = 0;
-      virtual HRESULT __stdcall Register_2 (
-        /*[in]*/ struct ISponsor * obj ) = 0;
-      virtual HRESULT __stdcall Unregister (
-        /*[in]*/ struct ISponsor * obj ) = 0;
-      virtual HRESULT __stdcall Renew (
-        /*[in]*/ struct TimeSpan renewalTime,
-        /*[out,retval]*/ struct TimeSpan * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_RenewOnCallTime (
-        /*[out,retval]*/ struct TimeSpan * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_RenewOnCallTime (
-        /*[in]*/ struct TimeSpan pRetVal ) = 0;
-      virtual HRESULT __stdcall get_SponsorshipTimeout (
-        /*[out,retval]*/ struct TimeSpan * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_SponsorshipTimeout (
-        /*[in]*/ struct TimeSpan pRetVal ) = 0;
-      virtual HRESULT __stdcall get_InitialLeaseTime (
-        /*[out,retval]*/ struct TimeSpan * pRetVal ) = 0;
-      virtual HRESULT __stdcall put_InitialLeaseTime (
-        /*[in]*/ struct TimeSpan pRetVal ) = 0;
-      virtual HRESULT __stdcall get_CurrentLeaseTime (
-        /*[out,retval]*/ struct TimeSpan * pRetVal ) = 0;
-      virtual HRESULT __stdcall get_CurrentState (
-        /*[out,retval]*/ enum LeaseState * pRetVal ) = 0;
+    fn Register(
+        obj: *mut ISponsor,
+        renewalTime: TimeSpan, 
+    ) -> HRESULT,
+    fn Register_2(
+        obj: *mut ISponsor,
+    ) -> HRESULT,
+    fn Unregister(
+        obj: *mut ISponsor, 
+    ) -> HRESULT,
+    fn Renew(
+        renewalTime: TimeSpan, 
+        pRetVal: *mut TimeSpan,
+    ) -> HRESULT,
+    fn get_RenewOnCallTime(
+        pRetVal: TimeSpan ,
+    ) -> HRESULT,
+    fn put_RenewOnCallTime(
+        pRetVal: TimeSpan,
+    ) -> HRESULT,
+    fn get_SponsorshipTimeout(
+        pRetVal:  TimeSpan ,
+    ) -> HRESULT,
+    fn put_SponsorshipTimeout(
+        pRetVal: TimeSpan,
+    ) -> HRESULT,
+    fn get_InitialLeaseTime(
+        pRetVal: TimeSpan ,
+    ) -> HRESULT,
+    fn put_InitialLeaseTime(
+        pRetVal: TimeSpan,
+    ) -> HRESULT,
+    fn get_CurrentLeaseTime(
+        pRetVal:  TimeSpan ,
+    ) -> HRESULT,
+    fn get_CurrentState(
+        pRetVal: LeaseState ,
+    ) -> HRESULT,
 }}

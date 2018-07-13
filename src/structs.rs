@@ -4,9 +4,11 @@ use winapi::ctypes::{c_char, c_double, c_float, c_long, c_int, c_short, c_void};
 use winapi::shared::minwindef::{UCHAR, UINT, ULONG, USHORT, };
 
 use winapi::um::oaidl::{SAFEARRAY};
+use winapi::um::winnt::{LPSTR,};
 use winapi::um::unknwnbase::{IUnknown};
 
 use enums::*;
+use unknown::*;
 
 //struct __declspec(uuid("c3008e12-9b16-36ec-b731-73257f25be7a"))
 STRUCT!{struct Boolean {
