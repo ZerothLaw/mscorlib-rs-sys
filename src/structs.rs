@@ -50,7 +50,7 @@ STRUCT!{struct Int32 {
 
 //struct __declspec(uuid("ad1cecf5-5fad-3ecf-ad89-2febd6521fa9"))
 STRUCT!{struct Int64 {
-    m_value: c_long,
+    m_value: i64,
 }}
 
 //struct __declspec(uuid("a1cb710c-8d50-3181-bb38-65ce2e98f9a6"))

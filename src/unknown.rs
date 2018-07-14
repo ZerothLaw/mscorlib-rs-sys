@@ -906,14 +906,14 @@ interface _Type(_TypeVtbl): IUnknown(IUnknownVtbl)
         puArgErr: *mut UINT,
     ) -> HRESULT,
     fn get_ToString(
-        pRetVal: BSTR ,
+        pRetVal: *mut BSTR ,
     ) -> HRESULT,
     fn Equals(
         other: VARIANT,
         pRetVal: *mut VARIANT_BOOL,
     ) -> HRESULT,
     fn GetHashCode(
-        pRetVal: c_long ,
+        pRetVal: *mut  c_long ,
     ) -> HRESULT,
     fn GetType(
         pRetVal: *mut *mut _Type ,
@@ -922,7 +922,7 @@ interface _Type(_TypeVtbl): IUnknown(IUnknownVtbl)
         pRetVal: MemberTypes ,
     ) -> HRESULT,
     fn get_name(
-        pRetVal: BSTR ,
+        pRetVal: *mut BSTR ,
     ) -> HRESULT,
     fn get_DeclaringType(
         pRetVal: *mut *mut _Type ,
@@ -945,7 +945,7 @@ interface _Type(_TypeVtbl): IUnknown(IUnknownVtbl)
         pRetVal: *mut VARIANT_BOOL,
     ) -> HRESULT,
     fn get_Guid(
-        pRetVal: GUID ,
+        pRetVal: *mut GUID ,
     ) -> HRESULT,
     fn get_Module(
         pRetVal: *mut *mut _Module ,
@@ -957,16 +957,16 @@ interface _Type(_TypeVtbl): IUnknown(IUnknownVtbl)
         pRetVal: RuntimeTypeHandle ,
     ) -> HRESULT,
     fn get_FullName(
-        pRetVal: BSTR ,
+        pRetVal: *mut BSTR,
     ) -> HRESULT,
     fn get_Namespace(
-        pRetVal: BSTR ,
+        pRetVal: *mut BSTR,
     ) -> HRESULT,
     fn get_AssemblyQualifiedName(
         pRetVal: BSTR ,
     ) -> HRESULT,
     fn GetArrayRank(
-        pRetVal: c_long ,
+        pRetVal: *mut c_long ,
     ) -> HRESULT,
     fn get_BaseType(
         pRetVal: *mut *mut _Type ,
