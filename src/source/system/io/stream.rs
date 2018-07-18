@@ -1,0 +1,4 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+RIDL!{#[uuid(0x2752364a, 0x924f, 0x3603, 0x8f, 0x6f, 0x65, 0x86, 0xdf, 0x98, 0xb2, 0x92)]
+interface _Stream(_StreamVtbl): IDispatch(IDispatchVtbl)  
+{}}

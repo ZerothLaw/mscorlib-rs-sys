@@ -1,0 +1,5 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0x81456e86, 0x22af, 0x31d1, 0xa9, 0x1a, 0x9c, 0x37, 0x0c, 0x0e, 0x25, 0x30)]
+interface _Timeout(_TimeoutVtbl): IDispatch(IDispatchVtbl)  
+{}}

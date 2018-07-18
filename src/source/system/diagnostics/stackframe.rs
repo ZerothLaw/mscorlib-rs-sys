@@ -1,0 +1,5 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0x0e9b8e47, 0xca67, 0x38b6, 0xb9, 0xdb, 0x2c, 0x42, 0xee, 0x75, 0x7b, 0x08)]
+interface _StackFrame(_StackFrameVtbl): IDispatch(IDispatchVtbl)  
+{}}

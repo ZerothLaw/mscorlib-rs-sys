@@ -1,0 +1,4 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+RIDL!{#[uuid(0x96a62d6c, 0x72a9, 0x387a, 0x81, 0xfa, 0xe6, 0xdd, 0x59, 0x98, 0xca, 0xee)]
+interface _HebrewCalendar(_HebrewCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}

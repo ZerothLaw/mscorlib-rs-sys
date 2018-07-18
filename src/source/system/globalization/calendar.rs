@@ -1,0 +1,4 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+RIDL!{#[uuid(0x4cca29e4, 0x584b, 0x3cd0, 0xad, 0x25, 0x85, 0x5d, 0xc5, 0x79, 0x9c, 0x16)]
+interface _Calendar(_CalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}

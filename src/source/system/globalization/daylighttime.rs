@@ -1,0 +1,5 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0xefea8feb, 0xee7f, 0x3e48, 0x8a, 0x36, 0x62, 0x06, 0xa6, 0xac, 0xbf, 0x73)]
+interface _DaylightTime(_DaylightTimeVtbl): IDispatch(IDispatchVtbl)  
+{}}
