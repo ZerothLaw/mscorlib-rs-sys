@@ -1,0 +1,5 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0x486360f5, 0x6213, 0x322b, 0xbe, 0xfb, 0x45, 0x22, 0x15, 0x79, 0xd4, 0xaf)]
+interface _HMACMD5(_HMACMD5Vtbl): IDispatch(IDispatchVtbl)  
+{}} //hmac

@@ -1,6 +1,6 @@
 [package]
 name = "mscorlib-sys"
-version = "0.1.2"
+version = "0.1.3"
 license = "MIT"
 description = "Raw FFI bindings for mscorlib"
 repository = "https://github.com/ZerothLaw/mscorlib-rs-sys"
@@ -9,7 +9,7 @@ keywords = ["windows", "ffi", "com", "mscorlib"]
 categories = ["external-ffi-bindings", "os::windows-apis"]
 authors = ["Tyler Laing <trinioler@gmail.com>"]
 build = "build.rs"
-excludes = ["Cargo.toml.orig"]
+features = ["remoting"]
 
 [dependencies]
 winapi = { version = "0.3.5", features = ["oaidl", "winerror"]}

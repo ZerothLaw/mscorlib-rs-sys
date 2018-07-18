@@ -1,0 +1,5 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0xf7c0c4cc, 0x0d49, 0x31ee, 0xa3, 0xd3, 0xb8, 0xb5, 0x51, 0xe4, 0x92, 0x8c)]
+interface _RC2(_RC2Vtbl): IDispatch(IDispatchVtbl)  
+{}} //SymmetricAlgorithm

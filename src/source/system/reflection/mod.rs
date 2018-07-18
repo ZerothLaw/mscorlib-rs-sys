@@ -1,0 +1,16 @@
+pub mod binder;
+pub mod bindingflags;
+pub mod callingconventions;
+pub mod cominterfaces;
+pub mod emit;
+pub mod icustomattributeprovider;
+pub mod interfacemapping;
+pub mod ireflect;
+pub mod manifestresourceinfo;
+pub mod membertypes;
+pub mod methodattributes;
+pub mod methodimplattributes;
+pub mod parametermodifier;
+pub mod propertyattributes;
+pub mod typeattributes;
+pub mod typeinfo;

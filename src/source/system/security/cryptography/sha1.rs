@@ -1,0 +1,5 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0x48600dd2, 0x0099, 0x337f, 0x92, 0xd6, 0x96, 0x1d, 0x1e, 0x50, 0x10, 0xd4)]
+interface _SHA1(_SHA1Vtbl): IDispatch(IDispatchVtbl)  
+{}} //HashAlgorithm

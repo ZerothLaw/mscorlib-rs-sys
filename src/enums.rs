@@ -1,4 +1,4 @@
-
+#![allow(dead_code, non_snake_case)]
 //modified version of the winapi ENUM macro for signed values
 #[macro_export]
 macro_rules! SIGNED_ENUM {

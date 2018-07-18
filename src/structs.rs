@@ -1,4 +1,4 @@
-
+#![allow(dead_code, non_snake_case)]
 use winapi::ctypes::{c_char, c_double, c_float, c_long, c_int, c_short, c_void};
 
 use winapi::shared::minwindef::{UCHAR, UINT, ULONG, USHORT, };

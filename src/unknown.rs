@@ -1,4 +1,4 @@
-
+#![allow(dead_code, non_snake_case)]
 use winapi::ctypes::{c_long,};
 
 use winapi::shared::guiddef::{GUID, REFIID};

@@ -6,6 +6,8 @@ mod enums;
 mod structs;
 mod unknown;
 
+mod source;
+
 pub use dispatch::*;
 pub use enums::*;
 pub use structs::*;
