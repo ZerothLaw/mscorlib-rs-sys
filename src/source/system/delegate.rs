@@ -6,8 +6,9 @@ use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY, VARIANT};
 
 use unknown::_Type;
 use dispatch::_SerializationInfo;
-use structs::StreamingContext;
 use unknown::_MethodInfo;
+
+use source::system::runtime::serialization::streamingcontext::StreamingContext;
 
 RIDL!{#[uuid(0xfb6ab00f, 0x5096, 0x3af8, 0xa3, 0x3d, 0xd7, 0x88, 0x5a, 0x5f, 0xa8, 0x29)]
 interface _Delegate(_DelegateVtbl): IDispatch(IDispatchVtbl)  

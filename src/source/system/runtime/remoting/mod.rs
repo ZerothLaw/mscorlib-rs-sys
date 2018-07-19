@@ -1,4 +1,5 @@
 pub mod channelsickstacks;
+pub mod configuration;
 pub mod contextproperty;
 pub mod iactivator;
 pub mod ichannel;
@@ -20,5 +21,7 @@ pub mod lifetimeservices;
 pub mod objecthandle;
 pub mod objref;
 pub mod realproxy;
+pub mod remotingattribute;
+pub mod remotingconfiguration;
 pub mod soapinteroptypes;
 pub mod trackingservices;

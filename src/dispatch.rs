@@ -15,11 +15,25 @@ use winapi::um::oaidl::{SAFEARRAY, VARIANT};
 use winapi::um::unknwnbase::{IUnknown};
 
 //self
-use enums::*;
 use structs::*;
 use unknown::*;
 
-type MUT_LPSAFEARRAY = *mut *mut SAFEARRAY;
+use source::system::diagnostics::symbolstore::symaddresskind::SymAddressKind;
+
+use source::system::intptr::IntPtr;
+
+use source::system::reflection::bindingflags::BindingFlags;
+use source::system::reflection::cominterfaces::_Module;
+use source::system::reflection::fieldattributes::FieldAttributes;
+use source::system::reflection::parameterattributes::ParameterAttributes;
+use source::system::runtime::interopservices::iregistrationservices::AssemblyRegistrationFlags;
+use source::system::runtime::serialization::streamingcontext::StreamingContext;
+use source::system::runtime::remoting::leasestate::LeaseState;
+use source::system::runtime::remoting::iactivator::ActivatorLevel;
+use source::system::runtime::remoting::ichannel::ServerProcessing;
+
+use source::system::typecode::TypeCode;
+
 
 RIDL!{#[uuid(0xdeb0e770, 0x91fd, 0x3cf6, 0x9a, 0x6c, 0xe6, 0xa3, 0x65, 0x6f, 0x39, 0x65)]
 interface IComparable(IComparableVtbl): IDispatch(IDispatchVtbl){
@@ -201,7 +215,7 @@ interface ISymbolDocument(ISymbolDocumentVtbl) : IDispatch(IDispatchVtbl) {
     ) -> HRESULT,
 
     fn GetCheckSum(
-        pRetVal: MUT_LPSAFEARRAY,
+        pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
       
     fn FindClosestLine(
@@ -222,7 +236,7 @@ interface ISymbolDocument(ISymbolDocumentVtbl) : IDispatch(IDispatchVtbl) {
         startColumn: c_long, 
         endLine: c_long, 
         endColumn: c_long,
-        pRetVal: MUT_LPSAFEARRAY,
+        pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
 }}
 
@@ -245,11 +259,11 @@ interface ISymbolNamespace(ISymbolNamespaceVtbl) : IDispatch(IDispatchVtbl) {
     ) -> HRESULT,
 
     fn GetNamespaces(
-        pRetVal: MUT_LPSAFEARRAY, 
+        pRetVal: *mut *mut SAFEARRAY, 
     ) -> HRESULT, 
 
     fn GetVariables(
-        pRetVal: MUT_LPSAFEARRAY,
+        pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
 }}
 
@@ -264,7 +278,7 @@ interface ISymbolVariable(ISymbolVariableVtbl) : IDispatch(IDispatchVtbl) {
     ) -> HRESULT,
 
     fn GetSignature(
-        pRetVal: MUT_LPSAFEARRAY,
+        pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
 
     fn get_AddressKind(
@@ -1078,10 +1092,6 @@ RIDL!{#[uuid(0x63e53e04, 0xd31b, 0x3099, 0x9f, 0x0c, 0xc7, 0xa1, 0xc8, 0x83, 0xc
 interface _AppDomainManager(_AppDomainManagerVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
-RIDL!{#[uuid(0xce59d7ad, 0x05ca, 0x33b4, 0xa1, 0xdd, 0x06, 0x02, 0x8d, 0x46, 0xe9, 0xd2)]
-interface _LoaderOptimizationAttribute(_LoaderOptimizationAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
 RIDL!{#[uuid(0x6e96aa70, 0x9ffb, 0x399d, 0x96, 0xbf, 0xa6, 0x84, 0x36, 0x09, 0x5c, 0x54)]
 interface _AppDomainUnloadedException(_AppDomainUnloadedExceptionVtbl): IDispatch(IDispatchVtbl)  
 {}}
@@ -1195,9 +1205,6 @@ RIDL!{#[uuid(0x24ae6464, 0x2834, 0x32cd, 0x83, 0xd6, 0xfa, 0x06, 0x95, 0x3d, 0xe
 interface _DllNotFoundException(_DllNotFoundExceptionVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
-RIDL!{#[uuid(0x29dc56cf, 0xb981, 0x3432, 0x97, 0xc8, 0x36, 0x80, 0xab, 0x6d, 0x86, 0x2d)]
-interface _Environment(_EnvironmentVtbl): IDispatch(IDispatchVtbl)  
-{}}
 
 RIDL!{#[uuid(0x7cefc46e, 0x16e0, 0x3e65, 0x9c, 0x38, 0x55, 0xb4, 0x34, 0x2b, 0xa7, 0xf0)]
 interface _EventHandler(_EventHandlerVtbl): IDispatch(IDispatchVtbl)  
@@ -1700,18 +1707,6 @@ RIDL!{#[uuid(0x71fb8dcf, 0x3fa7, 0x3483, 0x84, 0x64, 0x9d, 0x82, 0x00, 0xe5, 0x7
 interface _ObfuscationAttribute(_ObfuscationAttributeVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
-RIDL!{#[uuid(0x643a4016, 0x1b16, 0x3ccf, 0xae, 0x86, 0x9c, 0x2d, 0x91, 0x35, 0xec, 0xb0)]
-interface _ExceptionHandlingClause(_ExceptionHandlingClauseVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xb072efe2, 0xc943, 0x3977, 0xbf, 0xd9, 0x91, 0xd5, 0x23, 0x2b, 0x0d, 0x53)]
-interface _MethodBody(_MethodBodyVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xf2ecd8ca, 0x91a2, 0x31e8, 0xb8, 0x08, 0xe0, 0x28, 0xb4, 0xf5, 0xca, 0x67)]
-interface _LocalVariableInfo(_LocalVariableInfoVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
 RIDL!{#[uuid(0xf0deafe9, 0x5eba, 0x3737, 0x99, 0x50, 0xc1, 0x79, 0x57, 0x39, 0xcd, 0xcd)]
 interface _Pointer(_PointerVtbl): IDispatch(IDispatchVtbl)  
 {}}
@@ -1962,9 +1957,7 @@ RIDL!{#[uuid(0x23bae0c0, 0x3a36, 0x32f0, 0x9d, 0xad, 0x0e, 0x95, 0xad, 0xd6, 0x7
 interface _Registry(_RegistryVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
-RIDL!{#[uuid(0x2eac6733, 0x8d92, 0x31d9, 0xbe, 0x04, 0xdc, 0x46, 0x7e, 0xfc, 0x3e, 0xb1)]
-interface _RegistryKey(_RegistryKeyVtbl): IDispatch(IDispatchVtbl)  
-{}}
+
 
 RIDL!{#[uuid(0x99f01720, 0x3cc2, 0x366d, 0x9a, 0xb9, 0x50, 0xe3, 0x66, 0x47, 0x61, 0x7f)]
 interface _AllMembershipCondition(_AllMembershipConditionVtbl): IDispatch(IDispatchVtbl)  
@@ -2174,158 +2167,6 @@ interface _WindowsImpersonationContext(_WindowsImpersonationContextVtbl): IDispa
 
 RIDL!{#[uuid(0x6c42baf9, 0x1893, 0x34fc, 0xb3, 0xaf, 0x06, 0x93, 0x1e, 0x9b, 0x34, 0xa3)]
 interface _WindowsPrincipal(_WindowsPrincipalVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x1b6ed26a, 0x4b7f, 0x34fc, 0xb2, 0xc8, 0x81, 0x09, 0xd6, 0x84, 0xb3, 0xdf)]
-interface _UnmanagedFunctionPointerAttribute(_UnmanagedFunctionPointerAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xbbe41ac5, 0x8692, 0x3427, 0x9a, 0xe1, 0xc1, 0x05, 0x8a, 0x38, 0xd4, 0x92)]
-interface _DispIdAttribute(_DispIdAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xa2145f38, 0xcac1, 0x33dd, 0xa3, 0x18, 0x21, 0x94, 0x8a, 0xf6, 0x82, 0x5d)]
-interface _InterfaceTypeAttribute(_InterfaceTypeAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x0c1e7b57, 0xb9b1, 0x36e4, 0x83, 0x96, 0x54, 0x9c, 0x29, 0x06, 0x2a, 0x81)]
-interface _ComDefaultInterfaceAttribute(_ComDefaultInterfaceAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x6b6391ee, 0x842f, 0x3e9a, 0x8e, 0xee, 0xf1, 0x33, 0x25, 0xe1, 0x09, 0x96)]
-interface _ClassInterfaceAttribute(_ClassInterfaceAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x1e7fffe2, 0xaad9, 0x34ee, 0x8a, 0x9f, 0x3c, 0x01, 0x6b, 0x88, 0x0f, 0xf0)]
-interface _ComVisibleAttribute(_ComVisibleAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x288a86d1, 0x6f4f, 0x39c9, 0x9e, 0x42, 0x16, 0x2c, 0xf1, 0xc3, 0x72, 0x26)]
-interface _TypeLibImportClassAttribute(_TypeLibImportClassAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x4ab67927, 0x3c86, 0x328a, 0x81, 0x86, 0xf8, 0x53, 0x57, 0xdd, 0x55, 0x27)]
-interface _LCIDConversionAttribute(_LCIDConversionAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x51ba926f, 0xaab5, 0x3945, 0xb8, 0xa6, 0xc8, 0xf0, 0xf4, 0xa7, 0xd1, 0x2b)]
-interface _ComRegisterFunctionAttribute(_ComRegisterFunctionAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x9f164188, 0x34eb, 0x3f86, 0x9f, 0x74, 0x0b, 0xbe, 0x41, 0x55, 0xe6, 0x5e)]
-interface _ComUnregisterFunctionAttribute(_ComUnregisterFunctionAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x2b9f01df, 0x5a12, 0x3688, 0x98, 0xd6, 0xc3, 0x4b, 0xf5, 0xed, 0x18, 0x65)]
-interface _ProgIdAttribute(_ProgIdAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x3f3311ce, 0x6baf, 0x3fb0, 0xb8, 0x55, 0x48, 0x9a, 0xff, 0x74, 0x0b, 0x6e)]
-interface _ImportedFromTypeLibAttribute(_ImportedFromTypeLibAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x5778e7c7, 0x2040, 0x330e, 0xb4, 0x7a, 0x92, 0x97, 0x4d, 0xff, 0xcf, 0xd4)]
-interface _IDispatchImplAttribute(_IDispatchImplAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xe1984175, 0x55f5, 0x3065, 0x82, 0xd8, 0xa6, 0x83, 0xfd, 0xfc, 0xf0, 0xac)]
-interface _ComSourceInterfacesAttribute(_ComSourceInterfacesAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xfd5b6aac, 0xff8c, 0x3472, 0xb8, 0x94, 0xcd, 0x6d, 0xfa, 0xdb, 0x69, 0x39)]
-interface _ComConversionLossAttribute(_ComConversionLossAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xb5a1729e, 0xb721, 0x3121, 0xa8, 0x38, 0xfd, 0xe4, 0x3a, 0xf1, 0x34, 0x68)]
-interface _TypeLibTypeAttribute(_TypeLibTypeAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x3d18a8e2, 0xeede, 0x3139, 0xb2, 0x9d, 0x8c, 0xac, 0x05, 0x79, 0x55, 0xdf)]
-interface _TypeLibFuncAttribute(_TypeLibFuncAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x7b89862a, 0x02a4, 0x3279, 0x8b, 0x42, 0x40, 0x95, 0xfa, 0x3a, 0x77, 0x8e)]
-interface _TypeLibVarAttribute(_TypeLibVarAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xd858399f, 0xe19e, 0x3423, 0xa7, 0x20, 0xac, 0x12, 0xab, 0xe2, 0xe5, 0xe8)]
-interface _MarshalAsAttribute(_MarshalAsAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x1b093056, 0x5454, 0x386f, 0x89, 0x71, 0xbb, 0xcb, 0xc4, 0xe9, 0xa8, 0xf3)]
-interface _ComImportAttribute(_ComImportAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x74435dad, 0xec55, 0x354b, 0x8f, 0x5b, 0xfa, 0x70, 0xd1, 0x3b, 0x62, 0x93)]
-interface _GuidAttribute(_GuidAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xfdf2a2ee, 0xc882, 0x3198, 0xa4, 0x8b, 0xe3, 0x7f, 0x0e, 0x57, 0x4d, 0xfa)]
-interface _PreserveSigAttribute(_PreserveSigAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x8474b65c, 0xc39a, 0x3d05, 0x89, 0x3d, 0x57, 0x7b, 0x9a, 0x31, 0x46, 0x15)]
-interface _InAttribute(_InAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x0697fc8c, 0x9b04, 0x3783, 0x95, 0xc7, 0x45, 0xec, 0xca, 0xc1, 0xca, 0x27)]
-interface _OutAttribute(_OutAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x0d6bd9ad, 0x198e, 0x3904, 0xad, 0x99, 0xf6, 0xf8, 0x2a, 0x27, 0x87, 0xc4)]
-interface _OptionalAttribute(_OptionalAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xa1a26181, 0xd55e, 0x3ee2, 0x96, 0xe6, 0x70, 0xb3, 0x54, 0xef, 0x93, 0x71)]
-interface _DllImportAttribute(_DllImportAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x23753322, 0xc7b3, 0x3f9a, 0xac, 0x96, 0x52, 0x67, 0x2c, 0x1b, 0x1c, 0xa9)]
-interface _StructLayoutAttribute(_StructLayoutAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xc14342b8, 0xbafd, 0x322a, 0xbb, 0x71, 0x62, 0xc6, 0x72, 0xda, 0x28, 0x4e)]
-interface _FieldOffsetAttribute(_FieldOffsetAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xe78785c4, 0x3a73, 0x3c15, 0x93, 0x90, 0x61, 0x8b, 0xf3, 0xa1, 0x47, 0x19)]
-interface _ComAliasNameAttribute(_ComAliasNameAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x57b908a8, 0xc082, 0x3581, 0x8a, 0x47, 0x6b, 0x41, 0xb8, 0x6e, 0x8f, 0xdc)]
-interface _AutomationProxyAttribute(_AutomationProxyAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xc69e96b2, 0x6161, 0x3621, 0xb1, 0x65, 0x58, 0x05, 0x19, 0x8c, 0x6b, 0x8d)]
-interface _PrimaryInteropAssemblyAttribute(_PrimaryInteropAssemblyAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x15d54c00, 0x7c95, 0x38d7, 0xb8, 0x59, 0xe1, 0x93, 0x46, 0x67, 0x7d, 0xcd)]
-interface _CoClassAttribute(_CoClassAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x76cc0491, 0x9a10, 0x35c0, 0x8a, 0x66, 0x79, 0x31, 0xec, 0x34, 0x5b, 0x7f)]
-interface _ComEventInterfaceAttribute(_ComEventInterfaceAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xa03b61a4, 0xca61, 0x3460, 0x82, 0x32, 0x2f, 0x4e, 0xc9, 0x6a, 0xa8, 0x8f)]
-interface _TypeLibVersionAttribute(_TypeLibVersionAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xad419379, 0x2ac8, 0x3588, 0xab, 0x1e, 0x01, 0x15, 0x41, 0x32, 0x77, 0xc4)]
-interface _ComCompatibleVersionAttribute(_ComCompatibleVersionAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xed47abe7, 0xc84b, 0x39f9, 0xbe, 0x1b, 0x82, 0x8c, 0xfb, 0x92, 0x5a, 0xfe)]
-interface _BestFitMappingAttribute(_BestFitMappingAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xb26b3465, 0x28e4, 0x33b5, 0xb9, 0xbf, 0xdd, 0x7c, 0x4f, 0x64, 0x61, 0xf5)]
-interface _DefaultCharSetAttribute(_DefaultCharSetAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xa54ac093, 0xbfce, 0x37b0, 0xa8, 0x1f, 0x14, 0x8d, 0xfe, 0xd0, 0x97, 0x1f)]
-interface _SetWin32ContextInIDispatchAttribute(_SetWin32ContextInIDispatchAttributeVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
 RIDL!{#[uuid(0xa83f04e9, 0xfd28, 0x384a, 0x9d, 0xff, 0x41, 0x06, 0x88, 0xac, 0x23, 0xab)]
@@ -2548,9 +2389,6 @@ RIDL!{#[uuid(0x7e133967, 0xccec, 0x3e89, 0x8b, 0xd2, 0x6c, 0xfc, 0xa6, 0x49, 0xe
 interface _DecimalConstantAttribute(_DecimalConstantAttributeVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
-RIDL!{#[uuid(0xc5c4f625, 0x2329, 0x3382, 0x89, 0x94, 0xaa, 0xf5, 0x61, 0xe5, 0xdf, 0xe9)]
-interface _CompilationRelaxationsAttribute(_CompilationRelaxationsAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
 
 RIDL!{#[uuid(0x1eed213e, 0x656a, 0x3a73, 0xa4, 0xb9, 0x0d, 0x3b, 0x26, 0xfd, 0x94, 0x2b)]
 interface _CompilerGlobalScopeAttribute(_CompilerGlobalScopeAttributeVtbl): IDispatch(IDispatchVtbl)  
@@ -2562,10 +2400,6 @@ interface _IndexerNameAttribute(_IndexerNameAttributeVtbl): IDispatch(IDispatchV
 
 RIDL!{#[uuid(0x0278c819, 0x0c06, 0x3756, 0xb0, 0x53, 0x60, 0x1a, 0x3e, 0x56, 0x6d, 0x9b)]
 interface _IsVolatile(_IsVolatileVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x98966503, 0x5d80, 0x3242, 0x83, 0xef, 0x79, 0xe1, 0x36, 0xf6, 0xb9, 0x54)]
-interface _MethodImplAttribute(_MethodImplAttributeVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
 RIDL!{#[uuid(0xdb2c11d9, 0x3870, 0x35e7, 0xa1, 0x0c, 0xa3, 0xdd, 0xc3, 0xdc, 0x79, 0xb1)]
@@ -2980,50 +2814,6 @@ interface _ProxyAttribute(_ProxyAttributeVtbl): IDispatch(IDispatchVtbl)
 
 RIDL!{#[uuid(0xe0cf3f77, 0xc7c3, 0x33da, 0xbe, 0xb4, 0x46, 0x14, 0x7f, 0xc9, 0x05, 0xde)]
 interface _RealProxy(_RealProxyVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x725692a5, 0x9e12, 0x37f6, 0x91, 0x1c, 0xe3, 0xda, 0x77, 0xe5, 0xfa, 0xca)]
-interface _SoapAttribute(_SoapAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xebcdcd84, 0x8c74, 0x39fd, 0x82, 0x1c, 0xf5, 0xeb, 0x3a, 0x27, 0x04, 0xd7)]
-interface _SoapTypeAttribute(_SoapTypeAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xc58145b5, 0xbd5a, 0x3896, 0x95, 0xd9, 0xb3, 0x58, 0xf5, 0x4f, 0xbc, 0x44)]
-interface _SoapMethodAttribute(_SoapMethodAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x46a3f9ff, 0xf73c, 0x33c7, 0xbc, 0xc3, 0x1b, 0xef, 0x4b, 0x25, 0xe4, 0xae)]
-interface _SoapFieldAttribute(_SoapFieldAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xc32abfc9, 0x3917, 0x30bf, 0xa7, 0xbc, 0x44, 0x25, 0x0b, 0xdf, 0xc5, 0xd8)]
-interface _SoapParameterAttribute(_SoapParameterAttributeVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x4b10971e, 0xd61d, 0x373f, 0xbc, 0x8d, 0x2c, 0xcf, 0x31, 0x12, 0x62, 0x15)]
-interface _RemotingConfiguration(_RemotingConfigurationVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x8359f3ab, 0x643f, 0x3bcf, 0x91, 0xe8, 0x16, 0xe7, 0x79, 0xed, 0xeb, 0xe1)]
-interface _TypeEntry(_TypeEntryVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0xbac12781, 0x6865, 0x3558, 0xa8, 0xd1, 0xf1, 0xca, 0xdd, 0x28, 0x06, 0xdd)]
-interface _ActivatedClientTypeEntry(_ActivatedClientTypeEntryVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x94855a3b, 0x5ca2, 0x32cf, 0xb1, 0xab, 0x48, 0xfd, 0x39, 0x15, 0x82, 0x2c)]
-interface _ActivatedServiceTypeEntry(_ActivatedServiceTypeEntryVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x4d0bc339, 0xe3f9, 0x3e9e, 0x8f, 0x68, 0x92, 0x16, 0x8e, 0x6f, 0x69, 0x81)]
-interface _WellKnownClientTypeEntry(_WellKnownClientTypeEntryVtbl): IDispatch(IDispatchVtbl)  
-{}}
-
-RIDL!{#[uuid(0x60b8b604, 0x0aed, 0x3093, 0xac, 0x05, 0xeb, 0x98, 0xfb, 0x29, 0xfc, 0x47)]
-interface _WellKnownServiceTypeEntry(_WellKnownServiceTypeEntryVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
 RIDL!{#[uuid(0x7264843f, 0xf60c, 0x39a9, 0x99, 0xe1, 0x02, 0x91, 0x26, 0xaa, 0x08, 0x15)]
@@ -3966,7 +3756,7 @@ interface IReflect(IReflectVtbl): IDispatch(IDispatchVtbl)
     ) -> HRESULT,
     fn GetFields(
         bindingAttr: BindingFlags,
-        pRetVal: MUT_LPSAFEARRAY,
+        pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
     fn GetProperty(
         name: BSTR, 
@@ -3984,7 +3774,7 @@ interface IReflect(IReflectVtbl): IDispatch(IDispatchVtbl)
     ) -> HRESULT,
     fn GetProperties(
         bindingAttr: BindingFlags, 
-        pRetVal: MUT_LPSAFEARRAY,
+        pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
     fn GetMember(
         name: BSTR,
@@ -3993,7 +3783,7 @@ interface IReflect(IReflectVtbl): IDispatch(IDispatchVtbl)
     ) -> HRESULT,
     fn GetMembers(
         bindingAttr: BindingFlags,
-        pRetVal: MUT_LPSAFEARRAY,
+        pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
     fn InvokeMember(
         name: BSTR, 
@@ -4072,7 +3862,7 @@ interface ISymbolMethod(ISymbolMethodVtbl): IDispatch(IDispatchVtbl)
         document: *mut ISymbolDocument, 
         line: c_long, 
         column: c_long, 
-        pRetVal: MUT_LPSAFEARRAY, 
+        pRetVal: *mut *mut SAFEARRAY, 
     ) -> HRESULT,
     fn GetParameters(
 		pRetVal: *mut *mut SAFEARRAY ,
@@ -4114,7 +3904,7 @@ interface ISymbolReader(ISymbolReaderVtbl): IDispatch(IDispatchVtbl)
     ) -> HRESULT,
     fn GetVariables(
         parent: SymbolToken, 
-        pRetVal: MUT_LPSAFEARRAY, 
+        pRetVal: *mut *mut SAFEARRAY, 
     ) -> HRESULT,
     fn GetGlobalVariables(
 		pRetVal: *mut *mut SAFEARRAY ,
@@ -4128,7 +3918,7 @@ interface ISymbolReader(ISymbolReaderVtbl): IDispatch(IDispatchVtbl)
     fn GetSymAttribute(
         parent: SymbolToken, 
         name: BSTR, 
-        pRetVal: MUT_LPSAFEARRAY, 
+        pRetVal: *mut *mut SAFEARRAY, 
     ) -> HRESULT,
     fn GetNamespaces(
 		pRetVal: *mut *mut SAFEARRAY ,
@@ -4247,7 +4037,7 @@ interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)
     fn GetCustomAttributes(
         attributeType: *mut _Type, 
         inherit: VARIANT_BOOL, 
-        pRetVal: MUT_LPSAFEARRAY, 
+        pRetVal: *mut *mut SAFEARRAY, 
     ) -> HRESULT,
     fn GetCustomAttributes_2(
         inherit: VARIANT_BOOL,
@@ -4496,7 +4286,7 @@ interface _Binder(_BinderVtbl): IDispatch(IDispatchVtbl)
     fn BindToMethod(
         bindingAttr: BindingFlags,
         match_: *mut SAFEARRAY, 
-        args: MUT_LPSAFEARRAY, 
+        args: *mut *mut SAFEARRAY, 
         modifiers: *mut SAFEARRAY, 
         culture: *mut _CultureInfo, 
         names: *mut SAFEARRAY, 
@@ -4532,7 +4322,7 @@ interface _Binder(_BinderVtbl): IDispatch(IDispatchVtbl)
         pRetVal: *mut VARIANT, 
     ) -> HRESULT,
     fn ReorderArgumentArray(
-        args: MUT_LPSAFEARRAY, 
+        args: *mut *mut SAFEARRAY, 
         state: VARIANT,
     ) -> HRESULT, 
 }}

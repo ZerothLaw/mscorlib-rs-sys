@@ -18,19 +18,17 @@ use source::system::runtimetypehandle::RuntimeTypeHandle;
 use source::system::reflection::membertypes::MemberTypes;
 use source::system::reflection::bindingflags::BindingFlags;
 use source::system::reflection::callingconventions::CallingConventions;
+use source::system::reflection::eventattributes::EventAttributes;
+use source::system::reflection::fieldattributes::FieldAttributes;
 use source::system::reflection::methodattributes::MethodAttributes;
 use source::system::reflection::methodimplattributes::MethodImplAttributes;
+use source::system::reflection::propertyattributes::PropertyAttributes;
+use source::system::reflection::typeattributes::TypeAttributes;
 
-use enums::EventAttributes;
-
-use enums::PropertyAttributes;
-
-use enums::FieldAttributes;
-use enums::TypeAttributes;
+use source::system::runtime::serialization::streamingcontext::StreamingContext;
 
 use structs::RuntimeFieldHandle;
 use structs::RuntimeMethodHandle;
-use structs::StreamingContext;
 use structs::InterfaceMapping;
 
 use dispatch::_CultureInfo;

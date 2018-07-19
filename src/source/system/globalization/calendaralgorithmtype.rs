@@ -1,5 +1,3 @@
-use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
-
 //enum __declspec(uuid("f680a48a-2d6c-33f1-aff7-6273b785b035"))
 ENUM!{enum CalendarAlgorithmType
 {

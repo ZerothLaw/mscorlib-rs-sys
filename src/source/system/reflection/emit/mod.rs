@@ -1,3 +1,4 @@
+pub mod assemblybuilderaccess;
 pub mod cominterfaces;
 pub mod dynamicmethod;
 pub mod eventtoken;
@@ -11,8 +12,10 @@ pub mod opcodes;
 pub mod opcodetype;
 pub mod operandtype;
 pub mod parametertoken;
+pub mod pefilekinds;
 pub mod propertytoken;
 pub mod signaturetoken;
 pub mod stackbehavior;
 pub mod stringtoken;
+pub mod typebuilder;
 pub mod typetoken;

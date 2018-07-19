@@ -17,5 +17,6 @@ pub mod principal;
 pub mod securityelement;
 pub mod securityexception;
 pub mod securitymanager;
+pub mod securityzone;
 pub mod verificationexception;
 pub mod xmlsyntaxexception;

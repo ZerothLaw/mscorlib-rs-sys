@@ -1,62 +1,21 @@
 #![allow(dead_code, non_snake_case)]
-use winapi::ctypes::{c_char, c_double, c_float, c_long, c_int, c_short, c_void};
+use winapi::ctypes::{c_char, c_float, c_long, c_int};
 
-use winapi::shared::minwindef::{UCHAR, UINT, ULONG, USHORT, };
+use winapi::shared::minwindef::{UCHAR};
 
 use winapi::um::oaidl::{SAFEARRAY};
 use winapi::um::winnt::{LPSTR,};
 use winapi::um::unknwnbase::{IUnknown};
 
-use enums::*;
 use unknown::*;
 
-//struct __declspec(uuid("c3008e12-9b16-36ec-b731-73257f25be7a"))
-STRUCT!{struct Boolean {
-    m_value: c_long,
-}}
+use source::system::configuration::assemblies::assemblyhashalgorithm::AssemblyHashAlgorithm;
+use source::system::intptr::IntPtr;
 
-//struct __declspec(uuid("9b957340-adba-3234-91ea-46a5c9bff530"))
-STRUCT!{struct Byte{
-    m_value: UCHAR,
-}}
-
-//struct __declspec(uuid("6ee96102-3657-3d66-867a-26b63aaaaf78"))
-STRUCT!{struct Char{
-    m_value: UCHAR,
-}}
-
-//struct __declspec(uuid("6fb370d8-4f72-3ac1-9a32-3875f336ecb5"))
-STRUCT!{struct Decimal {
-    flags: c_long,
-    hi: c_long, 
-    lo: c_long, 
-    mid: c_long,
-}}
-
-//struct __declspec(uuid("0f4f147f-4369-3388-8e4b-71e20c96f9ad"))
-STRUCT!{struct Double {
-    m_value: c_double,
-}}
-
-//struct __declspec(uuid("206daf34-5ba5-3504-8a19-d57699561886"))
-STRUCT!{struct Int16 {
-    m_value: c_short,
-}}
-
-//struct __declspec(uuid("a310fadd-7c33-377c-9d6b-599b0317d7f2"))
-STRUCT!{struct Int32 {
-    m_value: c_int,
-}}
-
-//struct __declspec(uuid("ad1cecf5-5fad-3ecf-ad89-2febd6521fa9"))
-STRUCT!{struct Int64 {
-    m_value: i64,
-}}
-
-//struct __declspec(uuid("a1cb710c-8d50-3181-bb38-65ce2e98f9a6"))
-STRUCT!{struct IntPtr {
-    m_value: *mut c_void,
-}}
+use source::system::reflection::emit::flowcontrol::FlowControl;
+use source::system::reflection::emit::opcodetype::OpCodeType;
+use source::system::reflection::emit::operandtype::OperandType;
+use source::system::reflection::emit::stackbehavior::StackBehaviour;
 
 //struct __declspec(uuid("3613a9b6-c23b-3b54-ae02-6ec764d69e70"))
 STRUCT!{struct RuntimeArgumentHandle {
@@ -104,26 +63,6 @@ STRUCT!{struct TypedReference {
     Type: IntPtr,
 }}
 
-//struct __declspec(uuid("0f0928b7-11dd-31dd-a0d5-bb008ae887bf"))
-STRUCT!{struct UInt16 {
-    m_value: USHORT,
-}}
-
-//struct __declspec(uuid("4f854e40-af6d-3d30-860a-e9722c85e9a3"))
-STRUCT!{struct UInt32 {
-    m_value: UINT,
-}}
-
-//struct __declspec(uuid("62ad7d6b-52cc-3ed4-a20d-1a32ef6bf1da"))
-STRUCT!{struct UInt64 {
-    m_value: ULONG,
-}}
-
-//struct __declspec(uuid("4f93b8dd-5396-3b65-b16a-11fbc8812a71"))
-STRUCT!{struct UIntPtr {
-    m_value: *mut c_void,
-}}
-
 //struct __declspec(uuid("ba0e4cf7-a429-3fe8-abab-183387d05852"))
 STRUCT!{struct LockCookie
 {
@@ -156,12 +95,6 @@ STRUCT!{struct SymbolToken {
 //struct __declspec(uuid("11d31042-14c0-3b5c-87d0-a2cd40803cb5"))
 STRUCT!{struct ParameterModifier {
     _byRef: *mut SAFEARRAY,
-}}
-
-//struct __declspec(uuid("79179aa0-e14c-35ea-a666-66be968af69f"))
-STRUCT!{struct StreamingContext {
-    m_additionalContext: *mut IUnknown,
-    m_state: StreamingContextStates,
 }}
 
 //struct __declspec(uuid("8351108f-34e3-3cc9-bf5a-c76c48060835"))

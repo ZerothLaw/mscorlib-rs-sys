@@ -12,8 +12,24 @@ use winapi::um::oaidl::{DISPID, DISPPARAMS, EXCEPINFO, ITypeInfo, SAFEARRAY, VAR
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
 use dispatch::*;
-use enums::*;
 use structs::*;
+
+use source::system::reflection::bindingflags::BindingFlags;
+use source::system::reflection::callingconventions::CallingConventions;
+use source::system::reflection::cominterfaces::_Module;
+use source::system::reflection::eventattributes::EventAttributes;
+use source::system::reflection::fieldattributes::FieldAttributes;
+use source::system::reflection::membertypes::MemberTypes;
+use source::system::reflection::methodattributes::MethodAttributes;
+use source::system::reflection::methodimplattributes::MethodImplAttributes;
+use source::system::reflection::propertyattributes::PropertyAttributes;
+use source::system::reflection::typeattributes::TypeAttributes;
+use source::system::runtime::interopservices::itypelibconverter::ExporterEventKind;
+use source::system::runtime::interopservices::itypelibconverter::ImporterEventKind;
+use source::system::runtime::interopservices::itypelibconverter::TypeLibExporterFlags;
+use source::system::runtime::interopservices::itypelibconverter::TypeLibImporterFlags;
+
+
 
 RIDL!{#[uuid(0x00020404, 0x0000, 0x0000, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46)]
 interface IEnumVARIANT(IEnumVARIANTVtbl): IUnknown(IUnknownVtbl){
@@ -266,37 +282,6 @@ interface _ParameterInfo(_ParameterInfoVtbl) : IUnknown(IUnknownVtbl) {
     ) -> HRESULT,
 }}
 
-RIDL!{#[uuid(0xd002e9ba, 0xd9e3, 0x3749, 0xb1, 0xd3, 0xd5, 0x65, 0xa0, 0x8b, 0x13, 0xe7)]
-interface _Module(_ModuleVtbl) : IUnknown(IUnknownVtbl) {
-    fn GetTypeInfoCount(
-        pcTInfo: *mut UINT,
-    ) -> HRESULT,
-
-    fn GetTypeInfo(
-        iTInfo: UINT,
-        lcid: LCID,
-        ppTInfo: *mut *mut ITypeInfo,
-    ) -> HRESULT,
-
-    fn GetIDsOfNames(
-        riid: REFIID,
-        rgszNames: *mut LPOLESTR,
-        cNames: UINT,
-        lcid: LCID,
-        rgDispId: *mut DISPID,
-    ) -> HRESULT,
-
-    fn Invoke(
-        dispIdMember: DISPID,
-        riid: REFIID,
-        lcid: LCID,
-        wFlags: WORD,
-        pDispParams: *mut DISPPARAMS,
-        pVarResult: *mut VARIANT,
-        pExcepInfo: *mut EXCEPINFO,
-        puArgErr: *mut UINT,
-    ) -> HRESULT,
-}}
 
 RIDL!{#[uuid(0xfa1f3615, 0xacb9, 0x486d, 0x9e, 0xac, 0x1b, 0xef, 0x87, 0xe3, 0x6b, 0x09)]
 interface ITypeLibExporterNameProvider(ITypeLibExporterNameProviderVtbl) : IUnknown(IUnknownVtbl)

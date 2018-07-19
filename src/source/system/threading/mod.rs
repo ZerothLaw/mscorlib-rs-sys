@@ -1,3 +1,4 @@
+pub mod apartmentstate;
 pub mod autoresetevent;
 pub mod eventwaithandle;
 pub mod executioncontext;
@@ -13,7 +14,9 @@ pub mod thread;
 pub mod threadabortexception;
 pub mod threadinterruptedexception;
 pub mod threadpool;
+pub mod threadpriority;
 pub mod threadstart;
+pub mod threadstate;
 pub mod threadstateexception;
 pub mod timeout;
 pub mod timer;

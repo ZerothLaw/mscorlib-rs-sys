@@ -2,13 +2,15 @@
 extern crate winapi;
 
 mod dispatch;
-mod enums;
 mod structs;
 mod unknown;
 
+#[macro_use]
+mod macros;
+
+#[allow(dead_code, non_snake_case)]
 mod source;
 
 pub use dispatch::*;
-pub use enums::*;
 pub use structs::*;
 pub use unknown::*;
