@@ -2,7 +2,6 @@
 extern crate winapi;
 
 mod dispatch;
-mod structs;
 mod unknown;
 
 #[macro_use]
@@ -12,5 +11,4 @@ mod macros;
 mod source;
 
 pub use dispatch::*;
-pub use structs::*;
 pub use unknown::*;

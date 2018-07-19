@@ -27,9 +27,8 @@ use source::system::reflection::typeattributes::TypeAttributes;
 
 use source::system::runtime::serialization::streamingcontext::StreamingContext;
 
-use structs::RuntimeFieldHandle;
-use structs::RuntimeMethodHandle;
-use structs::InterfaceMapping;
+use source::system::runtimehandle::{RuntimeFieldHandle, RuntimeMethodHandle};
+use source::system::reflection::interfacemapping::InterfaceMapping;
 
 use dispatch::_CultureInfo;
 use dispatch::_Binder;

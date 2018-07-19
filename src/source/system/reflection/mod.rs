@@ -3,6 +3,7 @@ pub mod binder;
 pub mod bindingflags;
 pub mod callingconventions;
 pub mod cominterfaces;
+pub mod customattribute;
 pub mod emit;
 pub mod eventattributes;
 pub mod fieldattributes;

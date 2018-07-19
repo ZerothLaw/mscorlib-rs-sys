@@ -41,6 +41,7 @@ pub mod reflection;
 pub mod resources;
 pub mod runtime;
 pub mod runtimeargumenthandle;
+pub mod runtimehandle;
 pub mod runtimetypehandle;
 pub mod sbyte;
 pub mod security;

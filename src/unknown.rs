@@ -12,7 +12,6 @@ use winapi::um::oaidl::{DISPID, DISPPARAMS, EXCEPINFO, ITypeInfo, SAFEARRAY, VAR
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
 use dispatch::*;
-use structs::*;
 
 use source::system::reflection::bindingflags::BindingFlags;
 use source::system::reflection::callingconventions::CallingConventions;
@@ -29,7 +28,9 @@ use source::system::runtime::interopservices::itypelibconverter::ImporterEventKi
 use source::system::runtime::interopservices::itypelibconverter::TypeLibExporterFlags;
 use source::system::runtime::interopservices::itypelibconverter::TypeLibImporterFlags;
 
-
+use source::system::reflection::interfacemapping::InterfaceMapping;
+use source::system::runtimehandle::{RuntimeMethodHandle, RuntimeFieldHandle};
+use source::system::runtimetypehandle::RuntimeTypeHandle;
 
 RIDL!{#[uuid(0x00020404, 0x0000, 0x0000, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46)]
 interface IEnumVARIANT(IEnumVARIANTVtbl): IUnknown(IUnknownVtbl){

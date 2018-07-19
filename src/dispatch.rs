@@ -15,7 +15,6 @@ use winapi::um::oaidl::{SAFEARRAY, VARIANT};
 use winapi::um::unknwnbase::{IUnknown};
 
 //self
-use structs::*;
 use unknown::*;
 
 use source::system::diagnostics::symbolstore::symaddresskind::SymAddressKind;
@@ -34,6 +33,9 @@ use source::system::runtime::remoting::ichannel::ServerProcessing;
 
 use source::system::typecode::TypeCode;
 
+use source::system::collections::dictionaryentry::DictionaryEntry;
+use source::system::diagnostics::symbolstore::token::SymbolToken;
+use source::system::timespan::TimeSpan;
 
 RIDL!{#[uuid(0xdeb0e770, 0x91fd, 0x3cf6, 0x9a, 0x6c, 0xe6, 0xa3, 0x65, 0x6f, 0x39, 0x65)]
 interface IComparable(IComparableVtbl): IDispatch(IDispatchVtbl){
