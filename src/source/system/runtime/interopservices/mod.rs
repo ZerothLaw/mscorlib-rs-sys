@@ -1,6 +1,7 @@
 pub mod arraywithoffset;
 pub mod attributes;
 pub mod charset;
+pub mod ComTypes;
 pub mod expando;
 pub mod gchandle;
 pub mod handleref;

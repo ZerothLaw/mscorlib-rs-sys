@@ -12,10 +12,10 @@ use system::runtime::remoting::IClientResponseChannelSinkStack;
 use system::IAsyncResult;
 
 use dispatch::_Stream;
-use unknown::IEnumVARIANT;
 
 use system::runtime::remoting::IMessage;
 use system::runtime::remoting::IMessageSink;
+use system::runtime::interopservices::ComTypes::IEnumVARIANT;
 
 RIDL!{#[uuid(0x563581e8, 0xc86d, 0x39e2, 0xb2, 0xe8, 0x6c, 0x23, 0xf7, 0x98, 0x7a, 0x4b)]
 interface IChannel(IChannelVtbl): IDispatch(IDispatchVtbl)  

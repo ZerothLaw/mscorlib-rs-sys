@@ -4,13 +4,13 @@ use winapi::ctypes::c_long;
 use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::um::oaidl::VARIANT;
 
-use dispatch::_SerializationInfo;
 use winapi::shared::wtypes::BSTR;
 
-use unknown::_MethodBase;
-use unknown::_Type;
+use dispatch::_SerializationInfo;
 
-use system::runtime::serialization::streamingcontext::StreamingContext;
+use system::reflection::_MethodBase;
+use system::reflection::_Type;
+use system::runtime::serialization::StreamingContext;
 
 RIDL!{#[uuid(0xb36b5c63, 0x42ef, 0x38bc, 0xa0, 0x7e, 0x0b, 0x34, 0xc9, 0x8f, 0x16, 0x4a)]
 interface _Exception(_ExceptionVtbl): IDispatch(IDispatchVtbl)  
