@@ -11,3 +11,16 @@ pub mod iexception;
 pub mod iregistrationservices;
 pub mod itypelibconverter;
 pub mod layoutkind;
+
+pub use self::arraywithoffset::*;
+pub use self::attributes::*;
+pub use self::charset::*;
+pub use self::gchandle::*;
+pub use self::handleref::*;
+pub use self::icustomadapter::*;
+pub use self::icustomfactory::*;
+pub use self::icustommarshaler::*;
+pub use self::iexception::*;
+pub use self::iregistrationservices::*;
+pub use self::itypelibconverter::*;
+pub use self::layoutkind::*;

@@ -21,4 +21,25 @@ pub mod readonlycollectionbase;
 pub mod sortedlist;
 pub mod stack;
 
-
+pub use self::arraylist::*;
+pub use self::bitarray::*;
+pub use self::caseinsensitivecomparer::*;
+pub use self::caseinsensitivehashcodeprovider::*;
+pub use self::collectionbase::*;
+pub use self::comparer::*;
+pub use self::dictionarybase::*;
+pub use self::dictionaryentry::*;
+pub use self::hashtable::*;
+pub use self::icollection::*;
+pub use self::icomparer::*;
+pub use self::idictionary::*;
+pub use self::idictionaryenumerator::*;
+pub use self::ienumerable::*;
+pub use self::ienumerator::*;
+pub use self::iequalitycomparer::*;
+pub use self::ihashcodeprovider::*;
+pub use self::ilist::*;
+pub use self::queue::*;
+pub use self::readonlycollectionbase::*;
+pub use self::sortedlist::*;
+pub use self::stack::*;

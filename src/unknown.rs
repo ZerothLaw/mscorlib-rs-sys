@@ -13,24 +13,28 @@ use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
 use dispatch::*;
 
-use source::system::reflection::bindingflags::BindingFlags;
-use source::system::reflection::callingconventions::CallingConventions;
-use source::system::reflection::cominterfaces::_Module;
-use source::system::reflection::eventattributes::EventAttributes;
-use source::system::reflection::fieldattributes::FieldAttributes;
-use source::system::reflection::membertypes::MemberTypes;
-use source::system::reflection::methodattributes::MethodAttributes;
-use source::system::reflection::methodimplattributes::MethodImplAttributes;
-use source::system::reflection::propertyattributes::PropertyAttributes;
-use source::system::reflection::typeattributes::TypeAttributes;
-use source::system::runtime::interopservices::itypelibconverter::ExporterEventKind;
-use source::system::runtime::interopservices::itypelibconverter::ImporterEventKind;
-use source::system::runtime::interopservices::itypelibconverter::TypeLibExporterFlags;
-use source::system::runtime::interopservices::itypelibconverter::TypeLibImporterFlags;
+use system::_Delegate;
+use system::reflection::_Assembly;
+use system::reflection::_Binder;
+use system::reflection::ICustomAttributeProvider;
+use system::reflection::BindingFlags;
+use system::reflection::CallingConventions;
+use system::reflection::_Module;
+use system::reflection::EventAttributes;
+use system::reflection::FieldAttributes;
+use system::reflection::MemberTypes;
+use system::reflection::MethodAttributes;
+use system::reflection::MethodImplAttributes;
+use system::reflection::PropertyAttributes;
+use system::reflection::TypeAttributes;
+use system::runtime::interopservices::ExporterEventKind;
+use system::runtime::interopservices::ImporterEventKind;
+use system::runtime::interopservices::TypeLibExporterFlags;
+use system::runtime::interopservices::TypeLibImporterFlags;
 
-use source::system::reflection::interfacemapping::InterfaceMapping;
-use source::system::runtimehandle::{RuntimeMethodHandle, RuntimeFieldHandle};
-use source::system::runtimetypehandle::RuntimeTypeHandle;
+use system::reflection::InterfaceMapping;
+use system::{RuntimeMethodHandle, RuntimeFieldHandle};
+use system::RuntimeTypeHandle;
 
 RIDL!{#[uuid(0x00020404, 0x0000, 0x0000, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46)]
 interface IEnumVARIANT(IEnumVARIANTVtbl): IUnknown(IUnknownVtbl){
@@ -2212,291 +2216,6 @@ interface _PropertyInfo(_PropertyInfoVtbl): IUnknown(IUnknownVtbl)
     fn get_IsSpecialName(
         pRetVal: VARIANT_BOOL ,
     ) -> HRESULT,
-}}
-
-RIDL!{#[uuid(0x05f696dc, 0x2b29, 0x3663, 0xad, 0x8b, 0xc4, 0x38, 0x9c, 0xf2, 0xa7, 0x13)]
-interface _AppDomain(_AppDomainVtbl): IUnknown(IUnknownVtbl)  
-{
-    fn GetTypeInfoCount(
-        pctinfo: *mut UINT,
-    ) -> HRESULT,
-    fn GetTypeInfo(
-        iTInfo: UINT,
-        lcid: LCID,
-        ppTInfo: *mut *mut ITypeInfo,
-    ) -> HRESULT,
-    fn GetIDsOfNames(
-        riid: REFIID,
-        rgszNames: *mut LPOLESTR,
-        cNames: UINT,
-        lcid: LCID,
-        rgDispId: *mut DISPID,
-    ) -> HRESULT,
-    fn Invoke(
-        dispIdMember: DISPID,
-        riid: REFIID,
-        lcid: LCID,
-        wFlags: WORD,
-        pDispParams: *mut DISPPARAMS,
-        pVarResult: *mut VARIANT,
-        pExcepInfo: *mut EXCEPINFO,
-        puArgErr: *mut UINT,
-    ) -> HRESULT,
-    fn get_ToString(
-        pRetVal: BSTR ,
-    ) -> HRESULT,
-    fn Equals(
-        other: VARIANT,
-        pRetVal: *mut VARIANT_BOOL,
-    ) -> HRESULT,
-      fn GetHashCode(
-        pRetVal: c_long ,
-    ) -> HRESULT,
-      fn GetType(
-			pRetVal: *mut *mut  _Type ,
-		) -> HRESULT,
-      fn InitializeLifetimeService(
-        pRetVal: VARIANT ,
-    ) -> HRESULT,
-      fn GetLifetimeService(
-        pRetVal: VARIANT ,
-    ) -> HRESULT,
-      fn get_Evidence(
-			pRetVal: *mut *mut  _Evidence ,
-		) -> HRESULT,
-    fn add_DomainUnload(
-        val: *mut _EventHandler ,
-    ) -> HRESULT,
-    fn remove_DomainUnload(
-        val: *mut _EventHandler ,
-    ) -> HRESULT,
-    fn add_AssemblyLoad(
-        val: *mut _AssemblyLoadEventHandler ,
-    ) -> HRESULT,
-    fn remove_AssemblyLoad(
-        val: *mut _AssemblyLoadEventHandler ,
-    ) -> HRESULT,
-    fn add_ProcessExit(
-        val: *mut _EventHandler ,
-    ) -> HRESULT,
-    fn remove_ProcessExit(
-        val: *mut _EventHandler ,
-    ) -> HRESULT,
-    fn add_TypeResolve(
-        val: *mut _ResolveEventHandler ,
-    ) -> HRESULT,
-    fn remove_TypeResolve(
-        val: *mut _ResolveEventHandler ,
-    ) -> HRESULT,
-    fn add_ResourceResolve(
-        val: *mut _ResolveEventHandler ,
-    ) -> HRESULT,
-    fn remove_ResourceResolve(
-        val: *mut _ResolveEventHandler ,
-    ) -> HRESULT,
-    fn add_AssemblyResolve(
-        val: *mut _ResolveEventHandler ,
-    ) -> HRESULT,
-    fn remove_AssemblyResolve(
-        val: *mut _ResolveEventHandler ,
-    ) -> HRESULT,
-    fn add_UnhandledException(
-        val: *mut _UnhandledExceptionEventHandler ,
-    ) -> HRESULT,
-    fn remove_UnhandledException(
-        val: *mut _UnhandledExceptionEventHandler ,
-    ) -> HRESULT,
-    //   virtual HRESULT __stdcall DefineDynamicAssembly (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall DefineDynamicAssembly_2 (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[in]*/ BSTR dir,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall DefineDynamicAssembly_3 (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[in]*/ struct _Evidence * Evidence,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall DefineDynamicAssembly_4 (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[in]*/ struct _PermissionSet * requiredPermissions,
-    //     /*[in]*/ struct _PermissionSet * optionalPermissions,
-    //     /*[in]*/ struct _PermissionSet * refusedPermissions,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall DefineDynamicAssembly_5 (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[in]*/ BSTR dir,
-    //     /*[in]*/ struct _Evidence * Evidence,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall DefineDynamicAssembly_6 (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[in]*/ BSTR dir,
-    //     /*[in]*/ struct _PermissionSet * requiredPermissions,
-    //     /*[in]*/ struct _PermissionSet * optionalPermissions,
-    //     /*[in]*/ struct _PermissionSet * refusedPermissions,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall DefineDynamicAssembly_7 (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[in]*/ struct _Evidence * Evidence,
-    //     /*[in]*/ struct _PermissionSet * requiredPermissions,
-    //     /*[in]*/ struct _PermissionSet * optionalPermissions,
-    //     /*[in]*/ struct _PermissionSet * refusedPermissions,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall DefineDynamicAssembly_8 (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[in]*/ BSTR dir,
-    //     /*[in]*/ struct _Evidence * Evidence,
-    //     /*[in]*/ struct _PermissionSet * requiredPermissions,
-    //     /*[in]*/ struct _PermissionSet * optionalPermissions,
-    //     /*[in]*/ struct _PermissionSet * refusedPermissions,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall DefineDynamicAssembly_9 (
-    //     /*[in]*/ struct _AssemblyName * name,
-    //     /*[in]*/ enum AssemblyBuilderAccess access,
-    //     /*[in]*/ BSTR dir,
-    //     /*[in]*/ struct _Evidence * Evidence,
-    //     /*[in]*/ struct _PermissionSet * requiredPermissions,
-    //     /*[in]*/ struct _PermissionSet * optionalPermissions,
-    //     /*[in]*/ struct _PermissionSet * refusedPermissions,
-    //     /*[in]*/ VARIANT_BOOL IsSynchronized,
-    //     /*[out,retval]*/ struct _AssemblyBuilder * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall CreateInstance (
-    //     /*[in]*/ BSTR AssemblyName,
-    //     /*[in]*/ BSTR typeName,
-    //     /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall CreateInstanceFrom (
-    //     /*[in]*/ BSTR assemblyFile,
-    //     /*[in]*/ BSTR typeName,
-    //     /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall CreateInstance_2 (
-    //     /*[in]*/ BSTR AssemblyName,
-    //     /*[in]*/ BSTR typeName,
-    //     /*[in]*/ SAFEARRAY * activationAttributes,
-    //     /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall CreateInstanceFrom_2 (
-    //     /*[in]*/ BSTR assemblyFile,
-    //     /*[in]*/ BSTR typeName,
-    //     /*[in]*/ SAFEARRAY * activationAttributes,
-    //     /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall CreateInstance_3 (
-    //     /*[in]*/ BSTR AssemblyName,
-    //     /*[in]*/ BSTR typeName,
-    //     /*[in]*/ VARIANT_BOOL ignoreCase,
-    //     /*[in]*/ enum BindingFlags bindingAttr,
-    //     /*[in]*/ struct _Binder * Binder,
-    //     /*[in]*/ SAFEARRAY * args,
-    //     /*[in]*/ struct _CultureInfo * culture,
-    //     /*[in]*/ SAFEARRAY * activationAttributes,
-    //     /*[in]*/ struct _Evidence * securityAttributes,
-    //     /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall CreateInstanceFrom_3 (
-    //     /*[in]*/ BSTR assemblyFile,
-    //     /*[in]*/ BSTR typeName,
-    //     /*[in]*/ VARIANT_BOOL ignoreCase,
-    //     /*[in]*/ enum BindingFlags bindingAttr,
-    //     /*[in]*/ struct _Binder * Binder,
-    //     /*[in]*/ SAFEARRAY * args,
-    //     /*[in]*/ struct _CultureInfo * culture,
-    //     /*[in]*/ SAFEARRAY * activationAttributes,
-    //     /*[in]*/ struct _Evidence * securityAttributes,
-    //     /*[out,retval]*/ struct _ObjectHandle * * pRetVal ) = 0;
-    //   fn Load(
-	// 		assemblyRef: *mut  _AssemblyName ,
-	// 		pRetVal: *mut *mut  _Assembly ,
-	// 	) -> HRESULT
-    //   virtual HRESULT __stdcall Load_2 (
-    //     /*[in]*/ BSTR assemblyString,
-    //     /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-    //   fn Load_3(
-	// 		rawAssembly: *mut SAFEARRAY ,
-	// 		pRetVal: *mut *mut  _Assembly ,
-	// 	) -> HRESULT
-    //   virtual HRESULT __stdcall Load_4 (
-    //     /*[in]*/ SAFEARRAY * rawAssembly,
-    //     /*[in]*/ SAFEARRAY * rawSymbolStore,
-    //     /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall Load_5 (
-    //     /*[in]*/ SAFEARRAY * rawAssembly,
-    //     /*[in]*/ SAFEARRAY * rawSymbolStore,
-    //     /*[in]*/ struct _Evidence * securityEvidence,
-    //     /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall Load_6 (
-    //     /*[in]*/ struct _AssemblyName * assemblyRef,
-    //     /*[in]*/ struct _Evidence * assemblySecurity,
-    //     /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall Load_7 (
-    //     /*[in]*/ BSTR assemblyString,
-    //     /*[in]*/ struct _Evidence * assemblySecurity,
-    //     /*[out,retval]*/ struct _Assembly * * pRetVal ) = 0;
-    //   virtual HRESULT __stdcall ExecuteAssembly (
-    //     /*[in]*/ BSTR assemblyFile,
-    //     /*[in]*/ struct _Evidence * assemblySecurity,
-    //     /*[out,retval]*/ c_long * pRetVal ) = 0;
-    // fn ExecuteAssembly_2(
-    //     assemblyFile: BSTR,
-    //     pRetVal: *mut c_long,
-    // ) -> HRESULT,
-    //   virtual HRESULT __stdcall ExecuteAssembly_3 (
-    //     /*[in]*/ BSTR assemblyFile,
-    //     /*[in]*/ struct _Evidence * assemblySecurity,
-    //     /*[in]*/ SAFEARRAY * args,
-    //     /*[out,retval]*/ c_long * pRetVal ) = 0;
-    //   fn get_FriendlyName(
-    //     pRetVal: BSTR ,
-    // ) -> HRESULT,
-    //   fn get_BaseDirectory(
-    //     pRetVal: BSTR ,
-    // ) -> HRESULT,
-    //   fn get_RelativeSearchPath(
-    //     pRetVal: BSTR ,
-    // ) -> HRESULT,
-    //   fn get_ShadowCopyFiles(
-    //     pRetVal: VARIANT_BOOL ,
-    // ) -> HRESULT,
-    //   fn GetAssemblies(
-	// 		pRetVal: *mut *mut SAFEARRAY ,
-	// 	) -> HRESULT,
-    //   fn AppendPrivatePath(
-    //     Path: BSTR,
-    // ) -> HRESULT
-    //   fn ClearPrivatePath() -> HRESULT,
-    //   fn SetShadowCopyPath(
-    //     s: BSTR,
-    // ) -> HRESULT
-    //   fn ClearShadowCopyPath() -> HRESULT,
-    //   fn SetCachePath(
-    //     s: BSTR,
-    // ) -> HRESULT
-    // fn SetData(
-    //     name: BSTR,
-    //     data: VARIANT,
-    // ) -> HRESULT,
-    // fn GetData(
-    //     name: BSTR,
-    //     pRetVal: *mut VARIANT,
-    // ) -> HRESULT,
-    // fn SetAppDomainPolicy(
-    //     domainPolicy: *mut _PolicyLevel ,
-    // ) -> HRESULT,
-    // fn SetThreadPrincipal(
-    //     principal: *mut IPrincipal ,
-    // ) -> HRESULT,
-    //   virtual HRESULT __stdcall SetPrincipalPolicy (
-    //     /*[in]*/ enum PrincipalPolicy policy ) = 0;
-    // fn DoCallBack(
-    //     theDelegate: *mut _CrossAppDomainDelegate ,
-    // ) -> HRESULT,
-    //   fn get_DynamicDirectory(
-    //     pRetVal: BSTR ,
-    // ) -> HRESULT,
 }}
 
 RIDL!{#[uuid(0xf1c3bf76, 0xc3e4, 0x11d3, 0x88, 0xe7, 0x00, 0x90, 0x27, 0x54, 0xc4, 0x3a)]

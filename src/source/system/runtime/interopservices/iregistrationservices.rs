@@ -5,8 +5,8 @@ use winapi::shared::guiddef::GUID;
 use winapi::shared::wtypes::BSTR;
 use winapi::um::oaidl::SAFEARRAY;
 
-use source::system::reflection::cominterfaces::_Type;
-use source::system::reflection::cominterfaces::_Assembly;
+use system::reflection::cominterfaces::_Type;
+use system::reflection::cominterfaces::_Assembly;
 
 //enum __declspec(uuid("765653a0-2b24-38e4-a6f6-5cb325e8ccc9"))
 ENUM!{enum AssemblyRegistrationFlags

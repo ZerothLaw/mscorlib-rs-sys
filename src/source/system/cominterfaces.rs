@@ -10,7 +10,7 @@ use winapi::shared::winerror::HRESULT;
 
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
-use source::system::intptr::IntPtr;
+use system::intptr::IntPtr;
 
 RIDL!{#[uuid(0x03973551, 0x57A1, 0x3900, 0xA2, 0xB5, 0x90, 0x83, 0xE3, 0xFF, 0x29, 0x43)]
 interface _Activator(_ActivatorVtbl): IUnknown(IUnknown){

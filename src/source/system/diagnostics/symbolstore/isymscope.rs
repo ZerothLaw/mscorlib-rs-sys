@@ -3,7 +3,7 @@ use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::SAFEARRAY;
 use winapi::ctypes::c_long;   
 
-use source::system::diagnostics::symbolstore::isymmethod::ISymbolMethod;
+use system::diagnostics::symbolstore::isymmethod::ISymbolMethod;
 
 RIDL!{#[uuid(0x1cee3a11, 0x01ae, 0x3244, 0xa9, 0x39, 0x49, 0x72, 0xfc, 0x97, 0x03, 0xef)]
 interface ISymbolScope(ISymbolScopeVtbl): IDispatch(IDispatchVtbl)  

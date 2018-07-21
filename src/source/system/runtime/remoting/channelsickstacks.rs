@@ -2,14 +2,15 @@ use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::VARIANT;
 
-use source::system::runtime::remoting::ichannel::ITransportHeaders;
-use source::system::iasyncresult::IAsyncResult;
-use source::system::runtime::remoting::ichannel::IServerChannelSink;
-use source::system::iexception::_Exception;
-use source::system::runtime::remoting::ichannel::IClientChannelSink;
+use system::runtime::remoting::ichannel::ITransportHeaders;
+use system::iasyncresult::IAsyncResult;
+use system::runtime::remoting::ichannel::IServerChannelSink;
+use system::iexception::_Exception;
+use system::runtime::remoting::ichannel::IClientChannelSink;
 
 use dispatch::_Stream;
-use dispatch::IMessage;
+
+use system::runtime::remoting::IMessage;
 
 RIDL!{#[uuid(0x3a5fde6b, 0xdb46, 0x34e8, 0xba, 0xcd, 0x16, 0xea, 0x5a, 0x44, 0x05, 0x40)]
 interface IClientChannelSinkStack(IClientChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  

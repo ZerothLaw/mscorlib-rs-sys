@@ -10,7 +10,7 @@ use winapi::shared::wtypes::BSTR;
 use unknown::_MethodBase;
 use unknown::_Type;
 
-use source::system::runtime::serialization::streamingcontext::StreamingContext;
+use system::runtime::serialization::streamingcontext::StreamingContext;
 
 RIDL!{#[uuid(0xb36b5c63, 0x42ef, 0x38bc, 0xa0, 0x7e, 0x0b, 0x34, 0xc9, 0x8f, 0x16, 0x4a)]
 interface _Exception(_ExceptionVtbl): IDispatch(IDispatchVtbl)  

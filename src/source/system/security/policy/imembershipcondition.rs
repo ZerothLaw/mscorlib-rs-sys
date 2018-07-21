@@ -4,7 +4,7 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::BSTR;
 use winapi::shared::wtypes::VARIANT_BOOL;
 
-use source::system::security::policy::evidence::_Evidence;
+use system::security::policy::evidence::_Evidence;
 
 RIDL!{#[uuid(0x6844eff4, 0x4f86, 0x3ca1, 0xa1, 0xea, 0xaa, 0xf5, 0x83, 0xa6, 0x39, 0x5e)]
 interface IMembershipCondition(IMembershipConditionVtbl): IDispatch(IDispatchVtbl)  

@@ -4,12 +4,12 @@ use winapi::um::oaidl::SAFEARRAY;
 use winapi::um::oaidl::VARIANT;
 use winapi::shared::wtypes::BSTR;
 
-use source::system::reflection::binder::_Binder;
-use source::system::reflection::cominterfaces::_Type;
-use source::system::reflection::bindingflags::BindingFlags;
-use source::system::reflection::cominterfaces::_PropertyInfo;
-use source::system::reflection::cominterfaces::_FieldInfo;
-use source::system::reflection::cominterfaces::_MethodInfo;
+use system::reflection::binder::_Binder;
+use system::reflection::cominterfaces::_Type;
+use system::reflection::bindingflags::BindingFlags;
+use system::reflection::cominterfaces::_PropertyInfo;
+use system::reflection::cominterfaces::_FieldInfo;
+use system::reflection::cominterfaces::_MethodInfo;
 
 use dispatch::_CultureInfo;
 

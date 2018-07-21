@@ -9,3 +9,15 @@ pub mod isymvariable;
 pub mod isymwriter;
 pub mod symaddresskind;
 pub mod token;
+
+pub use self::isymbinder::*;
+pub use self::isymdocument::*;
+pub use self::isymdocumentwriter::*;
+pub use self::isymmethod::*;
+pub use self::isymnamespace::*;
+pub use self::isymreader::*;
+pub use self::isymscope::*;
+pub use self::isymvariable::*;
+pub use self::isymwriter::*;
+pub use self::symaddresskind::*;
+pub use self::token::*;

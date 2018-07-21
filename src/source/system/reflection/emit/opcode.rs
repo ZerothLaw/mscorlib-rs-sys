@@ -2,10 +2,10 @@ use winapi::ctypes::c_long;
 use winapi::shared::minwindef::UCHAR;
 use winapi::shared::wtypes::BSTR;
 
-use source::system::reflection::emit::flowcontrol::FlowControl;
-use source::system::reflection::emit::stackbehavior::StackBehaviour;
-use source::system::reflection::emit::operandtype::OperandType;
-use source::system::reflection::emit::opcodetype::OpCodeType;
+use system::reflection::emit::flowcontrol::FlowControl;
+use system::reflection::emit::stackbehavior::StackBehaviour;
+use system::reflection::emit::operandtype::OperandType;
+use system::reflection::emit::opcodetype::OpCodeType;
 
 //struct __declspec(uuid("a7ed05c6-fecf-3c35-ba3b-84163ac1d5e5"))
 STRUCT!{struct OpCode

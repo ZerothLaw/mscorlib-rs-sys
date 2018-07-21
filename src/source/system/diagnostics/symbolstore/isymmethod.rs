@@ -4,10 +4,10 @@ use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::um::oaidl::SAFEARRAY;
 use winapi::ctypes::c_long;
 
-use source::system::diagnostics::symbolstore::isymnamespace::ISymbolNamespace;
-use source::system::diagnostics::symbolstore::isymdocument::ISymbolDocument;
-use source::system::diagnostics::symbolstore::isymscope::ISymbolScope;
-use source::system::diagnostics::symbolstore::token::SymbolToken;
+use system::diagnostics::symbolstore::isymnamespace::ISymbolNamespace;
+use system::diagnostics::symbolstore::isymdocument::ISymbolDocument;
+use system::diagnostics::symbolstore::isymscope::ISymbolScope;
+use system::diagnostics::symbolstore::token::SymbolToken;
 
 RIDL!{#[uuid(0x25c72eb0, 0xe437, 0x3f17, 0x94, 0x6d, 0x3b, 0x72, 0xa3, 0xac, 0xff, 0x37)]
 interface ISymbolMethod(ISymbolMethodVtbl): IDispatch(IDispatchVtbl)  

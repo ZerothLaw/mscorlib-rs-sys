@@ -8,3 +8,14 @@ pub mod tokenimpersonationlevel;
 pub mod windowsidentity;
 pub mod windowsimpersonationcontext;
 pub mod windowsprincipal;
+
+pub use self::genericidentity::*;
+pub use self::genericprincipal::*;
+pub use self::iidentity::*;
+pub use self::iprincipal::*;
+pub use self::principalpolicy::*;
+pub use self::tokenaccesslevels::*;
+pub use self::tokenimpersonationlevel::*;
+pub use self::windowsidentity::*;
+pub use self::windowsimpersonationcontext::*;
+pub use self::windowsprincipal::*;

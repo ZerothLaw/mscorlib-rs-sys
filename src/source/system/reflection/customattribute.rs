@@ -1,8 +1,8 @@
 use winapi::um::unknwnbase::{IUnknown};
 
 
-use source::system::reflection::cominterfaces::_MemberInfo;
-use source::system::reflection::cominterfaces::_Type;
+use system::reflection::cominterfaces::_MemberInfo;
+use system::reflection::cominterfaces::_Type;
 
 //struct __declspec(uuid("9dc6ac40-edfa-3e34-9ad1-b7a0a9e3a40a"))
 STRUCT!{struct CustomAttributeTypedArgument

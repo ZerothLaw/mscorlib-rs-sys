@@ -6,9 +6,9 @@ use winapi::shared::wtypes::{BSTR, DATE, DECIMAL, VARIANT_BOOL};
 
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, VARIANT};
 
-use source::system::iformatprovider::IFormatProvider;
-use source::system::reflection::cominterfaces::_Type;
-use source::system::typecode::TypeCode;
+use system::iformatprovider::IFormatProvider;
+use system::reflection::cominterfaces::_Type;
+use system::typecode::TypeCode;
 
 RIDL!{#[uuid(0x805e3b62, 0xb5e9, 0x393d, 0x89, 0x41, 0x37, 0x7d, 0x8b, 0xf4, 0x55, 0x6b)]
 interface IConvertible(IConvertibleVtbl): IDispatch(IDispatchVtbl)  

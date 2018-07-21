@@ -20,3 +20,22 @@ pub mod securitymanager;
 pub mod securityzone;
 pub mod verificationexception;
 pub mod xmlsyntaxexception;
+
+pub use self::attributes::*;
+pub use self::codeaccesspermission::*;
+pub use self::hostprotectionexception::*;
+pub use self::hostsecuritymanager::*;
+pub use self::ievidencefactory::*;
+pub use self::ipermission::*;
+pub use self::isecurityencodable::*;
+pub use self::isecuritypolicyencodable::*;
+pub use self::istackwalk::*;
+pub use self::namedpermissionset::*;
+pub use self::permissionset::*;
+pub use self::securityelement::*;
+pub use self::securityexception::*;
+pub use self::securitymanager::*;
+pub use self::securityzone::*;
+pub use self::verificationexception::*;
+pub use self::xmlsyntaxexception::*;
+

@@ -10,3 +10,15 @@ pub mod serializationbinder;
 pub mod serializationinfo;
 pub mod serializationinfoenumerator;
 pub mod streamingcontext;
+
+pub use self::ideserializationcallback::*;
+pub use self::iformatter::*;
+pub use self::iformatterconverter::*;
+pub use self::iobjectreference::*;
+pub use self::iserializable::*;
+pub use self::iserializationsurrogate::*; 
+pub use self::isurrogateselector::*;
+pub use self::serializationbinder::*;
+pub use self::serializationinfo::*;
+pub use self::serializationinfoenumerator::*;
+pub use self::streamingcontext::*;

@@ -7,9 +7,9 @@ use winapi::shared::wtypes::BSTR;
 use winapi::um::winnt::LCID;
 use winapi::shared::guiddef::GUID;
 
-use source::system::reflection::cominterfaces::_Assembly;
-use source::system::reflection::emit::cominterfaces::_AssemblyBuilder;
-use source::system::version::_Version;
+use system::reflection::cominterfaces::_Assembly;
+use system::reflection::emit::cominterfaces::_AssemblyBuilder;
+use system::version::_Version;
 
 use dispatch::_StrongNameKeyPair;
 

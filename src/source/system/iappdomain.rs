@@ -16,36 +16,29 @@ use winapi::um::oaidl::ITypeInfo;
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
 
-use dispatch::_Assembly;
-use dispatch::_AssemblyLoadEventHandler;
-use dispatch::_Binder;
-use dispatch::_CrossAppDomainDelegate;
 use dispatch::_CultureInfo;
 use dispatch::_EventHandler;
 use dispatch::_Evidence;
 use dispatch::_PermissionSet;
 use dispatch::_PolicyLevel;
-use dispatch::_ResolveEventHandler;
-use dispatch::IPrincipal;
 
-// use enums::AssemblyBuilderAccess;
-// use enums::PrincipalPolicy;
+use system::_AssemblyLoadEventHandler;
+use system::_CrossAppDomainDelegate;
+use system::_ResolveEventHandler;
+use system::_UnhandledExceptionEventHandler;
 
-// use unknown::_AssemblyBuilder;
-// use unknown::_AssemblyName;
-// use unknown::_Type;
-// use unknown::IObjectHandle;
+use system::reflection::_Assembly;
+use system::reflection::_AssemblyName;
+use system::reflection::_Binder;
+use system::reflection::_Type;
+use system::reflection::BindingFlags;
 
-use source::system::reflection::bindingflags::BindingFlags;
-use source::system::reflection::cominterfaces::_AssemblyName;
-use source::system::reflection::cominterfaces::_Type;
-use source::system::reflection::emit::assemblybuilderaccess::AssemblyBuilderAccess;
-use source::system::reflection::emit::cominterfaces::_AssemblyBuilder;
+use system::reflection::emit::_AssemblyBuilder;
+use system::reflection::emit::AssemblyBuilderAccess;
 
-use source::system::security::principal::principalpolicy::PrincipalPolicy;
-use source::system::threading::iobjecthandle::IObjectHandle;
-use source::system::unhandledexceptioneventhandler::_UnhandledExceptionEventHandler;
 
+use system::security::principal::{IPrincipal,PrincipalPolicy};
+use system::threading::IObjectHandle;
 
 //RIDL!{#[uuid()]}
 //"([\w\d]{8})-([\w\d]{4})-([\w\d]{4})-([\w\d]{2})([\w\d]{2})-([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})"

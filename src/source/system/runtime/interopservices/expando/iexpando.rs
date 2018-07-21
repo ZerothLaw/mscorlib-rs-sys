@@ -2,11 +2,11 @@ use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::BSTR;
 
-use source::system::reflection::cominterfaces::_MemberInfo;
-use source::system::reflection::cominterfaces::_MethodInfo;
-use source::system::delegate::_Delegate;
-use source::system::reflection::cominterfaces::_PropertyInfo;
-use source::system::reflection::cominterfaces::_FieldInfo;
+use system::reflection::cominterfaces::_MemberInfo;
+use system::reflection::cominterfaces::_MethodInfo;
+use system::delegate::_Delegate;
+use system::reflection::cominterfaces::_PropertyInfo;
+use system::reflection::cominterfaces::_FieldInfo;
 
 RIDL!{#[uuid(0xafbf15e6, 0xc37c, 0x11d2, 0xb8, 0x8e, 0x00, 0xa0, 0xc9, 0xb4, 0x71, 0xb8)]
 interface IExpando(IExpandoVtbl): IDispatch(IDispatchVtbl)  

@@ -1,7 +1,7 @@
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::shared::ntdef::LPSTR;
 use winapi::um::unknwnbase::IUnknown;
-use source::system::reflection::cominterfaces::_Type;
+use system::reflection::cominterfaces::_Type;
 
 //struct __declspec(uuid("3642e7ed-5a69-3a94-98d3-a08877a0d046"))
 STRUCT!{struct SerializationEntry

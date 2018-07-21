@@ -3,8 +3,8 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::BSTR;
 use winapi::um::oaidl::SAFEARRAY;
 
-use source::system::collections::ilist::IList;
-use source::system::reflection::cominterfaces::_Type;
+use system::collections::ilist::IList;
+use system::reflection::cominterfaces::_Type;
 
 RIDL!{#[uuid(0xc02bbb79, 0x5aa8, 0x390d, 0x92, 0x7f, 0x71, 0x7b, 0x7b, 0xff, 0x06, 0xa1)]
 interface IActivator(IActivatorVtbl): IDispatch(IDispatchVtbl)  

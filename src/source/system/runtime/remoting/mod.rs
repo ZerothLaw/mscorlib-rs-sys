@@ -1,3 +1,5 @@
+
+pub mod callcontext;
 pub mod channelsickstacks;
 pub mod configuration;
 pub mod contextproperty;
@@ -25,3 +27,33 @@ pub mod remotingattribute;
 pub mod remotingconfiguration;
 pub mod soapinteroptypes;
 pub mod trackingservices;
+
+
+pub use self::callcontext::*;
+pub use self::channelsickstacks::*;
+pub use self::configuration::*;
+pub use self::contextproperty::*;
+pub use self::iactivator::*;
+pub use self::ichannel::*;
+pub use self::icontributeclientcontextsink::*;
+pub use self::icontributedynamicsink::*;
+pub use self::icontributeenvoysink::*;
+pub use self::icontributeobjectsink::*;
+pub use self::icontributeservercontextsink::*;
+pub use self::idynamicmessagesink::*;
+pub use self::ilease::*;
+pub use self::imessage::*;
+pub use self::imessagectrl::*;
+pub use self::imessagesink::*;
+pub use self::imethodmessage::*;
+pub use self::iremotingformatter::*;
+pub use self::isponsor::*;
+pub use self::leasestate::*;
+pub use self::lifetimeservices::*;
+pub use self::objecthandle::*;
+pub use self::objref::*;
+pub use self::realproxy::*;
+pub use self::remotingattribute::*;
+pub use self::remotingconfiguration::*;
+pub use self::soapinteroptypes::*;
+pub use self::trackingservices::*;

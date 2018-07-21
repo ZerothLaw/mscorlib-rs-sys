@@ -3,8 +3,8 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::shared::wtypes::BSTR;
 
-use source::system::runtime::remoting::iactivator::IConstructionReturnMessage;
-use source::system::runtime::remoting::iactivator::IConstructionCallMessage;
+use system::runtime::remoting::iactivator::IConstructionReturnMessage;
+use system::runtime::remoting::iactivator::IConstructionCallMessage;
 
 use dispatch::_Context;
 

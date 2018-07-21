@@ -6,15 +6,16 @@ use winapi::shared::wtypes::BSTR;
 use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::ctypes::c_long;
 
-use source::system::collections::idictionary::IDictionary;
-use source::system::runtime::remoting::channelsickstacks::IServerResponseChannelSinkStack;
-use source::system::runtime::remoting::channelsickstacks::IClientResponseChannelSinkStack;
-use source::system::iasyncresult::IAsyncResult;
+use system::collections::IDictionary;
+use system::runtime::remoting::IServerResponseChannelSinkStack;
+use system::runtime::remoting::IClientResponseChannelSinkStack;
+use system::IAsyncResult;
 
 use dispatch::_Stream;
 use unknown::IEnumVARIANT;
-use dispatch::IMessage;
-use dispatch::IMessageSink;
+
+use system::runtime::remoting::IMessage;
+use system::runtime::remoting::IMessageSink;
 
 RIDL!{#[uuid(0x563581e8, 0xc86d, 0x39e2, 0xb2, 0xe8, 0x6c, 0x23, 0xf7, 0x98, 0x7a, 0x4b)]
 interface IChannel(IChannelVtbl): IDispatch(IDispatchVtbl)  
@@ -92,6 +93,24 @@ interface IClientChannelSinkProvider(IClientChannelSinkProviderVtbl): IDispatch(
 	) -> HRESULT,
     fn putref_Next(
         pRetVal: *mut IClientChannelSinkProvider,
+    ) -> HRESULT,
+}}
+
+RIDL!{#[uuid(0x7dd6e975, 0x24ea, 0x323c, 0xa9, 0x8c, 0x0f, 0xde, 0x96, 0xf9, 0xc4, 0xe6)]
+interface IServerChannelSinkProvider(IServerChannelSinkProviderVtbl): IDispatch(IDispatchVtbl)  
+{
+    fn GetChannelData(
+        ChannelData: *mut IChannelDataStore,
+    ) -> HRESULT,
+    fn CreateSink(
+		channel: *mut  IChannelReceiver ,
+		pRetVal: *mut *mut  IServerChannelSink ,
+	) -> HRESULT,
+    fn get_Next(
+		pRetVal: *mut *mut  IServerChannelSinkProvider ,
+	) -> HRESULT,
+    fn putref_Next(
+        pRetVal: *mut IServerChannelSinkProvider,
     ) -> HRESULT,
 }}
 

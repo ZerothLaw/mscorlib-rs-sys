@@ -5,7 +5,7 @@ use winapi::um::oaidl::VARIANT;
 use winapi::um::oaidl::SAFEARRAY;
 use winapi::shared::wtypes::BSTR;
 
-use source::system::diagnostics::symbolstore::symaddresskind::SymAddressKind;
+use system::diagnostics::symbolstore::symaddresskind::SymAddressKind;
 
 RIDL!{#[uuid(0x4042bd4d, 0xb5ab, 0x30e8, 0x91, 0x9b, 0x14, 0x91, 0x06, 0x87, 0xba, 0xae)]
 interface ISymbolVariable(ISymbolVariableVtbl) : IDispatch(IDispatchVtbl) {

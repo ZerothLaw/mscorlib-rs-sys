@@ -3,7 +3,7 @@ use winapi::um::unknwnbase::IUnknown;
 use winapi::shared::winerror::HRESULT;
 
 
-use source::system::security::policy::applicationtrust::_ApplicationTrust;
+use system::security::policy::applicationtrust::_ApplicationTrust;
 
 RIDL!{#[uuid(0x427e255d, 0xaf02, 0x3b0d, 0x8c, 0xe3, 0xa2, 0xbb, 0x94, 0xba, 0x30, 0x0f)]
 interface IApplicationTrustManager(IApplicationTrustManagerVtbl): IDispatch(IDispatchVtbl)  

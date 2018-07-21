@@ -12,27 +12,27 @@ use winapi::um::oaidl::{DISPID, DISPPARAMS, EXCEPINFO, ITypeInfo, SAFEARRAY, VAR
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use source::system::delegate::_Delegate;
-use source::system::version::_Version;
-use source::system::runtimetypehandle::RuntimeTypeHandle;
-use source::system::reflection::membertypes::MemberTypes;
-use source::system::reflection::bindingflags::BindingFlags;
-use source::system::reflection::callingconventions::CallingConventions;
-use source::system::reflection::eventattributes::EventAttributes;
-use source::system::reflection::fieldattributes::FieldAttributes;
-use source::system::reflection::methodattributes::MethodAttributes;
-use source::system::reflection::methodimplattributes::MethodImplAttributes;
-use source::system::reflection::propertyattributes::PropertyAttributes;
-use source::system::reflection::typeattributes::TypeAttributes;
+use system::_Delegate;
+use system::_Version;
+use system::RuntimeTypeHandle;
+use system::reflection::_Binder;
+use system::reflection::MemberTypes;
+use system::reflection::BindingFlags;
+use system::reflection::CallingConventions;
+use system::reflection::EventAttributes;
+use system::reflection::FieldAttributes;
+use system::reflection::ICustomAttributeProvider;
+use system::reflection::MethodAttributes;
+use system::reflection::MethodImplAttributes;
+use system::reflection::PropertyAttributes;
+use system::reflection::TypeAttributes;
 
-use source::system::runtime::serialization::streamingcontext::StreamingContext;
+use system::runtime::serialization::StreamingContext;
 
-use source::system::runtimehandle::{RuntimeFieldHandle, RuntimeMethodHandle};
-use source::system::reflection::interfacemapping::InterfaceMapping;
+use system::{RuntimeFieldHandle, RuntimeMethodHandle};
+use system::reflection::InterfaceMapping;
 
 use dispatch::_CultureInfo;
-use dispatch::_Binder;
-use dispatch::ICustomAttributeProvider;
 use dispatch::_ModuleResolveEventHandler;
 use dispatch::_SerializationInfo;
 use dispatch::_Evidence;

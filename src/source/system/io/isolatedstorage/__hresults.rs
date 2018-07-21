@@ -1,1 +1,1 @@
-pub const COR_E_ISOSTORE: i32 = 0x80131450;
+pub const COR_E_ISOSTORE: u32 = 0x80131450;

@@ -5,8 +5,9 @@ use winapi::shared::wtypes::BSTR;
 use winapi::um::oaidl::{VARIANT, SAFEARRAY};
 use winapi::shared::wtypes::VARIANT_BOOL;
 
-use source::system::reflection::cominterfaces::_MethodBase;
-use dispatch::_LogicalCallContext;
+use system::_Exception;
+use system::reflection::_MethodBase;
+use system::runtime::remoting::_LogicalCallContext;
 
 RIDL!{#[uuid(0x8e5e0b95, 0x750e, 0x310d, 0x89, 0x2c, 0x8c, 0xa7, 0x23, 0x1c, 0xf7, 0x5b)]
 interface IMethodMessage(IMethodMessageVtbl): IDispatch(IDispatchVtbl)  
@@ -46,4 +47,49 @@ interface IMethodMessage(IMethodMessageVtbl): IDispatch(IDispatchVtbl)
     fn get_MethodBase(
 		pRetVal: *mut *mut  _MethodBase ,
 	) -> HRESULT,
+}} //IMessage
+
+
+RIDL!{#[uuid(0xb90efaa6, 0x25e4, 0x33d2, 0xac, 0xa3, 0x94, 0xbf, 0x74, 0xdc, 0x4a, 0xb9)]
+interface IMethodCallMessage(IMethodCallMessageVtbl): IDispatch(IDispatchVtbl)  
+{
+    fn get_InArgCount(
+        pRetVal: c_long ,
+    ) -> HRESULT,
+    fn GetInArgName(
+        index: c_long,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
+    fn GetInArg(
+        argNum: c_long,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn get_InArgs(
+	    pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+}}
+
+RIDL!{#[uuid(0xf617690a, 0x55f4, 0x36af, 0x91, 0x49, 0xd1, 0x99, 0x83, 0x1f, 0x85, 0x94)]
+interface IMethodReturnMessage(IMethodReturnMessageVtbl): IDispatch(IDispatchVtbl)  
+{
+    fn get_OutArgCount(
+        pRetVal: c_long,
+    ) -> HRESULT,
+    fn GetOutArgName(
+        index: c_long,
+        pRetVal: *mut BSTR,
+    ) -> HRESULT,
+    fn GetOutArg(
+        argNum: c_long,
+        pRetVal: *mut VARIANT,
+    ) -> HRESULT,
+    fn get_OutArgs(
+		pRetVal: *mut *mut SAFEARRAY ,
+	) -> HRESULT,
+    fn get_Exception(
+		pRetVal: *mut *mut  _Exception ,
+	) -> HRESULT,
+    fn get_ReturnValue(
+        pRetVal: VARIANT ,
+    ) -> HRESULT,
 }}

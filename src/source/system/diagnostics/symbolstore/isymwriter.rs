@@ -6,13 +6,13 @@ use winapi::um::oaidl::SAFEARRAY;
 use winapi::shared::guiddef::GUID;
 use winapi::shared::wtypes::VARIANT_BOOL;
 
-use source::system::diagnostics::symbolstore::isymdocumentwriter::ISymbolDocumentWriter;
-use source::system::diagnostics::symbolstore::token::SymbolToken;
-use source::system::diagnostics::symbolstore::symaddresskind::SymAddressKind;
-use source::system::intptr::IntPtr;
+use system::diagnostics::symbolstore::isymdocumentwriter::ISymbolDocumentWriter;
+use system::diagnostics::symbolstore::token::SymbolToken;
+use system::diagnostics::symbolstore::symaddresskind::SymAddressKind;
+use system::intptr::IntPtr;
 
-use source::system::reflection::fieldattributes::FieldAttributes;
-use source::system::reflection::parameterattributes::ParameterAttributes;
+use system::reflection::fieldattributes::FieldAttributes;
+use system::reflection::parameterattributes::ParameterAttributes;
 
 RIDL!{#[uuid(0xda295a1b, 0xc5bd, 0x3b34, 0x8a, 0xcd, 0x1d, 0x7d, 0x33, 0x4f, 0xfb, 0x7f)]
 interface ISymbolWriter(ISymbolWriterVtbl) : IDispatch(IDispatchVtbl) {
