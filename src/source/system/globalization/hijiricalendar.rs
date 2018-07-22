@@ -1,0 +1,5 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0x28ddc187, 0x56b2, 0x34cf, 0xa0, 0x78, 0x48, 0xbd, 0x1e, 0x11, 0x3d, 0x1e)]
+interface _HijriCalendar(_HijriCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}

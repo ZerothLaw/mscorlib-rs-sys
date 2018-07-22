@@ -1,0 +1,5 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0x9aa8765e, 0x69a0, 0x30e3, 0x9c, 0xde, 0xeb, 0xc7, 0x06, 0x62, 0xae, 0x37)]
+interface _MD5(_MD5Vtbl): IDispatch(IDispatchVtbl)  
+{}} //HashAlgorithm

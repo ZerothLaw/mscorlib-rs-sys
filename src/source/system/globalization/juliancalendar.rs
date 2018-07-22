@@ -1,0 +1,4 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+RIDL!{#[uuid(0x36e2de92, 0x1fb3, 0x3d7d, 0xba, 0x26, 0x9c, 0xad, 0x5b, 0x98, 0xdd, 0x52)]
+interface _JulianCalendar(_JulianCalendarVtbl): IDispatch(IDispatchVtbl)  
+{}}

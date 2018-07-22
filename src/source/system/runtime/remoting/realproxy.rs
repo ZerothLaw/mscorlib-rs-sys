@@ -1,0 +1,6 @@
+
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+
+RIDL!{#[uuid(0xe0cf3f77, 0xc7c3, 0x33da, 0xbe, 0xb4, 0x46, 0x14, 0x7f, 0xc9, 0x05, 0xde)]
+interface _RealProxy(_RealProxyVtbl): IDispatch(IDispatchVtbl)  
+{}}

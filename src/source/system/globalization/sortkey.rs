@@ -1,0 +1,4 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+RIDL!{#[uuid(0xf4c70e15, 0x2ca6, 0x3e90, 0x96, 0xed, 0x92, 0xe2, 0x84, 0x91, 0xf5, 0x38)]
+interface _SortKey(_SortKeyVtbl): IDispatch(IDispatchVtbl)  
+{}}
