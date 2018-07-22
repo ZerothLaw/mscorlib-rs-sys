@@ -4,14 +4,13 @@ use winapi::um::oaidl::SAFEARRAY;
 use winapi::um::oaidl::VARIANT;
 use winapi::shared::wtypes::BSTR;
 
+use system::globalization::_CultureInfo;
 use system::reflection::binder::_Binder;
 use system::reflection::cominterfaces::_Type;
 use system::reflection::bindingflags::BindingFlags;
 use system::reflection::cominterfaces::_PropertyInfo;
 use system::reflection::cominterfaces::_FieldInfo;
 use system::reflection::cominterfaces::_MethodInfo;
-
-use dispatch::_CultureInfo;
 
 RIDL!{#[uuid(0xafbf15e5, 0xc37c, 0x11d2, 0xb8, 0x8e, 0x00, 0xa0, 0xc9, 0xb4, 0x71, 0xb8)]
 interface IReflect(IReflectVtbl): IDispatch(IDispatchVtbl)  

@@ -4,9 +4,8 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY, VARIANT};
 
-use dispatch::_SerializationInfo;
-
 use system::runtime::serialization::StreamingContext;
+use system::runtime::serialization::_SerializationInfo;
 use system::reflection::_MethodInfo;
 use system::reflection::_Type;
 

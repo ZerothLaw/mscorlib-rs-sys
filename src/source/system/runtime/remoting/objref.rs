@@ -4,7 +4,7 @@ use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::SAFEARRAY;
 
-use system::reflection::cominterfaces::_Type;
+use system::reflection::_Type;
 use system::runtime::remoting::imessagesink::IMessageSink;
 
 RIDL!{#[uuid(0xc09effa9, 0x1ffe, 0x3a52, 0xa7, 0x33, 0x62, 0x36, 0xcb, 0xc4, 0x5e, 0x7b)]

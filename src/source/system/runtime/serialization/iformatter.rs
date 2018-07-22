@@ -3,11 +3,11 @@ use winapi::shared::ntdef::{HRESULT};
 
 use winapi::um::oaidl::{VARIANT};
 
-use dispatch::_SerializationBinder;
-use dispatch::_Stream;
+use system::io::_Stream;
 
-use system::runtime::serialization::StreamingContext;
+use system::runtime::serialization::_SerializationBinder;
 use system::runtime::serialization::ISurrogateSelector;
+use system::runtime::serialization::StreamingContext;
 
 RIDL!{#[uuid(0x93d7a8c5, 0xd2eb, 0x319b, 0xa3, 0x74, 0xa6, 0x5d, 0x32, 0x1f, 0x2a, 0xa9)]
 interface IFormatter(IFormatterVtbl): IDispatch(IDispatchVtbl)  

@@ -1,0 +1,4 @@
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
+RIDL!{#[uuid(0x5dbbaf39, 0xa3df, 0x30b7, 0xaa, 0xea, 0x9f, 0xd1, 0x13, 0x94, 0x12, 0x3f)]
+interface _HeaderHandler(_HeaderHandlerVtbl): IDispatch(IDispatchVtbl)  
+{}}

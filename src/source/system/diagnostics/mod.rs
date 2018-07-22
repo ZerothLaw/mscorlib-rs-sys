@@ -1,9 +1,9 @@
-pub mod conditionalattribute;
-pub mod debugger;
-pub mod debuggerattributes;
-pub mod stackframe;
-pub mod stacktrace;
-pub mod symbolstore;
+mod conditionalattribute;
+mod debugger;
+mod debuggerattributes;
+mod stackframe;
+mod stacktrace;
+mod symbolstore;
 
 pub use self::conditionalattribute::*;
 pub use self::debugger::*;

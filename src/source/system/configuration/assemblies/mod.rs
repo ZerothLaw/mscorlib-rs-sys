@@ -1,6 +1,6 @@
-pub mod assemblyhash;
-pub mod assemblyhashalgorithm;
-pub mod assemblyversioncompatibility;
+mod assemblyhash;
+mod assemblyhashalgorithm;
+mod assemblyversioncompatibility;
 
 pub use self::assemblyhash::*;
 pub use self::assemblyhashalgorithm::*;

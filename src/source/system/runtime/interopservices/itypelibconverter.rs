@@ -7,11 +7,11 @@ use winapi::shared::wtypes::BSTR;
 use winapi::um::winnt::LCID;
 use winapi::shared::guiddef::GUID;
 
-use system::reflection::cominterfaces::_Assembly;
-use system::reflection::emit::cominterfaces::_AssemblyBuilder;
+use system::reflection::_Assembly;
+use system::reflection::emit::_AssemblyBuilder;
 use system::version::_Version;
+use system::reflection::_StrongNameKeyPair;
 
-use dispatch::_StrongNameKeyPair;
 
 //enum __declspec(uuid("c335350a-892d-37f7-967c-99b3c4c4a301"))
 ENUM!{enum TypeLibImporterFlags

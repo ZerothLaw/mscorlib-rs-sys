@@ -20,6 +20,7 @@ pub mod threadstate;
 pub mod threadstateexception;
 pub mod timeout;
 pub mod timer;
+pub mod waithandle;
 
 pub use self::apartmentstate::*;
 pub use self::autoresetevent::*;
@@ -43,3 +44,4 @@ pub use self::threadstate::*;
 pub use self::threadstateexception::*;
 pub use self::timeout::*;
 pub use self::timer::*;
+pub use self::waithandle::*;

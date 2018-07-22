@@ -3,10 +3,9 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::shared::wtypes::BSTR;
 
-use system::runtime::remoting::iactivator::IConstructionReturnMessage;
-use system::runtime::remoting::iactivator::IConstructionCallMessage;
-
-use dispatch::_Context;
+use system::runtime::remoting::IConstructionReturnMessage;
+use system::runtime::remoting::IConstructionCallMessage;
+use system::runtime::remoting::_Context;
 
 RIDL!{#[uuid(0x4a68baa3, 0x27aa, 0x314a, 0xbd, 0xbb, 0x6a, 0xe9, 0xbd, 0xfc, 0x04, 0x20)]
 interface IContextAttribute(IContextAttributeVtbl): IDispatch(IDispatchVtbl)  

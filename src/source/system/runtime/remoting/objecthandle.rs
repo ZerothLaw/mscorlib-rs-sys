@@ -4,7 +4,7 @@ use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::VARIANT;
 use winapi::ctypes::c_long;
-use system::reflection::cominterfaces::_Type;
+use system::reflection::_Type;
 use system::runtime::remoting::objref::_ObjRef;
 
 RIDL!{#[uuid(0xea675b47, 0x64e0, 0x3b5f, 0x9b, 0xe7, 0xf7, 0xdc, 0x29, 0x90, 0x73, 0x0d)]

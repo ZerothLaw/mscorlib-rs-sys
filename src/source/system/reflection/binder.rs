@@ -5,13 +5,13 @@ use winapi::shared::wtypes::{BSTR};
 use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::VARIANT_BOOL;
 
+use system::globalization::_CultureInfo;
 use system::reflection::cominterfaces::_Type;
 use system::reflection::cominterfaces::_PropertyInfo;
 use system::reflection::bindingflags::BindingFlags;
 use system::reflection::cominterfaces::_MethodBase;
 use system::reflection::cominterfaces::_FieldInfo;
 
-use dispatch::_CultureInfo;
 RIDL!{#[uuid(0x3169ab11, 0x7109, 0x3808, 0x9a, 0x61, 0xef, 0x4b, 0xa0, 0x53, 0x4f, 0xd9)]
 interface _Binder(_BinderVtbl): IDispatch(IDispatchVtbl)  
 {

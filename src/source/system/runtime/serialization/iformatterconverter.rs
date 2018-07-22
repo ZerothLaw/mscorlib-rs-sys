@@ -13,7 +13,7 @@ use winapi::ctypes::c_short;
 use winapi::shared::wtypesbase::UCHAR;
 use winapi::shared::wtypes::VARIANT_BOOL;
 
-use system::reflection::cominterfaces::_Type;
+use system::reflection::_Type;
 use system::typecode::TypeCode;
 
 RIDL!{#[uuid(0xf4f5c303, 0xfad3, 0x3d0c, 0xa4, 0xdf, 0xbb, 0x82, 0xb5, 0xee, 0x30, 0x8f)]

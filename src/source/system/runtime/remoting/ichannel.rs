@@ -7,15 +7,17 @@ use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::ctypes::c_long;
 
 use system::collections::IDictionary;
-use system::runtime::remoting::IServerResponseChannelSinkStack;
-use system::runtime::remoting::IClientResponseChannelSinkStack;
+
 use system::IAsyncResult;
 
-use dispatch::_Stream;
+use system::io::_Stream;
 
+use system::runtime::interopservices::ComTypes::IEnumVARIANT;
+
+use system::runtime::remoting::IClientResponseChannelSinkStack;
 use system::runtime::remoting::IMessage;
 use system::runtime::remoting::IMessageSink;
-use system::runtime::interopservices::ComTypes::IEnumVARIANT;
+use system::runtime::remoting::IServerResponseChannelSinkStack;
 
 RIDL!{#[uuid(0x563581e8, 0xc86d, 0x39e2, 0xb2, 0xe8, 0x6c, 0x23, 0xf7, 0x98, 0x7a, 0x4b)]
 interface IChannel(IChannelVtbl): IDispatch(IDispatchVtbl)  

@@ -2,13 +2,12 @@ use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::VARIANT;
 
+use system::io::_Stream;
 use system::runtime::remoting::ichannel::ITransportHeaders;
 use system::iasyncresult::IAsyncResult;
 use system::runtime::remoting::ichannel::IServerChannelSink;
 use system::iexception::_Exception;
 use system::runtime::remoting::ichannel::IClientChannelSink;
-
-use dispatch::_Stream;
 
 use system::runtime::remoting::IMessage;
 
