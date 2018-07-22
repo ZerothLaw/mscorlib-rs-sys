@@ -12,12 +12,12 @@ use winapi::um::oaidl::{DISPID, DISPPARAMS, EXCEPINFO, ITypeInfo, SAFEARRAY, VAR
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::_Delegate;
-use system::_Version;
+use system::{_Delegate, _Version, RuntimeTypeHandle};
+
 use system::globalization::_CultureInfo;
-use system::io::_Stream;
-use system::io::_FileStream;
-use system::RuntimeTypeHandle;
+
+use system::io::{_Stream,_FileStream};
+
 use system::reflection::_Binder;
 use system::reflection::_ManifestResourceInfo;
 use system::reflection::_ModuleResolveEventHandler;
