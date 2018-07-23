@@ -17,12 +17,12 @@ interface ICollection(ICollectionVtbl): IDispatch(IDispatchVtbl)
         index: c_long,
     ) -> HRESULT,
     fn get_Count(
-        pRetVal: c_long ,
+        pRetVal: *mut c_long ,
     ) -> HRESULT,
     fn get_SyncRoot(
-        pRetVal: VARIANT ,
+        pRetVal: *mut VARIANT ,
     ) -> HRESULT,
       fn get_IsSynchronized(
-        pRetVal: VARIANT_BOOL ,
+        pRetVal: *mut VARIANT_BOOL ,
     ) -> HRESULT,
 }}//inherits from IEnumerable
