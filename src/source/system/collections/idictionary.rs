@@ -35,10 +35,10 @@ interface IDictionary(IDictionaryVtbl): IDispatch(IDispatchVtbl)
     ) -> HRESULT,
     fn Clear() -> HRESULT,
     fn get_IsReadOnly(
-        pRetVal: VARIANT_BOOL ,
+        pRetVal: *mut VARIANT_BOOL ,
     ) -> HRESULT,
     fn get_IsFixedSize(
-        pRetVal: VARIANT_BOOL ,
+        pRetVal: *mut VARIANT_BOOL ,
     ) -> HRESULT,
     fn GetEnumerator(
 		pRetVal: *mut *mut  IDictionaryEnumerator ,

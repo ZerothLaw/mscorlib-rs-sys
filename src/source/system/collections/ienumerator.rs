@@ -1,6 +1,6 @@
 
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
-
+use winapi::um::oaidl::VARIANT;
 use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::VARIANT_BOOL;
 
@@ -10,7 +10,7 @@ interface IEnumerator(IEnumeratorVtbl) : IDispatch(IDispatchVtbl){
         pRetVal: *mut VARIANT_BOOL,
     ) -> HRESULT,
     fn get_Current(
-        pRetVal: *mut VARIANT_BOOL,
+        pRetVal: *mut VARIANT,
     ) -> HRESULT,
     fn Reset() -> HRESULT,
 }}
