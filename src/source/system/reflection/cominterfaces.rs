@@ -512,83 +512,83 @@ RIDL!{#[uuid(0x17156360, 0x2f1a, 0x384a, 0xbc, 0x52, 0xfd, 0xe9, 0x3c, 0x21, 0x5
 interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)  
 {
     fn ToString_(
-        pRetVal: BSTR ,
+        pRetVal: *mut BSTR ,
     ) -> HRESULT,
     fn Equals(
         other: VARIANT,
         pRetVal: *mut VARIANT_BOOL,
     ) -> HRESULT,
     fn GetHashCode(
-        pRetVal: c_long ,
+        pRetVal: *mut c_long ,
     ) -> HRESULT,
     fn GetType(
 		pRetVal: *mut *mut  _Type ,
 	) -> HRESULT,
-    fn get_CodeBase( //NotImplemented
+    fn get_CodeBase( 
         pRetVal: *mut BSTR ,
     ) -> HRESULT,
     fn get_EscapedCodeBase(
         pRetVal: *mut BSTR ,
     ) -> HRESULT,
-    fn GetName( //NotImplemented
+    fn GetName( 
 		pRetVal: *mut *mut  _AssemblyName ,
 	) -> HRESULT,
-    fn GetName_2( //NotImplemented
+    fn GetName_2( 
         copiedName: VARIANT_BOOL, 
         pRetVal: *mut *mut _AssemblyName,
     ) -> HRESULT,
-    fn get_FullName( //NotImplemented
+    fn get_FullName( 
         pRetVal: *mut BSTR ,
     ) -> HRESULT,
-    fn get_EntryPoint( //NotImplemented
+    fn get_EntryPoint( 
 		pRetVal: *mut *mut  _MethodInfo ,
 	) -> HRESULT,
     fn GetType_2(
         name: BSTR, 
         pRetVal: *mut *mut _Type, 
     ) -> HRESULT,
-    fn GetType_3( //NotImplemented
+    fn GetType_3( 
         name: BSTR, 
         throwOnError: VARIANT_BOOL, 
         pRetVal: *mut *mut _Type,
     ) -> HRESULT,
-    fn GetExportedTypes( //NotImplemented
-		pRetVal: *mut *mut SAFEARRAY ,
+    fn GetExportedTypes( 
+		pRetVal: *mut *mut SAFEARRAY , //Type[]
 	) -> HRESULT,
     fn GetTypes(
-		pRetVal: *mut *mut SAFEARRAY ,
+		pRetVal: *mut *mut SAFEARRAY , //Type[]
 	) -> HRESULT,
-    fn GetManifestResourceStream( //NotImplemented
+    fn GetManifestResourceStream( //possibly NotImplemented
         Type_: *mut _Type, 
         name: BSTR, 
         pRetVal: *mut *mut _Stream,
     ) -> HRESULT,
-    fn GetManifestResourceStream_2( //NotImplemented
+    fn GetManifestResourceStream_2( //possibly NotImplemented
         name: BSTR, 
         pRetVal: *mut *mut _Stream,
     ) -> HRESULT, 
-    fn GetFile( //NotImplemented
+    fn GetFile( 
         name: BSTR, 
         pRetVal: *mut *mut _FileStream,
     ) -> HRESULT,
-    fn GetFiles(  //NotImplemented
+    fn GetFiles(  
 		pRetVal: *mut *mut SAFEARRAY , //FileStream[] 
 	) -> HRESULT,
     fn GetFiles_2(
         getResourceModules: VARIANT_BOOL,
         pRetVal: *mut *mut SAFEARRAY, //FileStream[]
     ) -> HRESULT,
-    fn GetManifestResourceNames( //NotImplemented
+    fn GetManifestResourceNames( 
 		pRetVal: *mut *mut SAFEARRAY , //String[]
 	) -> HRESULT,
-    fn GetManifestResourceInfo( //NotImplemented
+    fn GetManifestResourceInfo( 
         resourceName: BSTR, 
         pRetVal: *mut *mut _ManifestResourceInfo,
     ) -> HRESULT,
-    fn get_Location( //NotImplemented
-        pRetVal: BSTR ,
+    fn get_Location( 
+        pRetVal: *mut BSTR ,
     ) -> HRESULT,
-    fn get_Evidence( //NotImplemented
+    fn get_Evidence( //allocates new Evidence
 		pRetVal: *mut *mut  _Evidence ,
 	) -> HRESULT,
     fn GetCustomAttributes(
@@ -596,23 +596,23 @@ interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)
         inherit: VARIANT_BOOL, 
         pRetVal: *mut *mut SAFEARRAY, 
     ) -> HRESULT,
-    fn GetCustomAttributes_2( //NotImplemented
+    fn GetCustomAttributes_2( 
         inherit: VARIANT_BOOL,
         pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
-    fn IsDefined( //NotImplemented
-        attributeType: *mut _Type, 
+    fn IsDefined( 
+        attributeType: *mut _Type, //must not be null
         inherit: VARIANT_BOOL,
         pRetVal: *mut VARIANT_BOOL,
     ) -> HRESULT,
-    fn GetObjectData( //NotImplemented
-        info: *mut _SerializationInfo,
+    fn GetObjectData( 
+        info: *mut _SerializationInfo, //must not be null
         Context: StreamingContext,
     ) -> HRESULT,
-    fn add_ModuleResolve( //NotImplemented
+    fn add_ModuleResolve(
         val: *mut _ModuleResolveEventHandler, 
     ) -> HRESULT,
-    fn remove_ModuleResolve( //NotImplemented
+    fn remove_ModuleResolve( 
         val: *mut _ModuleResolveEventHandler,
     ) -> HRESULT,
     fn GetType_4(
@@ -621,11 +621,11 @@ interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)
         ignoreCase: VARIANT_BOOL, 
         pRetVal: *mut *mut _Type,
     ) -> HRESULT,
-    fn GetSatelliteAssembly( //NotImplemented
+    fn GetSatelliteAssembly( 
 		culture: *mut  _CultureInfo ,
 		pRetVal: *mut *mut  _Assembly ,
 	) -> HRESULT,
-    fn GetSatelliteAssembly_2( //NotImplemented
+    fn GetSatelliteAssembly_2( 
         culture: *mut _CultureInfo,
         Version: *mut _Version, 
         pRetVal: *mut *mut _Assembly,
@@ -635,7 +635,7 @@ interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)
         rawModule: *mut SAFEARRAY,  //byte[]
         pRetVal: *mut *mut _Module,
     ) -> HRESULT,
-    fn LoadModule_2( //NotImplemented
+    fn LoadModule_2( 
         moduleName: BSTR, 
         rawModule: *mut SAFEARRAY, //byte[]
         rawSymbolStore: *mut SAFEARRAY, //byte[]
@@ -643,12 +643,12 @@ interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)
     ) -> HRESULT,
     fn CreateInstance(
         typeName: BSTR,
-        pRetVal: *mut *mut VARIANT,
+        pRetVal: *mut VARIANT,
     ) -> HRESULT,
     fn CreateInstance_2(
         typeName: BSTR, 
         ignoreCase: VARIANT_BOOL, 
-        pRetVal: *mut *mut VARIANT,
+        pRetVal: *mut VARIANT,
     ) -> HRESULT,
     fn CreateInstance_3(
         typeName: BSTR, 
@@ -658,31 +658,31 @@ interface _Assembly(_AssemblyVtbl): IDispatch(IDispatchVtbl)
         args: *mut SAFEARRAY, 
         culture: *mut _CultureInfo, 
         activationAttributes: *mut SAFEARRAY, 
-        pRetVal: *mut *mut VARIANT,
+        pRetVal: *mut VARIANT,
     ) -> HRESULT,
     fn GetLoadedModules(
 		pRetVal: *mut *mut SAFEARRAY ,
 	) -> HRESULT,
-    fn GetLoadedModules_2( //NotImplemented
+    fn GetLoadedModules_2( 
         getResourceModules: VARIANT_BOOL,
         pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
     fn GetModules(
 		pRetVal: *mut *mut SAFEARRAY ,
 	) -> HRESULT,
-    fn GetModules_2( //NotImplemented
+    fn GetModules_2( 
         getResourceModules: VARIANT_BOOL,
         pRetVal: *mut *mut SAFEARRAY,
     ) -> HRESULT,
-    fn GetModule( //NotImplemented
+    fn GetModule( 
         name: BSTR, 
         pRetVal: *mut *mut _Module,
     ) -> HRESULT,
-    fn GetReferencedAssemblies( //NotImplemented
+    fn GetReferencedAssemblies( 
 		pRetVal: *mut *mut SAFEARRAY ,
 	) -> HRESULT,
-    fn get_GlobalAssemblyCache( //NotImplemented
-        pRetVal: *mut *mut VARIANT_BOOL,
+    fn get_GlobalAssemblyCache(
+        pRetVal: *mut VARIANT_BOOL,
     ) -> HRESULT,
 }} //implemented by Assembly, which also implements IEvidenceFactory, ICustomAttributeProvider, ISerializable
 

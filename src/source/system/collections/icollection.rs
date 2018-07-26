@@ -22,7 +22,7 @@ interface ICollection(ICollectionVtbl): IDispatch(IDispatchVtbl)
     fn get_SyncRoot(
         pRetVal: *mut VARIANT ,
     ) -> HRESULT,
-      fn get_IsSynchronized(
+    fn get_IsSynchronized(
         pRetVal: *mut VARIANT_BOOL ,
     ) -> HRESULT,
 }}//inherits from IEnumerable

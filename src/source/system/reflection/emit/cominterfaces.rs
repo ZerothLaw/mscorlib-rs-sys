@@ -41,7 +41,7 @@ interface _AssemblyBuilder(_AssemblyBuilderVtbl): IUnknown(IUnknownVtbl)
         puArgErr: *mut UINT,
     ) -> HRESULT,
 }}
-//implemented by Assembly, which also implements Assembly
+//implemented by AssemblyBuilder, which also implements Assembly
 
 RIDL!{#[uuid(0xed3e4384, 0xd7e2, 0x3fa7, 0x8f, 0xfd, 0x89, 0x40, 0xd3, 0x30, 0x51, 0x9a)]
 interface _ConstructorBuilder(_ConstructorBuilderVtbl): IUnknown(IUnknownVtbl)   
