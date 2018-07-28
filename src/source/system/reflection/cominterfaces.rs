@@ -85,7 +85,7 @@ interface _Type(_TypeVtbl): IUnknown(IUnknownVtbl)
         pRetVal: *mut *mut _Type ,
     ) -> HRESULT,
     fn get_MemberType(
-        pRetVal: MemberTypes ,
+        pRetVal: *mut MemberTypes ,
     ) -> HRESULT,
     fn get_Name(
         pRetVal: *mut BSTR ,
