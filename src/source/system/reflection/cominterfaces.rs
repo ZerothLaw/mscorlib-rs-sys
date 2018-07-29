@@ -123,13 +123,13 @@ interface _Type(_TypeVtbl): IUnknown(IUnknownVtbl)
         pRetVal: *mut *mut RuntimeTypeHandle ,
     ) -> HRESULT,
     fn get_FullName(
-        pRetVal: *mut *mut BSTR,
+        pRetVal: *mut BSTR,
     ) -> HRESULT,
     fn get_Namespace(
-        pRetVal: *mut *mut BSTR,
+        pRetVal: *mut BSTR,
     ) -> HRESULT,
     fn get_AssemblyQualifiedName(
-        pRetVal: *mut *mut BSTR,
+        pRetVal: *mut BSTR,
     ) -> HRESULT,
     fn GetArrayRank(
         pRetVal: *mut *mut c_long,
