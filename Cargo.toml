@@ -1,6 +1,6 @@
 [package]
 name = "mscorlib-sys"
-version = "0.1.y"
+version = "0.1.7"
 license = "MIT"
 description = "Raw FFI bindings for mscorlib"
 repository = "https://github.com/ZerothLaw/mscorlib-rs-sys"
