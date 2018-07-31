@@ -964,16 +964,16 @@ interface _MethodInfo(_MethodInfoVtbl): IUnknown(IUnknownVtbl)
         pRetVal: *mut *mut SAFEARRAY ,
     ) -> HRESULT,
     fn GetMethodImplementationFlags(
-        pRetVal: *mut MethodImplAttributes ,
+        pRetVal: *mut *mut MethodImplAttributes ,
     ) -> HRESULT,
     fn get_MethodHandle(
-        pRetVal: *mut RuntimeMethodHandle ,
+        pRetVal: *mut *mut RuntimeMethodHandle ,
     ) -> HRESULT,
     fn get_Attributes(
-        pRetVal: *mut MethodAttributes ,
+        pRetVal: *mut *mut MethodAttributes ,
     ) -> HRESULT,
     fn get_CallingConvention(
-        pRetVal: *mut CallingConventions ,
+        pRetVal: *mut *mut CallingConventions ,
     ) -> HRESULT,
     fn Invoke_2(
         obj: VARIANT, 
