@@ -1437,7 +1437,7 @@ interface _PropertyInfo(_PropertyInfoVtbl): IUnknown(IUnknownVtbl)
         pRetVal: *mut *mut SAFEARRAY ,
     ) -> HRESULT,
     fn get_Attributes(
-        pRetVal: PropertyAttributes ,
+        pRetVal: *mut *mut PropertyAttributes ,
     ) -> HRESULT,
     fn get_CanRead(
         pRetVal: *mut *mut VARIANT_BOOL,
@@ -1540,7 +1540,7 @@ interface _EventInfo(_EventInfoVtbl): IUnknown(IUnknownVtbl)
         pRetVal: *mut *mut _MethodInfo, 
     ) -> HRESULT,
     fn get_Attributes(
-        pRetVal: EventAttributes ,
+        pRetVal: *mut *mut EventAttributes ,
     ) -> HRESULT,
     fn GetAddMethod_2(
         pRetVal: *mut *mut _MethodInfo ,
