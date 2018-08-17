@@ -1,36 +1,50 @@
-pub mod allmembershipcondition;
-pub mod applicationdirectory;
-pub mod applicationdirectorymembershipcondition;
-pub mod applicationsecurityinfo;
-pub mod applicationsecuritymanager;
-pub mod applicationtrust;
-pub mod codegroup;
-pub mod evidence;
-pub mod evidencebase;
-pub mod filecodegroup;
-pub mod firstmatchcodegroup;
-pub mod gac;
-pub mod gacmembershipcondition;
-pub mod hash;
-pub mod hashmembershipcondition;
-pub mod iapplicationtrustmanager;
-pub mod iidentitypermissionfactory;
-pub mod imembershipcondition;
-pub mod netcodegroup;
-pub mod permissionrequestevidence;
-pub mod policyexception;
-pub mod policylevel;
-pub mod policystatement;
-pub mod publisher;
-pub mod publishermembershipcondition;
-pub mod site;
-pub mod sitemembershipcondition;
-pub mod strongname;
-pub mod strongnamemembershipcondition;
-pub mod url;
-pub mod urlmembershipcondition;
-pub mod zone;
-pub mod zonemembershipcondition;
+//    Copyright 2018 Tyler Laing
+// 
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+// 
+//        http://www.apache.org/licenses/LICENSE-2.0
+// 
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+
+mod allmembershipcondition;
+mod applicationdirectory;
+mod applicationdirectorymembershipcondition;
+mod applicationsecurityinfo;
+mod applicationsecuritymanager;
+mod applicationtrust;
+mod codegroup;
+mod evidence;
+mod evidencebase;
+mod filecodegroup;
+mod firstmatchcodegroup;
+mod gac;
+mod gacmembershipcondition;
+mod hash;
+mod hashmembershipcondition;
+mod iapplicationtrustmanager;
+mod iidentitypermissionfactory;
+mod imembershipcondition;
+mod netcodegroup;
+mod permissionrequestevidence;
+mod policyexception;
+mod policylevel;
+mod policystatement;
+mod publisher;
+mod publishermembershipcondition;
+mod site;
+mod sitemembershipcondition;
+mod strongname;
+mod strongnamemembershipcondition;
+mod url;
+mod urlmembershipcondition;
+mod zone;
+mod zonemembershipcondition;
 
 pub use self::allmembershipcondition::*;
 pub use self::applicationdirectory::*;

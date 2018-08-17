@@ -1,4 +1,26 @@
 #![allow(dead_code, non_snake_case)]
+// MIT License
+// Copyright (c) 2018 Tyler Laing (ZerothLaw)
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//! This is where most of the stubbed interfaces go for the moment until they're put in the correct files/modules.
+
 //std
 
 //3rd party
@@ -6,6 +28,10 @@ use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
 //self
 
+//A trick for converting GUIDs from .h files to this format for this and other macros:
+//  regex: ([\w\d]{8})-([\w\d]{4})-([\w\d]{4})-([\w\d]{2})([\w\d]{2})-([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})
+//  replace: 0x$1, 0x$2, 0x$3, 0x$4, 0x$5, 0x$6, 0x$7, 0x$8, 0x$9, 0x$10, 0x$11
+//  Visual Studio code's find and replace functionality supports regex capture groups like this. Makes it super fast.
 RIDL!{#[uuid(0x152a6b4d, 0x09af, 0x3edf, 0x8c, 0xba, 0x11, 0x79, 0x7e, 0xee, 0xea, 0x4e)]
 interface _DataMisalignedException(_DataMisalignedExceptionVtbl): IDispatch(IDispatchVtbl)  
 {}}

@@ -1,3 +1,16 @@
+//    Copyright 2018 Tyler Laing
+// 
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+// 
+//        http://www.apache.org/licenses/LICENSE-2.0
+// 
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
 
 use winapi::ctypes::{c_long,};
 
@@ -7,39 +20,24 @@ use winapi::shared::ntdef::{LCID};
 use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
 use winapi::shared::wtypesbase::LPOLESTR;
-
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::um::oaidl::{DISPID, DISPPARAMS, EXCEPINFO, ITypeInfo, SAFEARRAY, VARIANT};
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
-use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
+use system::{RuntimeFieldHandle, RuntimeMethodHandle};
 use system::{_Delegate, _Version, RuntimeTypeHandle};
 
 use system::globalization::_CultureInfo;
 
 use system::io::{_Stream,_FileStream};
 
-use system::reflection::_Binder;
-use system::reflection::_ManifestResourceInfo;
-use system::reflection::_ModuleResolveEventHandler;
-use system::reflection::MemberTypes;
-use system::reflection::BindingFlags;
-use system::reflection::CallingConventions;
-use system::reflection::EventAttributes;
-use system::reflection::FieldAttributes;
-use system::reflection::ICustomAttributeProvider;
-use system::reflection::MethodAttributes;
-use system::reflection::MethodImplAttributes;
-use system::reflection::PropertyAttributes;
-use system::reflection::TypeAttributes;
-
+use system::reflection::{_Binder, _ManifestResourceInfo,_MemberFilter, _ModuleResolveEventHandler, _TypeFilter};
+use system::reflection::{BindingFlags, CallingConventions, EventAttributes, FieldAttributes, 
+ICustomAttributeProvider, InterfaceMapping, MemberTypes, MethodAttributes, MethodImplAttributes, 
+PropertyAttributes, TypeAttributes};
 
 use system::runtime::serialization::_SerializationInfo;
 use system::runtime::serialization::StreamingContext;
-
-use system::{RuntimeFieldHandle, RuntimeMethodHandle};
-use system::reflection::InterfaceMapping;
-use system::reflection::_MemberFilter;
-use system::reflection::_TypeFilter;
 
 use system::security::policy::_Evidence;
 

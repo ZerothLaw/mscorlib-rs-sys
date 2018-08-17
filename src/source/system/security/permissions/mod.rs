@@ -1,24 +1,38 @@
-pub mod environmentpermission;
-pub mod filedialogpermission;
-pub mod fileiopermission;
-pub mod gacidentitypermission;
-pub mod hostprotectionpermission;
-pub mod isolatedstoragefilepermission;
-pub mod isolatedstoragepermission;
-pub mod iunrestrictedpermission;
-pub mod keycontainerpermission;
-pub mod permissionattributes;
-pub mod permissionstate;
-pub mod publisheridentitypermission;
-pub mod reflectionpermission;
-pub mod registrypermission;
-pub mod securitypermission;
-pub mod siteidentitypermission;
-pub mod strongnameidentitypermission;
-pub mod strongnamepublickeyblob;
-pub mod uipermission;
-pub mod urlidentitypermission;
-pub mod zoneidentitypermission;
+//    Copyright 2018 Tyler Laing
+// 
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+// 
+//        http://www.apache.org/licenses/LICENSE-2.0
+// 
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+
+mod environmentpermission;
+mod filedialogpermission;
+mod fileiopermission;
+mod gacidentitypermission;
+mod hostprotectionpermission;
+mod isolatedstoragefilepermission;
+mod isolatedstoragepermission;
+mod iunrestrictedpermission;
+mod keycontainerpermission;
+mod permissionattributes;
+mod permissionstate;
+mod publisheridentitypermission;
+mod reflectionpermission;
+mod registrypermission;
+mod securitypermission;
+mod siteidentitypermission;
+mod strongnameidentitypermission;
+mod strongnamepublickeyblob;
+mod uipermission;
+mod urlidentitypermission;
+mod zoneidentitypermission;
 
 pub use self::environmentpermission::*;
 pub use self::filedialogpermission::*;

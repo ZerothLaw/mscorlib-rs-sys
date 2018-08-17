@@ -1,3 +1,17 @@
+//    Copyright 2018 Tyler Laing
+// 
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+// 
+//        http://www.apache.org/licenses/LICENSE-2.0
+// 
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+
 //.Net Framework 4.7.2 Reference Source - mscorlib { system.iappdomain.cs }
 //https://referencesource.microsoft.com/#mscorlib/system/iappdomain.cs,e55c0aa25d0b566c
 use winapi::ctypes::{c_long};
@@ -6,27 +20,16 @@ use winapi::shared::guiddef::REFIID;
 use winapi::shared::minwindef::{WORD,UINT};
 use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
- use winapi::shared::wtypesbase::LPOLESTR;
+use winapi::shared::wtypesbase::LPOLESTR;
 
-use winapi::um::oaidl::{VARIANT, SAFEARRAY};
-use winapi::um::oaidl::DISPID;
-use winapi::um::oaidl::DISPPARAMS;
-use winapi::um::oaidl::EXCEPINFO;
-use winapi::um::oaidl::ITypeInfo;
+use winapi::um::oaidl::{DISPID, DISPPARAMS, EXCEPINFO, ITypeInfo, VARIANT, SAFEARRAY};
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
-use system::_AssemblyLoadEventHandler;
-use system::_CrossAppDomainDelegate;
-use system::_EventHandler;
-use system::_ResolveEventHandler;
-use system::_UnhandledExceptionEventHandler;
+use system::{_AssemblyLoadEventHandler, _CrossAppDomainDelegate, _EventHandler, _ResolveEventHandler, _UnhandledExceptionEventHandler};
 
 use system::globalization::_CultureInfo;
 
-use system::reflection::_Assembly;
-use system::reflection::_AssemblyName;
-use system::reflection::_Binder;
-use system::reflection::_Type;
+use system::reflection::{_Assembly, _AssemblyName, _Binder, _Type};
 use system::reflection::BindingFlags;
 
 use system::reflection::emit::_AssemblyBuilder;
@@ -34,8 +37,7 @@ use system::reflection::emit::AssemblyBuilderAccess;
 
 use system::security::_PermissionSet;
 use system::security::principal::{IPrincipal,PrincipalPolicy};
-use system::security::policy::_Evidence;
-use system::security::policy::_PolicyLevel;
+use system::security::policy::{_Evidence,_PolicyLevel};
 use system::threading::IObjectHandle;
 
 //RIDL!{#[uuid()]}

@@ -1,16 +1,24 @@
+//    Copyright 2018 Tyler Laing
+// 
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+// 
+//        http://www.apache.org/licenses/LICENSE-2.0
+// 
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+
 use winapi::ctypes::c_long;
-use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
-use winapi::um::oaidl::{SAFEARRAY, VARIANT};
-use winapi::shared::wtypes::{BSTR};
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY, VARIANT};
+use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
 use winapi::shared::winerror::HRESULT;
-use winapi::shared::wtypes::VARIANT_BOOL;
 
 use system::globalization::_CultureInfo;
-use system::reflection::cominterfaces::_Type;
-use system::reflection::cominterfaces::_PropertyInfo;
-use system::reflection::bindingflags::BindingFlags;
-use system::reflection::cominterfaces::_MethodBase;
-use system::reflection::cominterfaces::_FieldInfo;
+use system::reflection::{BindingFlags,_FieldInfo, _MethodBase, _PropertyInfo, _Type};
 
 RIDL!{#[uuid(0x3169ab11, 0x7109, 0x3808, 0x9a, 0x61, 0xef, 0x4b, 0xa0, 0x53, 0x4f, 0xd9)]
 interface _Binder(_BinderVtbl): IDispatch(IDispatchVtbl)  
