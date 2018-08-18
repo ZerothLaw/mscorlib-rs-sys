@@ -1,37 +1,37 @@
-//    Copyright 2018 Tyler Laing
+// ichannel.rs - MIT License
+//  MIT License
+//  Copyright (c) 2018 Tyler Laing (ZerothLaw)
 // 
-//    Licensed under the Apache License, Version 2.0 (the "License");
-//    you may not use this file except in compliance with the License.
-//    You may obtain a copy of the License at
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 // 
-//        http://www.apache.org/licenses/LICENSE-2.0
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 // 
-//    Unless required by applicable law or agreed to in writing, software
-//    distributed under the License is distributed on an "AS IS" BASIS,
-//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//    See the License for the specific language governing permissions and
-//    limitations under the License.
-
-use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
-use winapi::shared::winerror::HRESULT;
-use winapi::um::oaidl::VARIANT;
-use winapi::um::oaidl::SAFEARRAY;
-use winapi::shared::wtypes::BSTR;
-use winapi::shared::wtypes::VARIANT_BOOL;
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 use winapi::ctypes::c_long;
 
-use system::collections::IDictionary;
+use winapi::shared::winerror::HRESULT;
+use winapi::shared::wtypes::{BSTR,VARIANT_BOOL};
+
+use winapi::um::oaidl::{IDispatch, IDispatchVtbl,VARIANT,SAFEARRAY};
 
 use system::IAsyncResult;
-
+use system::collections::IDictionary;
 use system::io::_Stream;
 
 use system::runtime::interopservices::ComTypes::IEnumVARIANT;
-
-use system::runtime::remoting::IClientResponseChannelSinkStack;
-use system::runtime::remoting::IMessage;
-use system::runtime::remoting::IMessageSink;
-use system::runtime::remoting::IServerResponseChannelSinkStack;
+use system::runtime::remoting::{IClientResponseChannelSinkStack,IMessage,IMessageSink,IServerResponseChannelSinkStack};
 
 RIDL!{#[uuid(0x563581e8, 0xc86d, 0x39e2, 0xb2, 0xe8, 0x6c, 0x23, 0xf7, 0x98, 0x7a, 0x4b)]
 interface IChannel(IChannelVtbl): IDispatch(IDispatchVtbl)  

@@ -32,5 +32,5 @@ pub mod hosting {
 }
 
 pub mod constrained_execution {
-    pub use system::runtime::reliability::criticalfinalizerobject::*;
+    pub use system::runtime::reliability::*;
 }
