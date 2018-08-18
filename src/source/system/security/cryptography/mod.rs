@@ -1,80 +1,88 @@
-//    Copyright 2018 Tyler Laing
+// mod.rs - MIT License
+//  MIT License
+//  Copyright (c) 2018 Tyler Laing (ZerothLaw)
 // 
-//    Licensed under the Apache License, Version 2.0 (the "License");
-//    you may not use this file except in compliance with the License.
-//    You may obtain a copy of the License at
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 // 
-//        http://www.apache.org/licenses/LICENSE-2.0
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 // 
-//    Unless required by applicable law or agreed to in writing, software
-//    distributed under the License is distributed on an "AS IS" BASIS,
-//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//    See the License for the specific language governing permissions and
-//    limitations under the License.
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 
-pub mod asymmetricalalgorithm;
-pub mod asymmetrickeyexchangedeformatter;
-pub mod asymmetrickeyexchangeformatter;
-pub mod base64transforms;
-pub mod crypto;
-pub mod cryptoapitransform;
-pub mod cryptoconfig;
-pub mod cryptostream;
-pub mod derivebytes;
-pub mod des;
-pub mod descryptoprovider;
-pub mod dsa;
-pub mod dsacryptoserviceprovider;
-pub mod dsasignaturedeformatter;
-pub mod dsasignatureformatter;
-pub mod hashalgorithm;
-pub mod HashAlgorithmName;
-pub mod hmac;
-pub mod hmacmd5;
-pub mod hmacripemd160;
-pub mod hmacsha1;
-pub mod hmacsha256;
-pub mod hmacsha384;
-pub mod hmacsha512;
-pub mod icryptotransform;
-pub mod icspasymmetricalgorithm;
-pub mod keyedhashalgorithm;
-pub mod mactripledes;
-pub mod maskgenerationmethod;
-pub mod md5;
-pub mod md5cryptoserviceprovider;
-pub mod passwordderivebytes;
-pub mod pkcs1maskgenerationmethod;
-pub mod randomnumbergenerator;
-pub mod rc2;
-pub mod rc2cryptoserviceprovider;
-pub mod rfc2898derivebytes;
-pub mod rijndael;
-pub mod rijndaelmanaged;
-pub mod rijndaelmanagedtransform;
-pub mod ripemd160;
-pub mod ripemd160managed;
-pub mod rngcryptoserviceprovider;
-pub mod rsa;
-pub mod rsacryptoserviceprovider;
-pub mod rsaoaepkeyexchangedeformatter;
-pub mod rsaoaepkeyexchangeformatter;
-pub mod rsapkcs1keyexchangedeformatter;
-pub mod rsapkcs1keyexchangeformatter;
-pub mod rsapkcs1signaturedeformatter;
-pub mod rsapkcs1signatureformatter;
-pub mod sha1;
-pub mod sha1cryptoserviceprovider;
-pub mod sha256;
-pub mod sha256managed;
-pub mod sha384;
-pub mod sha384managed;
-pub mod sha512;
-pub mod sha512managed;
-pub mod signaturedescription;
-pub mod symmetricalalgorithm;
-pub mod tripledes;
-pub mod tripledescryptoserviceprovider;
+mod asymmetricalalgorithm;
+mod asymmetrickeyexchangedeformatter;
+mod asymmetrickeyexchangeformatter;
+mod base64transforms;
+mod crypto;
+mod cryptoapitransform;
+mod cryptoconfig;
+mod cryptostream;
+mod derivebytes;
+mod des;
+mod descryptoprovider;
+mod dsa;
+mod dsacryptoserviceprovider;
+mod dsasignaturedeformatter;
+mod dsasignatureformatter;
+mod hashalgorithm;
+mod HashAlgorithmName;
+mod hmac;
+mod hmacmd5;
+mod hmacripemd160;
+mod hmacsha1;
+mod hmacsha256;
+mod hmacsha384;
+mod hmacsha512;
+mod icryptotransform;
+mod icspasymmetricalgorithm;
+mod keyedhashalgorithm;
+mod mactripledes;
+mod maskgenerationmethod;
+mod md5;
+mod md5cryptoserviceprovider;
+mod passwordderivebytes;
+mod pkcs1maskgenerationmethod;
+mod randomnumbergenerator;
+mod rc2;
+mod rc2cryptoserviceprovider;
+mod rfc2898derivebytes;
+mod rijndael;
+mod rijndaelmanaged;
+mod rijndaelmanagedtransform;
+mod ripemd160;
+mod ripemd160managed;
+mod rngcryptoserviceprovider;
+mod rsa;
+mod rsacryptoserviceprovider;
+mod rsaoaepkeyexchangedeformatter;
+mod rsaoaepkeyexchangeformatter;
+mod rsapkcs1keyexchangedeformatter;
+mod rsapkcs1keyexchangeformatter;
+mod rsapkcs1signaturedeformatter;
+mod rsapkcs1signatureformatter;
+mod sha1;
+mod sha1cryptoserviceprovider;
+mod sha256;
+mod sha256managed;
+mod sha384;
+mod sha384managed;
+mod sha512;
+mod sha512managed;
+mod signaturedescription;
+mod symmetricalalgorithm;
+mod tripledes;
+mod tripledescryptoserviceprovider;
 
 pub mod x509certificates;
 
