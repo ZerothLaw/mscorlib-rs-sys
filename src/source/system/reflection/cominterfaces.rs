@@ -32,22 +32,22 @@ use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::um::oaidl::{DISPID, DISPPARAMS, EXCEPINFO, ITypeInfo, SAFEARRAY, VARIANT};
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
-use system::{RuntimeFieldHandle, RuntimeMethodHandle};
-use system::{_Delegate, _Version, RuntimeTypeHandle};
+use crate::system::{RuntimeFieldHandle, RuntimeMethodHandle};
+use crate::system::{_Delegate, _Version, RuntimeTypeHandle};
 
-use system::globalization::_CultureInfo;
+use crate::system::globalization::_CultureInfo;
 
-use system::io::{_Stream,_FileStream};
+use crate::system::io::{_Stream,_FileStream};
 
-use system::reflection::{_Binder, _ManifestResourceInfo,_MemberFilter, _ModuleResolveEventHandler, _TypeFilter};
-use system::reflection::{BindingFlags, CallingConventions, EventAttributes, FieldAttributes, 
+use crate::system::reflection::{_Binder, _ManifestResourceInfo,_MemberFilter, _ModuleResolveEventHandler, _TypeFilter};
+use crate::system::reflection::{BindingFlags, CallingConventions, EventAttributes, FieldAttributes, 
 ICustomAttributeProvider, InterfaceMapping, MemberTypes, MethodAttributes, MethodImplAttributes, 
 PropertyAttributes, TypeAttributes};
 
-use system::runtime::serialization::_SerializationInfo;
-use system::runtime::serialization::StreamingContext;
+use crate::system::runtime::serialization::_SerializationInfo;
+use crate::system::runtime::serialization::StreamingContext;
 
-use system::security::policy::_Evidence;
+use crate::system::security::policy::_Evidence;
 
 RIDL!{#[uuid(0xbca8b44d, 0xaad6, 0x3a86, 0x8a, 0xb7, 0x03, 0x34, 0x9f, 0x4f, 0x2d, 0xa2)]
 interface _Type(_TypeVtbl): IUnknown(IUnknownVtbl)   

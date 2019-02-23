@@ -23,8 +23,8 @@
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::runtime::remoting::IMessage;
-use system::runtime::remoting::IMessageCtrl;
+use crate::system::runtime::remoting::IMessage;
+use crate::system::runtime::remoting::IMessageCtrl;
 
 RIDL!{#[uuid(0x941f8aaa, 0xa353, 0x3b1d, 0xa0, 0x19, 0x12, 0xe4, 0x43, 0x77, 0xf1, 0xcd)]
 interface IMessageSink(IMessageSinkVtbl): IDispatch(IDispatchVtbl)  

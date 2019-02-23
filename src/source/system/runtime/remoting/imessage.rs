@@ -23,7 +23,7 @@
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::collections::IDictionary;
+use crate::system::collections::IDictionary;
 
 RIDL!{#[uuid(0x1a8b0de6, 0xb825, 0x38c5, 0xb7, 0x44, 0x8f, 0x93, 0x07, 0x5f, 0xd6, 0xfa)]
 interface IMessage(IMessageVtbl): IDispatch(IDispatchVtbl)  

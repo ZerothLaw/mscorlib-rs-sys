@@ -26,12 +26,12 @@ use winapi::shared::wtypes::{BSTR,VARIANT_BOOL};
 
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl,VARIANT,SAFEARRAY};
 
-use system::IAsyncResult;
-use system::collections::IDictionary;
-use system::io::_Stream;
+use crate::system::IAsyncResult;
+use crate::system::collections::IDictionary;
+use crate::system::io::_Stream;
 
-use system::runtime::interopservices::ComTypes::IEnumVARIANT;
-use system::runtime::remoting::{IClientResponseChannelSinkStack,IMessage,IMessageSink,IServerResponseChannelSinkStack};
+use crate::system::runtime::interopservices::ComTypes::IEnumVARIANT;
+use crate::system::runtime::remoting::{IClientResponseChannelSinkStack,IMessage,IMessageSink,IServerResponseChannelSinkStack};
 
 RIDL!{#[uuid(0x563581e8, 0xc86d, 0x39e2, 0xb2, 0xe8, 0x6c, 0x23, 0xf7, 0x98, 0x7a, 0x4b)]
 interface IChannel(IChannelVtbl): IDispatch(IDispatchVtbl)  

@@ -43,7 +43,7 @@ RIDL!{#[uuid(0x5e6f9edb, 0x3ce1, 0x3a56, 0x86, 0xd9, 0xcd, 0x2d, 0xdf, 0x7a, 0x6
 interface _AppDomainInitializer(_AppDomainInitializerVtbl): IDispatch(IDispatchVtbl)  
 {}}
 
-pub use system::iappdomain::_AppDomain;
+pub use crate::system::iappdomain::_AppDomain;
 
 RIDL!{#[uuid(0xaf93163f, 0xc2f4, 0x3fab, 0x9f, 0xf1, 0x72, 0x8a, 0x7a, 0xaa, 0xd1, 0xcb)]
 interface _CrossAppDomainDelegate(_CrossAppDomainDelegateVtbl): IDispatch(IDispatchVtbl)  

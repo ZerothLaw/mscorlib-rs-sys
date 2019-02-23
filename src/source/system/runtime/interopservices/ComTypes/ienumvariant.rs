@@ -26,7 +26,7 @@ use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{SAFEARRAY};
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
- use system::IntPtr;
+use crate::system::IntPtr;
 
 RIDL!{#[uuid(0x00020404, 0x0000, 0x0000, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46)]
 interface IEnumVARIANT(IEnumVARIANTVtbl): IUnknown(IUnknownVtbl){

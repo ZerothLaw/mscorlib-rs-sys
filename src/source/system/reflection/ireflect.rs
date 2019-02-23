@@ -24,8 +24,8 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::BSTR;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY, VARIANT};
 
-use system::globalization::_CultureInfo;
-use system::reflection::{BindingFlags, _Binder, _FieldInfo, _MethodInfo, _PropertyInfo, _Type};
+use crate::system::globalization::_CultureInfo;
+use crate::system::reflection::{BindingFlags, _Binder, _FieldInfo, _MethodInfo, _PropertyInfo, _Type};
 
 RIDL!{#[uuid(0xafbf15e5, 0xc37c, 0x11d2, 0xb8, 0x8e, 0x00, 0xa0, 0xc9, 0xb4, 0x71, 0xb8)]
 interface IReflect(IReflectVtbl): IDispatch(IDispatchVtbl)  

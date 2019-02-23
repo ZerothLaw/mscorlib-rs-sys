@@ -26,9 +26,9 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::{BSTR,VARIANT_BOOL};
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, VARIANT, SAFEARRAY};
 
-use system::_Exception;
-use system::reflection::_MethodBase;
-use system::runtime::remoting::_LogicalCallContext;
+use crate::system::_Exception;
+use crate::system::reflection::_MethodBase;
+use crate::system::runtime::remoting::_LogicalCallContext;
 
 RIDL!{#[uuid(0x8e5e0b95, 0x750e, 0x310d, 0x89, 0x2c, 0x8c, 0xa7, 0x23, 0x1c, 0xf7, 0x5b)]
 interface IMethodMessage(IMethodMessageVtbl): IDispatch(IDispatchVtbl)  

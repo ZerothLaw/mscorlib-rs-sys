@@ -23,8 +23,8 @@
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::_MarshalByRefObject;
-use system::runtime::remoting::IMessageSink;
+use crate::system::_MarshalByRefObject;
+use crate::system::runtime::remoting::IMessageSink;
 
 RIDL!{#[uuid(0x6a5d38bc, 0x2789, 0x3546, 0x81, 0xa1, 0xf1, 0x0c, 0x0f, 0xb5, 0x93, 0x66)]
 interface IContributeObjectSink(IContributeObjectSinkVtbl): IDispatch(IDispatchVtbl)  

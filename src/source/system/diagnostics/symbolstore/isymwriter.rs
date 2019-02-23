@@ -24,13 +24,13 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY};
 
-use system::diagnostics::symbolstore::ISymbolDocumentWriter;
-use system::diagnostics::symbolstore::SymbolToken;
-use system::diagnostics::symbolstore::SymAddressKind;
-use system::intptr::IntPtr;
+use crate::system::diagnostics::symbolstore::ISymbolDocumentWriter;
+use crate::system::diagnostics::symbolstore::SymbolToken;
+use crate::system::diagnostics::symbolstore::SymAddressKind;
+use crate::system::intptr::IntPtr;
 
-use system::reflection::FieldAttributes;
-use system::reflection::ParameterAttributes;
+use crate::system::reflection::FieldAttributes;
+use crate::system::reflection::ParameterAttributes;
 
 RIDL!{#[uuid(0xda295a1b, 0xc5bd, 0x3b34, 0x8a, 0xcd, 0x1d, 0x7d, 0x33, 0x4f, 0xfb, 0x7f)]
 interface ISymbolWriter(ISymbolWriterVtbl) : IDispatch(IDispatchVtbl) {

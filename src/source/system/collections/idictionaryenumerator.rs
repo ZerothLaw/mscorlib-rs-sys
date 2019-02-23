@@ -21,7 +21,7 @@
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, VARIANT};
 
-use system::collections::DictionaryEntry;
+use crate::system::collections::DictionaryEntry;
 
 RIDL!{#[uuid(0x35d574bf, 0x7a4f, 0x3588, 0x8c, 0x19, 0x12, 0x21, 0x2a, 0x0f, 0xe4, 0xdc)]
 interface IDictionaryEnumerator(IDictionaryEnumeratorVtbl) : IDispatch(IDispatchVtbl){

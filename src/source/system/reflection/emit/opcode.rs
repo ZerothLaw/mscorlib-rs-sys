@@ -24,7 +24,7 @@ use winapi::ctypes::c_long;
 use winapi::shared::minwindef::UCHAR;
 use winapi::shared::wtypes::BSTR;
 
-use system::reflection::emit::{FlowControl,OperandType,OpCodeType,StackBehaviour};
+use crate::system::reflection::emit::{FlowControl,OperandType,OpCodeType,StackBehaviour};
 
 //struct __declspec(uuid("a7ed05c6-fecf-3c35-ba3b-84163ac1d5e5"))
 STRUCT!{struct OpCode

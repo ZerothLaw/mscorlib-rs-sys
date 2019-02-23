@@ -26,8 +26,8 @@ use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY, VARIANT};
 
-use system::globalization::_CultureInfo;
-use system::reflection::{BindingFlags,_FieldInfo, _MethodBase, _PropertyInfo, _Type};
+use crate::system::globalization::_CultureInfo;
+use crate::system::reflection::{BindingFlags,_FieldInfo, _MethodBase, _PropertyInfo, _Type};
 
 RIDL!{#[uuid(0x3169ab11, 0x7109, 0x3808, 0x9a, 0x61, 0xef, 0x4b, 0xa0, 0x53, 0x4f, 0xd9)]
 interface _Binder(_BinderVtbl): IDispatch(IDispatchVtbl)  

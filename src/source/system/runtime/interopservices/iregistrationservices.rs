@@ -26,7 +26,7 @@ use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::shared::wtypes::BSTR;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY};
 
-use system::reflection::{_Assembly, _Type};
+use crate::system::reflection::{_Assembly, _Type};
 
 //enum __declspec(uuid("765653a0-2b24-38e4-a6f6-5cb325e8ccc9"))
 ENUM!{enum AssemblyRegistrationFlags

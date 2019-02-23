@@ -23,8 +23,8 @@
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::TimeSpan;
-use system::runtime::remoting::{LeaseState,ISponsor};
+use crate::system::TimeSpan;
+use crate::system::runtime::remoting::{LeaseState,ISponsor};
 
 RIDL!{#[uuid(0x53a561f2, 0xcbbf, 0x3748, 0xbf, 0xfe, 0x21, 0x80, 0x00, 0x2d, 0xb3, 0xdf)]
 interface ILease(ILeaseVtbl): IDispatch(IDispatchVtbl)  

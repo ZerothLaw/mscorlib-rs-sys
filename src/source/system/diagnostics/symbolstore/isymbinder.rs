@@ -23,7 +23,7 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::BSTR;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::diagnostics::symbolstore::ISymbolReader;
+use crate::system::diagnostics::symbolstore::ISymbolReader;
 
 //TODO: add DEPRECATED_RIDL macro?
 RIDL!{#[uuid(0x20808adc, 0xcc01, 0x3f3a, 0x8f, 0x09, 0xed, 0x12, 0x94, 0x0f, 0xc2, 0x12)]

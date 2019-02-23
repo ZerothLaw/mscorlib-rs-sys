@@ -23,8 +23,8 @@ use winapi::shared::winerror::HRESULT;
 
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY, VARIANT};
 
-use system::runtime::remoting::_HeaderHandler;
-use system::io::_Stream;
+use crate::system::runtime::remoting::_HeaderHandler;
+use crate::system::io::_Stream;
 
 RIDL!{#[uuid(0xae1850fd, 0x3596, 0x3727, 0xa2, 0x42, 0x2f, 0xc3, 0x1c, 0x5a, 0x03, 0x12)]
 interface IRemotingFormatter(IRemotingFormatterVtbl): IDispatch(IDispatchVtbl)  

@@ -20,7 +20,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-use system::intptr::IntPtr;
+use crate::system::intptr::IntPtr;
 //__declspec(uuid("06ad02b5-c5a4-3eec-b7ba-b0af7860d36a"))
 STRUCT!{struct TypedReference {
     val: IntPtr,

@@ -23,9 +23,9 @@
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 use winapi::shared::winerror::HRESULT;
 
-use system::reflection::_Type;
-use system::runtime::serialization::iserializationsurrogate::ISerializationSurrogate;
-use system::runtime::serialization::streamingcontext::StreamingContext;
+use crate::system::reflection::_Type;
+use crate::system::runtime::serialization::iserializationsurrogate::ISerializationSurrogate;
+use crate::system::runtime::serialization::streamingcontext::StreamingContext;
 
 RIDL!{#[uuid(0x7c66ff18, 0xa1a5, 0x3e19, 0x85, 0x7b, 0x0e, 0x7b, 0x6a, 0x9e, 0x3f, 0x38)]
 interface ISurrogateSelector(ISurrogateSelectorVtbl): IDispatch(IDispatchVtbl)  

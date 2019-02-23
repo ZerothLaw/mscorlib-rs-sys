@@ -20,7 +20,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-use system::IntPtr;
+use crate::system::IntPtr;
 
 //enum __declspec(uuid("0e71f38e-c5e1-3094-9487-5c7dd1e998ec"))
 ENUM!{enum GCHandleType

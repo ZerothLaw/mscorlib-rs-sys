@@ -25,8 +25,8 @@ use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, VARIANT};
 
-use system::reflection::_Type;
-use system::runtime::remoting::_ObjRef;
+use crate::system::reflection::_Type;
+use crate::system::runtime::remoting::_ObjRef;
 
 RIDL!{#[uuid(0xea675b47, 0x64e0, 0x3b5f, 0x9b, 0xe7, 0xf7, 0xdc, 0x29, 0x90, 0x73, 0x0d)]
 interface _ObjectHandle(_ObjectHandleVtbl): IDispatch(IDispatchVtbl)  

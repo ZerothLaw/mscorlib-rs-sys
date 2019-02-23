@@ -24,8 +24,8 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::BSTR;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::_Delegate;
-use system::reflection::{_FieldInfo, _MemberInfo, _MethodInfo, _PropertyInfo};
+use crate::system::_Delegate;
+use crate::system::reflection::{_FieldInfo, _MemberInfo, _MethodInfo, _PropertyInfo};
 
 RIDL!{#[uuid(0xafbf15e6, 0xc37c, 0x11d2, 0xb8, 0x8e, 0x00, 0xa0, 0xc9, 0xb4, 0x71, 0xb8)]
 interface IExpando(IExpandoVtbl): IDispatch(IDispatchVtbl)  

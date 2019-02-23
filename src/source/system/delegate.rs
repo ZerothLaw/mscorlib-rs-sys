@@ -26,8 +26,8 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY, VARIANT};
 
-use system::runtime::serialization::{StreamingContext,_SerializationInfo};
-use system::reflection::{_MethodInfo,_Type};
+use crate::system::runtime::serialization::{StreamingContext,_SerializationInfo};
+use crate::system::reflection::{_MethodInfo,_Type};
 
 RIDL!{#[uuid(0xfb6ab00f, 0x5096, 0x3af8, 0xa3, 0x3d, 0xd7, 0x88, 0x5a, 0x5f, 0xa8, 0x29)]
 interface _Delegate(_DelegateVtbl): IDispatch(IDispatchVtbl)  

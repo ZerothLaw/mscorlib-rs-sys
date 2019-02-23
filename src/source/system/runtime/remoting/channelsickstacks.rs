@@ -23,11 +23,11 @@
 use winapi::shared::winerror::HRESULT;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, VARIANT};
 
-use system::IAsyncResult;
-use system::iexception::_Exception;
-use system::io::_Stream;
+use crate::system::IAsyncResult;
+use crate::system::iexception::_Exception;
+use crate::system::io::_Stream;
 
-use system::runtime::remoting::{IClientChannelSink,IMessage,IServerChannelSink,ITransportHeaders};
+use crate::system::runtime::remoting::{IClientChannelSink,IMessage,IServerChannelSink,ITransportHeaders};
 
 RIDL!{#[uuid(0x3a5fde6b, 0xdb46, 0x34e8, 0xba, 0xcd, 0x16, 0xea, 0x5a, 0x44, 0x05, 0x40)]
 interface IClientChannelSinkStack(IClientChannelSinkStackVtbl): IDispatch(IDispatchVtbl)  

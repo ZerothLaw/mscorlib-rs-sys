@@ -24,9 +24,9 @@ use winapi::shared::wtypes::BSTR;
 use winapi::shared::guiddef::GUID;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY};
 
-use system::diagnostics::symbolstore::SymbolToken;
-use system::diagnostics::symbolstore::ISymbolMethod;
-use system::diagnostics::symbolstore::ISymbolDocument;
+use crate::system::diagnostics::symbolstore::SymbolToken;
+use crate::system::diagnostics::symbolstore::ISymbolMethod;
+use crate::system::diagnostics::symbolstore::ISymbolDocument;
 
 RIDL!{#[uuid(0xe809a5f1, 0xd3d7, 0x3144, 0x9b, 0xef, 0xfe, 0x8a, 0xc0, 0x36, 0x46, 0x99)]
 interface ISymbolReader(ISymbolReaderVtbl): IDispatch(IDispatchVtbl)  

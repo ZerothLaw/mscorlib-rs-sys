@@ -22,7 +22,7 @@
 
 use winapi::um::oaidl::SAFEARRAY;
 
-use system::reflection::_Type;
+use crate::system::reflection::_Type;
 
 //struct __declspec(uuid("5f7a2664-4778-3d72-a78f-d38b6b00180d"))
 STRUCT!{struct InterfaceMapping

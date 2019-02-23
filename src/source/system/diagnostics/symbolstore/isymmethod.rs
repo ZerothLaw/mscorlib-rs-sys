@@ -23,10 +23,10 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY};
 
-use system::diagnostics::symbolstore::ISymbolNamespace;
-use system::diagnostics::symbolstore::ISymbolDocument;
-use system::diagnostics::symbolstore::ISymbolScope;
-use system::diagnostics::symbolstore::SymbolToken;
+use crate::system::diagnostics::symbolstore::ISymbolNamespace;
+use crate::system::diagnostics::symbolstore::ISymbolDocument;
+use crate::system::diagnostics::symbolstore::ISymbolScope;
+use crate::system::diagnostics::symbolstore::SymbolToken;
 
 RIDL!{#[uuid(0x25c72eb0, 0xe437, 0x3f17, 0x94, 0x6d, 0x3b, 0x72, 0xa3, 0xac, 0xff, 0x37)]
 interface ISymbolMethod(ISymbolMethodVtbl): IDispatch(IDispatchVtbl)  

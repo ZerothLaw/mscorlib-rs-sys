@@ -24,7 +24,7 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::{BSTR,VARIANT_BOOL};
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::runtime::remoting::IMessage;
+use crate::system::runtime::remoting::IMessage;
 
 RIDL!{#[uuid(0x00a358d4, 0x4d58, 0x3b9d, 0x8f, 0xb6, 0xfb, 0x7f, 0x6b, 0xc1, 0x71, 0x3b)]
 interface IDynamicProperty(IDynamicPropertyVtbl): IDispatch(IDispatchVtbl)  

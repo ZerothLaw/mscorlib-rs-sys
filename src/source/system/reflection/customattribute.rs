@@ -22,7 +22,7 @@
 
 use winapi::um::unknwnbase::{IUnknown};
 
-use system::reflection::{_MemberInfo,_Type};
+use crate::system::reflection::{_MemberInfo,_Type};
 
 //struct __declspec(uuid("9dc6ac40-edfa-3e34-9ad1-b7a0a9e3a40a"))
 STRUCT!{struct CustomAttributeTypedArgument

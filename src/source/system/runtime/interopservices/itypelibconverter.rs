@@ -29,9 +29,9 @@ use winapi::um::oaidl::SAFEARRAY;
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 use winapi::um::winnt::LCID;
 
-use system::reflection::{_Assembly,_StrongNameKeyPair};
-use system::reflection::emit::_AssemblyBuilder;
-use system::version::_Version;
+use crate::system::reflection::{_Assembly,_StrongNameKeyPair};
+use crate::system::reflection::emit::_AssemblyBuilder;
+use crate::system::version::_Version;
 
 //enum __declspec(uuid("c335350a-892d-37f7-967c-99b3c4c4a301"))
 ENUM!{enum TypeLibImporterFlags

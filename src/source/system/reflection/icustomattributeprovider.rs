@@ -24,7 +24,7 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::VARIANT_BOOL;
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl, SAFEARRAY};
 
-use system::reflection::_Type;
+use crate::system::reflection::_Type;
 
 RIDL!{#[uuid(0xb9b91146, 0xd6c2, 0x3a62, 0x81, 0x59, 0xc2, 0xd1, 0x79, 0x4c, 0xde, 0xb0)]
 interface ICustomAttributeProvider(ICustomAttributeProviderVtbl): IDispatch(IDispatchVtbl)  

@@ -25,7 +25,7 @@ use winapi::shared::winerror::HRESULT;
 use winapi::shared::wtypes::{BSTR, VARIANT_BOOL};
 use winapi::um::oaidl::{IDispatch, IDispatchVtbl};
 
-use system::runtime::remoting::{IConstructionCallMessage,IConstructionReturnMessage,_Context};
+use crate::system::runtime::remoting::{IConstructionCallMessage,IConstructionReturnMessage,_Context};
 
 RIDL!{#[uuid(0x4a68baa3, 0x27aa, 0x314a, 0xbd, 0xbb, 0x6a, 0xe9, 0xbd, 0xfc, 0x04, 0x20)]
 interface IContextAttribute(IContextAttributeVtbl): IDispatch(IDispatchVtbl)  

@@ -33,20 +33,20 @@ use winapi::shared::wtypesbase::LPOLESTR;
 use winapi::um::oaidl::{DISPID, DISPPARAMS, EXCEPINFO, ITypeInfo, VARIANT, SAFEARRAY};
 use winapi::um::unknwnbase::{IUnknown, IUnknownVtbl};
 
-use system::{_AssemblyLoadEventHandler, _CrossAppDomainDelegate, _EventHandler, _ResolveEventHandler, _UnhandledExceptionEventHandler};
+use crate::system::{_AssemblyLoadEventHandler, _CrossAppDomainDelegate, _EventHandler, _ResolveEventHandler, _UnhandledExceptionEventHandler};
 
-use system::globalization::_CultureInfo;
+use crate::system::globalization::_CultureInfo;
 
-use system::reflection::{_Assembly, _AssemblyName, _Binder, _Type};
-use system::reflection::BindingFlags;
+use crate::system::reflection::{_Assembly, _AssemblyName, _Binder, _Type};
+use crate::system::reflection::BindingFlags;
 
-use system::reflection::emit::_AssemblyBuilder;
-use system::reflection::emit::AssemblyBuilderAccess;
+use crate::system::reflection::emit::_AssemblyBuilder;
+use crate::system::reflection::emit::AssemblyBuilderAccess;
 
-use system::security::_PermissionSet;
-use system::security::principal::{IPrincipal,PrincipalPolicy};
-use system::security::policy::{_Evidence,_PolicyLevel};
-use system::threading::IObjectHandle;
+use crate::system::security::_PermissionSet;
+use crate::system::security::principal::{IPrincipal,PrincipalPolicy};
+use crate::system::security::policy::{_Evidence,_PolicyLevel};
+use crate::system::threading::IObjectHandle;
 
 //RIDL!{#[uuid()]}
 //"([\w\d]{8})-([\w\d]{4})-([\w\d]{4})-([\w\d]{2})([\w\d]{2})-([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})([\w\d]{2})"
